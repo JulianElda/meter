@@ -1,27 +1,42 @@
 import { useEffect, useState } from "react";
 
+export enum LengthUnits {
+  km = "km",
+  m = "m",
+  cm = "cm",
+  inch = "inch",
+  ft = "ft",
+  mile = "mile",
+  yard = "yard",
+}
+
 type NumberBase = {
-  unit: string;
+  unit: LengthUnits;
   base: number;
 };
 
+// TODO: better imperial units conversion
 const Lengths: Record<string, NumberBase> = {
-  km: { unit: "km", base: 1000 },
-  m: { unit: "m", base: 1 },
-  cm: { unit: "cm", base: 0.01 },
-  inch: { unit: "inch", base: 0.0254 },
-  ft: { unit: "ft", base: 0.3048 },
-  mile: { unit: "mile", base: 1609.34 },
-  yard: { unit: "yard", base: 0.9144 },
+  km: { unit: LengthUnits.km, base: 1000 },
+  m: { unit: LengthUnits.m, base: 1 },
+  cm: { unit: LengthUnits.cm, base: 0.01 },
+  inch: { unit: LengthUnits.inch, base: 0.0254 },
+  ft: { unit: LengthUnits.ft, base: 0.3048 },
+  mile: { unit: LengthUnits.mile, base: 1609.34 },
+  yard: { unit: LengthUnits.yard, base: 0.9144 },
 };
 
-const ROUNDING = 3;
+const ROUNDING: number = 3;
+const DEFAULT_FROM: LengthUnits = Lengths.m.unit;
+const DEFAULT_TO: LengthUnits = Lengths.inch.unit;
+const DEFAULT_INPUT: string = "0";
+const DEFAULT_RESULT: string = "";
 
 export default function Length() {
-  const [from, setFrom] = useState<string>(Lengths.m.unit);
-  const [to, setTo] = useState<string>(Lengths.cm.unit);
-  const [input, setInput] = useState<string>("0");
-  const [result, setResult] = useState<string>("");
+  const [from, setFrom] = useState<LengthUnits>(DEFAULT_FROM);
+  const [to, setTo] = useState<LengthUnits>(DEFAULT_TO);
+  const [input, setInput] = useState<string>(DEFAULT_INPUT);
+  const [result, setResult] = useState<string>(DEFAULT_RESULT);
 
   const getOptions = function (): React.ReactNode {
     let tmp: JSX.Element[] = [];
@@ -41,14 +56,14 @@ export default function Length() {
   };
 
   const onChangeInput = function (value: string) {
-    if (value === "") setInput("0");
+    if (value === "") setInput(DEFAULT_INPUT);
     if (!isValidNumber(value)) return;
     else setInput(value);
   };
 
   useEffect(() => {
     if (!isValidNumber(input)) {
-      setResult("");
+      setResult(DEFAULT_RESULT);
       return;
     }
 
@@ -58,6 +73,7 @@ export default function Length() {
     // convert baseFrom to selected target
     let baseResult: number = baseFrom / Lengths[to].base;
 
+    // set result value
     setResult(baseResult.toFixed(ROUNDING));
   }, [from, to, input]);
 
@@ -75,7 +91,7 @@ export default function Length() {
               id="from"
               name="from"
               value={from}
-              onChange={(event) => setFrom(event.target.value)}
+              onChange={(event) => setFrom(event.target.value as LengthUnits)}
               className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
               {getOptions()}
             </select>
@@ -92,7 +108,7 @@ export default function Length() {
               id="to"
               name="to"
               value={to}
-              onChange={(event) => setTo(event.target.value)}
+              onChange={(event) => setTo(event.target.value as LengthUnits)}
               className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
               {getOptions()}
             </select>
