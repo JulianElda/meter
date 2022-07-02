@@ -1,11 +1,6 @@
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import {
-  selectOptionFrom,
-  selectOptionTo,
-  typeInput,
-  expectResult,
-} from "tests.helper";
+import { selectOption, typeInput, expectResult } from "tests.helper";
 
 import Length, { LengthUnits } from "./length";
 
@@ -20,16 +15,16 @@ const user = userEvent.setup();
 describe("valid inputs", () => {
   test("empty string", async () => {
     render(<Length />);
-    await selectOptionFrom(user, FROM_LABEL, LengthUnits.km);
-    await selectOptionTo(user, TO_LABEL, LengthUnits.m);
+    await selectOption(user, FROM_LABEL, LengthUnits.km);
+    await selectOption(user, TO_LABEL, LengthUnits.m);
     await typeInput(user, INPUT_LABEL, " ");
     expectResult(RESULT_LABEL, "0.000");
   });
 
   test("NaN", async () => {
     render(<Length />);
-    await selectOptionFrom(user, FROM_LABEL, LengthUnits.km);
-    await selectOptionTo(user, TO_LABEL, LengthUnits.m);
+    await selectOption(user, FROM_LABEL, LengthUnits.km);
+    await selectOption(user, TO_LABEL, LengthUnits.m);
     await typeInput(user, INPUT_LABEL, "TEST");
     expectResult(RESULT_LABEL, "0.000");
   });
@@ -38,16 +33,16 @@ describe("valid inputs", () => {
 describe("SI units", () => {
   test("1 km: 1000 m", async () => {
     render(<Length />);
-    await selectOptionFrom(user, FROM_LABEL, LengthUnits.km);
-    await selectOptionTo(user, TO_LABEL, LengthUnits.m);
+    await selectOption(user, FROM_LABEL, LengthUnits.km);
+    await selectOption(user, TO_LABEL, LengthUnits.m);
     await typeInput(user, INPUT_LABEL, "1");
     expectResult(RESULT_LABEL, "1000.000");
   });
 
   test("1 m: 0.001 km", async () => {
     render(<Length />);
-    await selectOptionFrom(user, FROM_LABEL, LengthUnits.m);
-    await selectOptionTo(user, TO_LABEL, LengthUnits.km);
+    await selectOption(user, FROM_LABEL, LengthUnits.m);
+    await selectOption(user, TO_LABEL, LengthUnits.km);
     await typeInput(user, INPUT_LABEL, "1");
     expectResult(RESULT_LABEL, "0.001");
   });
@@ -56,8 +51,8 @@ describe("SI units", () => {
 describe("Imperial units", () => {
   test("1 feet: 12 inch", async () => {
     render(<Length />);
-    await selectOptionFrom(user, FROM_LABEL, LengthUnits.ft);
-    await selectOptionTo(user, TO_LABEL, LengthUnits.inch);
+    await selectOption(user, FROM_LABEL, LengthUnits.ft);
+    await selectOption(user, TO_LABEL, LengthUnits.inch);
     await typeInput(user, INPUT_LABEL, "1");
     expectResult(RESULT_LABEL, "12.000");
   });
@@ -66,16 +61,16 @@ describe("Imperial units", () => {
 describe("Different units", () => {
   test("1 mile: 1609.340 km", async () => {
     render(<Length />);
-    await selectOptionFrom(user, FROM_LABEL, LengthUnits.mile);
-    await selectOptionTo(user, TO_LABEL, LengthUnits.m);
+    await selectOption(user, FROM_LABEL, LengthUnits.mile);
+    await selectOption(user, TO_LABEL, LengthUnits.m);
     await typeInput(user, INPUT_LABEL, "1");
     expectResult(RESULT_LABEL, "1609.340");
   });
 
   test("1 km: 0.621 mile", async () => {
     render(<Length />);
-    await selectOptionFrom(user, FROM_LABEL, LengthUnits.km);
-    await selectOptionTo(user, TO_LABEL, LengthUnits.mile);
+    await selectOption(user, FROM_LABEL, LengthUnits.km);
+    await selectOption(user, TO_LABEL, LengthUnits.mile);
     await typeInput(user, INPUT_LABEL, "1");
     expectResult(RESULT_LABEL, "0.621");
   });

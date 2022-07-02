@@ -1,22 +1,13 @@
 import { UserEvent } from "@testing-library/user-event/dist/types/setup";
 import { screen } from "@testing-library/react";
 
-export const selectOptionFrom = async function (
+export const selectOption = async function (
   user: UserEvent,
   target: string,
   value: string
 ) {
   const fromElement = screen.getByLabelText(target);
   await user.selectOptions(fromElement, value);
-};
-
-export const selectOptionTo = async function (
-  user: UserEvent,
-  target: string,
-  value: string
-) {
-  const toElement = screen.getByLabelText(target);
-  await user.selectOptions(toElement, value);
 };
 
 export const typeInput = async function (
@@ -31,4 +22,14 @@ export const typeInput = async function (
 export const expectResult = function (target: string, value: string) {
   const resultElement = screen.getByLabelText(target);
   expect(resultElement).toHaveValue(value);
+};
+
+export const expectInDocument = function (target: string) {
+  const resultElement = screen.getByLabelText(target);
+  expect(resultElement).toBeInTheDocument();
+};
+
+export const clearInput = function (user: UserEvent, target: string) {
+  const inputElement = screen.getByLabelText(target);
+  user.clear(inputElement);
 };
