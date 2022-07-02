@@ -1,8 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
+import "assets/styles/inter.css";
+import "assets/styles/tailwind.css";
 import "assets/styles/index.scss";
-import App from "components/App/App";
+
+import App from "components/app/app";
 //import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(
