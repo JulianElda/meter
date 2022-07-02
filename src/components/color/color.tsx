@@ -107,10 +107,18 @@ export default function Color() {
             id="hex"
             name="hex"
             value={hex}
+            minLength={6}
+            maxLength={6}
             onChange={(event) => onChangeHex(event.target.value)}
             className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
           />
         </div>
+      </div>
+      <div
+        className="flex mt-6 rounded-lg border-solid border-2 border-black"
+        style={{ backgroundColor: "#" + hex }}
+        data-testid="preview">
+        &nbsp;
       </div>
     </div>
   );

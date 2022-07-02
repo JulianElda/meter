@@ -2,6 +2,7 @@ import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 import { typeInput, expectResult, clearInput } from "tests.helper";
+import { screen } from "@testing-library/react";
 
 import Color from "./color";
 
@@ -11,6 +12,19 @@ const B_LABEL = "B";
 const HEX_LABEL = "Hex";
 
 const user = userEvent.setup();
+
+describe("preview", () => {
+  test("background color in rgb", async () => {
+    render(<Color />);
+    clearInput(user, HEX_LABEL);
+    await typeInput(user, HEX_LABEL, "DC143C");
+    const previewElement = screen.getByTestId("preview");
+    expect(previewElement).toHaveAttribute(
+      "style",
+      "background-color: rgb(220, 20, 60);"
+    );
+  });
+});
 
 describe("hex to rgb", () => {
   test("crimson #DC143C to (220, 20, 60)", async () => {

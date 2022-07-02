@@ -6,8 +6,8 @@ export const selectOption = async function (
   target: string,
   value: string
 ) {
-  const fromElement = screen.getByLabelText(target);
-  await user.selectOptions(fromElement, value);
+  const selectElement = screen.getByLabelText(target);
+  await user.selectOptions(selectElement, value);
 };
 
 export const typeInput = async function (
