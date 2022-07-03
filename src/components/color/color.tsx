@@ -119,7 +119,7 @@ export default function Color() {
         </div>
       </div>
       <div
-        className="flex mt-6 rounded-lg border-solid border-2 border-black"
+        className="flex mt-6 rounded-lg border-dotted border-2 border-gray-400"
         style={{ backgroundColor: "#" + hex }}
         data-testid="preview">
         &nbsp;

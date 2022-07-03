@@ -51,7 +51,11 @@ export default function App() {
           </React.Suspense>
         </div>
         <div className="mt-2 mx-2 grid justify-items-end">
-          <a className="font-mono" href="https://github.com/JulianElda/meter">
+          <a
+            href="https://github.com/JulianElda/meter"
+            target="_blank"
+            rel="noreferrer"
+            className="font-mono hover:underline decoration-dotted">
             Julius Polar@GitHub
           </a>
         </div>
