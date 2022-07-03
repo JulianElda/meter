@@ -2,10 +2,12 @@ import React, { lazy, useState } from "react";
 
 const Color = lazy(() => import("components/color/color"));
 const Length = lazy(() => import("components/length/length"));
+const Temperature = lazy(() => import("components/temperature/temperature"));
 
 export enum Categories {
   LENGTH = "Length",
   COLOR = "Color",
+  TEMPERATURE = "Temperature",
 }
 
 const DEFAULT_CATEGORY = Categories.COLOR;
@@ -19,6 +21,8 @@ export default function App() {
         return <Length />;
       case Categories.COLOR:
         return <Color />;
+      case Categories.TEMPERATURE:
+        return <Temperature />;
     }
   };
 
@@ -42,6 +46,9 @@ export default function App() {
                   className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
                   <option value={Categories.COLOR}>{Categories.COLOR}</option>
                   <option value={Categories.LENGTH}>{Categories.LENGTH}</option>
+                  <option value={Categories.TEMPERATURE}>
+                    {Categories.TEMPERATURE}
+                  </option>
                 </select>
               </div>
             </div>

@@ -33,4 +33,12 @@ describe("category", () => {
       expectInDocument(HEX_LABEL);
     });
   });
+
+  test("select temperature", async () => {
+    render(<App />);
+    await selectOption(user, CATEGORY_LABEL, Categories.TEMPERATURE);
+    await waitFor(async () => {
+      expectInDocument(RESULT_LABEL);
+    });
+  });
 });

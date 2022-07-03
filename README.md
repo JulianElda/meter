@@ -4,6 +4,7 @@ A converter app, current functions include:
 
 - length
 - color
+- temperature
 
 # Installation
 

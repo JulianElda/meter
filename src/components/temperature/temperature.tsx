@@ -1,52 +1,39 @@
 import { useEffect, useState } from "react";
 import { isValidNumber, ROUNDING } from "util/common";
 
-export enum LengthUnits {
-  km = "km",
-  m = "m",
-  cm = "cm",
-  inch = "inch",
-  ft = "ft",
-  mile = "mile",
-  yard = "yard",
+export enum Temperatures {
+  C = "C",
+  F = "F",
+  K = "K",
 }
 
-type NumberBase = {
-  unit: LengthUnits;
-  base: number;
-};
-
-// TODO: better imperial units conversion
-const Lengths: Record<string, NumberBase> = {
-  km: { unit: LengthUnits.km, base: 1000 },
-  m: { unit: LengthUnits.m, base: 1 },
-  cm: { unit: LengthUnits.cm, base: 0.01 },
-  inch: { unit: LengthUnits.inch, base: 0.0254 },
-  ft: { unit: LengthUnits.ft, base: 0.3048 },
-  mile: { unit: LengthUnits.mile, base: 1609.34 },
-  yard: { unit: LengthUnits.yard, base: 0.9144 },
-};
-
-const DEFAULT_FROM: LengthUnits = Lengths.m.unit;
-const DEFAULT_TO: LengthUnits = Lengths.inch.unit;
-const DEFAULT_INPUT: string = "0";
+const DEFAULT_INPUT: string = "";
 const DEFAULT_RESULT: string = "";
 
-export default function Length() {
-  const [from, setFrom] = useState<LengthUnits>(DEFAULT_FROM);
-  const [to, setTo] = useState<LengthUnits>(DEFAULT_TO);
-  const [input, setInput] = useState<string>(DEFAULT_INPUT);
+export default function Temperature() {
+  const [from, setFrom] = useState<Temperatures>(Temperatures.F);
+  const [to, setTo] = useState<Temperatures>(Temperatures.C);
+
+  const [input, setInput] = useState<string>("100");
   const [result, setResult] = useState<string>(DEFAULT_RESULT);
 
+  const K_C: number = 273.15;
+  const F_C: number = 32;
+
   const getOptions = function (): React.ReactNode {
-    let tmp: JSX.Element[] = [];
-    for (const key in Lengths)
-      tmp.push(
-        <option key={Lengths[key].unit} value={Lengths[key].unit}>
-          {Lengths[key].unit}
+    return (
+      <>
+        <option key="C" value="C">
+          C
         </option>
-      );
-    return tmp;
+        <option key="F" value="F">
+          F
+        </option>
+        <option key="K" value="K">
+          K
+        </option>
+      </>
+    );
   };
 
   const onChangeInput = function (value: string) {
@@ -61,14 +48,42 @@ export default function Length() {
       return;
     }
 
-    // convert selected from to meter
-    let baseFrom: number = parseInt(input) * Lengths[from].base;
+    let parsed: number = parseInt(input);
 
-    // convert baseFrom to selected target
-    let baseResult: number = baseFrom / Lengths[to].base;
+    // Celcius is baseline
+    let c: number;
+    switch (from) {
+      case Temperatures.C: {
+        c = parsed;
+        break;
+      }
+      case Temperatures.F: {
+        c = (parsed - F_C) * (5 / 9);
+        break;
+      }
+      case Temperatures.K: {
+        c = parsed - K_C;
+        break;
+      }
+    }
 
+    let result: number;
+    switch (to) {
+      case Temperatures.C: {
+        result = c;
+        break;
+      }
+      case Temperatures.F: {
+        result = c * (9 / 5) + F_C;
+        break;
+      }
+      case Temperatures.K: {
+        result = c + K_C;
+        break;
+      }
+    }
     // set result value
-    setResult(baseResult.toFixed(ROUNDING));
+    setResult(result.toFixed(ROUNDING));
   }, [from, to, input]);
 
   return (
@@ -86,7 +101,7 @@ export default function Length() {
               name="from"
               data-testid="from"
               value={from}
-              onChange={(event) => setFrom(event.target.value as LengthUnits)}
+              onChange={(event) => setFrom(event.target.value as Temperatures)}
               className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
               {getOptions()}
             </select>
@@ -104,7 +119,7 @@ export default function Length() {
               name="to"
               data-testid="to"
               value={to}
-              onChange={(event) => setTo(event.target.value as LengthUnits)}
+              onChange={(event) => setTo(event.target.value as Temperatures)}
               className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
               {getOptions()}
             </select>
