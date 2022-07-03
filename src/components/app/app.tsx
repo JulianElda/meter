@@ -23,9 +23,11 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-full flex flex-col justify-center pt-12 sm:pt-6 pb-4 sm:pb-2 lg:px-8">
-      <div className="flex-1 mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white py-8 px-4 shadow rounded-lg sm:px-10">
+    <div className="min-h-full flex flex-col lg:pt-12 pb-4 sm:pb-2 lg:px-8 sm:px-2">
+      <div className="mx-auto max-w-md">
+        <h1 className="font-mono text-2xl text-center mt-1 mb-4">meter</h1>
+
+        <div className="md:bg-white md:shadow rounded-lg py-8 px-4 sm:px-10">
           <div className="flex mb-3">
             <div className="flex-1">
               <div className="mt-1">
@@ -48,8 +50,10 @@ export default function App() {
             {getContentBody()}
           </React.Suspense>
         </div>
-        <div className="mt-2 grid justify-items-end">
-          <a href="https://github.com/JulianElda/meter">Julius Polar@GitHub</a>
+        <div className="mt-2 mx-2 grid justify-items-end">
+          <a className="font-mono" href="https://github.com/JulianElda/meter">
+            Julius Polar@GitHub
+          </a>
         </div>
       </div>
     </div>

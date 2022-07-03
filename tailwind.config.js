@@ -1,14 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 
-const defaultTheme = require("tailwindcss/defaultTheme");
-
 module.exports = {
   content: ["./src/**/*.{html,tsx}", "./public/index.html"],
   theme: {
-    extend: {
-      fontFamily: {
-        sans: ["Inter var", ...defaultTheme.fontFamily.sans],
-      },
+    fontFamily: {
+      mono: "'M PLUS Code Latin'",
+      sans: "'M PLUS 1'",
     },
   },
   plugins: [require("@tailwindcss/forms")],
