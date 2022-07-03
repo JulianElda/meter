@@ -23,9 +23,9 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+    <div className="min-h-full flex flex-col justify-center pt-12 sm:pt-6 pb-4 sm:pb-2 lg:px-8">
+      <div className="flex-1 mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+        <div className="bg-white py-8 px-4 shadow rounded-lg sm:px-10">
           <div className="flex mb-3">
             <div className="flex-1">
               <label
@@ -51,6 +51,9 @@ export default function App() {
           <React.Suspense fallback={<>...</>}>
             {getContentBody()}
           </React.Suspense>
+        </div>
+        <div className="mt-2 grid justify-items-end">
+          <a href="https://github.com/JulianElda/meter">Julius Polar@GitHub</a>
         </div>
       </div>
     </div>
