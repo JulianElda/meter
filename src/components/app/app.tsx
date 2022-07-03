@@ -28,15 +28,11 @@ export default function App() {
         <div className="bg-white py-8 px-4 shadow rounded-lg sm:px-10">
           <div className="flex mb-3">
             <div className="flex-1">
-              <label
-                htmlFor="category"
-                className="block text-sm font-medium text-gray-700">
-                Category
-              </label>
               <div className="mt-1">
                 <select
                   id="category"
                   name="category"
+                  data-testid="category"
                   value={category}
                   onChange={(event) =>
                     setCategory(event.target.value as Categories)

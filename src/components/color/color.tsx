@@ -53,6 +53,7 @@ export default function Color() {
             type="text"
             id="red"
             name="red"
+            data-testid="red"
             value={rgb[0]}
             onChange={(event) =>
               onChangeRgb([event.target.value, rgb[1], rgb[2]])
@@ -70,6 +71,7 @@ export default function Color() {
             type="text"
             id="green"
             name="green"
+            data-testid="green"
             value={rgb[1]}
             onChange={(event) =>
               onChangeRgb([rgb[0], event.target.value, rgb[2]])
@@ -87,6 +89,7 @@ export default function Color() {
             type="text"
             id="blue"
             name="blue"
+            data-testid="blue"
             value={rgb[2]}
             onChange={(event) =>
               onChangeRgb([rgb[0], rgb[1], event.target.value])
@@ -106,6 +109,7 @@ export default function Color() {
             type="text"
             id="hex"
             name="hex"
+            data-testid="hex"
             value={hex}
             minLength={6}
             maxLength={6}

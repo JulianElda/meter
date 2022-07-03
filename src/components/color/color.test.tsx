@@ -1,15 +1,18 @@
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-
-import { typeInput, expectResult, clearInput } from "tests.helper";
-import { screen } from "@testing-library/react";
+import {
+  clearInput,
+  expectAttribute,
+  expectValue,
+  typeInput,
+} from "tests.helper";
 
 import Color from "./color";
 
-const R_LABEL = "R";
-const G_LABEL = "G";
-const B_LABEL = "B";
-const HEX_LABEL = "Hex";
+const R_LABEL = "red";
+const G_LABEL = "green";
+const B_LABEL = "blue";
+const HEX_LABEL = "hex";
 
 const user = userEvent.setup();
 
@@ -18,11 +21,7 @@ describe("preview", () => {
     render(<Color />);
     clearInput(user, HEX_LABEL);
     await typeInput(user, HEX_LABEL, "DC143C");
-    const previewElement = screen.getByTestId("preview");
-    expect(previewElement).toHaveAttribute(
-      "style",
-      "background-color: rgb(220, 20, 60);"
-    );
+    expectAttribute("preview", "style", "background-color: rgb(220, 20, 60);");
   });
 });
 
@@ -31,9 +30,9 @@ describe("hex to rgb", () => {
     render(<Color />);
     clearInput(user, HEX_LABEL);
     await typeInput(user, HEX_LABEL, "DC143C");
-    expectResult(R_LABEL, "220");
-    expectResult(G_LABEL, "20");
-    expectResult(B_LABEL, "60");
+    expectValue(R_LABEL, "220");
+    expectValue(G_LABEL, "20");
+    expectValue(B_LABEL, "60");
   });
 });
 
@@ -46,7 +45,7 @@ describe("rgb to hex", () => {
     await typeInput(user, R_LABEL, "220");
     await typeInput(user, G_LABEL, "20");
     await typeInput(user, B_LABEL, "60");
-    expectResult(HEX_LABEL, "DC143C");
+    expectValue(HEX_LABEL, "DC143C");
   });
 
   test("black (0, 0, 0) to #000000", async () => {
@@ -57,7 +56,7 @@ describe("rgb to hex", () => {
     await typeInput(user, R_LABEL, "0");
     await typeInput(user, G_LABEL, "0");
     await typeInput(user, B_LABEL, "0");
-    expectResult(HEX_LABEL, "000000");
+    expectValue(HEX_LABEL, "000000");
   });
 
   test("white (255, 255, 255) to #FFFFFF", async () => {
@@ -68,6 +67,6 @@ describe("rgb to hex", () => {
     await typeInput(user, R_LABEL, "255");
     await typeInput(user, G_LABEL, "255");
     await typeInput(user, B_LABEL, "255");
-    expectResult(HEX_LABEL, "FFFFFF");
+    expectValue(HEX_LABEL, "FFFFFF");
   });
 });

@@ -90,6 +90,7 @@ export default function Length() {
             <select
               id="from"
               name="from"
+              data-testid="from"
               value={from}
               onChange={(event) => setFrom(event.target.value as LengthUnits)}
               className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
@@ -107,6 +108,7 @@ export default function Length() {
             <select
               id="to"
               name="to"
+              data-testid="to"
               value={to}
               onChange={(event) => setTo(event.target.value as LengthUnits)}
               className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
@@ -126,6 +128,7 @@ export default function Length() {
             type="text"
             id="input"
             name="input"
+            data-testid="input"
             value={input}
             onChange={(event) => onChangeInput(event.target.value)}
             className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
@@ -144,6 +147,7 @@ export default function Length() {
               type="text"
               id="result"
               name="result"
+              data-testid="result"
               value={result}
               readOnly
               className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
