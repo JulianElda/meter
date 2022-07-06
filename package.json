@@ -37,7 +37,7 @@
     "eject": "react-scripts eject",
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build",
-    "tailwind": "tailwindcss -i ./src/assets/styles/tailwind.scss -o ./src/assets/styles/tailwind.css"
+    "tailwind": "tailwindcss -i ./src/assets/styles/tailwind.scss -o ./src/assets/styles/tailwind.css --minify"
   },
   "eslintConfig": {
     "extends": [
