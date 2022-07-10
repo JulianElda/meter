@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 
 import "assets/styles/index.scss";
 import "assets/styles/tailwind.css";
+import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 
 import App from "components/app/app";
 
@@ -14,3 +15,5 @@ root.render(
     <App />
   </React.StrictMode>
 );
+
+serviceWorkerRegistration.register();

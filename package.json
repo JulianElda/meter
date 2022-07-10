@@ -4,12 +4,15 @@
   "private": true,
   "homepage": "https://julianelda.github.io/meter/",
   "dependencies": {
-    "@headlessui/react": "^1.6.5",
-    "@heroicons/react": "^1.0.6",
     "@tailwindcss/forms": "^0.5.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1"
+    "react-scripts": "5.0.1",
+    "workbox-core": "^6.5.3",
+    "workbox-expiration": "^6.5.3",
+    "workbox-precaching": "^6.5.3",
+    "workbox-routing": "^6.5.3",
+    "workbox-strategies": "^6.5.3"
   },
   "devDependencies": {
     "@babel/core": "^7.18.6",
