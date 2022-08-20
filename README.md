@@ -14,8 +14,6 @@ Make sure you have `yarn` installed, then `yarn install`.
 
 Run the app locally with `yarn start`.
 
-Run `yarn tailwind --watch` to compile required css for tailwind.
-
 Run `yarn test` to run unit tests.
 
 # Building

@@ -1,6 +1,6 @@
 {
   "name": "meter",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "homepage": "https://julianelda.github.io/meter/",
   "dependencies": {
@@ -39,8 +39,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "yarn build",
-    "deploy": "gh-pages -d build",
-    "tailwind": "tailwindcss -i ./src/assets/styles/tailwind.scss -o ./src/assets/styles/tailwind.css --minify"
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [

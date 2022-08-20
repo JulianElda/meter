@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 import "assets/styles/index.scss";
-import "assets/styles/tailwind.css";
+import "assets/styles/tailwind.scss";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 
 import App from "components/app/app";
