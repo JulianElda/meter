@@ -11,13 +11,6 @@ const HEX_LABEL = "hex";
 const user = userEvent.setup();
 
 describe("category", () => {
-  test("default color", async () => {
-    render(<App />);
-    await waitFor(async () => {
-      expectInDocument(HEX_LABEL);
-    });
-  });
-
   test("select length", async () => {
     render(<App />);
     await selectOption(user, CATEGORY_LABEL, Categories.LENGTH);

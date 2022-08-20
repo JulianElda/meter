@@ -1,5 +1,10 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { isValidNumber, ROUNDING } from "util/common";
+
+enum UnitsSystems {
+  IMPERIAL = "IMPERIAL",
+  METRIC = "METRIC",
+}
 
 export enum LengthUnits {
   km = "km",
@@ -11,24 +16,80 @@ export enum LengthUnits {
   yard = "yard",
 }
 
+const UnitsSystemsBase: Record<UnitsSystems, LengthUnits> = {
+  [UnitsSystems.IMPERIAL]: LengthUnits.inch,
+  [UnitsSystems.METRIC]: LengthUnits.cm,
+};
+
 type NumberBase = {
+  // name of units
   unit: LengthUnits;
+
+  // imperial or metric
+  system: UnitsSystems;
+
+  // conversion to their respective "base"
   base: number;
 };
 
-// TODO: better imperial units conversion
-const Lengths: Record<string, NumberBase> = {
-  km: { unit: LengthUnits.km, base: 1000 },
-  m: { unit: LengthUnits.m, base: 1 },
-  cm: { unit: LengthUnits.cm, base: 0.01 },
-  inch: { unit: LengthUnits.inch, base: 0.0254 },
-  ft: { unit: LengthUnits.ft, base: 0.3048 },
-  mile: { unit: LengthUnits.mile, base: 1609.34 },
-  yard: { unit: LengthUnits.yard, base: 0.9144 },
+// conversion table
+const ConversionTable: Record<string, NumberBase> = {
+  km: {
+    unit: LengthUnits.km,
+    system: UnitsSystems.METRIC,
+    // 1 km - 1000 m === 10000 cm
+    base: 100000,
+  },
+  m: {
+    unit: LengthUnits.m,
+    system: UnitsSystems.METRIC,
+    // 1 m  - 100 cm
+    base: 100,
+  },
+  cm: {
+    unit: LengthUnits.cm,
+    system: UnitsSystems.METRIC,
+    // 1 cm - 1 cm
+    base: 1,
+  },
+
+  // bri'ish units
+  inch: {
+    unit: LengthUnits.inch,
+    system: UnitsSystems.IMPERIAL,
+    // 1 inch - 1 inch
+    base: 1,
+  },
+  ft: {
+    unit: LengthUnits.ft,
+    system: UnitsSystems.IMPERIAL,
+    // 1 ft - 12 inch
+    base: 12,
+  },
+  yard: {
+    unit: LengthUnits.yard,
+    system: UnitsSystems.IMPERIAL,
+    // 1 yard - 36 inch === 3 ft
+    base: 36,
+  },
+  mile: {
+    unit: LengthUnits.mile,
+    system: UnitsSystems.IMPERIAL,
+    // 1 mile - 63360 inch === 5280 ft === 1760 yard
+    base: 63360,
+  },
 };
 
-const DEFAULT_FROM: LengthUnits = Lengths.m.unit;
-const DEFAULT_TO: LengthUnits = Lengths.inch.unit;
+/*
+  base conversion used for imperial - metric conversion
+  use inch to cm since its exactly 2.54,
+  cm to inch should be calculated (1 / 2.54)
+  instead of storing its rounded value
+*/
+const INCH_TO_CM: number = 2.54;
+
+const DEFAULT_FROM: LengthUnits = ConversionTable.m.unit;
+const DEFAULT_TO: LengthUnits = ConversionTable.inch.unit;
 const DEFAULT_INPUT: string = "0";
 const DEFAULT_RESULT: string = "";
 
@@ -40,10 +101,12 @@ export default function Length() {
 
   const getOptions = function (): React.ReactNode {
     let tmp: JSX.Element[] = [];
-    for (const key in Lengths)
+    for (const key in ConversionTable)
       tmp.push(
-        <option key={Lengths[key].unit} value={Lengths[key].unit}>
-          {Lengths[key].unit}
+        <option
+          key={ConversionTable[key].unit}
+          value={ConversionTable[key].unit}>
+          {ConversionTable[key].unit}
         </option>
       );
     return tmp;
@@ -55,21 +118,74 @@ export default function Length() {
     else setInput(value);
   };
 
+  const convertToSameUnits = function (
+    amount: number,
+    from: LengthUnits,
+    to: LengthUnits
+  ): number {
+    // convert to base units first
+    return (
+      (amount * ConversionTable[from].base) /
+      // now convert to its target unit
+      ConversionTable[to].base
+    );
+  };
+
+  const convertToDifferentUnits = useCallback(function (
+    amount: number,
+    from: LengthUnits,
+    to: LengthUnits
+  ): number {
+    let result: number = 0;
+
+    // convert to base units first
+    // e.g. km to cm
+    let baseFrom: number = convertToSameUnits(
+      amount,
+      from,
+      UnitsSystemsBase[ConversionTable[from].system]
+    );
+
+    // imperial -> metric
+    // convert to cm: ( inch * 2.54 )
+    if (ConversionTable[from].system === UnitsSystems.IMPERIAL) {
+      result = baseFrom * INCH_TO_CM;
+    }
+    // metric -> imperial
+    // converto to inch: ( cm / 2.54 )
+    else if (ConversionTable[from].system === UnitsSystems.METRIC) {
+      result = baseFrom / INCH_TO_CM;
+    }
+
+    // now convert to its target units
+    // e.g. inch to mile
+    return result / ConversionTable[to].base;
+  },
+  []);
+
   useEffect(() => {
     if (!isValidNumber(input)) {
       setResult(DEFAULT_RESULT);
       return;
     }
 
-    // convert selected from to meter
-    let baseFrom: number = parseInt(input) * Lengths[from].base;
+    // input from number field is string type
+    let parsedInput: number = parseInt(input);
 
-    // convert baseFrom to selected target
-    let baseResult: number = baseFrom / Lengths[to].base;
+    let result: number = 0;
+
+    // convert to same base
+    if (ConversionTable[from].system === ConversionTable[to].system) {
+      result = convertToSameUnits(parsedInput, from, to);
+    }
+    // convert to different base
+    else {
+      result = convertToDifferentUnits(parsedInput, from, to);
+    }
 
     // set result value
-    setResult(baseResult.toFixed(ROUNDING));
-  }, [from, to, input]);
+    setResult(result.toFixed(ROUNDING));
+  }, [from, to, input, convertToDifferentUnits]);
 
   return (
     <div>

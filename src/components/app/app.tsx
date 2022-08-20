@@ -12,7 +12,7 @@ export enum Categories {
   TEMPERATURE = "Temperature",
 }
 
-const DEFAULT_CATEGORY = Categories.COLOR;
+const DEFAULT_CATEGORY = Categories.LENGTH;
 
 export default function App() {
   const [category, setCategory] = useState<Categories>(DEFAULT_CATEGORY);
