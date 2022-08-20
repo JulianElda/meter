@@ -1,5 +1,7 @@
 import React, { lazy, useState } from "react";
 
+import "./app.scss";
+
 const Color = lazy(() => import("components/color/color"));
 const Length = lazy(() => import("components/length/length"));
 const Temperature = lazy(() => import("components/temperature/temperature"));
@@ -27,11 +29,11 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-full flex flex-col lg:pt-12 pb-4 sm:pb-2 lg:px-8 sm:px-2">
+    <div className="app-container">
       <div className="mx-auto max-w-md">
-        <h1 className="font-mono text-2xl text-center mt-1 mb-4">meter</h1>
+        <h1 className="app-heading">meter</h1>
 
-        <div className="md:bg-white md:shadow rounded-lg py-8 px-4 sm:px-10">
+        <div className="app-card">
           <div className="flex mb-3">
             <div className="flex-1">
               <div className="mt-1">
@@ -43,7 +45,7 @@ export default function App() {
                   onChange={(event) =>
                     setCategory(event.target.value as Categories)
                   }
-                  className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+                  className="input-field-text">
                   <option value={Categories.COLOR}>{Categories.COLOR}</option>
                   <option value={Categories.LENGTH}>{Categories.LENGTH}</option>
                   <option value={Categories.TEMPERATURE}>
@@ -57,12 +59,12 @@ export default function App() {
             {getContentBody()}
           </React.Suspense>
         </div>
-        <div className="mt-2 mx-2 grid justify-items-end">
+        <div className="app-footer">
           <a
             href="https://github.com/JulianElda/meter"
             target="_blank"
             rel="noreferrer"
-            className="font-mono hover:underline decoration-dotted">
+            className="app-url">
             Julius Polar@GitHub
           </a>
         </div>

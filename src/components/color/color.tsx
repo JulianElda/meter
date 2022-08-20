@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import "./color.scss";
+
 const DEFAULT_RGB = ["255", "255", "255"];
 const DEFAULT_HEX = "FFFFFF";
 
@@ -44,9 +46,7 @@ export default function Color() {
     <div>
       <div className="flex my-2">
         <div className="flex-1 mr-2">
-          <label
-            htmlFor="red"
-            className="block text-sm font-medium text-gray-700">
+          <label htmlFor="red" className="input-label">
             R
           </label>
           <input
@@ -58,13 +58,11 @@ export default function Color() {
             onChange={(event) =>
               onChangeRgb([event.target.value, rgb[1], rgb[2]])
             }
-            className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+            className="input-field-text"
           />
         </div>
         <div className="flex-1 mx-2">
-          <label
-            htmlFor="green"
-            className="block text-sm font-medium text-gray-700">
+          <label htmlFor="green" className="input-label">
             G
           </label>
           <input
@@ -76,13 +74,11 @@ export default function Color() {
             onChange={(event) =>
               onChangeRgb([rgb[0], event.target.value, rgb[2]])
             }
-            className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+            className="input-field-text"
           />
         </div>
         <div className="flex-1 ml-2">
-          <label
-            htmlFor="blue"
-            className="block text-sm font-medium text-gray-700">
+          <label htmlFor="blue" className="input-label">
             B
           </label>
           <input
@@ -94,15 +90,13 @@ export default function Color() {
             onChange={(event) =>
               onChangeRgb([rgb[0], rgb[1], event.target.value])
             }
-            className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+            className="input-field-text"
           />
         </div>
       </div>
       <div className="flex my-2">
         <div className="flex-1">
-          <label
-            htmlFor="hex"
-            className="block text-sm font-medium text-gray-700">
+          <label htmlFor="hex" className="input-label">
             Hex
           </label>
           <input
@@ -114,12 +108,12 @@ export default function Color() {
             minLength={6}
             maxLength={6}
             onChange={(event) => onChangeHex(event.target.value)}
-            className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+            className="input-field-text"
           />
         </div>
       </div>
       <div
-        className="flex mt-6 rounded-lg border-dotted border-2 border-gray-400"
+        className="color-preview"
         style={{ backgroundColor: "#" + hex }}
         data-testid="preview">
         &nbsp;

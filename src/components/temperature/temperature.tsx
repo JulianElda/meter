@@ -90,9 +90,7 @@ export default function Temperature() {
     <div>
       <div className="flex">
         <div className="flex-1 mr-1">
-          <label
-            htmlFor="from"
-            className="block text-sm font-medium text-gray-700">
+          <label htmlFor="from" className="input-label">
             From
           </label>
           <div className="mt-1">
@@ -102,15 +100,13 @@ export default function Temperature() {
               data-testid="from"
               value={from}
               onChange={(event) => setFrom(event.target.value as Temperatures)}
-              className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+              className="input-field-text">
               {getOptions()}
             </select>
           </div>
         </div>
         <div className="flex-1 ml-1">
-          <label
-            htmlFor="to"
-            className="block text-sm font-medium text-gray-700">
+          <label htmlFor="to" className="input-label">
             To
           </label>
           <div className="mt-1">
@@ -120,7 +116,7 @@ export default function Temperature() {
               data-testid="to"
               value={to}
               onChange={(event) => setTo(event.target.value as Temperatures)}
-              className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+              className="input-field-text">
               {getOptions()}
             </select>
           </div>
@@ -128,9 +124,7 @@ export default function Temperature() {
       </div>
       <div className="flex mt-4 mb-3">
         <div className="flex-1">
-          <label
-            htmlFor="input"
-            className="block text-sm font-medium text-gray-700">
+          <label htmlFor="input" className="input-label">
             Input
           </label>
           <input
@@ -140,16 +134,14 @@ export default function Temperature() {
             data-testid="input"
             value={input}
             onChange={(event) => onChangeInput(event.target.value)}
-            className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+            className="input-field-text"
           />
         </div>
       </div>
       <div className="flex">
         <div className="flex-1">
           <div className="mt-1">
-            <label
-              htmlFor="result"
-              className="block text-sm font-medium text-gray-700">
+            <label htmlFor="result" className="input-label">
               Result
             </label>
             <input
@@ -159,7 +151,7 @@ export default function Temperature() {
               data-testid="result"
               value={result}
               readOnly
-              className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+              className="input-field-text"
             />
           </div>
         </div>
