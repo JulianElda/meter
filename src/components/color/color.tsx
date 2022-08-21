@@ -46,14 +46,14 @@ export default function Color() {
     <div>
       <div className="flex my-2">
         <div className="flex-1 mr-2">
-          <label htmlFor="red" className="input-label">
+          <label htmlFor="red-input" className="input-label">
             R
           </label>
           <input
             type="text"
-            id="red"
-            name="red"
-            data-testid="red"
+            id="red-input"
+            name="red-input"
+            data-testid="red-input"
             value={rgb[0]}
             onChange={(event) =>
               onChangeRgb([event.target.value, rgb[1], rgb[2]])
@@ -62,14 +62,14 @@ export default function Color() {
           />
         </div>
         <div className="flex-1 mx-2">
-          <label htmlFor="green" className="input-label">
+          <label htmlFor="green-input" className="input-label">
             G
           </label>
           <input
             type="text"
-            id="green"
-            name="green"
-            data-testid="green"
+            id="green-input"
+            name="green-input"
+            data-testid="green-input"
             value={rgb[1]}
             onChange={(event) =>
               onChangeRgb([rgb[0], event.target.value, rgb[2]])
@@ -78,14 +78,14 @@ export default function Color() {
           />
         </div>
         <div className="flex-1 ml-2">
-          <label htmlFor="blue" className="input-label">
+          <label htmlFor="blue-input" className="input-label">
             B
           </label>
           <input
             type="text"
-            id="blue"
-            name="blue"
-            data-testid="blue"
+            id="blue-input"
+            name="blue-input"
+            data-testid="blue-input"
             value={rgb[2]}
             onChange={(event) =>
               onChangeRgb([rgb[0], rgb[1], event.target.value])
@@ -96,14 +96,14 @@ export default function Color() {
       </div>
       <div className="flex my-2">
         <div className="flex-1">
-          <label htmlFor="hex" className="input-label">
+          <label htmlFor="hex-input" className="input-label">
             Hex
           </label>
           <input
             type="text"
-            id="hex"
-            name="hex"
-            data-testid="hex"
+            id="hex-input"
+            name="hex-input"
+            data-testid="hex-input"
             value={hex}
             minLength={6}
             maxLength={6}

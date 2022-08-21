@@ -1,5 +1,8 @@
 import React, { lazy, useState } from "react";
 
+import { MAX_WIDTH, FOOTER_LABEL, REPO_URL, TITLE } from "consts";
+import Footer from "components/footer/footer";
+import Header from "components/header/header";
 import "./app.scss";
 
 const Color = lazy(() => import("components/color/color"));
@@ -12,7 +15,7 @@ export enum Categories {
   TEMPERATURE = "Temperature",
 }
 
-const DEFAULT_CATEGORY = Categories.LENGTH;
+const DEFAULT_CATEGORY: Categories = Categories.LENGTH;
 
 export default function App() {
   const [category, setCategory] = useState<Categories>(DEFAULT_CATEGORY);
@@ -30,44 +33,33 @@ export default function App() {
 
   return (
     <div className="app-container">
-      <div className="mx-auto max-w-md">
-        <h1 className="app-heading">meter</h1>
+      <div className={"mx-auto " + MAX_WIDTH}>
+        <Header title={TITLE} />
 
         <div className="app-card">
-          <div className="flex mb-3">
-            <div className="flex-1">
-              <div className="mt-1">
-                <select
-                  id="category"
-                  name="category"
-                  data-testid="category"
-                  value={category}
-                  onChange={(event) =>
-                    setCategory(event.target.value as Categories)
-                  }
-                  className="input-field-text">
-                  <option value={Categories.COLOR}>{Categories.COLOR}</option>
-                  <option value={Categories.LENGTH}>{Categories.LENGTH}</option>
-                  <option value={Categories.TEMPERATURE}>
-                    {Categories.TEMPERATURE}
-                  </option>
-                </select>
-              </div>
-            </div>
+          <div className="w-full mb-3">
+            <select
+              id="category"
+              name="category-input"
+              data-testid="category-input"
+              aria-label="category"
+              value={category}
+              onChange={(event) =>
+                setCategory(event.target.value as Categories)
+              }
+              className="input-field-text">
+              <option value={Categories.COLOR}>{Categories.COLOR}</option>
+              <option value={Categories.LENGTH}>{Categories.LENGTH}</option>
+              <option value={Categories.TEMPERATURE}>
+                {Categories.TEMPERATURE}
+              </option>
+            </select>
           </div>
           <React.Suspense fallback={<>...</>}>
             {getContentBody()}
           </React.Suspense>
         </div>
-        <div className="app-footer">
-          <a
-            href="https://github.com/JulianElda/meter"
-            target="_blank"
-            rel="noreferrer"
-            className="app-url">
-            Julius Polar@GitHub
-          </a>
-        </div>
+        <Footer label={FOOTER_LABEL} repoUrl={REPO_URL} />
       </div>
     </div>
   );

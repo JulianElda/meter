@@ -4,9 +4,9 @@ import { selectOption, expectInDocument } from "tests.helper";
 
 import App, { Categories } from "./app";
 
-const CATEGORY_LABEL = "category";
-const RESULT_LABEL = "result";
-const HEX_LABEL = "hex";
+const CATEGORY_LABEL = "category-input";
+const RESULT_LABEL = "result-input";
+const HEX_LABEL = "hex-input";
 
 const user = userEvent.setup();
 

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { isValidNumber, ROUNDING } from "util/common";
+import { isValidNumber } from "util/common";
+import { ROUNDING } from "consts";
 
 export enum Temperatures {
   C = "C",
@@ -90,14 +91,14 @@ export default function Temperature() {
     <div>
       <div className="flex">
         <div className="flex-1 mr-1">
-          <label htmlFor="from" className="input-label">
+          <label htmlFor="from-input" className="input-label">
             From
           </label>
           <div className="mt-1">
             <select
-              id="from"
-              name="from"
-              data-testid="from"
+              id="from-input"
+              name="from-input"
+              data-testid="from-input"
               value={from}
               onChange={(event) => setFrom(event.target.value as Temperatures)}
               className="input-field-text">
@@ -106,14 +107,14 @@ export default function Temperature() {
           </div>
         </div>
         <div className="flex-1 ml-1">
-          <label htmlFor="to" className="input-label">
+          <label htmlFor="to-input" className="input-label">
             To
           </label>
           <div className="mt-1">
             <select
-              id="to"
-              name="to"
-              data-testid="to"
+              id="to-input"
+              name="to-input"
+              data-testid="to-input"
               value={to}
               onChange={(event) => setTo(event.target.value as Temperatures)}
               className="input-field-text">
@@ -124,14 +125,14 @@ export default function Temperature() {
       </div>
       <div className="flex mt-4 mb-3">
         <div className="flex-1">
-          <label htmlFor="input" className="input-label">
+          <label htmlFor="input-input" className="input-label">
             Input
           </label>
           <input
             type="text"
-            id="input"
-            name="input"
-            data-testid="input"
+            id="input-input"
+            name="input-input"
+            data-testid="input-input"
             value={input}
             onChange={(event) => onChangeInput(event.target.value)}
             className="input-field-text"
@@ -141,14 +142,14 @@ export default function Temperature() {
       <div className="flex">
         <div className="flex-1">
           <div className="mt-1">
-            <label htmlFor="result" className="input-label">
+            <label htmlFor="result-input" className="input-label">
               Result
             </label>
             <input
               type="text"
-              id="result"
-              name="result"
-              data-testid="result"
+              id="result-input"
+              name="result-input"
+              data-testid="result-input"
               value={result}
               readOnly
               className="input-field-text"

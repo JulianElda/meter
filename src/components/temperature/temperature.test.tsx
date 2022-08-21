@@ -4,10 +4,10 @@ import { clearInput, expectValue, selectOption, typeInput } from "tests.helper";
 
 import Temperature, { Temperatures } from "./temperature";
 
-const FROM_LABEL = "from";
-const TO_LABEL = "to";
-const INPUT_LABEL = "input";
-const RESULT_LABEL = "result";
+const FROM_LABEL = "from-input";
+const TO_LABEL = "to-input";
+const INPUT_LABEL = "input-input";
+const RESULT_LABEL = "result-input";
 
 const user = userEvent.setup();
 

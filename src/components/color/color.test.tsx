@@ -9,10 +9,10 @@ import {
 
 import Color from "./color";
 
-const R_LABEL = "red";
-const G_LABEL = "green";
-const B_LABEL = "blue";
-const HEX_LABEL = "hex";
+const R_LABEL = "red-input";
+const G_LABEL = "green-input";
+const B_LABEL = "blue-input";
+const HEX_LABEL = "hex-input";
 
 const user = userEvent.setup();
 
