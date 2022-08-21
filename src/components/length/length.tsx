@@ -88,9 +88,9 @@ const ConversionTable: Record<string, NumberBase> = {
 */
 const INCH_TO_CM: number = 2.54;
 
-const DEFAULT_FROM: LengthUnits = ConversionTable.m.unit;
-const DEFAULT_TO: LengthUnits = ConversionTable.inch.unit;
-const DEFAULT_INPUT: string = "0";
+const DEFAULT_FROM: LengthUnits = ConversionTable.mile.unit;
+const DEFAULT_TO: LengthUnits = ConversionTable.km.unit;
+const DEFAULT_INPUT: string = "100";
 const DEFAULT_RESULT: string = "";
 
 export default function Length() {
