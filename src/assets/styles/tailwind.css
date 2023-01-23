@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+.app-card {
+  @apply md:bg-white md:shadow rounded-lg
+    py-8 px-4 sm:px-10;
+}
+
 .input-label {
   @apply block text-sm font-medium text-gray-800;
 }

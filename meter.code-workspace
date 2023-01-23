@@ -12,6 +12,11 @@
     }
   },
   "extensions": {
-    "recommendations": ["bradlc.vscode-tailwindcss"]
+    "recommendations": [
+      "bradlc.vscode-tailwindcss",
+      "deque-systems.vscode-axe-linter",
+      "dbaeumer.vscode-eslint",
+      "csstools.postcss"
+    ]
   }
 }

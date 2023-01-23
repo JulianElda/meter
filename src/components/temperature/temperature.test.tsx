@@ -9,11 +9,10 @@ const TO_LABEL = "to-input";
 const INPUT_LABEL = "input-input";
 const RESULT_LABEL = "result-input";
 
-const user = userEvent.setup();
-
 describe("to Kelvin", () => {
   test("100 K: 100.000 K", async () => {
     render(<Temperature />);
+    const user = userEvent.setup();
     clearInput(user, INPUT_LABEL);
     await selectOption(user, FROM_LABEL, Temperatures.K);
     await selectOption(user, TO_LABEL, Temperatures.K);
@@ -23,6 +22,7 @@ describe("to Kelvin", () => {
 
   test("100 F: 310.928 K", async () => {
     render(<Temperature />);
+    const user = userEvent.setup();
     clearInput(user, INPUT_LABEL);
     await selectOption(user, FROM_LABEL, Temperatures.F);
     await selectOption(user, TO_LABEL, Temperatures.K);
@@ -32,6 +32,7 @@ describe("to Kelvin", () => {
 
   test("100 C: 373.150 K", async () => {
     render(<Temperature />);
+    const user = userEvent.setup();
     clearInput(user, INPUT_LABEL);
     await selectOption(user, FROM_LABEL, Temperatures.C);
     await selectOption(user, TO_LABEL, Temperatures.K);
@@ -43,6 +44,7 @@ describe("to Kelvin", () => {
 describe("to Fahrenheit", () => {
   test("100 K: -279.670 F", async () => {
     render(<Temperature />);
+    const user = userEvent.setup();
     clearInput(user, INPUT_LABEL);
     await selectOption(user, FROM_LABEL, Temperatures.K);
     await selectOption(user, TO_LABEL, Temperatures.F);
@@ -52,6 +54,7 @@ describe("to Fahrenheit", () => {
 
   test("100 F: 100.000 F", async () => {
     render(<Temperature />);
+    const user = userEvent.setup();
     clearInput(user, INPUT_LABEL);
     await selectOption(user, FROM_LABEL, Temperatures.F);
     await selectOption(user, TO_LABEL, Temperatures.F);
@@ -61,6 +64,7 @@ describe("to Fahrenheit", () => {
 
   test("100 C: 212.000 F", async () => {
     render(<Temperature />);
+    const user = userEvent.setup();
     clearInput(user, INPUT_LABEL);
     await selectOption(user, FROM_LABEL, Temperatures.C);
     await selectOption(user, TO_LABEL, Temperatures.F);
@@ -72,6 +76,7 @@ describe("to Fahrenheit", () => {
 describe("to Celcius", () => {
   test("100 K: -173.150 C", async () => {
     render(<Temperature />);
+    const user = userEvent.setup();
     clearInput(user, INPUT_LABEL);
     await selectOption(user, FROM_LABEL, Temperatures.K);
     await selectOption(user, TO_LABEL, Temperatures.C);
@@ -81,6 +86,7 @@ describe("to Celcius", () => {
 
   test("100 F: 37.778 C", async () => {
     render(<Temperature />);
+    const user = userEvent.setup();
     clearInput(user, INPUT_LABEL);
     await selectOption(user, FROM_LABEL, Temperatures.F);
     await selectOption(user, TO_LABEL, Temperatures.C);
@@ -90,6 +96,7 @@ describe("to Celcius", () => {
 
   test("100 C: 100.000 C", async () => {
     render(<Temperature />);
+    const user = userEvent.setup();
     clearInput(user, INPUT_LABEL);
     await selectOption(user, FROM_LABEL, Temperatures.C);
     await selectOption(user, TO_LABEL, Temperatures.C);

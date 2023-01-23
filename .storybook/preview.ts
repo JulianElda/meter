@@ -1,6 +1,6 @@
 // import app styles
-import "./../src/assets/styles/index.scss";
-import "./../src/assets/styles/tailwind.scss";
+import "./../src/assets/styles/index.css";
+import "./../src/assets/styles/tailwind.css";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },

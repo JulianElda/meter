@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import "./color.scss";
+import styles from "./color.module.css";
 
 const DEFAULT_RGB = ["255", "255", "255"];
 const DEFAULT_HEX = "FFFFFF";
@@ -113,7 +113,7 @@ export default function Color() {
         </div>
       </div>
       <div
-        className="color-preview"
+        className={styles.preview}
         style={{ backgroundColor: "#" + hex }}
         data-testid="preview">
         &nbsp;

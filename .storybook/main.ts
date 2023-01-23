@@ -10,7 +10,7 @@ const config = {
   framework: "@storybook/react",
   core: {
     builder: "webpack5",
-    disableTelemetry: true, // 👈 Disables telemetry
+    disableTelemetry: true,
   },
 };
 

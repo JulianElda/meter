@@ -14,11 +14,10 @@ const G_LABEL = "green-input";
 const B_LABEL = "blue-input";
 const HEX_LABEL = "hex-input";
 
-const user = userEvent.setup();
-
 describe("preview", () => {
   test("background color in rgb", async () => {
     render(<Color />);
+    const user = userEvent.setup();
     clearInput(user, HEX_LABEL);
     await typeInput(user, HEX_LABEL, "DC143C");
     expectAttribute("preview", "style", "background-color: rgb(220, 20, 60);");
@@ -28,6 +27,7 @@ describe("preview", () => {
 describe("hex to rgb", () => {
   test("crimson #DC143C to (220, 20, 60)", async () => {
     render(<Color />);
+    const user = userEvent.setup();
     clearInput(user, HEX_LABEL);
     await typeInput(user, HEX_LABEL, "DC143C");
     expectValue(R_LABEL, "220");
@@ -39,6 +39,7 @@ describe("hex to rgb", () => {
 describe("rgb to hex", () => {
   test("crimson (220, 20, 60) to #DC143C", async () => {
     render(<Color />);
+    const user = userEvent.setup();
     clearInput(user, R_LABEL);
     clearInput(user, G_LABEL);
     clearInput(user, B_LABEL);
@@ -50,6 +51,7 @@ describe("rgb to hex", () => {
 
   test("black (0, 0, 0) to #000000", async () => {
     render(<Color />);
+    const user = userEvent.setup();
     clearInput(user, R_LABEL);
     clearInput(user, G_LABEL);
     clearInput(user, B_LABEL);
@@ -61,6 +63,7 @@ describe("rgb to hex", () => {
 
   test("white (255, 255, 255) to #FFFFFF", async () => {
     render(<Color />);
+    const user = userEvent.setup();
     clearInput(user, R_LABEL);
     clearInput(user, G_LABEL);
     clearInput(user, B_LABEL);

@@ -9,11 +9,10 @@ const TO_LABEL = "to-input";
 const INPUT_LABEL = "input-input";
 const RESULT_LABEL = "result-input";
 
-const user = userEvent.setup();
-
 describe("Metric units", () => {
   test("1 km: 1000 m", async () => {
     render(<Length />);
+    const user = userEvent.setup();
     clearInput(user, INPUT_LABEL);
     await selectOption(user, FROM_LABEL, LengthUnits.km);
     await selectOption(user, TO_LABEL, LengthUnits.m);
@@ -22,6 +21,7 @@ describe("Metric units", () => {
   });
   test("1 km: 100000 cm", async () => {
     render(<Length />);
+    const user = userEvent.setup();
     clearInput(user, INPUT_LABEL);
     await selectOption(user, FROM_LABEL, LengthUnits.km);
     await selectOption(user, TO_LABEL, LengthUnits.cm);
@@ -30,6 +30,7 @@ describe("Metric units", () => {
   });
   test("1 m: 0.001 km", async () => {
     render(<Length />);
+    const user = userEvent.setup();
     clearInput(user, INPUT_LABEL);
     await selectOption(user, FROM_LABEL, LengthUnits.m);
     await selectOption(user, TO_LABEL, LengthUnits.km);
@@ -38,6 +39,7 @@ describe("Metric units", () => {
   });
   test("1 m: 100 cm", async () => {
     render(<Length />);
+    const user = userEvent.setup();
     clearInput(user, INPUT_LABEL);
     await selectOption(user, FROM_LABEL, LengthUnits.m);
     await selectOption(user, TO_LABEL, LengthUnits.cm);
@@ -46,6 +48,7 @@ describe("Metric units", () => {
   });
   test("1 cm: 0.01 m", async () => {
     render(<Length />);
+    const user = userEvent.setup();
     clearInput(user, INPUT_LABEL);
     await selectOption(user, FROM_LABEL, LengthUnits.cm);
     await selectOption(user, TO_LABEL, LengthUnits.m);
@@ -57,6 +60,7 @@ describe("Metric units", () => {
 describe("Imperial units", () => {
   test("1 feet: 12 inch", async () => {
     render(<Length />);
+    const user = userEvent.setup();
     clearInput(user, INPUT_LABEL);
     await selectOption(user, FROM_LABEL, LengthUnits.ft);
     await selectOption(user, TO_LABEL, LengthUnits.inch);
@@ -65,6 +69,7 @@ describe("Imperial units", () => {
   });
   test("1 yard: 36 inch", async () => {
     render(<Length />);
+    const user = userEvent.setup();
     clearInput(user, INPUT_LABEL);
     await selectOption(user, FROM_LABEL, LengthUnits.yard);
     await selectOption(user, TO_LABEL, LengthUnits.inch);
@@ -73,6 +78,7 @@ describe("Imperial units", () => {
   });
   test("1 yard: 3 ft", async () => {
     render(<Length />);
+    const user = userEvent.setup();
     clearInput(user, INPUT_LABEL);
     await selectOption(user, FROM_LABEL, LengthUnits.yard);
     await selectOption(user, TO_LABEL, LengthUnits.ft);
@@ -81,6 +87,7 @@ describe("Imperial units", () => {
   });
   test("1 mile: 63360 inch", async () => {
     render(<Length />);
+    const user = userEvent.setup();
     clearInput(user, INPUT_LABEL);
     await selectOption(user, FROM_LABEL, LengthUnits.mile);
     await selectOption(user, TO_LABEL, LengthUnits.inch);
@@ -89,6 +96,7 @@ describe("Imperial units", () => {
   });
   test("1 mile: 5280 ft", async () => {
     render(<Length />);
+    const user = userEvent.setup();
     clearInput(user, INPUT_LABEL);
     await selectOption(user, FROM_LABEL, LengthUnits.mile);
     await selectOption(user, TO_LABEL, LengthUnits.ft);
@@ -97,6 +105,7 @@ describe("Imperial units", () => {
   });
   test("1 mile: 1760 yard", async () => {
     render(<Length />);
+    const user = userEvent.setup();
     clearInput(user, INPUT_LABEL);
     await selectOption(user, FROM_LABEL, LengthUnits.mile);
     await selectOption(user, TO_LABEL, LengthUnits.yard);
@@ -108,6 +117,7 @@ describe("Imperial units", () => {
 describe("Imperial to Metric", () => {
   test("1 mile: 1.609 km", async () => {
     render(<Length />);
+    const user = userEvent.setup();
     clearInput(user, INPUT_LABEL);
     await selectOption(user, FROM_LABEL, LengthUnits.mile);
     await selectOption(user, TO_LABEL, LengthUnits.km);
@@ -116,6 +126,7 @@ describe("Imperial to Metric", () => {
   });
   test("1 mile: 160934.400 m", async () => {
     render(<Length />);
+    const user = userEvent.setup();
     clearInput(user, INPUT_LABEL);
     await selectOption(user, FROM_LABEL, LengthUnits.mile);
     await selectOption(user, TO_LABEL, LengthUnits.m);
@@ -124,6 +135,7 @@ describe("Imperial to Metric", () => {
   });
   test("1 yard: 0.914 m", async () => {
     render(<Length />);
+    const user = userEvent.setup();
     clearInput(user, INPUT_LABEL);
     await selectOption(user, FROM_LABEL, LengthUnits.yard);
     await selectOption(user, TO_LABEL, LengthUnits.m);
@@ -132,6 +144,7 @@ describe("Imperial to Metric", () => {
   });
   test("1 yard: 91.440 cm", async () => {
     render(<Length />);
+    const user = userEvent.setup();
     clearInput(user, INPUT_LABEL);
     await selectOption(user, FROM_LABEL, LengthUnits.yard);
     await selectOption(user, TO_LABEL, LengthUnits.cm);
@@ -140,6 +153,7 @@ describe("Imperial to Metric", () => {
   });
   test("1 ft: 0.305 m", async () => {
     render(<Length />);
+    const user = userEvent.setup();
     clearInput(user, INPUT_LABEL);
     await selectOption(user, FROM_LABEL, LengthUnits.ft);
     await selectOption(user, TO_LABEL, LengthUnits.m);
@@ -148,6 +162,7 @@ describe("Imperial to Metric", () => {
   });
   test("1 ft: 30.480 cm", async () => {
     render(<Length />);
+    const user = userEvent.setup();
     clearInput(user, INPUT_LABEL);
     await selectOption(user, FROM_LABEL, LengthUnits.ft);
     await selectOption(user, TO_LABEL, LengthUnits.cm);
@@ -156,6 +171,7 @@ describe("Imperial to Metric", () => {
   });
   test("1 inch: 2.540 cm", async () => {
     render(<Length />);
+    const user = userEvent.setup();
     clearInput(user, INPUT_LABEL);
     await selectOption(user, FROM_LABEL, LengthUnits.inch);
     await selectOption(user, TO_LABEL, LengthUnits.cm);
@@ -167,6 +183,7 @@ describe("Imperial to Metric", () => {
 describe("Metric to Imperial", () => {
   test("1 km: 0.621 mile", async () => {
     render(<Length />);
+    const user = userEvent.setup();
     clearInput(user, INPUT_LABEL);
     await selectOption(user, FROM_LABEL, LengthUnits.km);
     await selectOption(user, TO_LABEL, LengthUnits.mile);
@@ -175,6 +192,7 @@ describe("Metric to Imperial", () => {
   });
   test("1 km: 1093.613 yard", async () => {
     render(<Length />);
+    const user = userEvent.setup();
     clearInput(user, INPUT_LABEL);
     await selectOption(user, FROM_LABEL, LengthUnits.km);
     await selectOption(user, TO_LABEL, LengthUnits.yard);
@@ -183,6 +201,7 @@ describe("Metric to Imperial", () => {
   });
   test("1 km: 3280.840 ft", async () => {
     render(<Length />);
+    const user = userEvent.setup();
     clearInput(user, INPUT_LABEL);
     await selectOption(user, FROM_LABEL, LengthUnits.km);
     await selectOption(user, TO_LABEL, LengthUnits.ft);
@@ -191,6 +210,7 @@ describe("Metric to Imperial", () => {
   });
   test("1 km: 39370.079 inch", async () => {
     render(<Length />);
+    const user = userEvent.setup();
     clearInput(user, INPUT_LABEL);
     await selectOption(user, FROM_LABEL, LengthUnits.km);
     await selectOption(user, TO_LABEL, LengthUnits.inch);
@@ -199,6 +219,7 @@ describe("Metric to Imperial", () => {
   });
   test("1 m: 1.094 yard", async () => {
     render(<Length />);
+    const user = userEvent.setup();
     clearInput(user, INPUT_LABEL);
     await selectOption(user, FROM_LABEL, LengthUnits.m);
     await selectOption(user, TO_LABEL, LengthUnits.yard);
@@ -207,6 +228,7 @@ describe("Metric to Imperial", () => {
   });
   test("1 m: 3.281 feet", async () => {
     render(<Length />);
+    const user = userEvent.setup();
     clearInput(user, INPUT_LABEL);
     await selectOption(user, FROM_LABEL, LengthUnits.m);
     await selectOption(user, TO_LABEL, LengthUnits.ft);
@@ -215,6 +237,7 @@ describe("Metric to Imperial", () => {
   });
   test("1 m: 39.370 inch", async () => {
     render(<Length />);
+    const user = userEvent.setup();
     clearInput(user, INPUT_LABEL);
     await selectOption(user, FROM_LABEL, LengthUnits.m);
     await selectOption(user, TO_LABEL, LengthUnits.inch);
@@ -223,6 +246,7 @@ describe("Metric to Imperial", () => {
   });
   test("1 cm: 0.394 inch", async () => {
     render(<Length />);
+    const user = userEvent.setup();
     clearInput(user, INPUT_LABEL);
     await selectOption(user, FROM_LABEL, LengthUnits.cm);
     await selectOption(user, TO_LABEL, LengthUnits.inch);

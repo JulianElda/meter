@@ -3,7 +3,6 @@ import React, { lazy, useState } from "react";
 import { MAX_WIDTH, FOOTER_LABEL, REPO_URL, TITLE } from "consts";
 import Footer from "components/footer/footer";
 import Header from "components/header/header";
-import "./app.scss";
 
 const Color = lazy(() => import("components/color/color"));
 const Length = lazy(() => import("components/length/length"));
@@ -32,7 +31,10 @@ export default function App() {
   };
 
   return (
-    <div className="app-container">
+    <div
+      className="min-h-full
+      flex flex-col
+      lg:pt-12 pb-4 sm:pb-2 lg:px-8 sm:px-2">
       <div className={"mx-auto " + MAX_WIDTH}>
         <Header title={TITLE} />
 
