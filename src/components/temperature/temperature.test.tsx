@@ -14,8 +14,8 @@ describe("to Kelvin", () => {
     render(<Temperature />);
     const user = userEvent.setup();
     clearInput(user, INPUT_LABEL);
-    await selectOption(user, FROM_LABEL, Temperatures.K);
-    await selectOption(user, TO_LABEL, Temperatures.K);
+    selectOption(user, FROM_LABEL, Temperatures.K);
+    selectOption(user, TO_LABEL, Temperatures.K);
     await typeInput(user, INPUT_LABEL, "100");
     expectValue(RESULT_LABEL, "100.000");
   });
@@ -24,8 +24,8 @@ describe("to Kelvin", () => {
     render(<Temperature />);
     const user = userEvent.setup();
     clearInput(user, INPUT_LABEL);
-    await selectOption(user, FROM_LABEL, Temperatures.F);
-    await selectOption(user, TO_LABEL, Temperatures.K);
+    selectOption(user, FROM_LABEL, Temperatures.F);
+    selectOption(user, TO_LABEL, Temperatures.K);
     await typeInput(user, INPUT_LABEL, "100");
     expectValue(RESULT_LABEL, "310.928");
   });
@@ -34,8 +34,8 @@ describe("to Kelvin", () => {
     render(<Temperature />);
     const user = userEvent.setup();
     clearInput(user, INPUT_LABEL);
-    await selectOption(user, FROM_LABEL, Temperatures.C);
-    await selectOption(user, TO_LABEL, Temperatures.K);
+    selectOption(user, FROM_LABEL, Temperatures.C);
+    selectOption(user, TO_LABEL, Temperatures.K);
     await typeInput(user, INPUT_LABEL, "100");
     expectValue(RESULT_LABEL, "373.150");
   });
@@ -46,8 +46,8 @@ describe("to Fahrenheit", () => {
     render(<Temperature />);
     const user = userEvent.setup();
     clearInput(user, INPUT_LABEL);
-    await selectOption(user, FROM_LABEL, Temperatures.K);
-    await selectOption(user, TO_LABEL, Temperatures.F);
+    selectOption(user, FROM_LABEL, Temperatures.K);
+    selectOption(user, TO_LABEL, Temperatures.F);
     await typeInput(user, INPUT_LABEL, "100");
     expectValue(RESULT_LABEL, "-279.670");
   });
@@ -56,8 +56,8 @@ describe("to Fahrenheit", () => {
     render(<Temperature />);
     const user = userEvent.setup();
     clearInput(user, INPUT_LABEL);
-    await selectOption(user, FROM_LABEL, Temperatures.F);
-    await selectOption(user, TO_LABEL, Temperatures.F);
+    selectOption(user, FROM_LABEL, Temperatures.F);
+    selectOption(user, TO_LABEL, Temperatures.F);
     await typeInput(user, INPUT_LABEL, "100");
     expectValue(RESULT_LABEL, "100.000");
   });
@@ -66,8 +66,8 @@ describe("to Fahrenheit", () => {
     render(<Temperature />);
     const user = userEvent.setup();
     clearInput(user, INPUT_LABEL);
-    await selectOption(user, FROM_LABEL, Temperatures.C);
-    await selectOption(user, TO_LABEL, Temperatures.F);
+    selectOption(user, FROM_LABEL, Temperatures.C);
+    selectOption(user, TO_LABEL, Temperatures.F);
     await typeInput(user, INPUT_LABEL, "100");
     expectValue(RESULT_LABEL, "212.000");
   });
@@ -78,8 +78,8 @@ describe("to Celcius", () => {
     render(<Temperature />);
     const user = userEvent.setup();
     clearInput(user, INPUT_LABEL);
-    await selectOption(user, FROM_LABEL, Temperatures.K);
-    await selectOption(user, TO_LABEL, Temperatures.C);
+    selectOption(user, FROM_LABEL, Temperatures.K);
+    selectOption(user, TO_LABEL, Temperatures.C);
     await typeInput(user, INPUT_LABEL, "100");
     expectValue(RESULT_LABEL, "-173.150");
   });
@@ -88,8 +88,8 @@ describe("to Celcius", () => {
     render(<Temperature />);
     const user = userEvent.setup();
     clearInput(user, INPUT_LABEL);
-    await selectOption(user, FROM_LABEL, Temperatures.F);
-    await selectOption(user, TO_LABEL, Temperatures.C);
+    selectOption(user, FROM_LABEL, Temperatures.F);
+    selectOption(user, TO_LABEL, Temperatures.C);
     await typeInput(user, INPUT_LABEL, "100");
     expectValue(RESULT_LABEL, "37.778");
   });
@@ -98,8 +98,8 @@ describe("to Celcius", () => {
     render(<Temperature />);
     const user = userEvent.setup();
     clearInput(user, INPUT_LABEL);
-    await selectOption(user, FROM_LABEL, Temperatures.C);
-    await selectOption(user, TO_LABEL, Temperatures.C);
+    selectOption(user, FROM_LABEL, Temperatures.C);
+    selectOption(user, TO_LABEL, Temperatures.C);
     await typeInput(user, INPUT_LABEL, "100");
     expectValue(RESULT_LABEL, "100.000");
   });

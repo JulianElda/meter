@@ -40,7 +40,6 @@ export default function App() {
       lg:pt-12 pb-4 sm:pb-2 lg:px-8 sm:px-2">
       <div className={"mx-auto " + MAX_WIDTH}>
         <Header />
-
         <div className="app-card">
           <div className="w-full mb-3">
             <select
@@ -61,9 +60,7 @@ export default function App() {
               <option value={Categories.CONTRAST}>{Categories.CONTRAST}</option>
             </select>
           </div>
-          <React.Suspense fallback={<></>}>
-            <Outlet />
-          </React.Suspense>
+          <Outlet />
         </div>
         <Footer />
       </div>
