@@ -1,16 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "assets/styles/index.css";
 import "assets/styles/tailwind.css";
 
-import App from "components/app/app";
+import AppRouting from "routing";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter basename="meter">
+      <Routes>
+        <Route path="/*" element={<AppRouting />} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );

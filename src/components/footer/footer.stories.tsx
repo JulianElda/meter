@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { FOOTER_LABEL, MAX_WIDTH, REPO_URL } from "consts";
+import { MAX_WIDTH } from "consts";
 import Footer from "./footer";
 
 export default {
@@ -12,11 +12,7 @@ export default {
 } as ComponentMeta<typeof Footer>;
 
 const Template: ComponentStory<typeof Footer> = function (args) {
-  return <Footer {...args} />;
+  return <Footer />;
 };
 
 export const FooterComponent = Template.bind({});
-FooterComponent.args = {
-  label: FOOTER_LABEL,
-  repoUrl: REPO_URL,
-};

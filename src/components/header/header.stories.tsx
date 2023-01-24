@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { MAX_WIDTH, TITLE } from "consts";
+import { MAX_WIDTH } from "consts";
 import Header from "./header";
 
 export default {
@@ -12,10 +12,7 @@ export default {
 } as ComponentMeta<typeof Header>;
 
 const Template: ComponentStory<typeof Header> = function (args) {
-  return <Header {...args} />;
+  return <Header />;
 };
 
 export const HeaderComponent = Template.bind({});
-HeaderComponent.args = {
-  title: TITLE,
-};

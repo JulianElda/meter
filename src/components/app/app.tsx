@@ -1,13 +1,9 @@
-import React, { lazy, useState } from "react";
+import React, { useState } from "react";
+import { useNavigate, Outlet } from "react-router-dom";
 
-import { MAX_WIDTH, FOOTER_LABEL, REPO_URL, TITLE } from "consts";
+import { MAX_WIDTH } from "consts";
 import Footer from "components/footer/footer";
 import Header from "components/header/header";
-
-const Color = lazy(() => import("components/color/color"));
-const Length = lazy(() => import("components/length/length"));
-const Temperature = lazy(() => import("components/temperature/temperature"));
-const Contrast = lazy(() => import("components/contrast/contrast"));
 
 export enum Categories {
   LENGTH = "Length",
@@ -19,18 +15,21 @@ export enum Categories {
 const DEFAULT_CATEGORY: Categories = Categories.LENGTH;
 
 export default function App() {
+  const navigate = useNavigate();
+
   const [category, setCategory] = useState<Categories>(DEFAULT_CATEGORY);
 
-  const getContentBody = function (): React.ReactNode {
+  const onChangeCategory = function (category: Categories) {
+    setCategory(category);
     switch (category) {
       case Categories.LENGTH:
-        return <Length />;
+        return navigate("length");
       case Categories.COLOR:
-        return <Color />;
+        return navigate("/color");
       case Categories.TEMPERATURE:
-        return <Temperature />;
+        return navigate("/temperature");
       case Categories.CONTRAST:
-        return <Contrast />;
+        return navigate("/contrast");
     }
   };
 
@@ -40,7 +39,7 @@ export default function App() {
       flex flex-col
       lg:pt-12 pb-4 sm:pb-2 lg:px-8 sm:px-2">
       <div className={"mx-auto " + MAX_WIDTH}>
-        <Header title={TITLE} />
+        <Header />
 
         <div className="app-card">
           <div className="w-full mb-3">
@@ -51,7 +50,7 @@ export default function App() {
               aria-label="category"
               value={category}
               onChange={(event) =>
-                setCategory(event.target.value as Categories)
+                onChangeCategory(event.target.value as Categories)
               }
               className="input-field-text">
               <option value={Categories.COLOR}>{Categories.COLOR}</option>
@@ -62,11 +61,11 @@ export default function App() {
               <option value={Categories.CONTRAST}>{Categories.CONTRAST}</option>
             </select>
           </div>
-          <React.Suspense fallback={<>...</>}>
-            {getContentBody()}
+          <React.Suspense fallback={<></>}>
+            <Outlet />
           </React.Suspense>
         </div>
-        <Footer label={FOOTER_LABEL} repoUrl={REPO_URL} />
+        <Footer />
       </div>
     </div>
   );
