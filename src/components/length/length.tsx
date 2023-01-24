@@ -153,7 +153,7 @@ export default function Length() {
       result = baseFrom * INCH_TO_CM;
     }
     // metric -> imperial
-    // converto to inch: ( cm / 2.54 )
+    // convert to to inch: ( cm / 2.54 )
     else if (ConversionTable[from].system === UnitsSystems.METRIC) {
       result = baseFrom / INCH_TO_CM;
     }
