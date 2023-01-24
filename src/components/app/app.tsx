@@ -7,11 +7,13 @@ import Header from "components/header/header";
 const Color = lazy(() => import("components/color/color"));
 const Length = lazy(() => import("components/length/length"));
 const Temperature = lazy(() => import("components/temperature/temperature"));
+const Contrast = lazy(() => import("components/contrast/contrast"));
 
 export enum Categories {
   LENGTH = "Length",
   COLOR = "Color",
   TEMPERATURE = "Temperature",
+  CONTRAST = "Contrast",
 }
 
 const DEFAULT_CATEGORY: Categories = Categories.LENGTH;
@@ -27,6 +29,8 @@ export default function App() {
         return <Color />;
       case Categories.TEMPERATURE:
         return <Temperature />;
+      case Categories.CONTRAST:
+        return <Contrast />;
     }
   };
 
@@ -55,6 +59,7 @@ export default function App() {
               <option value={Categories.TEMPERATURE}>
                 {Categories.TEMPERATURE}
               </option>
+              <option value={Categories.CONTRAST}>{Categories.CONTRAST}</option>
             </select>
           </div>
           <React.Suspense fallback={<>...</>}>

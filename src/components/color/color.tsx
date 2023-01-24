@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { hexToRgb, rgbToHex } from "util/common";
 
 import styles from "./color.module.css";
 
@@ -8,29 +9,6 @@ const DEFAULT_HEX = "FFFFFF";
 export default function Color() {
   const [rgb, setRgb] = useState<string[]>(DEFAULT_RGB);
   const [hex, setHex] = useState<string>(DEFAULT_HEX);
-
-  const hexToRgb = function (hexString: string): string[] {
-    const toRgb = function (fromHex: string): string {
-      return parseInt(fromHex, 16).toString();
-    };
-
-    return [
-      toRgb(hexString.slice(0, 2)),
-      toRgb(hexString.slice(2, 4)),
-      toRgb(hexString.slice(4, 6)),
-    ];
-  };
-
-  const rgbToHex = function (rgbString: string[]): string {
-    const toHex = function (fromRgb: string): string {
-      let result = parseInt(fromRgb).toString(16);
-      if (result.length === 1) result = "0" + result;
-      return result;
-    };
-    return [toHex(rgbString[0]), toHex(rgbString[1]), toHex(rgbString[2])]
-      .join("")
-      .toUpperCase();
-  };
 
   const onChangeRgb = function (value: string[]) {
     setRgb(value);
