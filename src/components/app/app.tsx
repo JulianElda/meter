@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useNavigate, Outlet } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate, Outlet, useLocation } from "react-router-dom";
 
 import { MAX_WIDTH } from "consts";
 import Footer from "components/footer/footer";
@@ -12,26 +12,30 @@ export enum Categories {
   CONTRAST = "Contrast",
 }
 
-const DEFAULT_CATEGORY: Categories = Categories.LENGTH;
+const CategoryRoutes = {
+  [Categories.LENGTH]: "/length",
+  [Categories.COLOR]: "/color",
+  [Categories.TEMPERATURE]: "/temperature",
+  [Categories.CONTRAST]: "/contrast",
+};
 
 export default function App() {
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const [category, setCategory] = useState<Categories>(DEFAULT_CATEGORY);
+  const [category, setCategory] = useState<Categories>();
 
   const onChangeCategory = function (category: Categories) {
     setCategory(category);
-    switch (category) {
-      case Categories.LENGTH:
-        return navigate("length");
-      case Categories.COLOR:
-        return navigate("/color");
-      case Categories.TEMPERATURE:
-        return navigate("/temperature");
-      case Categories.CONTRAST:
-        return navigate("/contrast");
-    }
+    return navigate(CategoryRoutes[category]);
   };
+
+  useEffect(() => {
+    Object.keys(CategoryRoutes).forEach((key) => {
+      if (location.pathname === CategoryRoutes[key])
+        setCategory(key as Categories);
+    });
+  }, [location]);
 
   return (
     <div
