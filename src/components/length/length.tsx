@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 import { isValidNumber } from "util/common";
 import { ROUNDING } from "consts";
+import Input from "components/form/input";
+import Select, { SelectOption } from "components/form/select";
 
 enum UnitsSystems {
   IMPERIAL = "IMPERIAL",
@@ -100,16 +102,13 @@ export default function Length() {
   const [input, setInput] = useState<string>("100");
   const [result, setResult] = useState<string>(DEFAULT_RESULT);
 
-  const getOptions = function (): React.ReactNode {
-    let tmp: JSX.Element[] = [];
+  const getOptions = function (): SelectOption[] {
+    let tmp: SelectOption[] = [];
     for (const key in ConversionTable)
-      tmp.push(
-        <option
-          key={ConversionTable[key].unit}
-          value={ConversionTable[key].unit}>
-          {ConversionTable[key].unit}
-        </option>
-      );
+      tmp.push({
+        display: ConversionTable[key].unit as string,
+        value: ConversionTable[key].unit,
+      });
     return tmp;
   };
 
@@ -190,73 +189,32 @@ export default function Length() {
 
   return (
     <div>
-      <div className="flex">
-        <div className="flex-1 mr-1">
-          <label htmlFor="from-input" className="input-label">
-            From
-          </label>
-          <div className="mt-1">
-            <select
-              id="from-input"
-              name="from-input"
-              data-testid="from-input"
-              value={from}
-              onChange={(event) => setFrom(event.target.value as LengthUnits)}
-              className="input-field-text">
-              {getOptions()}
-            </select>
-          </div>
-        </div>
-        <div className="flex-1 ml-1">
-          <label htmlFor="to-input" className="input-label">
-            To
-          </label>
-          <div className="mt-1">
-            <select
-              id="to-input"
-              name="to-input"
-              data-testid="to-input"
-              value={to}
-              onChange={(event) => setTo(event.target.value as LengthUnits)}
-              className="input-field-text">
-              {getOptions()}
-            </select>
-          </div>
-        </div>
+      <div className="flex space-x-2">
+        <Select
+          id="from-input"
+          label="From"
+          value={from}
+          onChange={(value) => setFrom(value as LengthUnits)}
+          options={getOptions()}
+        />
+        <Select
+          id="to-input"
+          label="To"
+          value={to}
+          onChange={(value) => setTo(value as LengthUnits)}
+          options={getOptions()}
+        />
       </div>
-      <div className="flex mt-4 mb-3">
-        <div className="flex-1">
-          <label htmlFor="input-input" className="input-label">
-            Input
-          </label>
-          <input
-            type="text"
-            id="input-input"
-            name="input-input"
-            data-testid="input-input"
-            value={input}
-            onChange={(event) => onChangeInput(event.target.value)}
-            className="input-field-text"
-          />
-        </div>
+      <div className="flex my-4">
+        <Input
+          id="input-input"
+          label="Input"
+          value={input}
+          onChange={(value) => onChangeInput(value)}
+        />
       </div>
       <div className="flex">
-        <div className="flex-1">
-          <div className="mt-1">
-            <label htmlFor="result-input" className="input-label">
-              Result
-            </label>
-            <input
-              type="text"
-              id="result-input"
-              name="result-input"
-              data-testid="result-input"
-              value={result}
-              readOnly
-              className="input-field-text"
-            />
-          </div>
-        </div>
+        <Input id="result-input" label="Result" value={result} />
       </div>
     </div>
   );

@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { ROUNDING } from "consts";
+import Input from "components/form/input";
 
 const DEFAULT_RGB = ["255", "255", "255"];
 
@@ -25,113 +27,51 @@ export default function Contrast() {
       const darkest = Math.min(lum1, lum2);
       return (brightest + 0.05) / (darkest + 0.05);
     };
-    setContrast(calculateContrast(rgb1, rgb2).toFixed(2));
+    setContrast(calculateContrast(rgb1, rgb2).toFixed(ROUNDING));
   }, [rgb1, rgb2]);
 
   return (
     <div>
-      <div className="flex my-2">
-        <div className="flex-1 mr-2">
-          <label htmlFor="red-input1" className="input-label">
-            R
-          </label>
-          <input
-            type="text"
-            id="red-input1"
-            name="red-input1"
-            data-testid="red-input1"
-            value={rgb1[0]}
-            onChange={(event) =>
-              setRgb1([event.target.value, rgb1[1], rgb1[2]])
-            }
-            className="input-field-text"
-          />
-        </div>
-        <div className="flex-1 mx-2">
-          <label htmlFor="green-input1" className="input-label">
-            G
-          </label>
-          <input
-            type="text"
-            id="green-input1"
-            name="green-input1"
-            data-testid="green-input1"
-            value={rgb1[1]}
-            onChange={(event) =>
-              setRgb1([rgb1[0], event.target.value, rgb1[2]])
-            }
-            className="input-field-text"
-          />
-        </div>
-        <div className="flex-1 ml-2">
-          <label htmlFor="blue-input1" className="input-label">
-            B
-          </label>
-          <input
-            type="text"
-            id="blue-input1"
-            name="blue-input1"
-            data-testid="blue-input1"
-            value={rgb1[2]}
-            onChange={(event) =>
-              setRgb1([rgb1[0], rgb1[1], event.target.value])
-            }
-            className="input-field-text"
-          />
-        </div>
+      <div className="flex my-2 space-x-2">
+        <Input
+          id="red-input1"
+          label="R"
+          value={rgb1[0]}
+          onChange={(value) => setRgb1([value, rgb1[1], rgb1[2]])}
+        />
+        <Input
+          id="green-input1"
+          label="G"
+          value={rgb1[1]}
+          onChange={(value) => setRgb1([rgb1[0], value, rgb1[2]])}
+        />
+        <Input
+          id="blue-input1"
+          label="B"
+          value={rgb1[2]}
+          onChange={(value) => setRgb1([rgb1[0], rgb1[1], value])}
+        />
       </div>
-
-      <div className="flex my-2">
-        <div className="flex-1 mr-2">
-          <label htmlFor="red-input2" className="input-label">
-            R
-          </label>
-          <input
-            type="text"
-            id="red-input2"
-            name="red-input2"
-            data-testid="red-input2"
-            value={rgb2[0]}
-            onChange={(event) =>
-              setRgb2([event.target.value, rgb2[1], rgb2[2]])
-            }
-            className="input-field-text"
-          />
-        </div>
-        <div className="flex-1 mx-2">
-          <label htmlFor="green-input2" className="input-label">
-            G
-          </label>
-          <input
-            type="text"
-            id="green-input2"
-            name="green-input2"
-            data-testid="green-input2"
-            value={rgb2[1]}
-            onChange={(event) =>
-              setRgb2([rgb2[0], event.target.value, rgb2[2]])
-            }
-            className="input-field-text"
-          />
-        </div>
-        <div className="flex-1 ml-2">
-          <label htmlFor="blue-input2" className="input-label">
-            B
-          </label>
-          <input
-            type="text"
-            id="blue-input2"
-            name="blue-input2"
-            data-testid="blue-input2"
-            value={rgb2[2]}
-            onChange={(event) =>
-              setRgb2([rgb2[0], rgb2[1], event.target.value])
-            }
-            className="input-field-text"
-          />
-        </div>
+      <div className="flex my-2 space-x-2">
+        <Input
+          id="red-input2"
+          label="R"
+          value={rgb2[0]}
+          onChange={(value) => setRgb2([value, rgb2[1], rgb2[2]])}
+        />
+        <Input
+          id="green-input2"
+          label="G"
+          value={rgb2[1]}
+          onChange={(value) => setRgb2([rgb2[0], value, rgb2[2]])}
+        />
+        <Input
+          id="blue-input1"
+          label="B"
+          value={rgb2[2]}
+          onChange={(value) => setRgb2([rgb2[0], rgb2[1], value])}
+        />
       </div>
-
       <div>{contrast}</div>
     </div>
   );

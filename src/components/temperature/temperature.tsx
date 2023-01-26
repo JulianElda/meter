@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { isValidNumber } from "util/common";
 import { ROUNDING } from "consts";
+import Input from "components/form/input";
+import Select, { SelectOption } from "components/form/select";
 
 export enum Temperatures {
   C = "C",
@@ -21,20 +23,14 @@ export default function Temperature() {
   const K_C: number = 273.15;
   const F_C: number = 32;
 
-  const getOptions = function (): React.ReactNode {
-    return (
-      <>
-        <option key="C" value="C">
-          C
-        </option>
-        <option key="F" value="F">
-          F
-        </option>
-        <option key="K" value="K">
-          K
-        </option>
-      </>
-    );
+  const getOptions = function (): SelectOption[] {
+    let tmp: SelectOption[] = [];
+    for (const key in Temperatures)
+      tmp.push({
+        display: Temperatures[key],
+        value: Temperatures[key],
+      });
+    return tmp;
   };
 
   const onChangeInput = function (value: string) {
@@ -89,73 +85,32 @@ export default function Temperature() {
 
   return (
     <div>
-      <div className="flex">
-        <div className="flex-1 mr-1">
-          <label htmlFor="from-input" className="input-label">
-            From
-          </label>
-          <div className="mt-1">
-            <select
-              id="from-input"
-              name="from-input"
-              data-testid="from-input"
-              value={from}
-              onChange={(event) => setFrom(event.target.value as Temperatures)}
-              className="input-field-text">
-              {getOptions()}
-            </select>
-          </div>
-        </div>
-        <div className="flex-1 ml-1">
-          <label htmlFor="to-input" className="input-label">
-            To
-          </label>
-          <div className="mt-1">
-            <select
-              id="to-input"
-              name="to-input"
-              data-testid="to-input"
-              value={to}
-              onChange={(event) => setTo(event.target.value as Temperatures)}
-              className="input-field-text">
-              {getOptions()}
-            </select>
-          </div>
-        </div>
+      <div className="flex space-x-2">
+        <Select
+          id="from-input"
+          label="From"
+          value={from}
+          onChange={(value) => setFrom(value as Temperatures)}
+          options={getOptions()}
+        />
+        <Select
+          id="to-input"
+          label="To"
+          value={to}
+          onChange={(value) => setTo(value as Temperatures)}
+          options={getOptions()}
+        />
       </div>
-      <div className="flex mt-4 mb-3">
-        <div className="flex-1">
-          <label htmlFor="input-input" className="input-label">
-            Input
-          </label>
-          <input
-            type="text"
-            id="input-input"
-            name="input-input"
-            data-testid="input-input"
-            value={input}
-            onChange={(event) => onChangeInput(event.target.value)}
-            className="input-field-text"
-          />
-        </div>
+      <div className="flex my-4">
+        <Input
+          id="input-input"
+          label="Input"
+          value={input}
+          onChange={(value) => onChangeInput(value)}
+        />
       </div>
       <div className="flex">
-        <div className="flex-1">
-          <div className="mt-1">
-            <label htmlFor="result-input" className="input-label">
-              Result
-            </label>
-            <input
-              type="text"
-              id="result-input"
-              name="result-input"
-              data-testid="result-input"
-              value={result}
-              readOnly
-              className="input-field-text"
-            />
-          </div>
-        </div>
+        <Input id="result-input" label="Result" value={result} />
       </div>
     </div>
   );

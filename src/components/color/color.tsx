@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { hexToRgb, rgbToHex } from "util/common";
+import Input from "components/form/input";
 
 import styles from "./color.module.css";
 
@@ -22,73 +23,33 @@ export default function Color() {
 
   return (
     <div>
-      <div className="flex my-2">
-        <div className="flex-1 mr-2">
-          <label htmlFor="red-input" className="input-label">
-            R
-          </label>
-          <input
-            type="text"
-            id="red-input"
-            name="red-input"
-            data-testid="red-input"
-            value={rgb[0]}
-            onChange={(event) =>
-              onChangeRgb([event.target.value, rgb[1], rgb[2]])
-            }
-            className="input-field-text"
-          />
-        </div>
-        <div className="flex-1 mx-2">
-          <label htmlFor="green-input" className="input-label">
-            G
-          </label>
-          <input
-            type="text"
-            id="green-input"
-            name="green-input"
-            data-testid="green-input"
-            value={rgb[1]}
-            onChange={(event) =>
-              onChangeRgb([rgb[0], event.target.value, rgb[2]])
-            }
-            className="input-field-text"
-          />
-        </div>
-        <div className="flex-1 ml-2">
-          <label htmlFor="blue-input" className="input-label">
-            B
-          </label>
-          <input
-            type="text"
-            id="blue-input"
-            name="blue-input"
-            data-testid="blue-input"
-            value={rgb[2]}
-            onChange={(event) =>
-              onChangeRgb([rgb[0], rgb[1], event.target.value])
-            }
-            className="input-field-text"
-          />
-        </div>
+      <div className="flex my-2 space-x-2">
+        <Input
+          id="red-input"
+          label="R"
+          value={rgb[0]}
+          onChange={(value) => onChangeRgb([value, rgb[1], rgb[2]])}
+        />
+        <Input
+          id="green-input"
+          label="G"
+          value={rgb[1]}
+          onChange={(value) => onChangeRgb([rgb[0], value, rgb[2]])}
+        />
+        <Input
+          id="blue-input"
+          label="B"
+          value={rgb[2]}
+          onChange={(value) => onChangeRgb([rgb[0], rgb[1], value])}
+        />
       </div>
       <div className="flex my-2">
-        <div className="flex-1">
-          <label htmlFor="hex-input" className="input-label">
-            Hex
-          </label>
-          <input
-            type="text"
-            id="hex-input"
-            name="hex-input"
-            data-testid="hex-input"
-            value={hex}
-            minLength={6}
-            maxLength={6}
-            onChange={(event) => onChangeHex(event.target.value)}
-            className="input-field-text"
-          />
-        </div>
+        <Input
+          id="hex-input"
+          label="Hex"
+          value={hex}
+          onChange={(value) => onChangeHex(value)}
+        />
       </div>
       <div
         className={styles.preview}
