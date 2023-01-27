@@ -1,14 +1,12 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { MAX_WIDTH } from "consts";
+import { storybookStoryDecorator } from "util/storybook";
 import Color from "./color";
 
 export default {
   title: "Components/Color",
   component: Color,
-  decorators: [
-    (story) => <div className={"app-card " + MAX_WIDTH}>{story()}</div>,
-  ],
+  decorators: [(story) => storybookStoryDecorator(story)],
 } as ComponentMeta<typeof Color>;
 
 const Template: ComponentStory<typeof Color> = function () {

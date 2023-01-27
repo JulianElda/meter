@@ -1,14 +1,12 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { MAX_WIDTH } from "consts";
+import { storybookStoryDecorator } from "util/storybook";
 import Temperature from "./temperature";
 
 export default {
   title: "Components/Temperature",
   component: Temperature,
-  decorators: [
-    (story) => <div className={"app-card " + MAX_WIDTH}>{story()}</div>,
-  ],
+  decorators: [(story) => storybookStoryDecorator(story)],
 } as ComponentMeta<typeof Temperature>;
 
 const Template: ComponentStory<typeof Temperature> = function () {

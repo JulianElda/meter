@@ -1,14 +1,12 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { MAX_WIDTH } from "consts";
+import { storybookStoryDecorator } from "util/storybook";
 import Length from "./length";
 
 export default {
   title: "Components/Length",
   component: Length,
-  decorators: [
-    (story) => <div className={"app-card " + MAX_WIDTH}>{story()}</div>,
-  ],
+  decorators: [(story) => storybookStoryDecorator(story)],
 } as ComponentMeta<typeof Length>;
 
 const Template: ComponentStory<typeof Length> = function () {

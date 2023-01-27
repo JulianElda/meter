@@ -1,14 +1,12 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { MAX_WIDTH } from "consts";
+import { storybookStoryDecorator } from "util/storybook";
 import Footer from "./footer";
 
 export default {
   title: "Components/Footer",
   component: Footer,
-  decorators: [
-    (story) => <div className={"app-card " + MAX_WIDTH}>{story()}</div>,
-  ],
+  decorators: [(story) => storybookStoryDecorator(story)],
 } as ComponentMeta<typeof Footer>;
 
 const Template: ComponentStory<typeof Footer> = function (args) {
