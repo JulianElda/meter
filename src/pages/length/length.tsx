@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 import { isValidNumber } from "util/common";
 import { ROUNDING } from "consts";
-import Input from "components/form/input";
-import Select, { SelectOption } from "components/form/select";
+import { SelectOption } from "components/form/select";
+import InputSelect from "components/form/inputselect";
 
 enum UnitsSystems {
   IMPERIAL = "IMPERIAL",
@@ -189,32 +189,30 @@ export default function Length() {
 
   return (
     <div>
-      <div className="flex space-x-2">
-        <Select
-          id="from-input"
-          label="From"
-          value={from}
-          onChange={(value) => setFrom(value as LengthUnits)}
-          options={getOptions()}
-        />
-        <Select
-          id="to-input"
-          label="To"
-          value={to}
-          onChange={(value) => setTo(value as LengthUnits)}
+      <div className="flex my-4">
+        <InputSelect
+          inputId="input-input"
+          inputLabel="Input"
+          inputValue={input}
+          onInputChange={(value) => onChangeInput(value)}
+          selectId="from-input"
+          selectLabel="From"
+          selectValue={from}
+          onSelectChange={(value) => setFrom(value as LengthUnits)}
           options={getOptions()}
         />
       </div>
       <div className="flex my-4">
-        <Input
-          id="input-input"
-          label="Input"
-          value={input}
-          onChange={(value) => onChangeInput(value)}
+        <InputSelect
+          inputId="result-input"
+          inputLabel="Result"
+          inputValue={result}
+          selectId="to-input"
+          selectLabel="To"
+          selectValue={to}
+          onSelectChange={(value) => setTo(value as LengthUnits)}
+          options={getOptions()}
         />
-      </div>
-      <div className="flex">
-        <Input id="result-input" label="Result" value={result} />
       </div>
     </div>
   );
