@@ -9,6 +9,12 @@
     "files.associations": {
       "*.css": "tailwindcss",
       "*.scss": "tailwindcss"
+    },
+    "files.exclude": {
+      "build": true,
+      "coverage": true,
+      "node_modules": true,
+      "storybook-static": true
     }
   },
   "extensions": {

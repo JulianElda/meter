@@ -3,8 +3,9 @@
 A converter app, current functions include:
 
 - length
-- color
 - temperature
+- color
+- color contrast
 
 # Installation
 
