@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { hexToRgb, rgbToHex } from "util/common";
+import { hexToRgb, rgbToHex } from "util/conversion";
 import Input from "components/form/input";
 
 import styles from "./color.module.css";

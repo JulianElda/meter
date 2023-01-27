@@ -2,7 +2,8 @@ import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { clearInput, expectValue, selectOption, typeInput } from "tests.helper";
 
-import Length, { LengthUnits } from "./length";
+import Length from "./length";
+import { LengthUnits } from "constants/length";
 
 const FROM_LABEL = "from-input";
 const TO_LABEL = "to-input";
