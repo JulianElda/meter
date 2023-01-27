@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate, Outlet, useLocation } from "react-router-dom";
 
-import { MAX_WIDTH } from "consts";
 import Footer from "components/footer/footer";
 import Header from "components/header/header";
+import Select, { SelectOption } from "components/form/select";
 
 export enum Categories {
   LENGTH = "Length",
@@ -25,6 +25,16 @@ export default function App() {
 
   const [category, setCategory] = useState<Categories>();
 
+  const getOptions = function (): SelectOption[] {
+    let tmp: SelectOption[] = [];
+    for (const key in Categories)
+      tmp.push({
+        display: Categories[key] as string,
+        value: Categories[key],
+      });
+    return tmp;
+  };
+
   const onChangeCategory = function (category: Categories) {
     setCategory(category);
     return navigate(CategoryRoutes[category]);
@@ -41,28 +51,18 @@ export default function App() {
     <div
       className="min-h-full
       flex flex-col
-      lg:pt-12 pb-4 sm:pb-2 lg:px-8 sm:px-2">
-      <div className={"mx-auto " + MAX_WIDTH}>
+      lg:pt-12 pb-4 sm:pb-2 lg:px-4 sm:px-2">
+      <div className="app-container">
         <Header />
         <div className="app-card">
           <div className="w-full mb-3">
-            <select
-              id="category"
-              name="category-input"
-              data-testid="category-input"
-              aria-label="category"
-              value={category}
-              onChange={(event) =>
-                onChangeCategory(event.target.value as Categories)
-              }
-              className="input-field-text">
-              <option value={Categories.COLOR}>{Categories.COLOR}</option>
-              <option value={Categories.LENGTH}>{Categories.LENGTH}</option>
-              <option value={Categories.TEMPERATURE}>
-                {Categories.TEMPERATURE}
-              </option>
-              <option value={Categories.CONTRAST}>{Categories.CONTRAST}</option>
-            </select>
+            <Select
+              id="category-input"
+              label="Convert"
+              value={category || Categories.COLOR}
+              onChange={(value) => onChangeCategory(value as Categories)}
+              options={getOptions()}
+            />
           </div>
           <Outlet />
         </div>

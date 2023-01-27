@@ -9,7 +9,7 @@ import Contrast from "pages/contrast/contrast";
 export default function AppRouting() {
   return (
     <Routes>
-      <Route path="" element={<Navigate to="/length" />} />
+      <Route path="" element={<Navigate to="/color" />} />
       <Route path="/" element={<App />}>
         <Route path="color" element={<Color />} />
         <Route path="length" element={<Length />} />

@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import { ROUNDING } from "consts";
 import Input from "components/form/input";
 
-const DEFAULT_RGB = ["255", "255", "255"];
+const DEFAULT_RGB1 = ["220", "20", "60"];
+const DEFAULT_RGB2 = ["125", "111", "252"];
 
 export default function Contrast() {
-  const [rgb1, setRgb1] = useState<string[]>(DEFAULT_RGB);
-  const [rgb2, setRgb2] = useState<string[]>(DEFAULT_RGB);
+  const [rgb1, setRgb1] = useState<string[]>(DEFAULT_RGB1);
+  const [rgb2, setRgb2] = useState<string[]>(DEFAULT_RGB2);
   const [contrast, setContrast] = useState<string>();
 
   // https://www.w3.org/TR/WCAG21/#dfn-relative-luminance

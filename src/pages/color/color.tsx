@@ -4,12 +4,11 @@ import Input from "components/form/input";
 
 import styles from "./color.module.css";
 
-const DEFAULT_RGB = ["255", "255", "255"];
-const DEFAULT_HEX = "FFFFFF";
+const DEFAULT_RGB = ["220", "20", "60"];
 
 export default function Color() {
   const [rgb, setRgb] = useState<string[]>(DEFAULT_RGB);
-  const [hex, setHex] = useState<string>(DEFAULT_HEX);
+  const [hex, setHex] = useState<string>(rgbToHex(rgb));
 
   const onChangeRgb = function (value: string[]) {
     setRgb(value);

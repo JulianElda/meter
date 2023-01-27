@@ -15,7 +15,9 @@ export default function Length() {
   const [units2, setUnits2] = useState<LengthUnits>(DEFAULT_TO);
 
   const [amount1, setAmount1] = useState<string>("100");
-  const [amount2, setAmount2] = useState<string>("100");
+  const [amount2, setAmount2] = useState<string>(
+    convertLength(amount1, units1, units2)
+  );
 
   const getOptions = function (): SelectOption[] {
     let tmp: SelectOption[] = [];

@@ -1,8 +1,9 @@
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { Temperatures } from "constants/temperature";
 import { clearInput, expectValue, selectOption, typeInput } from "tests.helper";
 
-import Temperature, { Temperatures } from "./temperature";
+import Temperature from "./temperature";
 
 const FROM_LABEL = "from-input";
 const TO_LABEL = "to-input";

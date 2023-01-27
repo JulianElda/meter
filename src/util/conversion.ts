@@ -6,6 +6,7 @@ import {
   LengthUnits,
   LengthUnitsSystemsBase,
 } from "constants/length";
+import { Temperatures, F_C, K_C } from "constants/temperature";
 
 const decimalToHex = function (fromRgb: string): string {
   let result = parseInt(fromRgb).toString(16);
@@ -79,7 +80,11 @@ export const convertLengthToDifferentUnits = function (
   return result / LengthConversionTable[unitsTo].base;
 };
 
-export const convertLength = function (amount, unitsFrom, unitsTo): string {
+export const convertLength = function (
+  amount: string,
+  unitsFrom: LengthUnits,
+  unitsTo: LengthUnits
+): string {
   // input from number field is string type
   let parsedInput: number = parseInt(amount);
 
@@ -97,6 +102,49 @@ export const convertLength = function (amount, unitsFrom, unitsTo): string {
     result = convertLengthToDifferentUnits(parsedInput, unitsFrom, unitsTo);
   }
 
+  // set result value
+  return result.toFixed(ROUNDING);
+};
+
+export const convertTemperature = function (
+  amount: string,
+  unitsFrom: Temperatures,
+  unitsTo: Temperatures
+) {
+  let parsedInput: number = parseInt(amount);
+
+  // Celcius is baseline
+  let celciusAmount: number;
+  switch (unitsFrom) {
+    case Temperatures.C: {
+      celciusAmount = parsedInput;
+      break;
+    }
+    case Temperatures.F: {
+      celciusAmount = (parsedInput - F_C) * (5 / 9);
+      break;
+    }
+    case Temperatures.K: {
+      celciusAmount = parsedInput - K_C;
+      break;
+    }
+  }
+
+  let result: number;
+  switch (unitsTo) {
+    case Temperatures.C: {
+      result = celciusAmount;
+      break;
+    }
+    case Temperatures.F: {
+      result = celciusAmount * (9 / 5) + F_C;
+      break;
+    }
+    case Temperatures.K: {
+      result = celciusAmount + K_C;
+      break;
+    }
+  }
   // set result value
   return result.toFixed(ROUNDING);
 };
