@@ -4,7 +4,7 @@ import userEvent from "@testing-library/user-event";
 import { selectOption, expectInDocument } from "tests.helper";
 
 import { Categories } from "./app";
-import AppRouting from "routing";
+import AppRouting from "pages/routing";
 
 const CATEGORY_LABEL = "category-input";
 const RESULT_LABEL = "result-input";

@@ -1,10 +1,10 @@
-import App from "components/app/app";
+import App from "pages/app/app";
 import { Navigate, Routes, Route } from "react-router-dom";
 
-import Color from "components/color/color";
-import Length from "components/length/length";
-import Temperature from "components/temperature/temperature";
-import Contrast from "components/contrast/contrast";
+import Color from "pages/color/color";
+import Length from "pages/length/length";
+import Temperature from "pages/temperature/temperature";
+import Contrast from "pages/contrast/contrast";
 
 export default function AppRouting() {
   return (
