@@ -17,8 +17,6 @@ Run the app locally with `yarn start`.
 
 Run `yarn test` to run unit tests.
 
-Run `yarn storybook` to run Storybook.
-
 # Building
 
 Run `yarn build` to compile the app for production.

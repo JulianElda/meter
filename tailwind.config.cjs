@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
 module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  content: ["./src/**/*.{ts,tsx}", "./index.html"],
   theme: {
     fontFamily: {
       mono: "'M PLUS Code Latin'",
