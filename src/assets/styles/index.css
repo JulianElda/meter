@@ -16,7 +16,7 @@
   src: url("MplusCodeLatin60-Regular.woff2") format("woff2");
 }
 
-html {
+body {
   --grid-color: 150;
   text-rendering: optimizeLegibility;
   font-kerning: normal;

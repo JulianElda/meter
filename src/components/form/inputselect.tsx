@@ -1,3 +1,5 @@
+import classes from "./form.module.css";
+
 import { SelectOption } from "./select";
 
 type InputSelectProps = {
@@ -16,7 +18,9 @@ export default function InputSelect(props: InputSelectProps) {
   const getOptions = (): React.ReactNode => {
     return props.options.map((option: SelectOption) => {
       return (
-        <option key={option.value} value={option.value}>
+        <option
+          key={option.value}
+          value={option.value}>
           {option.display}
         </option>
       );
@@ -25,7 +29,9 @@ export default function InputSelect(props: InputSelectProps) {
 
   return (
     <div className="flex-1">
-      <label htmlFor={props.inputId} className="input-label">
+      <label
+        htmlFor={props.inputId}
+        className={classes.label}>
         {props.inputLabel}
       </label>
       <div className="relative mt-1 rounded-md">
@@ -36,10 +42,12 @@ export default function InputSelect(props: InputSelectProps) {
           data-testid={props.inputId}
           value={props.inputValue}
           onChange={(event) => props.onInputChange?.(event.target.value)}
-          className="input-field-text pr-8"
+          className={`${classes.fieldtext} "pr-8"`}
         />
         <div className="absolute inset-y-0 right-0 flex items-center">
-          <label htmlFor={props.selectId} className="sr-only">
+          <label
+            htmlFor={props.selectId}
+            className="sr-only">
             {props.selectLabel}
           </label>
           <select
@@ -48,7 +56,7 @@ export default function InputSelect(props: InputSelectProps) {
             data-testid={props.selectId}
             value={props.selectValue}
             onChange={(event) => props.onSelectChange?.(event.target.value)}
-            className="input-field-selectgroup">
+            className={classes.selectgroup}>
             {getOptions()}
           </select>
         </div>

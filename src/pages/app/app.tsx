@@ -10,6 +10,7 @@ export enum Categories {
   COLOR = "Color",
   TEMPERATURE = "Temperature",
   CONTRAST = "Contrast",
+  PASSWORD = "Password",
 }
 
 const CategoryRoutes = {
@@ -17,6 +18,7 @@ const CategoryRoutes = {
   [Categories.COLOR]: "/color",
   [Categories.TEMPERATURE]: "/temperature",
   [Categories.CONTRAST]: "/contrast",
+  [Categories.PASSWORD]: "/password",
 };
 
 export default function App() {

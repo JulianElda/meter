@@ -10,25 +10,3 @@
 .app-container {
   @apply mx-auto max-w-md;
 }
-
-.input-label {
-  @apply block text-sm font-medium text-gray-800;
-}
-
-.input-field-text {
-  @apply block w-full sm:text-sm
-    bg-white
-    shadow-sm rounded-md
-  focus:ring-sky-300
-  focus:border-sky-300 border-gray-300;
-}
-
-.input-field-selectgroup {
-  @apply h-full sm:text-sm
-    bg-transparent
-    border-transparent
-    rounded-md
-    py-0 pl-2 pr-7
-    focus:ring-sky-300
-    focus:border-sky-300;
-}

@@ -1,3 +1,5 @@
+import classes from "./form.module.css";
+
 type InputProps = {
   id: string;
   label: string;
@@ -8,7 +10,9 @@ type InputProps = {
 export default function Input(props: InputProps) {
   return (
     <div className="flex-1">
-      <label htmlFor={props.id} className="input-label">
+      <label
+        htmlFor={props.id}
+        className={classes.label}>
         {props.label}
       </label>
       <input
@@ -18,7 +22,7 @@ export default function Input(props: InputProps) {
         data-testid={props.id}
         value={props.value}
         onChange={(event) => props.onChange?.(event.target.value)}
-        className="input-field-text"
+        className={classes.fieldtext}
       />
     </div>
   );
