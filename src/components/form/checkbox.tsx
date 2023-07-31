@@ -1,4 +1,4 @@
-import classes from "./form.module.css";
+import styles from "./form.module.css";
 
 type CheckboxProps = {
   id: string;
@@ -18,13 +18,13 @@ export default function Checkbox(props: CheckboxProps) {
           data-testid={props.id}
           checked={props.value}
           onChange={(event) => props.onChange?.(event.target.checked)}
-          className={classes.checkbox}
+          className={styles.checkbox}
         />
       </div>
       <div className="ml-3">
         <label
           htmlFor={props.id}
-          className={classes.label}>
+          className={styles.label}>
           {props.label}
         </label>
       </div>

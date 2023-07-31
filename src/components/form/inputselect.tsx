@@ -1,4 +1,4 @@
-import classes from "./form.module.css";
+import styles from "./form.module.css";
 
 import { SelectOption } from "./select";
 
@@ -31,7 +31,7 @@ export default function InputSelect(props: InputSelectProps) {
     <div className="flex-1">
       <label
         htmlFor={props.inputId}
-        className={classes.label}>
+        className={styles.label}>
         {props.inputLabel}
       </label>
       <div className="relative mt-1 rounded-md">
@@ -42,7 +42,7 @@ export default function InputSelect(props: InputSelectProps) {
           data-testid={props.inputId}
           value={props.inputValue}
           onChange={(event) => props.onInputChange?.(event.target.value)}
-          className={`${classes.fieldtext} "pr-8"`}
+          className={`${styles.fieldtext} "pr-8"`}
         />
         <div className="absolute inset-y-0 right-0 flex items-center">
           <label
@@ -56,7 +56,7 @@ export default function InputSelect(props: InputSelectProps) {
             data-testid={props.selectId}
             value={props.selectValue}
             onChange={(event) => props.onSelectChange?.(event.target.value)}
-            className={classes.selectgroup}>
+            className={styles.selectgroup}>
             {getOptions()}
           </select>
         </div>

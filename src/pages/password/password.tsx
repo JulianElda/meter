@@ -1,8 +1,11 @@
 import { useState } from "react";
-import { generatePassword, isValidNumber } from "util/common";
 
+import Card from "components/card/card";
 import Input from "components/form/input";
 import Checkbox from "components/form/checkbox";
+import Header from "components/header/header";
+
+import { generatePassword, isValidNumber } from "util/common";
 
 export default function Password() {
   const [length, setLength] = useState<string>("16");
@@ -24,46 +27,51 @@ export default function Password() {
   );
 
   return (
-    <div>
-      <div className="flex my-2">
-        <Input
-          id="password-length"
-          label="Password length"
-          value={length}
-          onChange={(value) => onChangeLength(value)}
-        />
+    <>
+      <div>
+        <Header title="Password generator" />
       </div>
-      <div className="flex my-2">
-        <Checkbox
-          id="password-numbers"
-          label="Numbers"
-          value={numbers}
-          onChange={(value) => setNumbers(value)}
-        />
-      </div>
-      <div className="flex my-2">
-        <Checkbox
-          id="password-uppercase"
-          label="Uppercase"
-          value={uppercase}
-          onChange={(value) => setUppercase(value)}
-        />
-      </div>
-      <div className="flex my-2">
-        <Checkbox
-          id="password-special"
-          label="Symbols"
-          value={special}
-          onChange={(value) => setSpecial(value)}
-        />
-      </div>
-      <div className="flex my-2">
-        <Input
-          id="password-password"
-          label="Password"
-          value={password}
-        />
-      </div>
-    </div>
+      <Card>
+        <div className="flex my-2">
+          <Input
+            id="password-length"
+            label="Password length"
+            value={length}
+            onChange={(value) => onChangeLength(value)}
+          />
+        </div>
+        <div className="flex my-2">
+          <Checkbox
+            id="password-numbers"
+            label="Numbers"
+            value={numbers}
+            onChange={(value) => setNumbers(value)}
+          />
+        </div>
+        <div className="flex my-2">
+          <Checkbox
+            id="password-uppercase"
+            label="Uppercase"
+            value={uppercase}
+            onChange={(value) => setUppercase(value)}
+          />
+        </div>
+        <div className="flex my-2">
+          <Checkbox
+            id="password-special"
+            label="Symbols"
+            value={special}
+            onChange={(value) => setSpecial(value)}
+          />
+        </div>
+        <div className="flex my-2">
+          <Input
+            id="password-password"
+            label="Password"
+            value={password}
+          />
+        </div>
+      </Card>
+    </>
   );
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 
 import "assets/styles/index.css";
 import "assets/styles/tailwind.css";
@@ -12,10 +12,13 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <BrowserRouter basename="meter">
+    <HashRouter>
       <Routes>
-        <Route path="/*" element={<AppRouting />} />
+        <Route
+          path="/*"
+          element={<AppRouting />}
+        />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   </React.StrictMode>
 );

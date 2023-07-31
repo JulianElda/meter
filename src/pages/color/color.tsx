@@ -1,6 +1,10 @@
 import { useState } from "react";
-import { hexToRgb, rgbToHex } from "util/conversion";
+
+import Card from "components/card/card";
 import Input from "components/form/input";
+import Header from "components/header/header";
+
+import { hexToRgb, rgbToHex } from "util/conversion";
 
 import styles from "./color.module.css";
 
@@ -21,41 +25,46 @@ export default function Color() {
   };
 
   return (
-    <div>
-      <div className="flex my-2 space-x-2">
-        <Input
-          id="red-input"
-          label="R"
-          value={rgb[0]}
-          onChange={(value) => onChangeRgb([value, rgb[1], rgb[2]])}
-        />
-        <Input
-          id="green-input"
-          label="G"
-          value={rgb[1]}
-          onChange={(value) => onChangeRgb([rgb[0], value, rgb[2]])}
-        />
-        <Input
-          id="blue-input"
-          label="B"
-          value={rgb[2]}
-          onChange={(value) => onChangeRgb([rgb[0], rgb[1], value])}
-        />
+    <>
+      <div>
+        <Header title="Color conversion" />
       </div>
-      <div className="flex my-2">
-        <Input
-          id="hex-input"
-          label="Hex"
-          value={hex}
-          onChange={(value) => onChangeHex(value)}
-        />
-      </div>
-      <div
-        className={styles.preview}
-        style={{ backgroundColor: "#" + hex }}
-        data-testid="preview">
-        &nbsp;
-      </div>
-    </div>
+      <Card>
+        <div className="flex my-2 space-x-2">
+          <Input
+            id="red-input"
+            label="R"
+            value={rgb[0]}
+            onChange={(value) => onChangeRgb([value, rgb[1], rgb[2]])}
+          />
+          <Input
+            id="green-input"
+            label="G"
+            value={rgb[1]}
+            onChange={(value) => onChangeRgb([rgb[0], value, rgb[2]])}
+          />
+          <Input
+            id="blue-input"
+            label="B"
+            value={rgb[2]}
+            onChange={(value) => onChangeRgb([rgb[0], rgb[1], value])}
+          />
+        </div>
+        <div className="flex my-2">
+          <Input
+            id="hex-input"
+            label="Hex"
+            value={hex}
+            onChange={(value) => onChangeHex(value)}
+          />
+        </div>
+        <div
+          className={styles.preview}
+          style={{ backgroundColor: "#" + hex }}
+          data-testid="preview">
+          &nbsp;
+        </div>
+      </Card>
+    </>
   );
 }
