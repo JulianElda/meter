@@ -4,11 +4,11 @@
 }
 
 .container {
-  @apply overflow-y-auto py-5 px-3 h-full
-    bg-white border-r border-gray-200
-    dark:bg-gray-800 dark:border-gray-700;
+  @apply overflow-y-auto py-5 px-1 h-full
+  bg-gray-800 border-r border-gray-200
+  dark:border-gray-700;
 }
 
 .title {
-  @apply font-mono text-2xl text-white pl-4;
+  @apply text-2xl font-semibold text-white pl-4;
 }

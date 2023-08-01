@@ -32,7 +32,7 @@ export default function Password() {
         <Header title="Password generator" />
       </div>
       <Card>
-        <div className="flex my-2">
+        <div className="flex mb-2">
           <Input
             type="number"
             id="password-length"

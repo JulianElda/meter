@@ -3,5 +3,7 @@ export type HeaderProps = {
 };
 
 export default function Header(props: HeaderProps) {
-  return <h1 className="font-mono text-xl mb-4">{props.title}</h1>;
+  return (
+    <h1 className="font-medium text-xl mb-4 text-gray-200">{props.title}</h1>
+  );
 }

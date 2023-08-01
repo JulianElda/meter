@@ -55,7 +55,7 @@ export default function Length() {
         <Header title="Length conversion" />
       </div>
       <Card>
-        <div className="flex my-4">
+        <div className="flex mb-2">
           <InputSelect
             inputId="input-input"
             inputLabel="Input"

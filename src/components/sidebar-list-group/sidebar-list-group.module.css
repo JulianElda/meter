@@ -1,6 +1,10 @@
 .button {
   @apply flex items-center p-2 w-full text-base
-  font-normal text-gray-900
-  rounded-lg transition duration-75
+    font-normal text-gray-900
+    rounded-lg transition duration-75
   hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700;
+}
+
+.title {
+  @apply flex-1 ml-3 text-sm text-gray-300 text-left whitespace-nowrap;
 }

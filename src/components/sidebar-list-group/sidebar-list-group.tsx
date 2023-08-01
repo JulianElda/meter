@@ -13,7 +13,7 @@ export type SidebarListGroupProps = {
 };
 
 export default function SidebarListGroup(props: SidebarListGroupProps) {
-  const [opened, setOpened] = useState<boolean>(false);
+  const [opened, setOpened] = useState<boolean>(true);
 
   return (
     <li>
@@ -23,9 +23,7 @@ export default function SidebarListGroup(props: SidebarListGroupProps) {
         className={styles.button}
         aria-controls={props.id}
         data-collapse-toggle={props.id}>
-        <span className="flex-1 ml-3 text-left whitespace-nowrap">
-          # {props.label}
-        </span>
+        <span className={styles.title}># {props.label}</span>
         <svg
           aria-hidden="true"
           className="w-6 h-6"
@@ -33,9 +31,9 @@ export default function SidebarListGroup(props: SidebarListGroupProps) {
           viewBox="0 0 20 20"
           xmlns="http://www.w3.org/2000/svg">
           <path
-            fill-rule="evenodd"
+            fillRule="evenodd"
             d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-            clip-rule="evenodd"></path>
+            clipRule="evenodd"></path>
         </svg>
       </button>
 
@@ -43,7 +41,10 @@ export default function SidebarListGroup(props: SidebarListGroupProps) {
         id={props.id}
         className={"py-2 space-y-2 " + (opened ? "" : "hidden")}>
         {props.items.map((item) => (
-          <SidebarListItem {...item} />
+          <SidebarListItem
+            {...item}
+            key={item.label}
+          />
         ))}
       </ul>
     </li>

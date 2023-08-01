@@ -30,23 +30,23 @@ export default function Color() {
         <Header title="Color conversion" />
       </div>
       <Card>
-        <div className="flex my-2 space-x-2">
+        <div className="flex mb-2 space-x-2">
           <Input
-            type="number"
+            type="text"
             id="red-input"
             label="R"
             value={rgb[0]}
             onChange={(value) => onChangeRgb([value, rgb[1], rgb[2]])}
           />
           <Input
-            type="number"
+            type="text"
             id="green-input"
             label="G"
             value={rgb[1]}
             onChange={(value) => onChangeRgb([rgb[0], value, rgb[2]])}
           />
           <Input
-            type="number"
+            type="text"
             id="blue-input"
             label="B"
             value={rgb[2]}

@@ -18,13 +18,13 @@ export default function Sidebar() {
   const passwordGroup: SidebarListGroupProps = {
     id: "password-group",
     label: "Password",
-    items: [{ label: "Password", link: "/password" }],
+    items: [{ label: "Password generator", link: "/password" }],
   };
 
   const utilitiesGroup: SidebarListGroupProps = {
     id: "utilities-group",
     label: "Utilities",
-    items: [{ label: "Contrast", link: "/contrast" }],
+    items: [{ label: "Contrast calculator", link: "/contrast" }],
   };
 
   return (
@@ -36,7 +36,7 @@ export default function Sidebar() {
         <ul className="space-y-2">
           <span className={styles.title}>meter</span>
 
-          <hr className="border-t border-gray-200 dark:border-gray-700" />
+          <hr className="border-t border-gray-700" />
 
           <SidebarListGroup {...converterGroup} />
           <SidebarListGroup {...passwordGroup} />

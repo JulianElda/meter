@@ -10,7 +10,7 @@ export default {
 } as ComponentMeta<typeof Header>;
 
 const Template: ComponentStory<typeof Header> = function (args) {
-  return <Header />;
+  return <Header title="meter" />;
 };
 
 export const HeaderComponent = Template.bind({});
