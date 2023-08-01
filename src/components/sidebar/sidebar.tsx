@@ -10,6 +10,7 @@ export default function Sidebar() {
     label: "Converters",
     items: [
       { label: "Length", link: "/length" },
+      { label: "Temperature", link: "/temperature" },
       { label: "Color", link: "/color" },
     ],
   };

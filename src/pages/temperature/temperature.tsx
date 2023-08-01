@@ -1,75 +1,77 @@
 import { useState } from "react";
-import { isValidNumber } from "util/common";
-import { SelectOption } from "components/form/select";
-import InputSelect from "components/form/inputselect";
+
+import Card from "components/card/card";
+import Input from "components/form/input";
+import Header from "components/header/header";
+
 import { Temperatures } from "constants/temperature";
+import { isValidNumber } from "util/common";
 import { convertTemperature } from "util/conversion";
 
-const DEFAULT_INPUT: string = "";
-
 export default function Temperature() {
-  const [units1, setUnits1] = useState<Temperatures>(Temperatures.F);
-  const [units2, setUnits2] = useState<Temperatures>(Temperatures.C);
-
-  const [amount1, setAmount1] = useState<string>("100");
-  const [amount2, setAmount2] = useState<string>(
-    convertTemperature(amount1, units1, units2)
+  const [celcius, setCelcius] = useState<string>("100.000");
+  const [fahrenheit, setFahrenheit] = useState<string>(
+    convertTemperature(celcius, Temperatures.C, Temperatures.F)
+  );
+  const [kelvin, setKelvin] = useState<string>(
+    convertTemperature(celcius, Temperatures.C, Temperatures.K)
   );
 
-  const getOptions = function (): SelectOption[] {
-    let tmp: SelectOption[] = [];
-    for (const key in Temperatures)
-      tmp.push({
-        display: Temperatures[key],
-        value: Temperatures[key],
-      });
-    return tmp;
-  };
-
-  const onChangeAmount1 = function (value: string) {
-    if (value === "") setAmount1(DEFAULT_INPUT);
+  const onChangeCelcius = function (value: string) {
     if (!isValidNumber(value)) return;
-    else setAmount1(value);
-    setAmount2(convertTemperature(value, units1, units2));
+    setCelcius(value);
+    setFahrenheit(convertTemperature(value, Temperatures.C, Temperatures.F));
+    setKelvin(convertTemperature(value, Temperatures.C, Temperatures.K));
   };
 
-  const onChangeUnits1 = function (value: Temperatures) {
-    setUnits1(value);
-    setAmount2(convertTemperature(amount1, value, units2));
+  const onChangeFahrenheit = function (value: string) {
+    if (!isValidNumber(value)) return;
+    setCelcius(convertTemperature(value, Temperatures.F, Temperatures.C));
+    setFahrenheit(value);
+    setKelvin(convertTemperature(value, Temperatures.F, Temperatures.K));
   };
 
-  const onChangeUnits2 = function (value: Temperatures) {
-    setUnits2(value);
-    setAmount2(convertTemperature(amount1, units1, value));
+  const onChangeKelvin = function (value: string) {
+    if (!isValidNumber(value)) return;
+    setCelcius(convertTemperature(value, Temperatures.K, Temperatures.C));
+    setFahrenheit(convertTemperature(value, Temperatures.K, Temperatures.F));
+    setKelvin(value);
   };
 
   return (
-    <div>
-      <div className="flex my-4">
-        <InputSelect
-          inputId="input-input"
-          inputLabel="Input"
-          inputValue={amount1}
-          onInputChange={(value) => onChangeAmount1(value)}
-          selectId="from-input"
-          selectLabel="From"
-          selectValue={units1}
-          onSelectChange={(value) => onChangeUnits1(value as Temperatures)}
-          options={getOptions()}
-        />
+    <>
+      <div>
+        <Header title="Temperature conversion" />
       </div>
-      <div className="flex my-4">
-        <InputSelect
-          inputId="result-input"
-          inputLabel="Result"
-          inputValue={amount2}
-          selectId="to-input"
-          selectLabel="To"
-          selectValue={units2}
-          onSelectChange={(value) => onChangeUnits2(value as Temperatures)}
-          options={getOptions()}
-        />
-      </div>
-    </div>
+      <Card>
+        <div className="flex my-4">
+          <Input
+            type="number"
+            id="celcius-input"
+            label="Celcius"
+            value={celcius}
+            onChange={(value) => onChangeCelcius(value)}
+          />
+        </div>
+        <div className="flex my-4">
+          <Input
+            type="number"
+            id="fahrenheit-input"
+            label="Fahrenheit"
+            value={fahrenheit}
+            onChange={(value) => onChangeFahrenheit(value)}
+          />
+        </div>
+        <div className="flex my-4">
+          <Input
+            type="number"
+            id="kelvin-input"
+            label="Kelvin"
+            value={kelvin}
+            onChange={(value) => onChangeKelvin(value)}
+          />
+        </div>
+      </Card>
+    </>
   );
 }

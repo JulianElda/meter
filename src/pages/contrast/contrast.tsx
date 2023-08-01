@@ -26,18 +26,21 @@ export default function Contrast() {
       <Card>
         <div className="flex my-2 space-x-2">
           <Input
+            type="number"
             id="red-input1"
             label="R"
             value={rgb1[0]}
             onChange={(value) => setRgb1([value, rgb1[1], rgb1[2]])}
           />
           <Input
+            type="number"
             id="green-input1"
             label="G"
             value={rgb1[1]}
             onChange={(value) => setRgb1([rgb1[0], value, rgb1[2]])}
           />
           <Input
+            type="number"
             id="blue-input1"
             label="B"
             value={rgb1[2]}
@@ -46,18 +49,21 @@ export default function Contrast() {
         </div>
         <div className="flex my-2 space-x-2">
           <Input
+            type="number"
             id="red-input2"
             label="R"
             value={rgb2[0]}
             onChange={(value) => setRgb2([value, rgb2[1], rgb2[2]])}
           />
           <Input
+            type="number"
             id="green-input2"
             label="G"
             value={rgb2[1]}
             onChange={(value) => setRgb2([rgb2[0], value, rgb2[2]])}
           />
           <Input
+            type="number"
             id="blue-input1"
             label="B"
             value={rgb2[2]}

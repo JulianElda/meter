@@ -34,6 +34,7 @@ export default function Password() {
       <Card>
         <div className="flex my-2">
           <Input
+            type="number"
             id="password-length"
             label="Password length"
             value={length}
@@ -66,6 +67,7 @@ export default function Password() {
         </div>
         <div className="flex my-2">
           <Input
+            type="text"
             id="password-password"
             label="Password"
             value={password}

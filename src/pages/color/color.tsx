@@ -32,18 +32,21 @@ export default function Color() {
       <Card>
         <div className="flex my-2 space-x-2">
           <Input
+            type="number"
             id="red-input"
             label="R"
             value={rgb[0]}
             onChange={(value) => onChangeRgb([value, rgb[1], rgb[2]])}
           />
           <Input
+            type="number"
             id="green-input"
             label="G"
             value={rgb[1]}
             onChange={(value) => onChangeRgb([rgb[0], value, rgb[2]])}
           />
           <Input
+            type="number"
             id="blue-input"
             label="B"
             value={rgb[2]}
@@ -52,6 +55,7 @@ export default function Color() {
         </div>
         <div className="flex my-2">
           <Input
+            type="text"
             id="hex-input"
             label="Hex"
             value={hex}
