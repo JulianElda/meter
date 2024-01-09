@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-import Card from "components/card/card";
-import Input from "components/form/input";
-import Checkbox from "components/form/checkbox";
-import Header from "components/header/header";
+import Card from "src/components/card/card";
+import Input from "src/components/form/input";
+import Checkbox from "src/components/form/checkbox";
+import Header from "src/components/header/header";
 
-import { generatePassword, isValidNumber } from "util/common";
+import { generatePassword, isValidNumber } from "src/util/common";
 
 export default function Password() {
   const [length, setLength] = useState<string>("16");

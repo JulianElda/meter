@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import SidebarListItem, {
   SidebarListItemProps,
-} from "components/sidebar-list-item/sidebar-list-item";
+} from "src/components/sidebar-list-item/sidebar-list-item";
 
 import styles from "./sidebar-list-group.module.css";
 

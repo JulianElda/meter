@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 
-import Card from "components/card/card";
-import Input from "components/form/input";
-import Header from "components/header/header";
+import Card from "src/components/card/card";
+import Input from "src/components/form/input";
+import Header from "src/components/header/header";
 
-import { calculateContrast } from "util/conversion";
+import { calculateContrast } from "src/util/conversion";
 
 const DEFAULT_RGB1 = ["220", "20", "60"];
 const DEFAULT_RGB2 = ["125", "111", "252"];

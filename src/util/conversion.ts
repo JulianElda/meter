@@ -1,12 +1,12 @@
-import { ROUNDING } from "constants/common";
+import { ROUNDING } from "src/constants/common";
 import {
   INCH_TO_CM,
   LengthConversionTable,
   LengthSystems,
   LengthUnits,
   LengthUnitsSystemsBase,
-} from "constants/length";
-import { Temperatures, F_C, K_C } from "constants/temperature";
+} from "src/constants/length";
+import { Temperatures, F_C, K_C } from "src/constants/temperature";
 
 const decimalToHex = function (fromRgb: string): string {
   let result = parseInt(fromRgb).toString(16);

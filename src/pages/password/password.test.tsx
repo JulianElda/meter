@@ -1,5 +1,5 @@
 import { describe, test } from "vitest";
-import { generatePassword } from "util/common";
+import { generatePassword } from "src/util/common";
 
 describe("Password generator", () => {
   test("generate n-length password", async () => {

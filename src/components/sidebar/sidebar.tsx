@@ -1,6 +1,6 @@
 import SidebarListGroup, {
   SidebarListGroupProps,
-} from "components/sidebar-list-group/sidebar-list-group";
+} from "src/components/sidebar-list-group/sidebar-list-group";
 
 import styles from "./sidebar.module.css";
 
@@ -22,7 +22,7 @@ export default function Sidebar() {
   };
 
   const utilitiesGroup: SidebarListGroupProps = {
-    id: "utilities-group",
+    id: "src/utilities-group",
     label: "Utilities",
     items: [{ label: "Contrast calculator", link: "/contrast" }],
   };

@@ -1,11 +1,9 @@
 import { useState } from "react";
-
-import Card from "components/card/card";
-import Input from "components/form/input";
-import Header from "components/header/header";
-
-import { Temperatures } from "constants/temperature";
-import { convertTemperature } from "util/conversion";
+import Card from "src/components/card/card";
+import Input from "src/components/form/input";
+import Header from "src/components/header/header";
+import { Temperatures } from "src/constants/temperature";
+import { convertTemperature } from "src/util/conversion";
 
 export default function Temperature() {
   const [celcius, setCelcius] = useState<string>("100.00");

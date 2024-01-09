@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { clearInput, expectValue, selectOption, typeInput } from "tests.helper";
 
 import Length from "./length";
-import { LengthUnits } from "constants/length";
+import { LengthUnits } from "src/constants/length";
 
 const FROM_LABEL = "from-input";
 const TO_LABEL = "to-input";
