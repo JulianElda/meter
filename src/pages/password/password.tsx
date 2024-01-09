@@ -1,10 +1,7 @@
 import { useState } from "react";
-
-import Card from "src/components/card/card";
-import Input from "src/components/form/input";
-import Checkbox from "src/components/form/checkbox";
+import { Card } from "@julianelda/scratchpad";
+import { Input, Checkbox } from "@julianelda/scratchpad";
 import Header from "src/components/header/header";
-
 import { generatePassword, isValidNumber } from "src/util/common";
 
 export default function Password() {
@@ -32,7 +29,15 @@ export default function Password() {
         <Header title="Password generator" />
       </div>
       <Card>
-        <div className="flex mb-2">
+        <div className="my-2 flex">
+          <Input
+            id="password-password"
+            type="text"
+            label="Password"
+            value={password}
+          />
+        </div>
+        <div className="mb-2 flex">
           <Input
             type="number"
             id="password-length"
@@ -41,7 +46,7 @@ export default function Password() {
             onChange={(value) => onChangeLength(value)}
           />
         </div>
-        <div className="flex my-2">
+        <div className="my-2 flex">
           <Checkbox
             id="password-numbers"
             label="Numbers"
@@ -49,7 +54,7 @@ export default function Password() {
             onChange={(value) => setNumbers(value)}
           />
         </div>
-        <div className="flex my-2">
+        <div className="my-2 flex">
           <Checkbox
             id="password-uppercase"
             label="Uppercase"
@@ -57,20 +62,12 @@ export default function Password() {
             onChange={(value) => setUppercase(value)}
           />
         </div>
-        <div className="flex my-2">
+        <div className="my-2 flex">
           <Checkbox
             id="password-special"
             label="Symbols"
             value={special}
             onChange={(value) => setSpecial(value)}
-          />
-        </div>
-        <div className="flex my-2">
-          <Input
-            type="text"
-            id="password-password"
-            label="Password"
-            value={password}
           />
         </div>
       </Card>

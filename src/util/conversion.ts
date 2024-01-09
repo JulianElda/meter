@@ -58,7 +58,7 @@ export const convertLengthToDifferentUnits = function (
 
   // convert to base units first
   // e.g. km to cm
-  let baseFrom: number = convertLengthToSameUnits(
+  const baseFrom: number = convertLengthToSameUnits(
     amount,
     unitsFrom,
     LengthUnitsSystemsBase[LengthConversionTable[unitsFrom].system]
@@ -86,7 +86,7 @@ export const convertLength = function (
   unitsTo: LengthUnits
 ): string {
   // input from number field is string type
-  let parsedInput: number = parseInt(amount);
+  const parsedInput: number = parseInt(amount);
 
   let result: number = 0;
 
@@ -111,7 +111,7 @@ export const convertTemperature = function (
   unitsFrom: Temperatures,
   unitsTo: Temperatures
 ) {
-  let parsedInput: number = parseInt(amount);
+  const parsedInput: number = parseInt(amount);
 
   // Celcius is baseline
   let celciusAmount: number;
@@ -159,7 +159,10 @@ export const calculateLuminance = function (r, g, b): number {
 };
 
 // https://www.w3.org/TR/2008/REC-WCAG20-20081211/#contrast-ratiodef
-export const calculateContrast = function (rgb1, rgb2): string {
+export const calculateContrast = function (
+  rgb1: string[],
+  rgb2: string[]
+): string {
   const lum1 = calculateLuminance(rgb1[0], rgb1[1], rgb1[2]);
   const lum2 = calculateLuminance(rgb2[0], rgb2[1], rgb2[2]);
   const brightest = Math.max(lum1, lum2);

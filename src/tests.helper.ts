@@ -1,12 +1,13 @@
 import { screen } from "@testing-library/react";
+import { UserEvent } from "@testing-library/user-event";
 
-export const clearInput = function (user, target: string) {
+export const clearInput = function (user: UserEvent, target: string) {
   const inputElement = screen.getByTestId(target);
   user.clear(inputElement);
 };
 
 export const selectOption = async function (
-  user,
+  user: UserEvent,
   target: string,
   value: string
 ) {
@@ -14,7 +15,11 @@ export const selectOption = async function (
   await user.selectOptions(selectElement, value);
 };
 
-export const typeInput = async function (user, target: string, value: string) {
+export const typeInput = async function (
+  user: UserEvent,
+  target: string,
+  value: string
+) {
   const inputElement = screen.getByTestId(target);
   await user.type(inputElement, value);
 };

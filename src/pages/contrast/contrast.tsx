@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
-
-import Card from "src/components/card/card";
+import { Card } from "@julianelda/scratchpad";
 import Input from "src/components/form/input";
 import Header from "src/components/header/header";
-
 import { calculateContrast } from "src/util/conversion";
 
 const DEFAULT_RGB1 = ["220", "20", "60"];
@@ -24,7 +22,7 @@ export default function Contrast() {
         <Header title="Contrast calculator" />
       </div>
       <Card>
-        <div className="flex my-2 space-x-2">
+        <div className="my-2 flex space-x-2">
           <Input
             type="text"
             id="red-input1"
@@ -47,7 +45,7 @@ export default function Contrast() {
             onChange={(value) => setRgb1([rgb1[0], rgb1[1], value])}
           />
         </div>
-        <div className="flex my-2 space-x-2">
+        <div className="my-2 flex space-x-2">
           <Input
             type="text"
             id="red-input2"

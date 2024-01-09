@@ -1,7 +1,6 @@
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { clearInput, expectValue, typeInput } from "src/tests.helper";
-
 import Temperature from "./temperature";
 
 const CELCIUS_LABEL = "celcius-input";

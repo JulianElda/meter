@@ -1,12 +1,8 @@
 import { useState } from "react";
-
-import Card from "src/components/card/card";
+import { Card } from "@julianelda/scratchpad";
 import Input from "src/components/form/input";
 import Header from "src/components/header/header";
-
 import { hexToRgb, rgbToHex } from "src/util/conversion";
-
-import styles from "./color.module.css";
 
 const DEFAULT_RGB = ["220", "20", "60"];
 
@@ -30,7 +26,7 @@ export default function Color() {
         <Header title="Color conversion" />
       </div>
       <Card>
-        <div className="flex mb-2 space-x-2">
+        <div className="mb-2 flex space-x-2">
           <Input
             type="text"
             id="red-input"
@@ -53,7 +49,7 @@ export default function Color() {
             onChange={(value) => onChangeRgb([rgb[0], rgb[1], value])}
           />
         </div>
-        <div className="flex my-2">
+        <div className="my-2 flex">
           <Input
             type="text"
             id="hex-input"
@@ -63,7 +59,7 @@ export default function Color() {
           />
         </div>
         <div
-          className={styles.preview}
+          className="mt-6 flex rounded-lg border-2 border-solid border-gray-400"
           style={{ backgroundColor: "#" + hex }}
           data-testid="preview">
           &nbsp;

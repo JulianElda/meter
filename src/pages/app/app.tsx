@@ -1,18 +1,16 @@
 import { Outlet } from "react-router-dom";
-
-import Sidebar from "src/components/sidebar/sidebar";
-
-import styles from "./app.module.css";
+import { Footer } from "@julianelda/scratchpad";
 
 export default function App() {
   return (
-    <div>
-      <Sidebar />
-      <div className={styles.container}>
-        <div className={styles.page}>
-          <Outlet />
-        </div>
+    <div className="mx-auto max-w-4xl md:pb-10">
+      <div className="mx-auto max-w-md">
+        <Outlet />
       </div>
+      <Footer
+        label="Julius Polar@GitHub"
+        link="https://github.com/JulianElda/meter"
+      />
     </div>
   );
 }

@@ -1,5 +1,0 @@
-.card {
-  @apply md:bg-gray-800 md:shadow rounded-lg
-    flex-1 flex flex-col
-    sm:p-4;
-}
