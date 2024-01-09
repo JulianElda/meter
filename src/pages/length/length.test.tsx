@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { clearInput, expectValue, selectOption, typeInput } from "tests.helper";
+import { clearInput, expectValue, selectOption, typeInput } from "src/tests.helper";
 
 import Length from "./length";
 import { LengthUnits } from "src/constants/length";

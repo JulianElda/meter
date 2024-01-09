@@ -11,5 +11,5 @@
   "endOfLine": "lf",
   "singleAttributePerLine": true,
   "bracketSameLine": true,
-  "jsxBracketSameLine": true
+  "plugins": ["prettier-plugin-tailwindcss"]
 }

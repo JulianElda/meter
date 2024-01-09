@@ -1,12 +1,18 @@
 /** @type {import('tailwindcss').Config} */
 
 module.exports = {
-  content: ["./src/**/*.{ts,tsx}", "./index.html"],
+  content: [
+    "./src/**/*.{ts,tsx}",
+    "./index.html",
+    "./node_modules/@julianelda/scratchpad/dist/scratchpad.js",
+  ],
   theme: {
+    extend: {},
     fontFamily: {
-      mono: "'M PLUS Code Latin'",
-      sans: "'M PLUS 1'",
+      serif: "'Heliotrope 3'",
+      heading: "'Heliotrope 4'",
     },
   },
+  darkMode: "class",
   plugins: [require("@tailwindcss/forms")],
 };

@@ -5,7 +5,7 @@ test("todo rewrite test", () => {
 import { render, waitFor } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
-import { selectOption, expectInDocument } from "tests.helper";
+import { selectOption, expectInDocument } from "src/tests.helper";
 
 import AppRouting from "pages/routing";
 

@@ -5,7 +5,7 @@ import {
   expectAttribute,
   expectValue,
   typeInput,
-} from "tests.helper";
+} from "src/tests.helper";
 
 import Color from "./color";
 
