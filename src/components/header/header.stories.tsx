@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { storybookStoryDecorator } from "util/storybook";
+import { storybookStoryDecorator } from "src/util/storybook";
 import Header from "./header";
 
 export default {

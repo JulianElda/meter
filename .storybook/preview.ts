@@ -1,8 +1,9 @@
-// import app styles
-import "./../src/assets/styles/index.css";
-import "./../src/assets/styles/tailwind.css";
+import type { Preview } from "@storybook/react";
+import { withThemeByClassName } from "@storybook/addon-themes";
+import "@julianelda/scratchpad/styles.css";
+import "./../src/tailwind.css";
 
-export const parameters = {
+const preview: Preview = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
     matchers: {
@@ -10,4 +11,16 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  decorators: [
+    // @ts-ignore
+    withThemeByClassName({
+      themes: {
+        light: "",
+        dark: "dark",
+      },
+      defaultTheme: "light",
+    }),
+  ],
 };
+
+export default preview;
