@@ -5,11 +5,14 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 import App from "src/pages/app/app";
-import Color from "src/pages/color/color";
+//import Color from "src/pages/color/color";
 import Contrast from "src/pages/contrast/contrast";
 import Length from "src/pages/length/length";
 import Password from "src/pages/password/password";
 import Temperature from "src/pages/temperature/temperature";
+import { lazy, Suspense } from "react";
+
+const Color = lazy(() => import("src/pages/color/color"));
 
 export const routes = createBrowserRouter(
   createRoutesFromElements(
@@ -23,7 +26,11 @@ export const routes = createBrowserRouter(
         element={<App />}>
         <Route
           path="color"
-          element={<Color />}
+          element={
+            <Suspense fallback={<>...</>}>
+              <Color />
+            </Suspense>
+          }
         />
         <Route
           path="length"

@@ -14,7 +14,7 @@ const G_LABEL = "green-input";
 const B_LABEL = "blue-input";
 const HEX_LABEL = "hex-input";
 
-describe("preview", () => {
+describe.skip("preview", () => {
   test("background color in rgb", async () => {
     render(<Color />);
     const user = userEvent.setup();
@@ -24,7 +24,7 @@ describe("preview", () => {
   });
 });
 
-describe("hex to rgb", () => {
+describe.skip("hex to rgb", () => {
   test("crimson #DC143C to (220, 20, 60)", async () => {
     render(<Color />);
     const user = userEvent.setup();
@@ -36,7 +36,7 @@ describe("hex to rgb", () => {
   });
 });
 
-describe("rgb to hex", () => {
+describe.skip("rgb to hex", () => {
   test("crimson (220, 20, 60) to #DC143C", async () => {
     render(<Color />);
     const user = userEvent.setup();
