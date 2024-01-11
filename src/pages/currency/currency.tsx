@@ -4,50 +4,88 @@ import {
   InputLabel,
   SelectField,
 } from "@julianelda/scratchpad";
-import { useState } from "react";
-import type { Currency, Rates } from "./currency-resolver";
+import { useCallback, useEffect, useState } from "react";
 import { isValidNumber } from "src/util/common";
+import fetchCurrencies from "./fetch-currencies";
+import fetchRates from "./fetch-rates";
 
-type CurrencyProps = {
-  currencies: Currency[];
-  rates: Rates;
+type Currency = {
+  value: string;
+  label: string;
 };
+type Rates = Record<string, number>;
 
-export default function Currency(props: CurrencyProps) {
+export default function Currency() {
+  const [currencies, setCurrencies] = useState<Currency[]>([]);
+  const [rates, setRates] = useState<Rates>({});
   const [currency1, setCurrency1] = useState("EUR");
   const [currency2, setCurrency2] = useState("USD");
   const [amount1, setAmount1] = useState("1");
-  const [amount2, setAmount2] = useState(
-    (parseInt(amount1) * props.rates[currency2]).toFixed(2)
+  const [amount2, setAmount2] = useState("");
+
+  const convert12 = useCallback(
+    (value1: string): string => {
+      const currentRate = rates[currency2] || 1;
+      const tmp = (parseInt(value1) * currentRate).toFixed(2);
+      return isValidNumber(tmp) ? tmp : "0";
+    },
+    [currency2, rates]
   );
 
-  const onChangeAmount1 = (value: string) => {
-    if (amount1 === "") setAmount1("0");
-    if (!isValidNumber(value)) setAmount1("0");
-    setAmount1(value);
-    const tmp = (parseInt(value) * props.rates[currency2]).toFixed(2);
-    setAmount2(isValidNumber(tmp) ? tmp : "0");
+  const convert21 = useCallback(
+    (value2: string): string => {
+      const currentRate = rates[currency2] || 1;
+      const tmp = (parseInt(value2) / currentRate).toFixed(2);
+      return isValidNumber(tmp) ? tmp : "0";
+    },
+    [currency2, rates]
+  );
+
+  const onChangeAmount1 = (newAmount1: string) => {
+    if (newAmount1 === "") setAmount1("0");
+    if (!isValidNumber(newAmount1)) setAmount1("0");
+    setAmount1(newAmount1);
+    setAmount2(convert12(newAmount1));
   };
 
-  const onChangeAmount2 = (value: string) => {
-    if (amount2 === "") setAmount2("0");
-    if (!isValidNumber(value)) setAmount2("0");
-    setAmount2(value);
-    const tmp = (parseInt(value) / props.rates[currency2]).toFixed(2);
-    setAmount1(isValidNumber(tmp) ? tmp : "0");
+  const onChangeAmount2 = (newAmount2: string) => {
+    if (newAmount2 === "") setAmount2("0");
+    if (!isValidNumber(newAmount2)) setAmount2("0");
+    setAmount2(newAmount2);
+    setAmount1(convert21(newAmount2));
   };
 
-  const onChangeCurrency1 = (value: string) => {
-    setCurrency1(value);
-    const tmp = (parseInt(value) * props.rates[currency2]).toFixed(2);
-    setAmount2(isValidNumber(tmp) ? tmp : "0");
+  const onChangeCurrency1 = (newCurrency1: string) => {
+    fetch("https://api.frankfurter.app/latest?from=" + currency1)
+      .then((result) => result.json())
+      .then((result) => result.rates)
+      .then((result) => {
+        setRates(result);
+        setCurrency1(newCurrency1);
+        setAmount2(convert12(newCurrency1));
+      });
   };
 
   const onChangeCurrency2 = (value: string) => {
     setCurrency2(value);
-    const tmp = (parseInt(value) * props.rates[currency2]).toFixed(2);
-    setAmount2(isValidNumber(tmp) ? tmp : "0");
+    setAmount2(convert12(value));
   };
+
+  useEffect(() => {
+    fetchCurrencies().then((result) => {
+      setCurrencies(result);
+    });
+  }, []);
+
+  useEffect(() => {
+    fetchRates(currency1).then((result) => {
+      setRates(result);
+    });
+  }, [currency1]);
+
+  useEffect(() => {
+    setAmount2(convert12(amount1));
+  }, [amount1, convert12]);
 
   return (
     <Card>
@@ -68,7 +106,7 @@ export default function Currency(props: CurrencyProps) {
             <SelectField
               id="base-currency"
               value={currency1}
-              options={props.currencies}
+              options={currencies}
               onChange={onChangeCurrency1}
             />
           </div>
@@ -92,7 +130,7 @@ export default function Currency(props: CurrencyProps) {
             <SelectField
               id="target-currency"
               value={currency2}
-              options={props.currencies}
+              options={currencies}
               onChange={onChangeCurrency2}
             />
           </div>

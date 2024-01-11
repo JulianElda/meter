@@ -6,12 +6,12 @@ import {
 } from "react-router-dom";
 import App from "src/pages/app/app";
 //import Color from "src/pages/color/color";
+import { Suspense, lazy } from "react";
 import Contrast from "src/pages/contrast/contrast";
 import Length from "src/pages/length/length";
 import Password from "src/pages/password/password";
 import Temperature from "src/pages/temperature/temperature";
-import { lazy, Suspense } from "react";
-import CurrencyResolver from "./currency/currency-resolver";
+import Currency from "./currency/currency";
 
 const Color = lazy(() => import("src/pages/color/color"));
 
@@ -51,7 +51,7 @@ export const routes = createBrowserRouter(
         />
         <Route
           path="currency"
-          element={<CurrencyResolver />}
+          element={<Currency />}
         />
       </Route>
     </>
