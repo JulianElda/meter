@@ -6,8 +6,6 @@ import {
 } from "@julianelda/scratchpad";
 import { useCallback, useEffect, useState } from "react";
 import { isValidNumber } from "src/util/common";
-import fetchCurrencies from "./fetch-currencies";
-import fetchRates from "./fetch-rates";
 
 type Currency = {
   value: string;
@@ -56,7 +54,7 @@ export default function Currency() {
   };
 
   const onChangeCurrency1 = (newCurrency1: string) => {
-    fetch("https://api.frankfurter.app/latest?from=" + currency1)
+    return fetch("https://api.frankfurter.app/latest?from=" + currency1)
       .then((result) => result.json())
       .then((result) => result.rates)
       .then((result) => {
@@ -72,15 +70,26 @@ export default function Currency() {
   };
 
   useEffect(() => {
-    fetchCurrencies().then((result) => {
-      setCurrencies(result);
-    });
+    fetch("https://api.frankfurter.app/currencies")
+      .then((result) => result.json())
+      .then((result) =>
+        Object.entries(result).map((currencyArray) => ({
+          value: currencyArray[0],
+          label: currencyArray[1] as string,
+        }))
+      )
+      .then((result) => {
+        setCurrencies(result);
+      });
   }, []);
 
   useEffect(() => {
-    fetchRates(currency1).then((result) => {
-      setRates(result);
-    });
+    fetch("https://api.frankfurter.app/latest?from=" + currency1)
+      .then((result) => result.json())
+      .then((result) => result.rates)
+      .then((result) => {
+        setRates(result);
+      });
   }, [currency1]);
 
   useEffect(() => {
