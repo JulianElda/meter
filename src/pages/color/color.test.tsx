@@ -1,75 +1,47 @@
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import {
-  clearInput,
-  expectAttribute,
-  expectValue,
-  typeInput,
-} from "src/tests.helper";
-
+import { clearInput, expectValue, typeInput } from "src/tests.helper";
 import Color from "./color";
 
-const R_LABEL = "red-input";
-const G_LABEL = "green-input";
-const B_LABEL = "blue-input";
-const HEX_LABEL = "hex-input";
+const HEX_LABEL = "color-hex";
+const RGB_LABEL = "color-rgb";
+const HSL_LABEL = "color-hsl";
 
-describe.skip("preview", () => {
-  test("background color in rgb", async () => {
+describe.skip("color conversion", () => {
+  test("intial render: #DC143C rgb(220, 20, 60) hsl(348, 83%, 47%)", () => {
+    render(<Color />);
+    expectValue(HEX_LABEL, "#DC143C");
+    expectValue(RGB_LABEL, "64, 75, 10");
+    expectValue(HSL_LABEL, "348, 83%, 47%");
+  });
+
+  test("change hex", async () => {
     render(<Color />);
     const user = userEvent.setup();
     clearInput(user, HEX_LABEL);
-    await typeInput(user, HEX_LABEL, "DC143C");
-    expectAttribute("preview", "style", "background-color: rgb(220, 20, 60);");
-  });
-});
-
-describe.skip("hex to rgb", () => {
-  test("crimson #DC143C to (220, 20, 60)", async () => {
-    render(<Color />);
-    const user = userEvent.setup();
-    clearInput(user, HEX_LABEL);
-    await typeInput(user, HEX_LABEL, "DC143C");
-    expectValue(R_LABEL, "220");
-    expectValue(G_LABEL, "20");
-    expectValue(B_LABEL, "60");
-  });
-});
-
-describe.skip("rgb to hex", () => {
-  test("crimson (220, 20, 60) to #DC143C", async () => {
-    render(<Color />);
-    const user = userEvent.setup();
-    clearInput(user, R_LABEL);
-    clearInput(user, G_LABEL);
-    clearInput(user, B_LABEL);
-    await typeInput(user, R_LABEL, "220");
-    await typeInput(user, G_LABEL, "20");
-    await typeInput(user, B_LABEL, "60");
-    expectValue(HEX_LABEL, "DC143C");
+    await typeInput(user, HEX_LABEL, "#AFDBF6");
+    expectValue(HEX_LABEL, "#AFDBF6");
+    expectValue(RGB_LABEL, "175, 219, 246");
+    expectValue(HSL_LABEL, "203, 80%, 83%");
   });
 
-  test("black (0, 0, 0) to #000000", async () => {
+  test("change rgb", async () => {
     render(<Color />);
     const user = userEvent.setup();
-    clearInput(user, R_LABEL);
-    clearInput(user, G_LABEL);
-    clearInput(user, B_LABEL);
-    await typeInput(user, R_LABEL, "0");
-    await typeInput(user, G_LABEL, "0");
-    await typeInput(user, B_LABEL, "0");
-    expectValue(HEX_LABEL, "000000");
+    clearInput(user, RGB_LABEL);
+    await typeInput(user, RGB_LABEL, "175, 219, 246");
+    expectValue(HEX_LABEL, "#AFDBF6");
+    expectValue(RGB_LABEL, "175, 219, 246");
+    expectValue(HSL_LABEL, "203, 80%, 83%");
   });
 
-  test("white (255, 255, 255) to #FFFFFF", async () => {
+  test("change hsl", async () => {
     render(<Color />);
     const user = userEvent.setup();
-    clearInput(user, R_LABEL);
-    clearInput(user, G_LABEL);
-    clearInput(user, B_LABEL);
-    await typeInput(user, R_LABEL, "255");
-    await typeInput(user, G_LABEL, "255");
-    await typeInput(user, B_LABEL, "255");
-    expectValue(HEX_LABEL, "FFFFFF");
+    clearInput(user, HSL_LABEL);
+    await typeInput(user, HSL_LABEL, "203, 80%, 83%");
+    expectValue(HEX_LABEL, "#AFDBF6");
+    expectValue(RGB_LABEL, "175, 219, 246");
+    expectValue(HSL_LABEL, "203, 80%, 83%");
   });
 });
