@@ -2191,16 +2191,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@julianelda/scratchpad@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "@julianelda/scratchpad@npm:1.0.0"
+"@julianelda/scratchpad@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "@julianelda/scratchpad@npm:1.0.1"
   peerDependencies:
     "@fortawesome/fontawesome-svg-core": ^6.5.1
     "@fortawesome/free-regular-svg-icons": ^6.5.1
     "@fortawesome/react-fontawesome": ^0.2.0
     react: ^18.2.0
     react-dom: ^18.2.0
-  checksum: ded769af4369bf5f1292788ac2068784b725d80a63e27c01763e14f9773640ab41b4c6e21b0717111879bfff38a2bc3a0fab6769dcb98d2972bae0c4e0b79600
+  checksum: 86f912213402363a7ea6413d83d70201654ccd7a36d0146808eb1dddf0b1047ec6f415eefc9b303c61f007c28abc8b141ba52154e7d25fbf3f3b24748c45a6f2
   languageName: node
   linkType: hard
 
@@ -9120,7 +9120,7 @@ __metadata:
     "@fortawesome/fontawesome-svg-core": "npm:^6.5.1"
     "@fortawesome/free-regular-svg-icons": "npm:^6.5.1"
     "@fortawesome/react-fontawesome": "npm:^0.2.0"
-    "@julianelda/scratchpad": "npm:^1.0.0"
+    "@julianelda/scratchpad": "npm:^1.0.1"
     "@storybook/addon-essentials": "npm:^7.6.7"
     "@storybook/addon-interactions": "npm:^7.6.7"
     "@storybook/addon-links": "npm:^7.6.7"

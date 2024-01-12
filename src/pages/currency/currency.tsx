@@ -1,9 +1,4 @@
-import {
-  Card,
-  InputField,
-  InputLabel,
-  SelectField,
-} from "@julianelda/scratchpad";
+import { Card, InputSelect } from "@julianelda/scratchpad";
 import { useEffect, useReducer, useState } from "react";
 import {
   Rates,
@@ -11,6 +6,7 @@ import {
   currenciesReducer,
   initialCurrencyState,
 } from "./currency.store";
+import Header from "src/components/header/header";
 
 export default function Currency() {
   const [currencies, setCurrencies] = useState<
@@ -94,54 +90,40 @@ export default function Currency() {
   }, [state.currency1]);
 
   return (
-    <Card>
-      <div className="my-2">
-        <InputLabel
-          id="base-amount"
-          label="Amount"
-          hideLabel={true}
-        />
-        <div className="relative rounded-md shadow-sm">
-          <InputField
-            id="base-amount"
-            type="text"
-            value={state.amount1}
-            onChange={onChangeAmount1}
-          />
-          <div className="absolute inset-y-0 right-0 flex items-center">
-            <SelectField
-              id="base-currency"
-              value={state.currency1}
-              options={currencies}
-              onChange={onChangeCurrency1}
-            />
-          </div>
-        </div>
-      </div>
-
+    <>
       <div>
-        <InputLabel
-          id="target-amount"
-          label="Amount"
-          hideLabel={true}
-        />
-        <div className="relative rounded-md shadow-sm">
-          <InputField
-            id="target-amount"
-            type="text"
-            value={state.amount2}
-            onChange={onChangeAmount2}
-          />
-          <div className="absolute inset-y-0 right-0 flex items-center">
-            <SelectField
-              id="target-currency"
-              value={state.currency2}
-              options={currencies}
-              onChange={onChangeCurrency2}
-            />
-          </div>
-        </div>
+        <Header title="Currency conversion" />
       </div>
-    </Card>
+      <Card>
+        <div className="space-y-2">
+          <InputSelect
+            type="text"
+            inputId="base-amount"
+            selectId="base-currency"
+            hideLabel={true}
+            inputLabel="Amount"
+            selectLabel="Base currency"
+            inputValue={state.amount1}
+            onInputChange={onChangeAmount1}
+            options={currencies}
+            selectValue={state.currency1}
+            onSelectChange={onChangeCurrency1}
+          />
+          <InputSelect
+            type="text"
+            inputId="target-amount"
+            selectId="target-currency"
+            hideLabel={true}
+            inputLabel="Amount"
+            selectLabel="Base currency"
+            inputValue={state.amount2}
+            onInputChange={onChangeAmount2}
+            options={currencies}
+            selectValue={state.currency2}
+            onSelectChange={onChangeCurrency2}
+          />
+        </div>
+      </Card>
+    </>
   );
 }

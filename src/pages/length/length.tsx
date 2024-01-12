@@ -1,9 +1,4 @@
-import {
-  Card,
-  InputField,
-  InputLabel,
-  SelectField,
-} from "@julianelda/scratchpad";
+import { Card, InputSelect } from "@julianelda/scratchpad";
 import { useState } from "react";
 import Header from "src/components/header/header";
 import { LengthConversionTable, LengthUnits } from "src/constants/length";
@@ -23,7 +18,7 @@ export default function Length() {
     convertLength(amount1, units1, units2)
   );
 
-  const getOptions = function () {
+  const options = (function () {
     const tmp = [];
     for (const key in LengthConversionTable)
       tmp.push({
@@ -31,7 +26,7 @@ export default function Length() {
         value: LengthConversionTable[key].unit,
       });
     return tmp;
-  };
+  })();
 
   const onChangeAmount1 = function (value: string) {
     if (value === "") setAmount1(DEFAULT_INPUT);
@@ -56,52 +51,33 @@ export default function Length() {
         <Header title="Length conversion" />
       </div>
       <Card>
-        <div className="mb-2">
-          <InputLabel
-            id="from-input"
-            label="Input"
-            hideLabel={false}
+        <div className="space-y-2">
+          <InputSelect
+            type="text"
+            inputId="from-input"
+            selectId="from-select"
+            hideLabel={true}
+            inputLabel="Amount"
+            selectLabel="Length units"
+            inputValue={amount1}
+            onInputChange={onChangeAmount1}
+            options={options}
+            selectValue={units1}
+            onSelectChange={(value) => onChangeUnits1(value as LengthUnits)}
           />
-          <div className="relative mt-2 rounded-md shadow-sm">
-            <InputField
-              id="input-input"
-              type="text"
-              value={amount1}
-              onChange={onChangeAmount1}
-            />
-            <div className="absolute inset-y-0 right-0 flex items-center">
-              <SelectField
-                id="from-input"
-                value={units1}
-                options={getOptions()}
-                onChange={(value) => onChangeUnits1(value as LengthUnits)}
-              />
-            </div>
-          </div>
-        </div>
-
-        <div className="">
-          <InputLabel
-            id="result-input"
-            label="Result"
-            hideLabel={false}
+          <InputSelect
+            type="text"
+            inputId="result-input"
+            selectId="result-select"
+            hideLabel={true}
+            inputLabel="Amount"
+            selectLabel="Length units"
+            inputValue={amount2}
+            onInputChange={() => undefined}
+            options={options}
+            selectValue={units2}
+            onSelectChange={(value) => onChangeUnits2(value as LengthUnits)}
           />
-          <div className="relative mt-2 rounded-md shadow-sm">
-            <InputField
-              id="result-input"
-              type="text"
-              value={amount2}
-              onChange={() => undefined}
-            />
-            <div className="absolute inset-y-0 right-0 flex items-center">
-              <SelectField
-                id="to-input"
-                value={units2}
-                options={getOptions()}
-                onChange={(value) => onChangeUnits2(value as LengthUnits)}
-              />
-            </div>
-          </div>
         </div>
       </Card>
     </>
