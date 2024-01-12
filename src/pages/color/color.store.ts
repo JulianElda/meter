@@ -29,37 +29,37 @@ type ColorStoreActionType = {
 
 function setHexHandler(
   state: ColorState,
-  payload: ColorValueChangePayload
+  { value }: ColorValueChangePayload
 ): ColorState {
   return {
     ...state,
-    hex: payload.value,
-    rgb: hexToRgb(payload.value),
-    hsl: rgbToHSL(hexToRgb(payload.value)),
+    hex: value,
+    rgb: hexToRgb(value),
+    hsl: rgbToHSL(hexToRgb(value)),
   };
 }
 
 function setRgbHandler(
   state: ColorState,
-  payload: ColorValueChangePayload
+  { value }: ColorValueChangePayload
 ): ColorState {
   return {
     ...state,
-    hex: rgbToHex(payload.value),
-    rgb: payload.value,
-    hsl: rgbToHSL(payload.value),
+    hex: rgbToHex(value),
+    rgb: value,
+    hsl: rgbToHSL(value),
   };
 }
 
 function setHslHandler(
   state: ColorState,
-  payload: ColorValueChangePayload
+  { value }: ColorValueChangePayload
 ): ColorState {
   return {
     ...state,
-    hex: rgbToHex(hslToRgb(payload.value)),
-    rgb: hslToRgb(payload.value),
-    hsl: payload.value,
+    hex: rgbToHex(hslToRgb(value)),
+    rgb: hslToRgb(value),
+    hsl: value,
   };
 }
 

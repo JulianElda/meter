@@ -8,17 +8,28 @@ import {
 } from "src/constants/length";
 import { Temperatures, F_C, K_C } from "src/constants/temperature";
 
-export function convertToBase(n: number, base: number) {
+export function convertBaseNumber(
+  n: string,
+  sourceBase: number,
+  targetBase: number
+) {
   if (
-    typeof n !== "number" ||
-    typeof base !== "number" ||
-    base < 2 ||
-    base > 36
+    typeof sourceBase !== "number" ||
+    typeof targetBase !== "number" ||
+    sourceBase < 2 ||
+    sourceBase > 36 ||
+    targetBase < 2 ||
+    targetBase > 36
   ) {
-    return "Invalid input";
+    return "0";
   }
 
-  return n.toString(base);
+  const decimalNumber = parseInt(n, sourceBase);
+  if (isNaN(decimalNumber)) {
+    return "0";
+  }
+
+  return decimalNumber.toString(targetBase);
 }
 
 const decimalToHex = function (fromRgb: string): string {
