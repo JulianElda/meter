@@ -6,9 +6,10 @@ import {
 } from "@julianelda/scratchpad";
 import { useEffect, useReducer, useState } from "react";
 import {
-  initialCurrencyState,
-  currenciesReducer,
+  Rates,
   CurrencyStoreActions,
+  currenciesReducer,
+  initialCurrencyState,
 } from "./currency.store";
 
 export default function Currency() {
@@ -22,7 +23,7 @@ export default function Currency() {
   const [state, dispatch] = useReducer(currenciesReducer, initialCurrencyState);
 
   const onChangeCurrency1 = async (newCurrency1: string) => {
-    const newRates = await fetch(
+    const newRates: Rates = await fetch(
       "https://api.frankfurter.app/latest?from=" + newCurrency1
     )
       .then((result) => result.json())
@@ -82,7 +83,7 @@ export default function Currency() {
     fetch("https://api.frankfurter.app/latest?from=" + state.currency1)
       .then((result) => result.json())
       .then((result) => result.rates)
-      .then((result: Record<string, number>) => {
+      .then((result: Rates) => {
         dispatch({
           type: CurrencyStoreActions.RATE,
           payload: {

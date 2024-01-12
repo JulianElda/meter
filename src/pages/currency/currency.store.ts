@@ -19,22 +19,12 @@ export const initialCurrencyState: CurrencyState = {
 };
 
 export enum CurrencyStoreActions {
-  RATE = "RATE_SET",
-  CURRENCY_1 = "CURRENCY_1_SET",
-  CURRENCY_2 = "CURRENCY_2_SET",
-  AMOUNT_1 = "AMOUNT_1_SET",
-  AMOUNT_2 = "AMOUNT_2_SET",
+  RATE = "RATE",
+  CURRENCY_1 = "CURRENCY_1",
+  CURRENCY_2 = "CURRENCY_2",
+  AMOUNT_1 = "AMOUNT_1",
+  AMOUNT_2 = "AMOUNT_2",
 }
-
-type CurrencyStoreActionType = {
-  type: CurrencyStoreActions;
-  payload:
-    | RateSetPayload
-    | Currency1SetPayload
-    | Currency2SetPayload
-    | Amount1SetPayload
-    | Amount2SetPayload;
-};
 
 type RateSetPayload = {
   newRates: Rates;
@@ -55,6 +45,16 @@ type Amount1SetPayload = {
 
 type Amount2SetPayload = {
   amount2: string;
+};
+
+type CurrencyStoreActionType = {
+  type: CurrencyStoreActions;
+  payload:
+    | RateSetPayload
+    | Currency1SetPayload
+    | Currency2SetPayload
+    | Amount1SetPayload
+    | Amount2SetPayload;
 };
 
 function setRatesHandler(
