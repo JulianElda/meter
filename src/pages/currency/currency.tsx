@@ -4,97 +4,93 @@ import {
   InputLabel,
   SelectField,
 } from "@julianelda/scratchpad";
-import { useCallback, useEffect, useState } from "react";
-import { isValidNumber } from "src/util/common";
-
-type Currency = {
-  value: string;
-  label: string;
-};
-type Rates = Record<string, number>;
+import { useEffect, useReducer, useState } from "react";
+import {
+  initialCurrencyState,
+  currenciesReducer,
+  CurrencyStoreActions,
+} from "./currency.store";
 
 export default function Currency() {
-  const [currencies, setCurrencies] = useState<Currency[]>([]);
-  const [rates, setRates] = useState<Rates>({});
-  const [currency1, setCurrency1] = useState("EUR");
-  const [currency2, setCurrency2] = useState("USD");
-  const [amount1, setAmount1] = useState("1");
-  const [amount2, setAmount2] = useState("");
+  const [currencies, setCurrencies] = useState<
+    {
+      value: string;
+      label: string;
+    }[]
+  >([]);
 
-  const convert12 = useCallback(
-    (value1: string): string => {
-      const currentRate = rates[currency2] || 1;
-      const tmp = (parseInt(value1) * currentRate).toFixed(2);
-      return isValidNumber(tmp) ? tmp : "0";
-    },
-    [currency2, rates]
-  );
+  const [state, dispatch] = useReducer(currenciesReducer, initialCurrencyState);
 
-  const convert21 = useCallback(
-    (value2: string): string => {
-      const currentRate = rates[currency2] || 1;
-      const tmp = (parseInt(value2) / currentRate).toFixed(2);
-      return isValidNumber(tmp) ? tmp : "0";
-    },
-    [currency2, rates]
-  );
+  const onChangeCurrency1 = async (newCurrency1: string) => {
+    const newRates = await fetch(
+      "https://api.frankfurter.app/latest?from=" + newCurrency1
+    )
+      .then((result) => result.json())
+      .then((result) => result.rates);
+    dispatch({
+      type: CurrencyStoreActions.CURRENCY_1,
+      payload: {
+        newRates: newRates,
+        currency1: newCurrency1,
+      },
+    });
+  };
+
+  const onChangeCurrency2 = (newCurrency2: string) => {
+    dispatch({
+      type: CurrencyStoreActions.CURRENCY_2,
+      payload: {
+        currency2: newCurrency2,
+      },
+    });
+  };
 
   const onChangeAmount1 = (newAmount1: string) => {
-    if (newAmount1 === "") setAmount1("0");
-    if (!isValidNumber(newAmount1)) setAmount1("0");
-    setAmount1(newAmount1);
-    setAmount2(convert12(newAmount1));
+    dispatch({
+      type: CurrencyStoreActions.AMOUNT_1,
+      payload: {
+        amount1: newAmount1,
+      },
+    });
   };
 
   const onChangeAmount2 = (newAmount2: string) => {
-    if (newAmount2 === "") setAmount2("0");
-    if (!isValidNumber(newAmount2)) setAmount2("0");
-    setAmount2(newAmount2);
-    setAmount1(convert21(newAmount2));
+    dispatch({
+      type: CurrencyStoreActions.AMOUNT_2,
+      payload: {
+        amount2: newAmount2,
+      },
+    });
   };
 
-  const onChangeCurrency1 = (newCurrency1: string) => {
-    return fetch("https://api.frankfurter.app/latest?from=" + currency1)
+  useEffect(() => {
+    if (currencies.length === 0)
+      fetch("https://api.frankfurter.app/currencies")
+        .then((result) => result.json())
+        .then((result) =>
+          Object.entries(result).map((currencyArray) => ({
+            value: currencyArray[0],
+            label: currencyArray[1] as string,
+          }))
+        )
+        .then((result) => {
+          setCurrencies(result);
+        });
+  }, [currencies]);
+
+  useEffect(() => {
+    fetch("https://api.frankfurter.app/latest?from=" + state.currency1)
       .then((result) => result.json())
       .then((result) => result.rates)
-      .then((result) => {
-        setRates(result);
-        setCurrency1(newCurrency1);
-        setAmount2(convert12(newCurrency1));
+      .then((result: Record<string, number>) => {
+        dispatch({
+          type: CurrencyStoreActions.RATE,
+          payload: {
+            newRates: result,
+          },
+        });
       });
-  };
-
-  const onChangeCurrency2 = (value: string) => {
-    setCurrency2(value);
-    setAmount2(convert12(value));
-  };
-
-  useEffect(() => {
-    fetch("https://api.frankfurter.app/currencies")
-      .then((result) => result.json())
-      .then((result) =>
-        Object.entries(result).map((currencyArray) => ({
-          value: currencyArray[0],
-          label: currencyArray[1] as string,
-        }))
-      )
-      .then((result) => {
-        setCurrencies(result);
-      });
-  }, []);
-
-  useEffect(() => {
-    fetch("https://api.frankfurter.app/latest?from=" + currency1)
-      .then((result) => result.json())
-      .then((result) => result.rates)
-      .then((result) => {
-        setRates(result);
-      });
-  }, [currency1]);
-
-  useEffect(() => {
-    setAmount2(convert12(amount1));
-  }, [amount1, convert12]);
+  }, [state.currency1]);
 
   return (
     <Card>
@@ -108,13 +104,13 @@ export default function Currency() {
           <InputField
             id="base-amount"
             type="text"
-            value={amount1}
+            value={state.amount1}
             onChange={onChangeAmount1}
           />
           <div className="absolute inset-y-0 right-0 flex items-center">
             <SelectField
               id="base-currency"
-              value={currency1}
+              value={state.currency1}
               options={currencies}
               onChange={onChangeCurrency1}
             />
@@ -132,13 +128,13 @@ export default function Currency() {
           <InputField
             id="target-amount"
             type="text"
-            value={amount2}
+            value={state.amount2}
             onChange={onChangeAmount2}
           />
           <div className="absolute inset-y-0 right-0 flex items-center">
             <SelectField
               id="target-currency"
-              value={currency2}
+              value={state.currency2}
               options={currencies}
               onChange={onChangeCurrency2}
             />
