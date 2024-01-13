@@ -8,7 +8,6 @@ import App from "src/pages/app/app";
 //import Color from "src/pages/color/color";
 import { Suspense, lazy } from "react";
 import Base from "src/pages/base/base";
-import Contrast from "src/pages/contrast/contrast";
 import Currency from "src/pages/currency/currency";
 import Length from "src/pages/length/length";
 import Password from "src/pages/password/password";
@@ -43,10 +42,6 @@ export const routes = createBrowserRouter(
           element={<Temperature />}
         />
         <Route
-          path="contrast"
-          element={<Contrast />}
-        />
-        <Route
           path="password"
           element={<Password />}
         />
@@ -63,12 +58,3 @@ export const routes = createBrowserRouter(
   ),
   { basename: "/meter/" }
 );
-/*
-{
-  return (
-    <Routes>
-      
-    </Routes>
-  );
-}
-*/

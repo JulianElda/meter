@@ -1,14 +1,21 @@
-import { ComponentStory, ComponentMeta } from "@storybook/react";
-
+import type { Meta, StoryObj } from "@storybook/react";
 import Length from "./length";
 
-export default {
-  title: "Components/Length",
+const meta: Meta<typeof Length> = {
+  title: "Converters",
   component: Length,
-} as ComponentMeta<typeof Length>;
-
-const Template: ComponentStory<typeof Length> = function () {
-  return <Length />;
+  decorators: [
+    (Story) => (
+      <div className="max-w-md text-lg">
+        <Story />
+      </div>
+    ),
+  ],
 };
 
-export const LengthComponent = Template.bind({});
+export default meta;
+type Story = StoryObj<typeof Length>;
+
+export const LengthPage: Story = {
+  name: "Length converter",
+};

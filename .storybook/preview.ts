@@ -1,6 +1,7 @@
 import type { Preview } from "@storybook/react";
 import { withThemeByClassName } from "@storybook/addon-themes";
-import "@julianelda/scratchpad/styles.css";
+
+import "@julianelda/scratchpad/style.css";
 import "./../src/tailwind.css";
 
 const preview: Preview = {

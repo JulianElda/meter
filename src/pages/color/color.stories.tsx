@@ -1,13 +1,21 @@
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import Color from "./color";
 
-export default {
-  title: "Components/Color",
+const meta: Meta<typeof Color> = {
+  title: "Converters",
   component: Color,
-} as ComponentMeta<typeof Color>;
-
-const Template: ComponentStory<typeof Color> = function () {
-  return <Color />;
+  decorators: [
+    (Story) => (
+      <div className="max-w-md text-lg">
+        <Story />
+      </div>
+    ),
+  ],
 };
 
-export const ColorComponent = Template.bind({});
+export default meta;
+type Story = StoryObj<typeof Color>;
+
+export const ColorPage: Story = {
+  name: "Color converter",
+};

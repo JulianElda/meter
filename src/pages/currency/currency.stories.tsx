@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import Temperature from "./temperature";
+import Currency from "./currency";
 
-const meta: Meta<typeof Temperature> = {
+const meta: Meta<typeof Currency> = {
   title: "Converters",
-  component: Temperature,
+  component: Currency,
   decorators: [
     (Story) => (
       <div className="max-w-md text-lg">
@@ -14,8 +14,8 @@ const meta: Meta<typeof Temperature> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Temperature>;
+type Story = StoryObj<typeof Currency>;
 
-export const TemperaturePage: Story = {
-  name: "Temperature converter",
+export const CurrencyPage: Story = {
+  name: "Currency converter",
 };

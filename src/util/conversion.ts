@@ -106,8 +106,8 @@ export function hslToRgb(hslString: string): string {
   const hslArray = hslString.split(",").map((value) => value.trim());
 
   const h = parseInt(hslArray[0]);
-  const s = parseInt(hslArray[1].replace("%", "")) / 100;
-  const l = parseInt(hslArray[2].replace("%", "")) / 100;
+  const s = parseInt(hslArray[1]?.replace("%", "")) / 100;
+  const l = parseInt(hslArray[2]?.replace("%", "")) / 100;
 
   const c = (1 - Math.abs(2 * l - 1)) * s;
   const x = c * (1 - Math.abs(((h / 60) % 2) - 1));

@@ -2,7 +2,6 @@ import { useReducer } from "react";
 import { Card, Input } from "@julianelda/scratchpad";
 import Header from "src/components/header/header";
 import { ChromePicker } from "react-color";
-import { Canvas } from "canvas";
 import {
   ColorStoreActions,
   colorReducer,
@@ -47,9 +46,6 @@ export default function Color() {
       <Card>
         <ChromePicker
           className="!w-full"
-          renderers={{
-            canvas: Canvas,
-          }}
           color={state.hex}
           onChangeComplete={(value) => onChangeHex(value.hex)}
         />
