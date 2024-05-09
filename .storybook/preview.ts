@@ -5,13 +5,6 @@ import "@julianelda/scratchpad/style.css";
 import "./../src/tailwind.css";
 
 const preview: Preview = {
-  actions: { argTypesRegex: "^on[A-Z].*" },
-  controls: {
-    matchers: {
-      color: /(background|color)$/i,
-      date: /Date$/,
-    },
-  },
   decorators: [
     // @ts-ignore
     withThemeByClassName({
