@@ -55,6 +55,5 @@ export const routes = createBrowserRouter(
         />
       </Route>
     </>
-  ),
-  { basename: "/meter/" }
+  )
 );
