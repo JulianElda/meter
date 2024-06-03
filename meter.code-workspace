@@ -10,7 +10,7 @@
       "*.css": "tailwindcss"
     },
     "files.exclude": {
-      "dist": true,
+      "build": true,
       "coverage": true,
       "node_modules": true,
       "storybook-static": true
