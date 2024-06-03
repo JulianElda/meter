@@ -9,18 +9,18 @@ A converter app, current functions include:
 
 # Installation
 
-Make sure you have `yarn` installed, then `yarn install`.
+Make sure you have `pnpm` installed, then `pnpm install`.
 
 # Development
 
-Run the app locally with `yarn start`.
+Run the app locally with `pnpm start`.
 
-Run `yarn test` to run unit tests.
+Run `pnpm test` to run unit tests.
 
 # Building
 
-Run `yarn build` to compile the app for production.
+Run `pnpm build` to compile the app for production.
 
 # Deployment
 
-Run `yarn deploy` to deploy from `build` directory to gitlab pages.
+Run `pnpm deploy` to deploy from `build` directory to gitlab pages.
