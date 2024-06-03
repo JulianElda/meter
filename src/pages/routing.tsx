@@ -11,43 +11,48 @@ const Color = lazy(() =>
   import("./Color").then((module) => ({ default: module.Color }))
 );
 
-export const routes = createBrowserRouter([
+export const routes = createBrowserRouter(
+  [
+    {
+      path: "",
+      element: <Navigate to="/currency" />,
+    },
+    {
+      path: "/",
+      element: <App />,
+      children: [
+        {
+          path: "color",
+          element: (
+            <Suspense fallback={<>...</>}>
+              <Color />
+            </Suspense>
+          ),
+        },
+        {
+          path: "length",
+          element: <Length />,
+        },
+        {
+          path: "temperature",
+          element: <Temperature />,
+        },
+        {
+          path: "password",
+          element: <Password />,
+        },
+        {
+          path: "currency",
+          element: <Currency />,
+        },
+        {
+          path: "base",
+          element: <Base />,
+        },
+      ],
+    },
+  ],
   {
-    path: "",
-    element: <Navigate to="/currency" />,
-  },
-  {
-    path: "/",
-    element: <App />,
-    children: [
-      {
-        path: "color",
-        element: (
-          <Suspense fallback={<>...</>}>
-            <Color />
-          </Suspense>
-        ),
-      },
-      {
-        path: "length",
-        element: <Length />,
-      },
-      {
-        path: "temperature",
-        element: <Temperature />,
-      },
-      {
-        path: "password",
-        element: <Password />,
-      },
-      {
-        path: "currency",
-        element: <Currency />,
-      },
-      {
-        path: "base",
-        element: <Base />,
-      },
-    ],
-  },
-]);
+    basename: "/meter/",
+  }
+);

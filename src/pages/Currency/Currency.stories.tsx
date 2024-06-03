@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Currency } from "./Currency";
 
 const meta: Meta<typeof Currency> = {
-  title: "Converters",
+  title: "Utilities",
   component: Currency,
   decorators: [
     (Story) => (

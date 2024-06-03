@@ -48,7 +48,7 @@ export function Length() {
   return (
     <>
       <div>
-        <PageHeader title="Length conversion" />
+        <PageHeader title="Length converter" />
       </div>
       <Card>
         <div className="space-y-2">

@@ -34,7 +34,7 @@ export function Temperature() {
   return (
     <>
       <div>
-        <PageHeader title="Temperature conversion" />
+        <PageHeader title="Temperature converter" />
       </div>
       <Card>
         <div className="mb-2 flex">

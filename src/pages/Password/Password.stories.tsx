@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Password } from "./Password";
 
 const meta: Meta<typeof Password> = {
-  title: "Utils",
+  title: "Utilities",
   component: Password,
   decorators: [
     (Story) => (

@@ -41,7 +41,7 @@ export function Color() {
   return (
     <>
       <div>
-        <PageHeader title="Color" />
+        <PageHeader title="Color converter" />
       </div>
       <Card>
         <ChromePicker
