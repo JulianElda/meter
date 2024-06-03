@@ -1,59 +1,53 @@
-import {
-  Navigate,
-  Route,
-  createBrowserRouter,
-  createRoutesFromElements,
-} from "react-router-dom";
-import App from "src/pages/app/app";
-//import Color from "src/pages/color/color";
+import { Navigate, createBrowserRouter } from "react-router-dom";
+import { App } from "./App";
 import { Suspense, lazy } from "react";
-import Base from "src/pages/base/base";
-import Currency from "src/pages/currency/currency";
-import Length from "src/pages/length/length";
-import Password from "src/pages/password/password";
-import Temperature from "src/pages/temperature/temperature";
+import { Base } from "./Base";
+import { Currency } from "./Currency";
+import { Length } from "./Length";
+import { Password } from "./Password";
+import { Temperature } from "./Temperature";
 
-const Color = lazy(() => import("src/pages/color/color"));
-
-export const routes = createBrowserRouter(
-  createRoutesFromElements(
-    <>
-      <Route
-        path=""
-        element={<Navigate to="/color" />}
-      />
-      <Route
-        path="/"
-        element={<App />}>
-        <Route
-          path="color"
-          element={
-            <Suspense fallback={<>...</>}>
-              <Color />
-            </Suspense>
-          }
-        />
-        <Route
-          path="length"
-          element={<Length />}
-        />
-        <Route
-          path="temperature"
-          element={<Temperature />}
-        />
-        <Route
-          path="password"
-          element={<Password />}
-        />
-        <Route
-          path="currency"
-          element={<Currency />}
-        />
-        <Route
-          path="base"
-          element={<Base />}
-        />
-      </Route>
-    </>
-  )
+const Color = lazy(() =>
+  import("./Color").then((module) => ({ default: module.Color }))
 );
+
+export const routes = createBrowserRouter([
+  {
+    path: "",
+    element: <Navigate to="/currency" />,
+  },
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "color",
+        element: (
+          <Suspense fallback={<>...</>}>
+            <Color />
+          </Suspense>
+        ),
+      },
+      {
+        path: "length",
+        element: <Length />,
+      },
+      {
+        path: "temperature",
+        element: <Temperature />,
+      },
+      {
+        path: "password",
+        element: <Password />,
+      },
+      {
+        path: "currency",
+        element: <Currency />,
+      },
+      {
+        path: "base",
+        element: <Base />,
+      },
+    ],
+  },
+]);

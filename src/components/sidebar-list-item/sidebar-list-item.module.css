@@ -1,6 +1,0 @@
-.sidebaritem {
-  @apply flex items-center p-2 pl-11 w-full
-    font-medium
-    text-gray-900 rounded-lg transition duration-75
-    hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700;
-}
