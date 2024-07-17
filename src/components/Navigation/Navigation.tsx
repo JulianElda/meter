@@ -9,6 +9,7 @@ export function Navigation() {
         { title: "Base", href: "/base" },
         { title: "Color", href: "/color" },
         { title: "Length", href: "/length" },
+        { title: "Speed", href: "/speed" },
         { title: "Temperature", href: "/temperature" },
       ],
     },

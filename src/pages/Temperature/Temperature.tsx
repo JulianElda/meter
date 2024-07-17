@@ -2,32 +2,61 @@ import { Card, Input } from "@julianelda/scratchpad";
 import { useState } from "react";
 import { PageHeader } from "src/components/PageHeader";
 import { Temperatures } from "src/constants/temperature";
+import { toFixedRounding } from "src/util/common";
 import { convertTemperature } from "src/util/conversion";
 
 export function Temperature() {
   const [celcius, setCelcius] = useState<string>("100.00");
   const [fahrenheit, setFahrenheit] = useState<string>(
-    convertTemperature(celcius, Temperatures.C, Temperatures.F)
+    toFixedRounding(
+      convertTemperature(parseInt(celcius), Temperatures.C, Temperatures.F)
+    )
   );
   const [kelvin, setKelvin] = useState<string>(
-    convertTemperature(celcius, Temperatures.C, Temperatures.K)
+    toFixedRounding(
+      convertTemperature(parseInt(celcius), Temperatures.C, Temperatures.K)
+    )
   );
 
   const onChangeCelcius = function (value: string) {
     setCelcius(value);
-    setFahrenheit(convertTemperature(value, Temperatures.C, Temperatures.F));
-    setKelvin(convertTemperature(value, Temperatures.C, Temperatures.K));
+    setFahrenheit(
+      toFixedRounding(
+        convertTemperature(parseInt(value), Temperatures.C, Temperatures.F)
+      )
+    );
+    setKelvin(
+      toFixedRounding(
+        convertTemperature(parseInt(value), Temperatures.C, Temperatures.K)
+      )
+    );
   };
 
   const onChangeFahrenheit = function (value: string) {
-    setCelcius(convertTemperature(value, Temperatures.F, Temperatures.C));
+    setCelcius(
+      toFixedRounding(
+        convertTemperature(parseInt(value), Temperatures.F, Temperatures.C)
+      )
+    );
     setFahrenheit(value);
-    setKelvin(convertTemperature(value, Temperatures.F, Temperatures.K));
+    setKelvin(
+      toFixedRounding(
+        convertTemperature(parseInt(value), Temperatures.F, Temperatures.K)
+      )
+    );
   };
 
   const onChangeKelvin = function (value: string) {
-    setCelcius(convertTemperature(value, Temperatures.K, Temperatures.C));
-    setFahrenheit(convertTemperature(value, Temperatures.K, Temperatures.F));
+    setCelcius(
+      toFixedRounding(
+        convertTemperature(parseInt(value), Temperatures.K, Temperatures.C)
+      )
+    );
+    setFahrenheit(
+      toFixedRounding(
+        convertTemperature(parseInt(value), Temperatures.K, Temperatures.F)
+      )
+    );
     setKelvin(value);
   };
 
