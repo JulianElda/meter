@@ -1,4 +1,5 @@
-import { SpeedUnits } from "src/constants/speed";
+import { SpeedUnits } from "@/src/constants/speed";
+import { describe, expect, test } from "vitest";
 import { convertSpeed } from "./speed";
 
 describe("Speed conversion", () => {

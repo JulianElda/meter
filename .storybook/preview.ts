@@ -2,7 +2,7 @@ import type { Preview } from "@storybook/react";
 import { withThemeByClassName } from "@storybook/addon-themes";
 
 import "@julianelda/scratchpad/style.css";
-import "./../src/tailwind.css";
+import "./../app/tailwind.css";
 
 const preview: Preview = {
   decorators: [

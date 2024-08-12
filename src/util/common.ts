@@ -1,4 +1,4 @@
-import { ROUNDING } from "src/constants/common";
+import { ROUNDING } from "@/src/constants/common";
 
 export const isValidNumber = function (value: string) {
   if (value === "") return false;

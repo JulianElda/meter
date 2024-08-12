@@ -1,4 +1,5 @@
-import { TimeUnits } from "src/constants/time";
+import { TimeUnits } from "@/src/constants/time";
+import { describe, expect, test } from "vitest";
 import { convertTime } from "./time";
 
 describe("Time conversion", () => {

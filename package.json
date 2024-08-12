@@ -1,100 +1,55 @@
 {
-  "name": "meter",
-  "version": "1.0.0",
+  "name": "meter-next",
+  "version": "0.1.0",
   "private": true,
-  "homepage": "https://julianelda.github.io/meter/",
-  "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
     "test": "vitest",
-    "lint": "eslint src/",
-    "predeploy": "pnpm build",
-    "deploy": "gh-pages -d build",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@julianelda/scratchpad": "^1.2.0",
+    "@tailwindcss/forms": "^0.5.7",
     "clsx": "^2.1.1",
-    "react": "^18.3.1",
+    "next": "14.2.5",
+    "react": "^18",
     "react-color": "^2.19.3",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^6.23.0"
+    "react-dom": "^18"
   },
   "devDependencies": {
-    "@babel/core": "^7.24.5",
-    "@babel/plugin-syntax-flow": "^7.24.1",
-    "@babel/plugin-transform-react-jsx": "^7.23.4",
-    "@julianelda/scratchpad": "^1.2.0",
-    "@storybook/addon-a11y": "^8.2.4",
-    "@storybook/addon-essentials": "^8.2.4",
-    "@storybook/addon-themes": "^8.2.4",
-    "@storybook/blocks": "^8.2.4",
-    "@storybook/react": "^8.2.4",
-    "@storybook/react-vite": "^8.2.4",
-    "@storybook/test": "^8.2.4",
-    "@tailwindcss/forms": "^0.5.7",
-    "@testing-library/dom": "^10.1.0",
-    "@testing-library/jest-dom": "^6.4.5",
-    "@testing-library/react": "^15.0.7",
+    "@storybook/addon-a11y": "^8.2.8",
+    "@storybook/addon-essentials": "^8.2.8",
+    "@storybook/addon-interactions": "^8.2.8",
+    "@storybook/addon-links": "^8.2.8",
+    "@storybook/addon-onboarding": "^8.2.8",
+    "@storybook/addon-themes": "^8.2.8",
+    "@storybook/blocks": "^8.2.8",
+    "@storybook/nextjs": "^8.2.8",
+    "@storybook/react": "^8.2.8",
+    "@storybook/test": "^8.2.8",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.4.8",
+    "@testing-library/react": "^16.0.0",
     "@testing-library/user-event": "^14.5.2",
-    "@types/node": "^20.12.11",
-    "@types/react": "^18.3.1",
+    "@types/node": "^20",
+    "@types/react": "^18",
     "@types/react-color": "^3.0.12",
-    "@types/react-dom": "^18.3.0",
-    "@typescript-eslint/eslint-plugin": "^6.21.0",
-    "@typescript-eslint/parser": "^6.21.0",
-    "@vitejs/plugin-react": "^4.2.1",
-    "autoprefixer": "^10.4.19",
-    "eslint": "^8.57.0",
-    "eslint-plugin-react": "^7.34.1",
-    "eslint-plugin-react-hooks": "^4.6.2",
-    "eslint-plugin-react-refresh": "^0.4.6",
+    "@types/react-dom": "^18",
+    "@vitejs/plugin-react": "^4.3.1",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.5",
     "eslint-plugin-storybook": "^0.8.0",
-    "eslint-plugin-testing-library": "^6.2.2",
-    "gh-pages": "^6.1.1",
-    "history": "^5.3.0",
-    "jsdom": "^24.0.0",
-    "msw": "^2.3.0",
-    "postcss": "^8.4.38",
-    "prettier": "^3.2.5",
-    "prettier-plugin-tailwindcss": "^0.5.14",
-    "storybook": "^8.2.4",
-    "tailwindcss": "^3.4.3",
-    "typescript": "^5.4.5",
-    "vite": "^5.2.11",
-    "vite-tsconfig-paths": "^4.3.2",
-    "vitest": "^1.6.0"
+    "jsdom": "^24.1.1",
+    "msw": "^2.3.5",
+    "postcss": "^8",
+    "storybook": "^8.2.8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5",
+    "vitest": "^2.0.5"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest",
-      "plugin:storybook/recommended"
-    ],
-    "overrides": [
-      {
-        "files": [
-          "**/*.stories.*"
-        ],
-        "rules": {
-          "import/no-anonymous-default-export": "off"
-        }
-      }
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "packageManager": "pnpm@9.1.4+sha512.9df9cf27c91715646c7d675d1c9c8e41f6fce88246f1318c1aa6a1ed1aeb3c4f032fcdf4ba63cc69c4fe6d634279176b5358727d8f2cc1e65b65f43ce2f8bfb0"
+  "packageManager": "pnpm@9.6.0+sha512.38dc6fba8dba35b39340b9700112c2fe1e12f10b17134715a4aa98ccf7bb035e76fd981cf0bb384dfa98f8d6af5481c2bef2f4266a24bfa20c34eb7147ce0b5e"
 }

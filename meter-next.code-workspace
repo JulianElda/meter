@@ -1,0 +1,27 @@
+{
+  "folders": [
+    {
+      "path": ".",
+    },
+  ],
+  "settings": {
+    "editor.formatOnSave": true,
+    "files.associations": {
+      "*.css": "tailwindcss",
+    },
+    "files.exclude": {
+      "build": true,
+      "coverage": true,
+      "node_modules": true,
+      "storybook-static": true,
+    },
+  },
+  "extensions": {
+    "recommendations": [
+      "bradlc.vscode-tailwindcss",
+      "deque-systems.vscode-axe-linter",
+      "dbaeumer.vscode-eslint",
+      "csstools.postcss",
+    ],
+  },
+}

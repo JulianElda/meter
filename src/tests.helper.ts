@@ -1,5 +1,6 @@
 import { screen } from "@testing-library/react";
 import { UserEvent } from "@testing-library/user-event";
+import { expect } from "vitest";
 
 export const clearInput = function (user: UserEvent, target: string) {
   const inputElement = screen.getByTestId(target);

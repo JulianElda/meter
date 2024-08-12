@@ -1,5 +1,5 @@
-import { SpeedUnits, SpeedUnitsTable } from "src/constants/speed";
-import { convertLength } from "src/util/conversion";
+import { SpeedUnits, SpeedUnitsTable } from "@/src/constants/speed";
+import { convertLength } from "@/src/util/conversion";
 import { convertTime } from "./time";
 
 export const convertSpeed = function (
