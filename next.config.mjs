@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  basePath: "/meter",
+
   async redirects() {
     return [
       {
