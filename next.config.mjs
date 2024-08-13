@@ -1,17 +1,17 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   basePath: "/meter",
-  /*
+
   async redirects() {
     return [
       {
         source: "/",
-        destination: "/currency",
-        permanent: true,
+        destination: "/meter",
+        basePath: false,
+        permanent: false,
       },
     ];
   },
-  */
 };
 
 export default nextConfig;
