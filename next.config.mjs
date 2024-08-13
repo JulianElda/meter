@@ -2,6 +2,7 @@
 const nextConfig = {
   basePath: "/meter",
 
+  /*
   async redirects() {
     return [
       {
@@ -11,6 +12,7 @@ const nextConfig = {
       },
     ];
   },
+  */
 };
 
 export default nextConfig;

@@ -20,7 +20,9 @@ export default function App({
       <div className="flex">
         <Navigation />
         <div className="mx-auto w-full max-w-xl">
-          <div className="w-full flex-col">{children}</div>
+          <div className="w-full flex-col">
+            <main className="text-lg space-y-2">{children}</main>
+          </div>
         </div>
       </div>
 
