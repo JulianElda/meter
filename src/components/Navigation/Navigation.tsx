@@ -18,6 +18,7 @@ export function Navigation() {
       links: [
         { title: "Currency", href: "/currency" },
         { title: "Password", href: "/password" },
+        { title: "RSA key pair generator", href: "/rsa-key-pair-generator" },
       ],
     },
   ];

@@ -45,21 +45,21 @@ export function Base() {
             type="text"
             label="Binary"
             value={state.binary}
-            onChange={onChangeBinary}
+            onChange={(value) => onChangeBinary(value as string)}
           />
           <Input
             id="base-decimal"
             type="text"
             label="Decimal"
             value={state.decimal}
-            onChange={onChangeDecimal}
+            onChange={(value) => onChangeDecimal(value as string)}
           />
           <Input
             id="base-hex"
             type="text"
             label="Hex"
             value={state.hex}
-            onChange={onChangeHex}
+            onChange={(value) => onChangeHex(value as string)}
           />
         </div>
       </Card>

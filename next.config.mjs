@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  /*
   basePath: "/meter",
 
   async redirects() {
@@ -12,6 +13,7 @@ const nextConfig = {
       },
     ];
   },
+  */
 };
 
 export default nextConfig;

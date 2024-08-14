@@ -64,7 +64,7 @@ export function Length() {
             inputLabel="Amount"
             selectLabel="Length units"
             inputValue={amount1}
-            onInputChange={onChangeAmount1}
+            onInputChange={(value) => onChangeAmount1(value as string)}
             options={options}
             selectValue={units1}
             onSelectChange={(value) => onChangeUnits1(value as LengthUnits)}

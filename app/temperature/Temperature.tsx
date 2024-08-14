@@ -72,7 +72,7 @@ export function Temperature() {
             id="celcius-input"
             label="Celcius"
             value={celcius}
-            onChange={(value) => onChangeCelcius(value)}
+            onChange={(value) => onChangeCelcius(value as string)}
           />
         </div>
         <div className="my-2 flex">
@@ -81,7 +81,7 @@ export function Temperature() {
             id="fahrenheit-input"
             label="Fahrenheit"
             value={fahrenheit}
-            onChange={(value) => onChangeFahrenheit(value)}
+            onChange={(value) => onChangeFahrenheit(value as string)}
           />
         </div>
         <div className="my-2 flex">
@@ -90,7 +90,7 @@ export function Temperature() {
             id="kelvin-input"
             label="Kelvin"
             value={kelvin}
-            onChange={(value) => onChangeKelvin(value)}
+            onChange={(value) => onChangeKelvin(value as string)}
           />
         </div>
       </Card>

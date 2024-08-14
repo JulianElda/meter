@@ -55,21 +55,21 @@ export function Color() {
             type="text"
             label="Hex"
             value={state.hex}
-            onChange={onChangeHex}
+            onChange={(value) => onChangeHex(value as string)}
           />
           <Input
             id="color-rgb"
             type="text"
             label="RGB"
             value={state.rgb}
-            onChange={onChangeRgb}
+            onChange={(value) => onChangeRgb(value as string)}
           />
           <Input
             id="color-hsl"
             type="text"
             label="HSL"
             value={state.hsl}
-            onChange={onChangeHsl}
+            onChange={(value) => onChangeHsl(value as string)}
           />
         </div>
       </Card>
