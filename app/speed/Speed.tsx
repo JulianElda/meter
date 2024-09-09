@@ -28,11 +28,13 @@ export function Speed() {
     return tmp;
   })();
 
-  const onChangeAmount1 = function (value: string) {
+  const onChangeAmount1 = function (value: string | number) {
     if (value === "") setAmount1(DEFAULT_INPUT);
-    if (!isValidNumber(value)) return;
-    else setAmount1(value);
-    setAmount2(toFixedRounding(convertSpeed(parseInt(value), units1, units2)));
+    if (!isValidNumber(value as string)) return;
+    else setAmount1(value as string);
+    setAmount2(
+      toFixedRounding(convertSpeed(parseInt(value as string), units1, units2))
+    );
   };
 
   const onChangeUnits1 = function (value: SpeedUnits) {

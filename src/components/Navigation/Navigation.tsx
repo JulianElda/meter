@@ -6,6 +6,7 @@ export function Navigation() {
     {
       title: "Converters",
       links: [
+        { title: "Area", href: "/area" },
         { title: "Base", href: "/base" },
         { title: "Color", href: "/color" },
         { title: "Length", href: "/length" },

@@ -63,6 +63,11 @@ export const generatePassword = function (
   return shuffleCharacters(result);
 };
 
-export const toFixedRounding = function (amount: number) {
+export const toFixedRounding = function (amount: number): string {
   return amount.toFixed(ROUNDING);
+};
+
+export const toFixedRoundingNumber = function (amount: number): number {
+  const rounder = Math.pow(10, ROUNDING);
+  return Math.round(amount * rounder) / rounder;
 };
