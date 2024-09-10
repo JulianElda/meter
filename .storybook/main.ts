@@ -14,7 +14,6 @@ const config: StorybookConfig = {
     name: "@storybook/nextjs",
     options: {},
   },
-  staticDirs: ["../public"],
   core: {
     disableTelemetry: true,
   },

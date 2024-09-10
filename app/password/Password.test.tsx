@@ -1,14 +1,14 @@
-import { generatePassword } from "@/src/util/common";
+import { generateRandomString } from "@/src/util/string";
 import { describe, expect, test } from "vitest";
 
 describe("Password generator", () => {
   test("generate n-length password", async () => {
-    const password = generatePassword(32, true, true, true);
-    expect(password.length).toBe(32);
-  });
-
-  test.skip("generate password with uppercase", async () => {
-    const password = generatePassword(32, true, true, true);
+    const password = generateRandomString({
+      length: 32,
+      numerals: true,
+      special: true,
+      uppercase: true,
+    });
     expect(password.length).toBe(32);
   });
 });

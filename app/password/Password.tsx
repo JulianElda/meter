@@ -1,11 +1,11 @@
 import { PageHeader } from "@/src/components/PageHeader";
-import { generatePassword } from "@/src/util/common";
+import { generateRandomString } from "@/src/util/string";
 import { Card, Checkbox, Input } from "@julianelda/scratchpad";
 import { useState } from "react";
 
 export function Password() {
   const [length, setLength] = useState<number>(16);
-  const [numbers, setNumbers] = useState<boolean>(true);
+  const [numerals, setNumerals] = useState<boolean>(true);
   const [uppercase, setUppercase] = useState<boolean>(true);
   const [special, setSpecial] = useState<boolean>(false);
 
@@ -13,7 +13,12 @@ export function Password() {
     setLength(value);
   };
 
-  const password = generatePassword(length, uppercase, numbers, special);
+  const password = generateRandomString({
+    length,
+    uppercase,
+    numerals,
+    special,
+  });
 
   return (
     <>
@@ -38,8 +43,8 @@ export function Password() {
           <Checkbox
             id="password-numbers"
             label="Numbers"
-            value={numbers}
-            onChange={(value) => setNumbers(value)}
+            value={numerals}
+            onChange={(value) => setNumerals(value)}
           />
           <Checkbox
             id="password-uppercase"
