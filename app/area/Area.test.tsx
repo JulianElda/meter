@@ -11,8 +11,8 @@ const AMOUNT2_INPUT = "result-input";
 
 describe("standard => standard", () => {
   test("1 km²: 0.386 mile²", async () => {
-    render(<Area />);
     const user = userEvent.setup();
+    render(<Area />);
     user.clear(screen.getByTestId(AMOUNT1_INPUT));
     await user.type(screen.getByTestId(AMOUNT1_INPUT), "1");
 
@@ -23,8 +23,8 @@ describe("standard => standard", () => {
   });
 
   test("1 m²: 10.763 ft²", async () => {
-    render(<Area />);
     const user = userEvent.setup();
+    render(<Area />);
     user.clear(screen.getByTestId(AMOUNT1_INPUT));
     await user.type(screen.getByTestId(AMOUNT1_INPUT), "1");
 
@@ -37,8 +37,8 @@ describe("standard => standard", () => {
 
 describe("standard => non-standard", () => {
   test("1 km²: 100 Hectare", async () => {
-    render(<Area />);
     const user = userEvent.setup();
+    render(<Area />);
     user.clear(screen.getByTestId(AMOUNT1_INPUT));
     await user.type(screen.getByTestId(AMOUNT1_INPUT), "1");
 
@@ -49,8 +49,8 @@ describe("standard => non-standard", () => {
   });
 
   test("1 km²: 247.105 Acre", async () => {
-    render(<Area />);
     const user = userEvent.setup();
+    render(<Area />);
     user.clear(screen.getByTestId(AMOUNT1_INPUT));
     await user.type(screen.getByTestId(AMOUNT1_INPUT), "1");
 
@@ -61,8 +61,8 @@ describe("standard => non-standard", () => {
   });
 
   test("1 mi²: 258.999 Hectare", async () => {
-    render(<Area />);
     const user = userEvent.setup();
+    render(<Area />);
     user.clear(screen.getByTestId(AMOUNT1_INPUT));
     await user.type(screen.getByTestId(AMOUNT1_INPUT), "1");
 
@@ -73,8 +73,8 @@ describe("standard => non-standard", () => {
   });
 
   test("1 mi²: 640 Hectare", async () => {
-    render(<Area />);
     const user = userEvent.setup();
+    render(<Area />);
     user.clear(screen.getByTestId(AMOUNT1_INPUT));
     await user.type(screen.getByTestId(AMOUNT1_INPUT), "1");
 
@@ -87,8 +87,8 @@ describe("standard => non-standard", () => {
 
 describe("non-standard => non-standard", () => {
   test("1 Hectare: 2.471 Acre", async () => {
-    render(<Area />);
     const user = userEvent.setup();
+    render(<Area />);
     user.clear(screen.getByTestId(AMOUNT1_INPUT));
     await user.type(screen.getByTestId(AMOUNT1_INPUT), "1");
 
@@ -99,8 +99,8 @@ describe("non-standard => non-standard", () => {
   });
 
   test("1 Acre: 0.405 Hectare", async () => {
-    render(<Area />);
     const user = userEvent.setup();
+    render(<Area />);
     user.clear(screen.getByTestId(AMOUNT1_INPUT));
     await user.type(screen.getByTestId(AMOUNT1_INPUT), "1");
 

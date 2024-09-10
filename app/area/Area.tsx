@@ -1,9 +1,9 @@
+import { PageHeader } from "@/src/components/PageHeader";
+import { AreaUnits, AreaUnitsTable } from "@/src/constants/area";
+import { toFixedRoundingNumber } from "@/src/util/common";
+import { convertArea } from "@/src/util/conversion/area";
 import { Card, InputSelect } from "@julianelda/scratchpad";
 import { useState } from "react";
-import { AreaUnits, AreaUnitsTable } from "@/src/constants/area";
-import { PageHeader } from "@/src/components/PageHeader";
-import { convertArea } from "@/src/util/conversion/area";
-import { toFixedRoundingNumber } from "@/src/util/common";
 
 export function Area() {
   const [units1, setUnits1] = useState<AreaUnits>(AreaUnits.km);

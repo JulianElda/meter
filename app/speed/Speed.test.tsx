@@ -33,7 +33,7 @@ describe("Metric units", () => {
     selectOption(user, UNITS_1, SpeedUnits.m_s);
     selectOption(user, UNITS_2, SpeedUnits.km_h);
     await typeInput(user, AMOUNT1_INPUT, "1");
-    expectValue(AMOUNT2_INPUT, "3.600");
+    expectValue(AMOUNT2_INPUT, "3.6");
   });
 });
 

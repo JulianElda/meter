@@ -1,21 +1,16 @@
+import { PageHeader } from "@/src/components/PageHeader";
+import { SpeedUnits, SpeedUnitsTable } from "@/src/constants/speed";
+import { toFixedRoundingNumber } from "@/src/util/common";
+import { convertSpeed } from "@/src/util/conversion";
 import { Card, InputSelect } from "@julianelda/scratchpad";
 import { useState } from "react";
-import { PageHeader } from "@/src/components/PageHeader";
-import { isValidNumber, toFixedRounding } from "@/src/util/common";
-import { SpeedUnits, SpeedUnitsTable } from "@/src/constants/speed";
-import { convertSpeed } from "@/src/util/conversion";
-
-const DEFAULT_FROM: SpeedUnits = SpeedUnits.mile_h;
-const DEFAULT_TO: SpeedUnits = SpeedUnits.km_h;
-const DEFAULT_INPUT: string = "";
 
 export function Speed() {
-  const [units1, setUnits1] = useState<SpeedUnits>(DEFAULT_FROM);
-  const [units2, setUnits2] = useState<SpeedUnits>(DEFAULT_TO);
-
-  const [amount1, setAmount1] = useState<string>("100");
-  const [amount2, setAmount2] = useState<string>(
-    toFixedRounding(convertSpeed(parseInt(amount1), units1, units2))
+  const [units1, setUnits1] = useState<SpeedUnits>(SpeedUnits.mile_h);
+  const [units2, setUnits2] = useState<SpeedUnits>(SpeedUnits.km_h);
+  const [amount1, setAmount1] = useState<number>(100);
+  const [amount2, setAmount2] = useState<number>(
+    toFixedRoundingNumber(convertSpeed(amount1, units1, units2))
   );
 
   const options = (function () {
@@ -29,22 +24,20 @@ export function Speed() {
   })();
 
   const onChangeAmount1 = function (value: string | number) {
-    if (value === "") setAmount1(DEFAULT_INPUT);
-    if (!isValidNumber(value as string)) return;
-    else setAmount1(value as string);
+    setAmount1(value as number);
     setAmount2(
-      toFixedRounding(convertSpeed(parseInt(value as string), units1, units2))
+      toFixedRoundingNumber(convertSpeed(value as number, units1, units2))
     );
   };
 
   const onChangeUnits1 = function (value: SpeedUnits) {
     setUnits1(value);
-    setAmount2(toFixedRounding(convertSpeed(parseInt(amount1), value, units2)));
+    setAmount2(toFixedRoundingNumber(convertSpeed(amount1, value, units2)));
   };
 
   const onChangeUnits2 = function (value: SpeedUnits) {
     setUnits2(value);
-    setAmount2(toFixedRounding(convertSpeed(parseInt(amount1), units1, value)));
+    setAmount2(toFixedRoundingNumber(convertSpeed(amount1, units1, value)));
   };
 
   return (

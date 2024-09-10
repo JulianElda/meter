@@ -104,7 +104,7 @@ export function Currency() {
             inputLabel="Amount"
             selectLabel="Base currency"
             inputValue={state.amount1}
-            onInputChange={onChangeAmount1}
+            onInputChange={onChangeAmount1 as (value: string | number) => void}
             options={currencies}
             selectValue={state.currency1}
             onSelectChange={onChangeCurrency1}
@@ -117,7 +117,7 @@ export function Currency() {
             inputLabel="Amount"
             selectLabel="Base currency"
             inputValue={state.amount2}
-            onInputChange={onChangeAmount2}
+            onInputChange={onChangeAmount2 as (value: string | number) => void}
             options={currencies}
             selectValue={state.currency2}
             onSelectChange={onChangeCurrency2}
