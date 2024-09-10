@@ -1,6 +1,6 @@
 import { PageHeader } from "@/src/components/PageHeader";
 import { AreaUnits, AreaUnitsTable } from "@/src/constants/area";
-import { toFixedRoundingNumber } from "@/src/util/common";
+import { toFixedRounding } from "@/src/util/common";
 import { convertArea } from "@/src/util/conversion/area";
 import { Card, InputSelect } from "@julianelda/scratchpad";
 import { useState } from "react";
@@ -10,7 +10,7 @@ export function Area() {
   const [units2, setUnits2] = useState<AreaUnits>(AreaUnits.mile);
   const [amount1, setAmount1] = useState<number>(100);
   const [amount2, setAmount2] = useState<number>(
-    toFixedRoundingNumber(convertArea(amount1, units1, units2))
+    toFixedRounding(convertArea(amount1, units1, units2))
   );
 
   const options = (function () {
@@ -25,19 +25,17 @@ export function Area() {
 
   const onChangeAmount1 = function (value: string | number) {
     setAmount1(value as number);
-    setAmount2(
-      toFixedRoundingNumber(convertArea(value as number, units1, units2))
-    );
+    setAmount2(toFixedRounding(convertArea(value as number, units1, units2)));
   };
 
   const onChangeUnits1 = function (value: AreaUnits) {
     setUnits1(value);
-    setAmount2(toFixedRoundingNumber(convertArea(amount1, value, units2)));
+    setAmount2(toFixedRounding(convertArea(amount1, value, units2)));
   };
 
   const onChangeUnits2 = function (value: AreaUnits) {
     setUnits2(value);
-    setAmount2(toFixedRoundingNumber(convertArea(amount1, units1, value)));
+    setAmount2(toFixedRounding(convertArea(amount1, units1, value)));
   };
 
   return (

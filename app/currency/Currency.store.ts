@@ -1,4 +1,4 @@
-import { isValidNumber } from "@/src/util/common";
+import { toFixedRounding } from "@/src/util/common";
 
 export type Rates = Record<string, number>;
 
@@ -6,16 +6,16 @@ export type CurrencyState = {
   rates: Rates;
   currency1: string;
   currency2: string;
-  amount1: string;
-  amount2: string;
+  amount1: number;
+  amount2: number;
 };
 
 export const initialCurrencyState: CurrencyState = {
   rates: {},
   currency1: "EUR",
   currency2: "USD",
-  amount1: "100",
-  amount2: "",
+  amount1: 100,
+  amount2: 0,
 };
 
 export enum CurrencyStoreActions {
@@ -40,11 +40,11 @@ type Currency2SetPayload = {
 };
 
 type Amount1SetPayload = {
-  amount1: string;
+  amount1: number;
 };
 
 type Amount2SetPayload = {
-  amount2: string;
+  amount2: number;
 };
 
 type CurrencyStoreActionType = {
@@ -61,9 +61,9 @@ function setRatesHandler(
   state: CurrencyState,
   payload: RateSetPayload
 ): CurrencyState {
-  const newAmount2 = (
-    parseFloat(state.amount1) * payload.newRates[state.currency2]
-  ).toFixed(2);
+  const newAmount2 = toFixedRounding(
+    state.amount1 * payload.newRates[state.currency2]
+  );
   return {
     ...state,
     rates: payload.newRates,
@@ -75,9 +75,9 @@ function setCurrency1ChangeHandler(
   state: CurrencyState,
   payload: Currency1SetPayload
 ): CurrencyState {
-  const newAmount2 = (
-    parseFloat(state.amount1) * payload.newRates[state.currency2]
-  ).toFixed(2);
+  const newAmount2 = toFixedRounding(
+    state.amount1 * payload.newRates[state.currency2]
+  );
 
   return {
     ...state,
@@ -91,9 +91,9 @@ function setCurrency2ChangeHandler(
   state: CurrencyState,
   payload: Currency2SetPayload
 ): CurrencyState {
-  const newAmount2 = (
-    parseFloat(state.amount1) * state.rates[payload.currency2]
-  ).toFixed(2);
+  const newAmount2 = toFixedRounding(
+    state.amount1 * state.rates[payload.currency2]
+  );
 
   return {
     ...state,
@@ -106,13 +106,12 @@ function setAmount1ChangeHandler(
   state: CurrencyState,
   payload: Amount1SetPayload
 ): CurrencyState {
-  let newAmount2 = "";
-  if (payload.amount1 === "") newAmount2 = "0";
-  else if (!isValidNumber(payload.amount1)) newAmount2 = "0";
+  let newAmount2 = 0;
+  if (!payload.amount1) newAmount2 = 0;
   else {
-    newAmount2 = (
-      parseFloat(payload.amount1) * state.rates[state.currency2]
-    ).toFixed(2);
+    newAmount2 = toFixedRounding(
+      payload.amount1 * state.rates[state.currency2]
+    );
   }
   return {
     ...state,
@@ -125,13 +124,12 @@ function setAmount2ChangeHandler(
   state: CurrencyState,
   payload: Amount2SetPayload
 ): CurrencyState {
-  let newAmount1 = "";
-  if (payload.amount2 === "") newAmount1 = "0";
-  else if (!isValidNumber(payload.amount2)) newAmount1 = "0";
+  let newAmount1 = 0;
+  if (!payload.amount2) newAmount1 = 0;
   else {
-    newAmount1 = (
-      parseFloat(payload.amount2) / state.rates[state.currency2]
-    ).toFixed(2);
+    newAmount1 = toFixedRounding(
+      payload.amount2 / state.rates[state.currency2]
+    );
   }
   return {
     ...state,

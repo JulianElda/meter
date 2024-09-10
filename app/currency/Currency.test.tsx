@@ -1,9 +1,3 @@
-import {
-  clearInput,
-  expectValue,
-  selectOption,
-  typeInput,
-} from "@/src/tests.helper";
 import { screen } from "@testing-library/dom";
 import { render, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
@@ -74,54 +68,62 @@ describe("initial currency conversion", () => {
   test("show initial rates", () => {
     render(<Currency />);
     waitFor(() => {
-      expectValue(AMOUNT1, "100");
-      expectValue(AMOUNT2, "109.46");
+      expect(screen.getByTestId(AMOUNT1)).toHaveValue(100);
+      expect(screen.getByTestId(AMOUNT2)).toHaveValue(109.46);
     });
   });
 
   test("render and type amount 1", async () => {
-    render(<Currency />);
     const user = userEvent.setup();
-    clearInput(user, AMOUNT1);
-    await typeInput(user, AMOUNT1, "200");
-    expectValue(AMOUNT2, "218.92");
+    render(<Currency />);
+
+    await user.clear(screen.getByTestId(AMOUNT1));
+    await user.type(screen.getByTestId(AMOUNT1), "200");
+    expect(screen.getByTestId(AMOUNT2)).toHaveValue(218.92);
   });
 
   test("render and change currency 1", async () => {
-    render(<Currency />);
     const user = userEvent.setup();
+    render(<Currency />);
     await waitFor(() => {
       expect(screen.getByDisplayValue("109.46")).toBeDefined();
     });
-    await selectOption(user, CURRENCY1, "JPY");
-    clearInput(user, AMOUNT1);
-    await typeInput(user, AMOUNT1, "10000");
-    expectValue(AMOUNT2, "68.80");
+
+    await user.selectOptions(screen.getByTestId(CURRENCY1), "JPY");
+    await user.clear(screen.getByTestId(AMOUNT1));
+    await user.type(screen.getByTestId(AMOUNT1), "10000");
+
+    expect(screen.getByTestId(AMOUNT2)).toHaveValue(68.8);
   });
 });
 
 describe("change target currency", () => {
   test("change amount 2", async () => {
-    render(<Currency />);
     const user = userEvent.setup();
+    render(<Currency />);
     await waitFor(() => {
       expect(screen.getByDisplayValue("109.46")).toBeDefined();
     });
-    clearInput(user, AMOUNT2);
-    await typeInput(user, AMOUNT2, "100");
-    expectValue(AMOUNT1, "91.36");
+
+    await user.clear(screen.getByTestId(AMOUNT2));
+    await user.type(screen.getByTestId(AMOUNT2), "100");
+
+    expect(screen.getByTestId(AMOUNT1)).toHaveValue(91.358);
   });
 
   test("change currency 2", async () => {
-    render(<Currency />);
     const user = userEvent.setup();
+    render(<Currency />);
     await waitFor(() => {
       expect(screen.getByDisplayValue("109.46")).toBeDefined();
     });
-    await selectOption(user, CURRENCY2, "JPY");
-    expectValue(AMOUNT2, "15903.00");
-    clearInput(user, AMOUNT1);
-    await typeInput(user, AMOUNT1, "100");
-    expectValue(AMOUNT2, "15903.00");
+
+    await user.selectOptions(screen.getByTestId(CURRENCY2), "JPY");
+    expect(screen.getByTestId(AMOUNT2)).toHaveValue(15903);
+
+    await user.clear(screen.getByTestId(AMOUNT1));
+    await user.type(screen.getByTestId(AMOUNT1), "100");
+
+    expect(screen.getByTestId(AMOUNT2)).toHaveValue(15903);
   });
 });

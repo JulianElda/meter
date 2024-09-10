@@ -1,6 +1,6 @@
 import { PageHeader } from "@/src/components/PageHeader";
 import { LengthConversionTable, LengthUnits } from "@/src/constants/length";
-import { toFixedRoundingNumber } from "@/src/util/common";
+import { toFixedRounding } from "@/src/util/common";
 import { convertLength } from "@/src/util/conversion";
 import { Card, InputSelect } from "@julianelda/scratchpad";
 import { useState } from "react";
@@ -10,7 +10,7 @@ export function Length() {
   const [units2, setUnits2] = useState<LengthUnits>(LengthUnits.mile);
   const [amount1, setAmount1] = useState<number>(100);
   const [amount2, setAmount2] = useState<number>(
-    toFixedRoundingNumber(convertLength(amount1, units1, units2))
+    toFixedRounding(convertLength(amount1, units1, units2))
   );
 
   const options = (function () {
@@ -25,17 +25,17 @@ export function Length() {
 
   const onChangeAmount1 = function (value: number) {
     setAmount1(value);
-    setAmount2(toFixedRoundingNumber(convertLength(value, units1, units2)));
+    setAmount2(toFixedRounding(convertLength(value, units1, units2)));
   };
 
   const onChangeUnits1 = function (value: LengthUnits) {
     setUnits1(value);
-    setAmount2(toFixedRoundingNumber(convertLength(amount1, value, units2)));
+    setAmount2(toFixedRounding(convertLength(amount1, value, units2)));
   };
 
   const onChangeUnits2 = function (value: LengthUnits) {
     setUnits2(value);
-    setAmount2(toFixedRoundingNumber(convertLength(amount1, units1, value)));
+    setAmount2(toFixedRounding(convertLength(amount1, units1, value)));
   };
 
   return (

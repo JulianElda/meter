@@ -1,26 +1,19 @@
+import { PageHeader } from "@/src/components/PageHeader";
+import { generatePassword } from "@/src/util/common";
 import { Card, Checkbox, Input } from "@julianelda/scratchpad";
 import { useState } from "react";
-import { PageHeader } from "@/src/components/PageHeader";
-import { generatePassword, isValidNumber } from "@/src/util/common";
 
 export function Password() {
-  const [length, setLength] = useState<string>("16");
+  const [length, setLength] = useState<number>(16);
   const [numbers, setNumbers] = useState<boolean>(true);
   const [uppercase, setUppercase] = useState<boolean>(true);
   const [special, setSpecial] = useState<boolean>(false);
 
-  const onChangeLength = function (value: string) {
-    if (value === "") setLength("16");
-    if (!isValidNumber(value)) return;
-    else setLength(value);
+  const onChangeLength = function (value: number) {
+    setLength(value);
   };
 
-  const password = generatePassword(
-    parseInt(length),
-    uppercase,
-    numbers,
-    special
-  );
+  const password = generatePassword(length, uppercase, numbers, special);
 
   return (
     <>
@@ -40,7 +33,7 @@ export function Password() {
             id="password-length"
             label="Password length"
             value={length}
-            onChange={(value) => onChangeLength(value)}
+            onChange={onChangeLength as (value: string | number) => void}
           />
           <Checkbox
             id="password-numbers"

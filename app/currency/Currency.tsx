@@ -42,7 +42,7 @@ export function Currency() {
     });
   };
 
-  const onChangeAmount1 = (newAmount1: string) => {
+  const onChangeAmount1 = (newAmount1: number) => {
     dispatch({
       type: CurrencyStoreActions.AMOUNT_1,
       payload: {
@@ -51,7 +51,7 @@ export function Currency() {
     });
   };
 
-  const onChangeAmount2 = (newAmount2: string) => {
+  const onChangeAmount2 = (newAmount2: number) => {
     dispatch({
       type: CurrencyStoreActions.AMOUNT_2,
       payload: {
@@ -97,7 +97,7 @@ export function Currency() {
       <Card>
         <div className="space-y-2">
           <InputSelect
-            type="text"
+            type="number"
             inputId="base-amount"
             selectId="base-currency"
             hideLabel={true}
@@ -110,7 +110,7 @@ export function Currency() {
             onSelectChange={onChangeCurrency1}
           />
           <InputSelect
-            type="text"
+            type="number"
             inputId="target-amount"
             selectId="target-currency"
             hideLabel={true}
