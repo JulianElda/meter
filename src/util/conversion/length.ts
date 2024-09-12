@@ -13,9 +13,9 @@ export const convertLengthToSameUnits = function (
 ): number {
   // convert to base units first
   return (
-    (amount * LengthConversionTable[unitsFrom].base) /
+    (amount * LengthConversionTable[unitsFrom].factor) /
     // now convert to its target unit
-    LengthConversionTable[unitsTo].base
+    LengthConversionTable[unitsTo].factor
   );
 };
 
@@ -47,7 +47,7 @@ export const convertLengthToDifferentUnits = function (
 
   // now convert to its target units
   // e.g. inch to mile
-  return result / LengthConversionTable[unitsTo].base;
+  return result / LengthConversionTable[unitsTo].factor;
 };
 
 export const convertLength = function (

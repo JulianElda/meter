@@ -6,12 +6,12 @@ export enum LengthSystems {
 export enum LengthUnits {
   km = "km",
   m = "m",
-  cm = "cm",
   dm = "dm",
-  inch = "inch",
-  ft = "ft",
+  cm = "cm",
   mile = "mile",
   yard = "yard",
+  ft = "ft",
+  inch = "inch",
 }
 
 export const LengthUnitsSystemsBase: Record<LengthSystems, LengthUnits> = {
@@ -20,67 +20,54 @@ export const LengthUnitsSystemsBase: Record<LengthSystems, LengthUnits> = {
 };
 
 export type LengthDescription = {
-  // name of units
-  unit: LengthUnits;
-
   // imperial or metric
   system: LengthSystems;
 
-  // conversion to their respective "base"
-  base: number;
+  // conversion to their respective base
+  factor: number;
 };
 
 // conversion table
-export const LengthConversionTable: Record<string, LengthDescription> = {
-  km: {
-    unit: LengthUnits.km,
+export const LengthConversionTable: Record<LengthUnits, LengthDescription> = {
+  [LengthUnits.km]: {
     system: LengthSystems.METRIC,
     // 1 km - 1000 m === 10000 cm
-    base: 100000,
+    factor: 100000,
   },
-  m: {
-    unit: LengthUnits.m,
+  [LengthUnits.m]: {
     system: LengthSystems.METRIC,
     // 1 m  - 100 cm
-    base: 100,
+    factor: 100,
   },
-  dm: {
-    unit: LengthUnits.dm,
+  [LengthUnits.dm]: {
     system: LengthSystems.METRIC,
     // 1 dm  - 10 cm
-    base: 10,
+    factor: 10,
   },
-  cm: {
-    unit: LengthUnits.cm,
+  [LengthUnits.cm]: {
     system: LengthSystems.METRIC,
     // 1 cm - 1 cm
-    base: 1,
+    factor: 1,
   },
-
-  // bri'ish units
-  inch: {
-    unit: LengthUnits.inch,
-    system: LengthSystems.IMPERIAL,
-    // 1 inch - 1 inch
-    base: 1,
-  },
-  ft: {
-    unit: LengthUnits.ft,
-    system: LengthSystems.IMPERIAL,
-    // 1 ft - 12 inch
-    base: 12,
-  },
-  yard: {
-    unit: LengthUnits.yard,
-    system: LengthSystems.IMPERIAL,
-    // 1 yard - 36 inch === 3 ft
-    base: 36,
-  },
-  mile: {
-    unit: LengthUnits.mile,
+  [LengthUnits.mile]: {
     system: LengthSystems.IMPERIAL,
     // 1 mile - 63360 inch === 5280 ft === 1760 yard
-    base: 63360,
+    factor: 63360,
+  },
+  [LengthUnits.yard]: {
+    system: LengthSystems.IMPERIAL,
+    // 1 yard - 36 inch === 3 ft
+    factor: 36,
+  },
+  [LengthUnits.ft]: {
+    system: LengthSystems.IMPERIAL,
+    // 1 ft - 12 inch
+    factor: 12,
+  },
+  [LengthUnits.inch]: {
+    system: LengthSystems.IMPERIAL,
+    // 1 inch - 1 inch
+    factor: 1,
   },
 };
 

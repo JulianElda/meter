@@ -17,8 +17,8 @@ export function Length() {
     const tmp = [];
     for (const key in LengthConversionTable)
       tmp.push({
-        label: LengthConversionTable[key].unit as string,
-        value: LengthConversionTable[key].unit,
+        label: key,
+        value: key,
       });
     return tmp;
   })();
