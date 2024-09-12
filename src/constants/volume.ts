@@ -22,7 +22,6 @@ export enum VolumeUnits {
 
 type VolumeUnitsDescription = {
   lengthUnits: LengthUnits;
-  volumeUnits: VolumeUnits;
   factor: number;
 };
 
@@ -44,87 +43,70 @@ const IMPERIAL_OZ_ML = IMPERIAL_GAL_ML / 160;
 export const VolumeUnitsTable: Record<VolumeUnits, VolumeUnitsDescription> = {
   [VolumeUnits.m]: {
     lengthUnits: LengthUnits.m,
-    volumeUnits: VolumeUnits.m,
     factor: 1,
   },
   [VolumeUnits.dm]: {
     lengthUnits: LengthUnits.dm,
-    volumeUnits: VolumeUnits.dm,
     factor: 1,
   },
   [VolumeUnits.cm]: {
     lengthUnits: LengthUnits.cm,
-    volumeUnits: VolumeUnits.cm,
     factor: 1,
   },
   [VolumeUnits.inch]: {
     lengthUnits: LengthUnits.inch,
-    volumeUnits: VolumeUnits.inch,
     factor: 1,
   },
   [VolumeUnits.ft]: {
     lengthUnits: LengthUnits.ft,
-    volumeUnits: VolumeUnits.ft,
     factor: 1,
   },
   [VolumeUnits.yard]: {
     lengthUnits: LengthUnits.yard,
-    volumeUnits: VolumeUnits.yard,
     factor: 1,
   },
   [VolumeUnits.l]: {
     lengthUnits: LengthUnits.dm,
-    volumeUnits: VolumeUnits.dm,
     factor: 1,
   },
   [VolumeUnits.ml]: {
     lengthUnits: LengthUnits.cm,
-    volumeUnits: VolumeUnits.cm,
     factor: 1,
   },
   [VolumeUnits.us_gallon]: {
     lengthUnits: LengthUnits.inch,
-    volumeUnits: VolumeUnits.inch,
     factor: US_GAL_INCH,
   },
   [VolumeUnits.us_quart]: {
     lengthUnits: LengthUnits.inch,
-    volumeUnits: VolumeUnits.inch,
     factor: US_QUART_INCH,
   },
   [VolumeUnits.us_pint]: {
     lengthUnits: LengthUnits.inch,
-    volumeUnits: VolumeUnits.inch,
     factor: US_PINT_INCH,
   },
   [VolumeUnits.us_cup]: {
     lengthUnits: LengthUnits.inch,
-    volumeUnits: VolumeUnits.inch,
     factor: US_CUP_INCH,
   },
   [VolumeUnits.us_oz]: {
     lengthUnits: LengthUnits.inch,
-    volumeUnits: VolumeUnits.inch,
     factor: US_OZ_INCH,
   },
   [VolumeUnits.imperial_gallon]: {
     lengthUnits: LengthUnits.cm,
-    volumeUnits: VolumeUnits.ml,
     factor: IMPERIAL_GAL_ML,
   },
   [VolumeUnits.imperial_quart]: {
     lengthUnits: LengthUnits.cm,
-    volumeUnits: VolumeUnits.ml,
     factor: IMPERIAL_QUART_ML,
   },
   [VolumeUnits.imperial_pint]: {
     lengthUnits: LengthUnits.cm,
-    volumeUnits: VolumeUnits.ml,
     factor: IMPERIAL_PINT_ML,
   },
   [VolumeUnits.imperial_oz]: {
     lengthUnits: LengthUnits.cm,
-    volumeUnits: VolumeUnits.ml,
     factor: IMPERIAL_OZ_ML,
   },
 };

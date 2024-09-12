@@ -1,32 +1,26 @@
+import { LengthUnits } from "@/src/constants/length";
 import { VolumeUnits, VolumeUnitsTable } from "@/src/constants/volume";
 import { convertLength } from "@/src/util/conversion";
 
 /**
  * derivatives of length units are standard units, e.g. m³, mile³
  * while others are derivatives of area units, e.g. US gallon and US quart
+ *
+ * standard units have a factor of 1
  */
 const isStandardVolumeUnits = function (volumeUnits: VolumeUnits) {
-  return VolumeUnitsTable[volumeUnits].volumeUnits === volumeUnits;
+  return VolumeUnitsTable[volumeUnits].factor === 1;
 };
 
 /**
- * return cubed conversion multiplier between two units
+ * return cubed length conversion multiplier between two units
  */
-const convertAreaSI = function (
+const convertVolumeSI = function (
   amount: number,
-  unitsFrom: VolumeUnits,
-  unitsTo: VolumeUnits
+  unitsFrom: LengthUnits,
+  unitsTo: LengthUnits
 ) {
-  return (
-    Math.pow(
-      convertLength(
-        1,
-        VolumeUnitsTable[unitsFrom].lengthUnits,
-        VolumeUnitsTable[unitsTo].lengthUnits
-      ),
-      3
-    ) * amount
-  );
+  return Math.pow(convertLength(1, unitsFrom, unitsTo), 3) * amount;
 };
 
 export const convertVolume = function (
@@ -41,7 +35,11 @@ export const convertVolume = function (
 
   // both units are standard
   if (isStandardVolumeUnits(unitsFrom) && isStandardVolumeUnits(unitsTo)) {
-    return convertAreaSI(amount, unitsFrom, unitsTo);
+    return convertVolumeSI(
+      amount,
+      VolumeUnitsTable[unitsFrom].lengthUnits,
+      VolumeUnitsTable[unitsTo].lengthUnits
+    );
   }
   // standard to non-standard
   else if (
@@ -49,8 +47,11 @@ export const convertVolume = function (
     !isStandardVolumeUnits(unitsTo)
   ) {
     return (
-      convertAreaSI(amount, unitsFrom, VolumeUnitsTable[unitsTo].volumeUnits) /
-      VolumeUnitsTable[unitsTo].factor
+      convertVolumeSI(
+        amount,
+        VolumeUnitsTable[unitsFrom].lengthUnits,
+        VolumeUnitsTable[unitsTo].lengthUnits
+      ) / VolumeUnitsTable[unitsTo].factor
     );
   }
   // non-SI to SI
@@ -59,8 +60,11 @@ export const convertVolume = function (
     isStandardVolumeUnits(unitsTo)
   ) {
     return (
-      convertAreaSI(amount, VolumeUnitsTable[unitsFrom].volumeUnits, unitsTo) *
-      VolumeUnitsTable[unitsFrom].factor
+      convertVolumeSI(
+        amount,
+        VolumeUnitsTable[unitsFrom].lengthUnits,
+        VolumeUnitsTable[unitsTo].lengthUnits
+      ) * VolumeUnitsTable[unitsFrom].factor
     );
   }
   // non-SI to non-SI
@@ -69,7 +73,11 @@ export const convertVolume = function (
     !isStandardVolumeUnits(unitsTo)
   ) {
     return (
-      convertAreaSI(amount, VolumeUnitsTable[unitsFrom].volumeUnits, unitsTo) *
+      convertVolumeSI(
+        amount,
+        VolumeUnitsTable[unitsFrom].lengthUnits,
+        VolumeUnitsTable[unitsTo].lengthUnits
+      ) *
       (VolumeUnitsTable[unitsFrom].factor / VolumeUnitsTable[unitsTo].factor)
     );
   }

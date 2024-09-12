@@ -1,12 +1,14 @@
 import { AreaUnits, AreaUnitsTable } from "@/src/constants/area";
+import { LengthUnits } from "@/src/constants/length";
 import { convertLength } from "@/src/util/conversion";
-
 /**
  * derivatives of length units are standard units, e.g. m², mile²
  * while others are derivatives of area units, e.g. Hectare and Acre
+ *
+ * standard units have a factor of 1
  */
 const isStandardAreaUnits = function (areaUnits: AreaUnits) {
-  return AreaUnitsTable[areaUnits].areaUnits === areaUnits;
+  return AreaUnitsTable[areaUnits].factor === 1;
 };
 
 /**
@@ -14,19 +16,10 @@ const isStandardAreaUnits = function (areaUnits: AreaUnits) {
  */
 const convertAreaSI = function (
   amount: number,
-  unitsFrom: AreaUnits,
-  unitsTo: AreaUnits
+  unitsFrom: LengthUnits,
+  unitsTo: LengthUnits
 ) {
-  return (
-    Math.pow(
-      convertLength(
-        1,
-        AreaUnitsTable[unitsFrom].lengthUnits,
-        AreaUnitsTable[unitsTo].lengthUnits
-      ),
-      2
-    ) * amount
-  );
+  return Math.pow(convertLength(1, unitsFrom, unitsTo), 2) * amount;
 };
 
 export const convertArea = function (
@@ -41,26 +34,40 @@ export const convertArea = function (
 
   // both units are standard
   if (isStandardAreaUnits(unitsFrom) && isStandardAreaUnits(unitsTo)) {
-    return convertAreaSI(amount, unitsFrom, unitsTo);
+    return convertAreaSI(
+      amount,
+      AreaUnitsTable[unitsFrom].lengthUnits,
+      AreaUnitsTable[unitsTo].lengthUnits
+    );
   }
   // standard to non-standard
   else if (isStandardAreaUnits(unitsFrom) && !isStandardAreaUnits(unitsTo)) {
     return (
-      convertAreaSI(amount, unitsFrom, AreaUnitsTable[unitsTo].areaUnits) /
-      AreaUnitsTable[unitsTo].factor
+      convertAreaSI(
+        amount,
+        AreaUnitsTable[unitsFrom].lengthUnits,
+        AreaUnitsTable[unitsTo].lengthUnits
+      ) / AreaUnitsTable[unitsTo].factor
     );
   }
   // non-SI to SI
   else if (!isStandardAreaUnits(unitsFrom) && isStandardAreaUnits(unitsTo)) {
     return (
-      convertAreaSI(amount, AreaUnitsTable[unitsFrom].areaUnits, unitsTo) *
-      AreaUnitsTable[unitsFrom].factor
+      convertAreaSI(
+        amount,
+        AreaUnitsTable[unitsFrom].lengthUnits,
+        AreaUnitsTable[unitsTo].lengthUnits
+      ) * AreaUnitsTable[unitsFrom].factor
     );
   }
   // non-SI to non-SI
   else if (!isStandardAreaUnits(unitsFrom) && !isStandardAreaUnits(unitsTo)) {
     return (
-      convertAreaSI(amount, AreaUnitsTable[unitsFrom].areaUnits, unitsTo) *
+      convertAreaSI(
+        amount,
+        AreaUnitsTable[unitsFrom].lengthUnits,
+        AreaUnitsTable[unitsTo].lengthUnits
+      ) *
       (AreaUnitsTable[unitsFrom].factor / AreaUnitsTable[unitsTo].factor)
     );
   }
