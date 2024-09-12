@@ -12,6 +12,7 @@ export function Navigation() {
         { title: "Length", href: "/length" },
         { title: "Speed", href: "/speed" },
         { title: "Temperature", href: "/temperature" },
+        { title: "Volume", href: "/volume" },
       ],
     },
     {

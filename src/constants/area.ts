@@ -12,7 +12,7 @@ export enum AreaUnits {
   acre = "Acre",
 }
 
-export type AreaUnitsDescription = {
+type AreaUnitsDescription = {
   lengthUnits: LengthUnits;
   areaUnits: AreaUnits;
   factor: number;

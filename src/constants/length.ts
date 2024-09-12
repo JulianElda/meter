@@ -7,6 +7,7 @@ export enum LengthUnits {
   km = "km",
   m = "m",
   cm = "cm",
+  dm = "dm",
   inch = "inch",
   ft = "ft",
   mile = "mile",
@@ -42,6 +43,12 @@ export const LengthConversionTable: Record<string, LengthDescription> = {
     system: LengthSystems.METRIC,
     // 1 m  - 100 cm
     base: 100,
+  },
+  dm: {
+    unit: LengthUnits.dm,
+    system: LengthSystems.METRIC,
+    // 1 dm  - 10 cm
+    base: 10,
   },
   cm: {
     unit: LengthUnits.cm,
