@@ -3,9 +3,14 @@
 A converter app, current functions include:
 
 - length
+- area
+- volume
+- speed
+- time
+- weight
 - temperature
 - color
-- color contrast
+- base
 
 # Installation
 
