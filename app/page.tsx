@@ -10,7 +10,7 @@ const content = `
 ## Author
 
 This website is developed by [Julius Polar](https://julianelda.io/).
-You can find the source code in [GitLab](https://github.com/JulianElda/meter).
+You can find the source code in [GitHub](https://github.com/JulianElda/meter).
 `;
 
 export default function RootPage() {
