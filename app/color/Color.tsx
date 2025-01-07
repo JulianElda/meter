@@ -14,27 +14,21 @@ export function Color() {
   const onChangeHex = (newHex: string) => {
     dispatch({
       type: ColorStoreActions.HEX,
-      payload: {
-        value: newHex.toUpperCase(),
-      },
+      payload: newHex.toUpperCase(),
     });
   };
 
   const onChangeRgb = (newRgb: string) => {
     dispatch({
       type: ColorStoreActions.RGB,
-      payload: {
-        value: newRgb,
-      },
+      payload: newRgb,
     });
   };
 
   const onChangeHsl = (newHsl: string) => {
     dispatch({
       type: ColorStoreActions.HSL,
-      payload: {
-        value: newHsl,
-      },
+      payload: newHsl,
     });
   };
 

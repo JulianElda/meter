@@ -1,6 +1,6 @@
 import { hexToRgb, rgbToHex, rgbToHSL, hslToRgb } from "@/src/util/conversion";
 
-export type ColorState = {
+type ColorState = {
   hex: string;
   rgb: string;
   hsl: string;
@@ -13,64 +13,48 @@ export const initialColorState = {
 };
 
 export enum ColorStoreActions {
-  HEX = "HEX",
-  RGB = "RGB",
-  HSL = "HSL",
+  HEX,
+  RGB,
+  HSL,
 }
-
-type ColorValueChangePayload = {
-  value: string;
-};
 
 type ColorStoreActionType = {
   type: ColorStoreActions;
-  payload: ColorValueChangePayload;
+  payload: string;
 };
 
-function setHexHandler(
-  state: ColorState,
-  { value }: ColorValueChangePayload
-): ColorState {
+function setHexHandler(payload: string): ColorState {
   return {
-    ...state,
-    hex: value,
-    rgb: hexToRgb(value),
-    hsl: rgbToHSL(hexToRgb(value)),
+    hex: payload,
+    rgb: hexToRgb(payload),
+    hsl: rgbToHSL(hexToRgb(payload)),
   };
 }
 
-function setRgbHandler(
-  state: ColorState,
-  { value }: ColorValueChangePayload
-): ColorState {
+function setRgbHandler(payload: string): ColorState {
   return {
-    ...state,
-    hex: rgbToHex(value),
-    rgb: value,
-    hsl: rgbToHSL(value),
+    hex: rgbToHex(payload),
+    rgb: payload,
+    hsl: rgbToHSL(payload),
   };
 }
 
-function setHslHandler(
-  state: ColorState,
-  { value }: ColorValueChangePayload
-): ColorState {
+function setHslHandler(payload: string): ColorState {
   return {
-    ...state,
-    hex: rgbToHex(hslToRgb(value)),
-    rgb: hslToRgb(value),
-    hsl: value,
+    hex: rgbToHex(hslToRgb(payload)),
+    rgb: hslToRgb(payload),
+    hsl: payload,
   };
 }
 
 export function colorReducer(state: ColorState, action: ColorStoreActionType) {
   switch (action.type) {
     case ColorStoreActions.HEX:
-      return setHexHandler(state, action.payload);
+      return setHexHandler(action.payload);
     case ColorStoreActions.RGB:
-      return setRgbHandler(state, action.payload);
+      return setRgbHandler(action.payload);
     case ColorStoreActions.HSL:
-      return setHslHandler(state, action.payload);
+      return setHslHandler(action.payload);
     default:
       return state;
   }

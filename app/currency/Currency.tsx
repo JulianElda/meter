@@ -18,45 +18,31 @@ export function Currency() {
 
   const [state, dispatch] = useReducer(currenciesReducer, initialCurrencyState);
 
-  const onChangeCurrency1 = async (newCurrency1: string) => {
-    const newRates: Rates = await fetch(
-      "https://api.frankfurter.app/latest?from=" + newCurrency1
-    )
-      .then((result) => result.json())
-      .then((result) => result.rates);
+  const onChangeCurrency1 = (newCurrency1: string) => {
     dispatch({
       type: CurrencyStoreActions.CURRENCY_1,
-      payload: {
-        newRates: newRates,
-        currency1: newCurrency1,
-      },
+      payload: newCurrency1,
     });
   };
 
   const onChangeCurrency2 = (newCurrency2: string) => {
     dispatch({
       type: CurrencyStoreActions.CURRENCY_2,
-      payload: {
-        currency2: newCurrency2,
-      },
+      payload: newCurrency2,
     });
   };
 
   const onChangeAmount1 = (newAmount1: number) => {
     dispatch({
       type: CurrencyStoreActions.AMOUNT_1,
-      payload: {
-        amount1: newAmount1,
-      },
+      payload: newAmount1,
     });
   };
 
   const onChangeAmount2 = (newAmount2: number) => {
     dispatch({
       type: CurrencyStoreActions.AMOUNT_2,
-      payload: {
-        amount2: newAmount2,
-      },
+      payload: newAmount2,
     });
   };
 
@@ -82,9 +68,7 @@ export function Currency() {
       .then((result: Rates) => {
         dispatch({
           type: CurrencyStoreActions.RATE,
-          payload: {
-            newRates: result,
-          },
+          payload: result,
         });
       });
   }, [state.currency1]);

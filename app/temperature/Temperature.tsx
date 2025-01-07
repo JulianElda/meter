@@ -1,47 +1,37 @@
 import { PageHeader } from "@/src/components/PageHeader";
-import { Temperatures } from "@/src/constants/temperature";
-import { toFixedRounding } from "@/src/util/common";
-import { convertTemperature } from "@/src/util/conversion";
 import { Card, Input } from "@julianelda/scratchpad";
-import { useState } from "react";
+import { useReducer } from "react";
+import {
+  initialTemperatureState,
+  temperatureReducer,
+  TemperatureStoreActions,
+} from "./Temperature.store";
 
 export function Temperature() {
-  const [celcius, setCelcius] = useState<number>(100);
-  const [fahrenheit, setFahrenheit] = useState<number>(
-    toFixedRounding(convertTemperature(celcius, Temperatures.C, Temperatures.F))
-  );
-  const [kelvin, setKelvin] = useState<number>(
-    toFixedRounding(convertTemperature(celcius, Temperatures.C, Temperatures.K))
+  const [state, dispatch] = useReducer(
+    temperatureReducer,
+    initialTemperatureState
   );
 
   const onChangeCelcius = function (value: number) {
-    setCelcius(value);
-    setFahrenheit(
-      toFixedRounding(convertTemperature(value, Temperatures.C, Temperatures.F))
-    );
-    setKelvin(
-      toFixedRounding(convertTemperature(value, Temperatures.C, Temperatures.K))
-    );
+    dispatch({
+      type: TemperatureStoreActions.celcius,
+      payload: value,
+    });
   };
 
   const onChangeFahrenheit = function (value: number) {
-    setCelcius(
-      toFixedRounding(convertTemperature(value, Temperatures.F, Temperatures.C))
-    );
-    setFahrenheit(value);
-    setKelvin(
-      toFixedRounding(convertTemperature(value, Temperatures.F, Temperatures.K))
-    );
+    dispatch({
+      type: TemperatureStoreActions.fahrenheit,
+      payload: value,
+    });
   };
 
   const onChangeKelvin = function (value: number) {
-    setCelcius(
-      toFixedRounding(convertTemperature(value, Temperatures.K, Temperatures.C))
-    );
-    setFahrenheit(
-      toFixedRounding(convertTemperature(value, Temperatures.K, Temperatures.F))
-    );
-    setKelvin(value);
+    dispatch({
+      type: TemperatureStoreActions.kelvin,
+      payload: value,
+    });
   };
 
   return (
@@ -55,7 +45,7 @@ export function Temperature() {
             type="number"
             id="celcius-input"
             label="Celcius"
-            value={celcius}
+            value={state.celcius}
             onChange={onChangeCelcius as (value: string | number) => void}
           />
         </div>
@@ -64,7 +54,7 @@ export function Temperature() {
             type="number"
             id="fahrenheit-input"
             label="Fahrenheit"
-            value={fahrenheit}
+            value={state.fahrenheit}
             onChange={onChangeFahrenheit as (value: string | number) => void}
           />
         </div>
@@ -73,7 +63,7 @@ export function Temperature() {
             type="number"
             id="kelvin-input"
             label="Kelvin"
-            value={kelvin}
+            value={state.kelvin}
             onChange={onChangeKelvin as (value: string | number) => void}
           />
         </div>
