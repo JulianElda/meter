@@ -5,6 +5,16 @@ import { convertSpeed } from "@/src/util/conversion";
 import { Card, InputSelect } from "@julianelda/scratchpad";
 import { useState } from "react";
 
+const options = (function () {
+  const tmp = [];
+  for (const key in SpeedUnitsTable)
+    tmp.push({
+      label: key,
+      value: key,
+    });
+  return tmp;
+})();
+
 export function Speed() {
   const [units1, setUnits1] = useState<SpeedUnits>(SpeedUnits.mile_h);
   const [units2, setUnits2] = useState<SpeedUnits>(SpeedUnits.km_h);
@@ -12,16 +22,6 @@ export function Speed() {
   const [amount2, setAmount2] = useState<number>(
     toFixedRounding(convertSpeed(amount1, units1, units2))
   );
-
-  const options = (function () {
-    const tmp = [];
-    for (const key in SpeedUnitsTable)
-      tmp.push({
-        label: key,
-        value: key,
-      });
-    return tmp;
-  })();
 
   const onChangeAmount1 = function (value: string | number) {
     setAmount1(value as number);

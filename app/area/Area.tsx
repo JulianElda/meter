@@ -1,41 +1,41 @@
 import { PageHeader } from "@/src/components/PageHeader";
 import { AreaUnits, AreaUnitsTable } from "@/src/constants/area";
-import { toFixedRounding } from "@/src/util/common";
-import { convertArea } from "@/src/util/conversion";
 import { Card, InputSelect } from "@julianelda/scratchpad";
-import { useState } from "react";
+import { useReducer } from "react";
+import { areaReducer, AreaStoreActions, initialAreaState } from "./Area.store";
+
+const options = (function () {
+  const tmp = [];
+  for (const key in AreaUnitsTable)
+    tmp.push({
+      label: key,
+      value: key,
+    });
+  return tmp;
+})();
 
 export function Area() {
-  const [units1, setUnits1] = useState<AreaUnits>(AreaUnits.km);
-  const [units2, setUnits2] = useState<AreaUnits>(AreaUnits.mile);
-  const [amount1, setAmount1] = useState<number>(100);
-  const [amount2, setAmount2] = useState<number>(
-    toFixedRounding(convertArea(amount1, units1, units2))
-  );
+  const [state, dispatch] = useReducer(areaReducer, initialAreaState);
 
-  const options = (function () {
-    const tmp = [];
-    for (const key in AreaUnitsTable)
-      tmp.push({
-        label: key,
-        value: key,
-      });
-    return tmp;
-  })();
-
-  const onChangeAmount1 = function (value: string | number) {
-    setAmount1(value as number);
-    setAmount2(toFixedRounding(convertArea(value as number, units1, units2)));
+  const onChangeAmount1 = function (value: number) {
+    dispatch({
+      type: AreaStoreActions.amount1,
+      payload: value,
+    });
   };
 
   const onChangeUnits1 = function (value: AreaUnits) {
-    setUnits1(value);
-    setAmount2(toFixedRounding(convertArea(amount1, value, units2)));
+    dispatch({
+      type: AreaStoreActions.units1,
+      payload: value,
+    });
   };
 
   const onChangeUnits2 = function (value: AreaUnits) {
-    setUnits2(value);
-    setAmount2(toFixedRounding(convertArea(amount1, units1, value)));
+    dispatch({
+      type: AreaStoreActions.units2,
+      payload: value,
+    });
   };
 
   return (
@@ -52,10 +52,10 @@ export function Area() {
             hideLabel={true}
             inputLabel="Amount"
             selectLabel="Area units"
-            inputValue={amount1}
-            onInputChange={onChangeAmount1}
+            inputValue={state.amount1}
+            onInputChange={(value) => onChangeAmount1(value as number)}
             options={options}
-            selectValue={units1}
+            selectValue={state.units1}
             onSelectChange={(value) => onChangeUnits1(value as AreaUnits)}
           />
           <InputSelect
@@ -65,10 +65,10 @@ export function Area() {
             hideLabel={true}
             inputLabel="Amount"
             selectLabel="Area units"
-            inputValue={amount2}
+            inputValue={state.amount2}
             onInputChange={() => undefined}
             options={options}
-            selectValue={units2}
+            selectValue={state.units2}
             onSelectChange={(value) => onChangeUnits2(value as AreaUnits)}
           />
         </div>
