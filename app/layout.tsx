@@ -1,18 +1,13 @@
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
 
-import "@julianelda/scratchpad/style.css";
-import "./../styles/index.css";
+import App from "./../src/components/App/App";
+
 import "./tailwind.css";
 
 export const metadata: Metadata = {
   title: "meter",
   description: "meter",
 };
-
-const AppComponent = dynamic(() => import("./../src/components/App/App"), {
-  ssr: false,
-});
 
 export default function RootLayout({
   children,
@@ -22,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-gray-50 p-2 font-serif text-neutral-900 dark:bg-gray-800 dark:text-gray-50">
-        <AppComponent>{children}</AppComponent>
+        <App>{children}</App>
       </body>
     </html>
   );

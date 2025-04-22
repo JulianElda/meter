@@ -1,4 +1,3 @@
-import { clearInput, expectValue, typeInput } from "@/src/tests.helper";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, test } from "vitest";

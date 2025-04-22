@@ -50,8 +50,6 @@ export const convertWeight = function (
   unitsFrom: WeightUnits,
   unitsTo: WeightUnits
 ): number {
-  let result: number = 0;
-
   // convert to same units
   if (unitsFrom === unitsTo) {
     return amount;

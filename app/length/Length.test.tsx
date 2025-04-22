@@ -6,7 +6,6 @@ import { Length } from "./Length";
 
 const UNITS_1 = "from-select";
 const UNITS_2 = "result-select";
-const AMOUNT1_INPUT = "from-input";
 const AMOUNT2_INPUT = "result-input";
 
 describe("Length component", () => {

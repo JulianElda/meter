@@ -1,4 +1,4 @@
-import { describe, test, it, expect } from "vitest";
+import { describe, test, expect } from "vitest";
 import { convertBaseNumber } from "./base";
 
 describe("Base conversion", () => {

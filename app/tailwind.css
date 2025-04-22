@@ -1,3 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@import "@julianelda/scratchpad";
+
+@custom-variant dark (&:is(.dark *));

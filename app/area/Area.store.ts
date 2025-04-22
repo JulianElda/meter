@@ -1,4 +1,4 @@
-import { AreaUnits, AreaUnitsTable } from "@/src/constants/area";
+import { AreaUnits } from "@/src/constants/area";
 import { toFixedRounding } from "@/src/util/common";
 import { convertArea } from "@/src/util/conversion";
 

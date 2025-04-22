@@ -39,7 +39,7 @@ export function Color() {
       </div>
       <Card>
         <ChromePicker
-          className="!w-full"
+          className="w-full!"
           color={state.hex}
           onChangeComplete={(value) => onChangeHex(value.hex)}
         />
