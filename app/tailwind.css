@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "@julianelda/stilo";
 
 @source "./../node_modules/@julianelda/scratchpad/dist";
 @source "./../src/components/";
@@ -16,4 +15,11 @@
   ::file-selector-button {
     border-color: var(--color-gray-200, currentcolor);
   }
+}
+
+@theme inline {
+  --font-*: initial;
+  --font-sans: var(--font-heliotrope3);
+  --font-serif: var(--font-heliotrope3);
+  --font-heading: var(--font-heliotrope4);
 }
