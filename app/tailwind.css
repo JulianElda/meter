@@ -21,5 +21,6 @@
   --font-*: initial;
   --font-sans: var(--font-heliotrope3);
   --font-serif: var(--font-heliotrope3);
+  --font-mono: var(--font-mpluscode);
   --font-heading: var(--font-heliotrope4);
 }

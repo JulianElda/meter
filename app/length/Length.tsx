@@ -56,7 +56,9 @@ export function Length() {
             onInputChange={onChangeAmount1 as (value: string | number) => void}
             options={options}
             selectValue={units1}
-            onSelectChange={(value) => onChangeUnits1(value as LengthUnits)}
+            onSelectChange={(value: string) =>
+              onChangeUnits1(value as LengthUnits)
+            }
           />
           <InputSelect
             type="number"
@@ -69,7 +71,9 @@ export function Length() {
             onInputChange={() => undefined}
             options={options}
             selectValue={units2}
-            onSelectChange={(value) => onChangeUnits2(value as LengthUnits)}
+            onSelectChange={(value: string) =>
+              onChangeUnits2(value as LengthUnits)
+            }
           />
         </div>
       </Card>

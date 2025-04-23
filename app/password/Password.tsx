@@ -1,24 +1,59 @@
 import { PageHeader } from "@/src/components/PageHeader";
 import { generateRandomString } from "@/src/util/string";
-import { Card, Checkbox, Input } from "@julianelda/scratchpad";
-import { useState } from "react";
+import {
+  Button,
+  Card,
+  Checkbox,
+  Input,
+  TextArea,
+} from "@julianelda/scratchpad";
+import { useEffect, useState } from "react";
 
 export function Password() {
   const [length, setLength] = useState<number>(16);
   const [numerals, setNumerals] = useState<boolean>(true);
   const [uppercase, setUppercase] = useState<boolean>(true);
   const [special, setSpecial] = useState<boolean>(false);
+  const [password, setPassword] = useState<string>("");
+
+  useEffect(() => {
+    setPassword(
+      generateRandomString({
+        length,
+        uppercase,
+        numerals,
+        special,
+      })
+    );
+  }, [length, uppercase, numerals, special]);
 
   const onChangeLength = function (value: number) {
     setLength(value);
   };
 
-  const password = generateRandomString({
-    length,
-    uppercase,
-    numerals,
-    special,
-  });
+  const onRefresh = () => {
+    setPassword(
+      generateRandomString({
+        length,
+        uppercase,
+        numerals,
+        special,
+      })
+    );
+  };
+
+  const onCopyToClipboard = async () => {
+    if (!navigator?.clipboard) {
+      return;
+    }
+
+    try {
+      await navigator.clipboard.writeText(password);
+    } catch (error) {
+      console.warn(error);
+      return;
+    }
+  };
 
   return (
     <>
@@ -27,11 +62,23 @@ export function Password() {
       </div>
       <Card>
         <div className="space-y-2">
-          <Input
-            id="password-password"
-            type="text"
-            label="Password"
-            value={password}
+          <Checkbox
+            id="password-numbers"
+            label="Numbers"
+            value={numerals}
+            onChange={(value: boolean) => setNumerals(value)}
+          />
+          <Checkbox
+            id="password-uppercase"
+            label="Uppercase"
+            value={uppercase}
+            onChange={(value: boolean) => setUppercase(value)}
+          />
+          <Checkbox
+            id="password-special"
+            label="Symbols"
+            value={special}
+            onChange={(value: boolean) => setSpecial(value)}
           />
           <Input
             type="number"
@@ -40,24 +87,27 @@ export function Password() {
             value={length}
             onChange={onChangeLength as (value: string | number) => void}
           />
-          <Checkbox
-            id="password-numbers"
-            label="Numbers"
-            value={numerals}
-            onChange={(value) => setNumerals(value)}
-          />
-          <Checkbox
-            id="password-uppercase"
-            label="Uppercase"
-            value={uppercase}
-            onChange={(value) => setUppercase(value)}
-          />
-          <Checkbox
-            id="password-special"
-            label="Symbols"
-            value={special}
-            onChange={(value) => setSpecial(value)}
-          />
+          <div className="font-mono">
+            <TextArea
+              id="password-password"
+              label="Password"
+              value={password}
+            />
+          </div>
+          <div className="flex justify-end w-full space-x-4">
+            <Button
+              style="secondary"
+              id="password-copy"
+              text="Copy"
+              onClick={onCopyToClipboard}
+            />
+            <Button
+              style="secondary"
+              id="password-refresh"
+              text="Refresh"
+              onClick={onRefresh}
+            />
+          </div>
         </div>
       </Card>
     </>

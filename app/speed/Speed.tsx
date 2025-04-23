@@ -56,7 +56,9 @@ export function Speed() {
             onInputChange={onChangeAmount1}
             options={options}
             selectValue={units1}
-            onSelectChange={(value) => onChangeUnits1(value as SpeedUnits)}
+            onSelectChange={(value: string) =>
+              onChangeUnits1(value as SpeedUnits)
+            }
           />
           <InputSelect
             type="text"
@@ -69,7 +71,9 @@ export function Speed() {
             onInputChange={() => undefined}
             options={options}
             selectValue={units2}
-            onSelectChange={(value) => onChangeUnits2(value as SpeedUnits)}
+            onSelectChange={(value: string) =>
+              onChangeUnits2(value as SpeedUnits)
+            }
           />
         </div>
       </Card>

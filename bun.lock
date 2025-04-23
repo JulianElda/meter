@@ -4,7 +4,7 @@
     "": {
       "name": "meter",
       "dependencies": {
-        "@julianelda/scratchpad": "^1.6.4",
+        "@julianelda/scratchpad": "^1.7.1",
         "@julianelda/stilo": "^1.0.1",
         "@tailwindcss/forms": "^0.5.10",
         "clsx": "^2.1.1",
@@ -427,7 +427,7 @@
 
     "@jridgewell/trace-mapping": ["@jridgewell/trace-mapping@0.3.25", "", { "dependencies": { "@jridgewell/resolve-uri": "^3.1.0", "@jridgewell/sourcemap-codec": "^1.4.14" } }, "sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ=="],
 
-    "@julianelda/scratchpad": ["@julianelda/scratchpad@1.6.4", "", { "dependencies": { "ajv": "^8.17.1", "js-cookie": "^3.0.5" }, "peerDependencies": { "clsx": "^2.1.1", "react": "^19.0.0", "react-dom": "^19.0.0" } }, "sha512-CqYnoRokFnwVP3qPafqjGdEbiNL/12bGKrg3x58gMW+PviIiZ+PsCfU8UAiTUwRdnqLRFD9yWozxMDsjhI6r7g=="],
+    "@julianelda/scratchpad": ["@julianelda/scratchpad@1.7.1", "", { "dependencies": { "ajv": "^8.17.1", "js-cookie": "^3.0.5" }, "peerDependencies": { "clsx": "^2.1.1", "react": "^19.0.0", "react-dom": "^19.0.0" } }, "sha512-eLbWZ3u9DanH2DZuPqUc1oI9nlAhRMbIBQg+wnNWkId10xanMGypQkYavatAGB9f4BX5w5Z2gsqmDYiZInLF0Q=="],
 
     "@julianelda/stilo": ["@julianelda/stilo@1.0.1", "", {}, "sha512-Lg4lFvSamG1eKcWb+/xzSyW/NUi3Rz1wtahluVFwDjYr6u65ZJWPDqEU9PLDVeOCclGjo1OKK8KMn82u3z9rkg=="],
 

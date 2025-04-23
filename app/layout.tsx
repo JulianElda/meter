@@ -57,6 +57,12 @@ const heliotrope4 = localFont({
   variable: "--font-heliotrope4",
 });
 
+const mPlus = localFont({
+  src: "./../styles/MplusCodeLatin60-Regular.woff2",
+  display: "swap",
+  variable: "--font-mpluscode",
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -65,7 +71,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${heliotrope3.variable} ${heliotrope4.variable}`}>
+      className={`${heliotrope3.variable} ${heliotrope4.variable} ${mPlus.variable}`}>
       <body className="bg-gray-50 p-2 font-serif text-neutral-900 dark:bg-gray-800 dark:text-gray-50">
         <App>{children}</App>
       </body>
