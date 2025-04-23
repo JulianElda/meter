@@ -1,4 +1,5 @@
 import { PageHeader } from "@/src/components/PageHeader";
+import { PasswordStrength } from "@/src/components/PasswordStrength/PasswordStrength";
 import { generateRandomString } from "@/src/util/string";
 import {
   Button,
@@ -42,17 +43,16 @@ export function Password() {
     );
   };
 
+  const onChangePassword = (value: string) => {
+    setPassword(value);
+  };
+
   const onCopyToClipboard = async () => {
     if (!navigator?.clipboard) {
       return;
     }
 
-    try {
-      await navigator.clipboard.writeText(password);
-    } catch (error) {
-      console.warn(error);
-      return;
-    }
+    await navigator.clipboard.writeText(password);
   };
 
   return (
@@ -92,6 +92,7 @@ export function Password() {
               id="password-password"
               label="Password"
               value={password}
+              onChange={onChangePassword as (value: string | number) => void}
             />
           </div>
           <div className="flex justify-end w-full space-x-4">
@@ -109,6 +110,13 @@ export function Password() {
             />
           </div>
         </div>
+      </Card>
+
+      <div>
+        <PageHeader title="Password strength" />
+      </div>
+      <Card>
+        <PasswordStrength password={password} />
       </Card>
     </>
   );
