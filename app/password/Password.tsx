@@ -1,11 +1,10 @@
 import { PageHeader } from "@/src/components/PageHeader";
-import { PasswordStrength } from "@/src/components/PasswordStrength/PasswordStrength";
 import { generateRandomString } from "@/src/util/string";
 import {
   Button,
   Card,
   Checkbox,
-  Input,
+  InputSlider,
   TextArea,
 } from "@julianelda/scratchpad";
 import { useEffect, useState } from "react";
@@ -80,11 +79,13 @@ export function Password() {
             value={special}
             onChange={(value: boolean) => setSpecial(value)}
           />
-          <Input
-            type="number"
+          <InputSlider
             id="password-length"
-            label="Password length"
+            label="Length"
             value={length}
+            max={256}
+            min={1}
+            hideLabel={false}
             onChange={onChangeLength as (value: string | number) => void}
           />
           <div className="font-mono">
@@ -92,17 +93,21 @@ export function Password() {
               id="password-password"
               label="Password"
               value={password}
+              hideLabel={true}
               onChange={onChangePassword as (value: string | number) => void}
             />
           </div>
+
           <div className="flex justify-end w-full space-x-4">
             <Button
+              type="button"
               style="secondary"
               id="password-copy"
               text="Copy"
               onClick={onCopyToClipboard}
             />
             <Button
+              type="button"
               style="secondary"
               id="password-refresh"
               text="Refresh"
@@ -110,13 +115,6 @@ export function Password() {
             />
           </div>
         </div>
-      </Card>
-
-      <div>
-        <PageHeader title="Password strength" />
-      </div>
-      <Card>
-        <PasswordStrength password={password} />
       </Card>
     </>
   );
