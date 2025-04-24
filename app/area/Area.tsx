@@ -53,7 +53,7 @@ export function Area() {
             inputLabel="Amount"
             selectLabel="Area units"
             inputValue={state.amount1}
-            onInputChange={(value: number) => onChangeAmount1(value as number)}
+            onInputChange={(value) => onChangeAmount1(value as number)}
             options={options}
             selectValue={state.units1}
             onSelectChange={(value: string) =>
