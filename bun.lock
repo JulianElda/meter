@@ -4,7 +4,7 @@
     "": {
       "name": "meter",
       "dependencies": {
-        "@julianelda/scratchpad": "^1.8.1",
+        "@julianelda/scratchpad": "^1.8.2",
         "@julianelda/stilo": "^1.0.1",
         "@tailwindcss/forms": "^0.5.10",
         "@zxcvbn-ts/core": "^3.0.4",
@@ -430,7 +430,7 @@
 
     "@jridgewell/trace-mapping": ["@jridgewell/trace-mapping@0.3.25", "", { "dependencies": { "@jridgewell/resolve-uri": "^3.1.0", "@jridgewell/sourcemap-codec": "^1.4.14" } }, "sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ=="],
 
-    "@julianelda/scratchpad": ["@julianelda/scratchpad@1.8.1", "", { "dependencies": { "ajv": "^8.17.1", "js-cookie": "^3.0.5" }, "peerDependencies": { "clsx": "^2.1.1", "react": "^19.0.0", "react-dom": "^19.0.0" } }, "sha512-RUgYcpW+yzWyoEIR7I3goqD0chREQvXNruX4IcVlOL6tHuRlkj8J/pECdwTETLqD7F5wg3a+89Ngk7kRDaQr0w=="],
+    "@julianelda/scratchpad": ["@julianelda/scratchpad@1.8.2", "", { "dependencies": { "ajv": "^8.17.1", "js-cookie": "^3.0.5" }, "peerDependencies": { "clsx": "^2.1.1", "react": "^19.0.0", "react-dom": "^19.0.0" } }, "sha512-BchIXuG+y8e+4AmNK7Umk8eyaw2AcZXUuH0Jeu4rVMIl+cWZFSX1KM4D+8FCPrm5hGnIxOBGtd4N/8DwJ7FoYA=="],
 
     "@julianelda/stilo": ["@julianelda/stilo@1.0.1", "", {}, "sha512-Lg4lFvSamG1eKcWb+/xzSyW/NUi3Rz1wtahluVFwDjYr6u65ZJWPDqEU9PLDVeOCclGjo1OKK8KMn82u3z9rkg=="],
 

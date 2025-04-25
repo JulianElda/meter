@@ -1,5 +1,6 @@
 import { describe, expect, test } from "vitest";
 import {
+  generateGUID,
   generateRandomString,
   getRandomCharacter,
   shuffleCharacters,
@@ -62,5 +63,33 @@ describe("generateRandomString", () => {
     const chars = "xyz";
     const result = generateRandomString({ chars });
     expect(result).toMatch(/[xyz]/);
+  });
+});
+
+describe("generate GUID", () => {
+  test("generate a GUID in the correct format", () => {
+    const guid = generateGUID();
+    expect(guid).toMatch(
+      /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89a-f][0-9a-f]{3}-[0-9a-f]{12}$/
+    );
+  });
+
+  test("generate a unique GUID each time", () => {
+    const guid1 = generateGUID();
+    const guid2 = generateGUID();
+    expect(guid1).not.toBe(guid2);
+  });
+
+  test("generate a GUID with version 4", () => {
+    const guid = generateGUID();
+    // Ensure the third segment starts with a "4"
+    expect(guid[14]).toBe("4");
+  });
+
+  test('generate a GUID with a valid "y" value', () => {
+    const guid = generateGUID();
+    // Ensure the 19th character is either 8, 9, a, or b (for version 4 GUIDs)
+    const validYValues = ["8", "9", "a", "b"];
+    expect(validYValues).toContain(guid[19]);
   });
 });

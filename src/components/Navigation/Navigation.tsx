@@ -25,6 +25,7 @@ export function Navigation() {
       title: "Utilities",
       links: [
         { title: "Currency", href: "/currency" },
+        { title: "GUID", href: "/guid" },
         { title: "Password", href: "/password" },
       ],
     },

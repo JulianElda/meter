@@ -1,8 +1,8 @@
+import { NotificationsProvider } from "@/src/components/notifications/notifications.context";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, test } from "vitest";
 import { Password } from "./Password";
-import { NotificationsProvider } from "@/src/components/notifications/notifications.context";
 
 const PASSWORD_LABEL = "password-password";
 const PASSWORD_LENGTH = "password-length";
@@ -11,7 +11,7 @@ const PASSWORD_UPPERCASE = "password-uppercase";
 const PASSWORD_SPECIAL = "password-special";
 
 describe("Password component", () => {
-  test("generate 16-length password", async () => {
+  test("generate 16-length password", () => {
     render(
       <NotificationsProvider>
         <Password />
