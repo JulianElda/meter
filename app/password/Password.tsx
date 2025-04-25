@@ -1,3 +1,4 @@
+import { useNotificationsWithContext } from "@/src/components/notifications/notifications.context";
 import { PageHeader } from "@/src/components/PageHeader";
 import { generateRandomString } from "@/src/util/string";
 import {
@@ -15,6 +16,7 @@ export function Password() {
   const [uppercase, setUppercase] = useState<boolean>(true);
   const [special, setSpecial] = useState<boolean>(false);
   const [password, setPassword] = useState<string>("");
+  const { addNotification } = useNotificationsWithContext();
 
   useEffect(() => {
     setPassword(
@@ -52,6 +54,8 @@ export function Password() {
     }
 
     await navigator.clipboard.writeText(password);
+
+    addNotification("Password copied");
   };
 
   return (
