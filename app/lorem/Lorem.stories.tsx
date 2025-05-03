@@ -1,11 +1,12 @@
 import { Notifications } from "@/src/components/notifications/notifications";
 import { NotificationsProvider } from "@/src/components/notifications/notifications.context";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Password } from "./Password";
+import { Lorem } from "./Lorem";
+import { loremText } from "./Lorem.data";
 
-const meta: Meta<typeof Password> = {
+const meta: Meta<typeof Lorem> = {
   title: "Utilities",
-  component: Password,
+  component: Lorem,
   decorators: [
     (Story) => (
       <NotificationsProvider>
@@ -19,8 +20,11 @@ const meta: Meta<typeof Password> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Password>;
+type Story = StoryObj<typeof Lorem>;
 
-export const PasswordPage: Story = {
-  name: "Password generator",
+export const LoremPage: Story = {
+  name: "Lorem generator",
+  args: {
+    loremText,
+  },
 };
