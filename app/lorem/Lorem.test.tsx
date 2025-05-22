@@ -1,4 +1,4 @@
-import { NotificationsProvider } from "@/src/components/notifications/notifications.context";
+import { ReduxProvider } from "@/src/store/provider";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, test } from "vitest";
 import { Lorem } from "./Lorem";
@@ -6,9 +6,9 @@ import { Lorem } from "./Lorem";
 describe("Lorem component", () => {
   test("generate lorem ipsum text", () => {
     render(
-      <NotificationsProvider>
+      <ReduxProvider>
         <Lorem loremText="Lorem ipsum dolor sit amet, consectetur adipiscing elit." />
-      </NotificationsProvider>
+      </ReduxProvider>
     );
     expect(screen.getByTestId("lorem-lorem")).toBeInTheDocument();
   });

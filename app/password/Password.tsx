@@ -1,5 +1,6 @@
-import { useNotificationsWithContext } from "@/src/components/notifications/notifications.context";
 import { PageHeader } from "@/src/components/PageHeader";
+import { useAppDispatch } from "@/src/store/hooks";
+import { addNotification } from "@/src/store/notification/notification.slice";
 import { generateRandomString } from "@/src/util/string";
 import {
   Button,
@@ -11,12 +12,12 @@ import {
 import { useEffect, useState } from "react";
 
 export function Password() {
+  const dispatch = useAppDispatch();
   const [length, setLength] = useState<number>(16);
   const [numerals, setNumerals] = useState<boolean>(true);
   const [uppercase, setUppercase] = useState<boolean>(true);
   const [special, setSpecial] = useState<boolean>(false);
   const [password, setPassword] = useState<string>("");
-  const { addNotification } = useNotificationsWithContext();
 
   useEffect(() => {
     setPassword(
@@ -55,7 +56,7 @@ export function Password() {
 
     await navigator.clipboard.writeText(password);
 
-    addNotification("Password copied");
+    dispatch(addNotification("Password copied"));
   };
 
   return (

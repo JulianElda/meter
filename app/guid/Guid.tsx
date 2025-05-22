@@ -1,12 +1,13 @@
-import { useNotificationsWithContext } from "@/src/components/notifications/notifications.context";
 import { PageHeader } from "@/src/components/PageHeader";
+import { useAppDispatch } from "@/src/store/hooks";
+import { addNotification } from "@/src/store/notification/notification.slice";
 import { generateGUID } from "@/src/util/string";
 import { Button, Card, Input } from "@julianelda/scratchpad";
 import { useState } from "react";
 
 export function Guid() {
+  const dispatch = useAppDispatch();
   const [guid, setGuid] = useState(generateGUID());
-  const { addNotification } = useNotificationsWithContext();
 
   const onRefresh = () => {
     setGuid(generateGUID());
@@ -19,7 +20,7 @@ export function Guid() {
 
     await navigator.clipboard.writeText(guid);
 
-    addNotification("Password copied");
+    dispatch(addNotification("Password copied"));
   };
 
   return (

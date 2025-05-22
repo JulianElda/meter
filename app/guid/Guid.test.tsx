@@ -1,4 +1,4 @@
-import { NotificationsProvider } from "@/src/components/notifications/notifications.context";
+import { ReduxProvider } from "@/src/store/provider";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, test } from "vitest";
@@ -7,9 +7,9 @@ import { Guid } from "./Guid";
 describe("GUID component", () => {
   test("generate a GUID", () => {
     render(
-      <NotificationsProvider>
+      <ReduxProvider>
         <Guid />
-      </NotificationsProvider>
+      </ReduxProvider>
     );
 
     expect((screen.getByTestId("guid-guid") as HTMLInputElement).value).toMatch(
@@ -20,9 +20,9 @@ describe("GUID component", () => {
   test("generate a different GUID when refresh button is clicked", async () => {
     const user = userEvent.setup();
     render(
-      <NotificationsProvider>
+      <ReduxProvider>
         <Guid />
-      </NotificationsProvider>
+      </ReduxProvider>
     );
 
     const firstValue = (screen.getByTestId("guid-guid") as HTMLInputElement)

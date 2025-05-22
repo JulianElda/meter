@@ -1,5 +1,5 @@
 import { Notifications } from "@/src/components/notifications/notifications";
-import { NotificationsProvider } from "@/src/components/notifications/notifications.context";
+import { ReduxProvider } from "@/src/store/provider";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Lorem } from "./Lorem";
 import { loremText } from "./Lorem.data";
@@ -9,12 +9,12 @@ const meta: Meta<typeof Lorem> = {
   component: Lorem,
   decorators: [
     (Story) => (
-      <NotificationsProvider>
+      <ReduxProvider>
         <div className="max-w-md text-lg">
           <Story />
         </div>
         <Notifications />
-      </NotificationsProvider>
+      </ReduxProvider>
     ),
   ],
 };

@@ -2,8 +2,8 @@
 
 import { Navigation } from "@/src/components/Navigation/Navigation";
 import { Footer } from "@/src/components/Footer/Footer";
-import { NotificationsProvider } from "@/src/components/notifications/notifications.context";
 import { Notifications } from "@/src/components/notifications/notifications";
+import { ReduxProvider } from "@/src/store/provider";
 
 export function AppClient({
   children,
@@ -11,7 +11,7 @@ export function AppClient({
   children: React.ReactNode;
 }>) {
   return (
-    <NotificationsProvider>
+    <ReduxProvider>
       <div className="flex">
         <Navigation />
         <div className="mx-auto w-full max-w-xl">
@@ -23,6 +23,6 @@ export function AppClient({
 
       <Footer />
       <Notifications />
-    </NotificationsProvider>
+    </ReduxProvider>
   );
 }

@@ -1,5 +1,5 @@
 import { Notifications } from "@/src/components/notifications/notifications";
-import { NotificationsProvider } from "@/src/components/notifications/notifications.context";
+import { ReduxProvider } from "@/src/store/provider";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Password } from "./Password";
 
@@ -8,12 +8,12 @@ const meta: Meta<typeof Password> = {
   component: Password,
   decorators: [
     (Story) => (
-      <NotificationsProvider>
+      <ReduxProvider>
         <div className="max-w-md text-lg">
           <Story />
         </div>
         <Notifications />
-      </NotificationsProvider>
+      </ReduxProvider>
     ),
   ],
 };

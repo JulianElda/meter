@@ -1,15 +1,16 @@
-import { useNotificationsWithContext } from "@/src/components/notifications/notifications.context";
 import { PageHeader } from "@/src/components/PageHeader";
+import { useAppDispatch } from "@/src/store/hooks";
+import { addNotification } from "@/src/store/notification/notification.slice";
 import { Button, Card, InputSlider, TextArea } from "@julianelda/scratchpad";
 import { useState } from "react";
 
 export function Lorem({ loremText }: { loremText: string }) {
+  const dispatch = useAppDispatch();
   const [words, setWords] = useState<number>(100);
   const trimLorem = (text: string): string => {
     return text.split(" ").slice(0, words).join(" ");
   };
   const [lorem, setLorem] = useState<string>(trimLorem(loremText));
-  const { addNotification } = useNotificationsWithContext();
 
   const onChangeWords = (value: number) => {
     setWords(value);
@@ -23,7 +24,7 @@ export function Lorem({ loremText }: { loremText: string }) {
 
     await navigator.clipboard.writeText(lorem);
 
-    addNotification("Lotem text copied");
+    dispatch(addNotification("Password copied"));
   };
 
   return (

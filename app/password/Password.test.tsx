@@ -1,4 +1,4 @@
-import { NotificationsProvider } from "@/src/components/notifications/notifications.context";
+import { ReduxProvider } from "@/src/store/provider";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, test } from "vitest";
@@ -13,9 +13,9 @@ const PASSWORD_SPECIAL = "password-special";
 describe("Password component", () => {
   test("generate 16-length password", () => {
     render(
-      <NotificationsProvider>
+      <ReduxProvider>
         <Password />
-      </NotificationsProvider>
+      </ReduxProvider>
     );
     expect(
       (screen.getByTestId(PASSWORD_LABEL) as HTMLInputElement).value
@@ -25,9 +25,9 @@ describe("Password component", () => {
   test.skip("generate a new password when length is changed", async () => {
     const user = userEvent.setup();
     render(
-      <NotificationsProvider>
+      <ReduxProvider>
         <Password />
-      </NotificationsProvider>
+      </ReduxProvider>
     );
 
     const firstValue = (screen.getByTestId(PASSWORD_LABEL) as HTMLInputElement)
@@ -43,9 +43,9 @@ describe("Password component", () => {
   test("generate a new password when numerals is changed", async () => {
     const user = userEvent.setup();
     render(
-      <NotificationsProvider>
+      <ReduxProvider>
         <Password />
-      </NotificationsProvider>
+      </ReduxProvider>
     );
 
     const firstValue = (screen.getByTestId(PASSWORD_LABEL) as HTMLInputElement)
@@ -61,9 +61,9 @@ describe("Password component", () => {
   test("generate a new password when uppercase is changed", async () => {
     const user = userEvent.setup();
     render(
-      <NotificationsProvider>
+      <ReduxProvider>
         <Password />
-      </NotificationsProvider>
+      </ReduxProvider>
     );
 
     const firstValue = (screen.getByTestId(PASSWORD_LABEL) as HTMLInputElement)
@@ -79,9 +79,9 @@ describe("Password component", () => {
   test("generate a new password when special character is changed", async () => {
     const user = userEvent.setup();
     render(
-      <NotificationsProvider>
+      <ReduxProvider>
         <Password />
-      </NotificationsProvider>
+      </ReduxProvider>
     );
 
     const firstValue = (screen.getByTestId(PASSWORD_LABEL) as HTMLInputElement)
