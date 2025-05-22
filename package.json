@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@julianelda/scratchpad": "^1.8.3",
-    "@julianelda/stilo": "^1.0.1",
+    "@julianelda/stilo": "^1.0.2",
     "@tailwindcss/forms": "^0.5.10",
     "@zxcvbn-ts/core": "^3.0.4",
     "@zxcvbn-ts/language-common": "^3.0.4",

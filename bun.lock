@@ -5,7 +5,7 @@
       "name": "meter",
       "dependencies": {
         "@julianelda/scratchpad": "^1.8.3",
-        "@julianelda/stilo": "^1.0.1",
+        "@julianelda/stilo": "^1.0.2",
         "@tailwindcss/forms": "^0.5.10",
         "@zxcvbn-ts/core": "^3.0.4",
         "@zxcvbn-ts/language-common": "^3.0.4",
@@ -432,7 +432,7 @@
 
     "@julianelda/scratchpad": ["@julianelda/scratchpad@1.8.3", "", { "dependencies": { "ajv": "^8.17.1", "js-cookie": "^3.0.5" }, "peerDependencies": { "clsx": "^2.1.1", "react": "^19.0.0", "react-dom": "^19.0.0" } }, "sha512-ADLcLUlXylb9eWiu7Bwy8lWGrNsg8SBKt7Uswas3QnCYluZTozFMRskbx9UqORmp6rGFeV0DpCy9p6vq8MTB0w=="],
 
-    "@julianelda/stilo": ["@julianelda/stilo@1.0.1", "", {}, "sha512-Lg4lFvSamG1eKcWb+/xzSyW/NUi3Rz1wtahluVFwDjYr6u65ZJWPDqEU9PLDVeOCclGjo1OKK8KMn82u3z9rkg=="],
+    "@julianelda/stilo": ["@julianelda/stilo@1.0.2", "", {}, "sha512-/FP8ciVnP1FBw5X9nVeng43cbV57AxOFNv1whJAdLlh+9jY9DQL4NxR6chtCuEi3rJFfFUZ7YwaZ4pe2lpwi8w=="],
 
     "@mdx-js/react": ["@mdx-js/react@3.1.0", "", { "dependencies": { "@types/mdx": "^2.0.0" }, "peerDependencies": { "@types/react": ">=16", "react": ">=16" } }, "sha512-QjHtSaoameoalGnKDT3FoIl4+9RwyTmo9ZJGBdLOks/YOiWHoRDI3PUwEzOE7kEmGcV3AFcp9K6dYu9rEuKLAQ=="],
 

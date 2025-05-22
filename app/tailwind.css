@@ -1,27 +1,8 @@
 @import "tailwindcss";
 @import "@julianelda/scratchpad";
+@import "@julianelda/stilo";
 
 @source "./../node_modules/@julianelda/scratchpad/dist";
 @source "./../src/components/";
 
 @plugin "@tailwindcss/forms";
-
-@custom-variant dark (&:is(.dark *));
-
-@layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
-  }
-}
-
-@theme inline {
-  --font-*: initial;
-  --font-sans: var(--font-heliotrope3);
-  --font-serif: var(--font-heliotrope3);
-  --font-mono: var(--font-mpluscode);
-  --font-heading: var(--font-heliotrope4);
-}

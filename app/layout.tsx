@@ -6,7 +6,7 @@ import "./tailwind.css";
 
 export const metadata: Metadata = {
   title: "meter",
-  description: "meter",
+  description: "conversion and utilities online, made by Julius Polar",
 };
 
 const heliotrope3 = localFont({

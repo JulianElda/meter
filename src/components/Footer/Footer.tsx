@@ -1,3 +1,5 @@
+"use client";
+
 import { Footer as FooterLib } from "@julianelda/scratchpad";
 
 export function Footer() {
