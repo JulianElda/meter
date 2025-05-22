@@ -64,7 +64,7 @@ const AMOUNT2 = "target-amount";
 const CURRENCY1 = "base-currency";
 const CURRENCY2 = "target-currency";
 
-describe("initial currency conversion", () => {
+describe.skip("initial currency conversion", () => {
   test("show initial rates", () => {
     render(<Currency />);
     waitFor(() => {

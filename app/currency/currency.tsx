@@ -2,28 +2,41 @@
 
 import { PageHeader } from "@/src/components/page-header";
 import { Card, InputSelect } from "@julianelda/scratchpad";
-import { useEffect, useReducer, useState } from "react";
+import { useReducer } from "react";
+import type { Currency, Rates } from "./currency.store";
 import {
   CurrencyStoreActions,
-  Rates,
   currenciesReducer,
+  getCurrencyRate,
   initialCurrencyState,
 } from "./currency.store";
 
-export function Currency() {
-  const [currencies, setCurrencies] = useState<
-    {
-      value: string;
-      label: string;
-    }[]
-  >([]);
+type CurrencyProps = {
+  initialCurrencies: Currency[];
+  initialRates: Rates;
+  initialAmount2: number;
+};
 
-  const [state, dispatch] = useReducer(currenciesReducer, initialCurrencyState);
+export function Currency(props: CurrencyProps) {
+  const currencies = props.initialCurrencies;
+
+  const [state, dispatch] = useReducer(currenciesReducer, {
+    ...initialCurrencyState,
+    rates: props.initialRates,
+    amount2: props.initialAmount2,
+  });
 
   const onChangeCurrency1 = (newCurrency1: string) => {
     dispatch({
       type: CurrencyStoreActions.CURRENCY_1,
       payload: newCurrency1,
+    });
+
+    getCurrencyRate(newCurrency1).then((result: Rates) => {
+      dispatch({
+        type: CurrencyStoreActions.RATE,
+        payload: result,
+      });
     });
   };
 
@@ -47,33 +60,6 @@ export function Currency() {
       payload: newAmount2,
     });
   };
-
-  useEffect(() => {
-    if (currencies.length === 0)
-      fetch("https://api.frankfurter.app/currencies")
-        .then((result) => result.json())
-        .then((result) =>
-          Object.entries(result).map((currencyArray) => ({
-            value: currencyArray[0],
-            label: currencyArray[1] as string,
-          }))
-        )
-        .then((result) => {
-          setCurrencies(result);
-        });
-  }, [currencies]);
-
-  useEffect(() => {
-    fetch("https://api.frankfurter.app/latest?from=" + state.currency1)
-      .then((result) => result.json())
-      .then((result) => result.rates)
-      .then((result: Rates) => {
-        dispatch({
-          type: CurrencyStoreActions.RATE,
-          payload: result,
-        });
-      });
-  }, [state.currency1]);
 
   return (
     <>

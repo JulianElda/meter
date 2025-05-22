@@ -2,6 +2,10 @@ import { toFixedRounding } from "@/src/util/common";
 
 export type Rates = Record<string, number>;
 
+export const initialCurrency1 = "EUR";
+export const initialCurrency2 = "USD";
+export const initialAmount1 = 100;
+
 type CurrencyState = {
   rates: Rates;
   currency1: string;
@@ -10,11 +14,16 @@ type CurrencyState = {
   amount2: number;
 };
 
+export type Currency = {
+  value: string;
+  label: string;
+};
+
 export const initialCurrencyState: CurrencyState = {
   rates: {},
-  currency1: "EUR",
-  currency2: "USD",
-  amount1: 100,
+  currency1: initialCurrency1,
+  currency2: initialCurrency2,
+  amount1: initialAmount1,
   amount2: 0,
 };
 
@@ -32,7 +41,9 @@ type CurrencyStoreActionType = {
 };
 
 function setRatesHandler(state: CurrencyState, payload: Rates): CurrencyState {
-  const newAmount2 = toFixedRounding(state.amount1 * payload[state.currency2]);
+  const newAmount2 = toFixedRounding(
+    state.amount1 * (payload[state.currency2] ?? 1)
+  );
   return {
     ...state,
     rates: payload,
@@ -54,7 +65,9 @@ function setCurrency2ChangeHandler(
   state: CurrencyState,
   payload: string
 ): CurrencyState {
-  const newAmount2 = toFixedRounding(state.amount1 * state.rates[payload]);
+  const newAmount2 = toFixedRounding(
+    state.amount1 * (state.rates[payload] ?? 1)
+  );
 
   return {
     ...state,
@@ -70,7 +83,7 @@ function setAmount1ChangeHandler(
   let newAmount2 = 0;
   if (!payload) newAmount2 = 0;
   else {
-    newAmount2 = toFixedRounding(payload * state.rates[state.currency2]);
+    newAmount2 = toFixedRounding(payload * (state.rates[state.currency2] ?? 1));
   }
   return {
     ...state,
@@ -86,7 +99,7 @@ function setAmount2ChangeHandler(
   let newAmount1 = 0;
   if (!payload) newAmount1 = 0;
   else {
-    newAmount1 = toFixedRounding(payload / state.rates[state.currency2]);
+    newAmount1 = toFixedRounding(payload / (state.rates[state.currency2] ?? 1));
   }
   return {
     ...state,
@@ -113,4 +126,23 @@ export function currenciesReducer(
     default:
       return state;
   }
+}
+
+export async function getCurrencies(): Promise<Currency[]> {
+  return fetch("https://api.frankfurter.app/currencies")
+    .then((result) => result.json())
+    .then((result) =>
+      Object.entries(result).map((currencyArray) => ({
+        value: currencyArray[0],
+        label: currencyArray[1] as string,
+      }))
+    );
+}
+
+export async function getCurrencyRate(
+  currency: string = initialCurrency1
+): Promise<Rates> {
+  return fetch("https://api.frankfurter.app/latest?from=" + currency)
+    .then((result) => result.json())
+    .then((result) => result.rates);
 }
