@@ -33,21 +33,27 @@ export function Navigation() {
   ];
 
   return (
-    <nav className="text-base">
+    <nav
+      className="text-base"
+      data-testid="sidenav">
       <ul
         role="list"
+        data-testid="nav-group"
         className="space-y-9">
         {navigation.map((section) => (
           <li key={section.title}>
-            <h2 className="font-display font-medium text-slate-900 dark:text-white">
+            <div
+              className="font-display font-medium text-slate-900 dark:text-white"
+              data-testid="nav-group-title">
               {section.title}
-            </h2>
+            </div>
             <ul
               role="list"
               className="mt-2 space-y-2 border-l-2 border-slate-100 dark:border-slate-600 lg:mt-4 lg:space-y-4 lg:border-slate-200">
               {section.links.map((link) => (
                 <li
                   key={link.href}
+                  data-testid="nav-item"
                   className="relative">
                   <Link
                     href={link.href}
