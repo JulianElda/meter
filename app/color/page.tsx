@@ -1,6 +1,6 @@
 "use client";
 
-import { Color } from "./Color";
+import { Color } from "./color";
 
 export default function ColorPage() {
   return <Color />;

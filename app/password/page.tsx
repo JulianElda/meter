@@ -1,6 +1,6 @@
 "use client";
 
-import { Password } from "./Password";
+import { Password } from "./password";
 
 export default function PasswordPage() {
   return <Password />;

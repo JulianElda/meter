@@ -1,6 +1,6 @@
 "use client";
 
-import { Speed } from "./Speed";
+import { Speed } from "./speed";
 
 export default function SpeedPage() {
   return <Speed />;

@@ -1,6 +1,6 @@
 "use client";
 
-import { Length } from "./Length";
+import { Length } from "./length";
 
 export default function LengthPage() {
   return <Length />;

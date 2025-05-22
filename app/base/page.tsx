@@ -1,6 +1,6 @@
 "use client";
 
-import { Base } from "./Base";
+import { Base } from "./base";
 
 export default function BasePage() {
   return <Base />;

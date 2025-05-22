@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import App from "./../src/components/App/App";
+import AppLayout from "@/src/components/app/app-layout";
 import localFont from "next/font/local";
 import "./tailwind.css";
 
@@ -73,7 +73,7 @@ export default function RootLayout({
       lang="en"
       className={`${heliotrope3.variable} ${heliotrope4.variable} ${mPlus.variable}`}>
       <body className="bg-gray-50 p-2 font-serif text-neutral-900 dark:bg-gray-800 dark:text-gray-50">
-        <App>{children}</App>
+        <AppLayout>{children}</AppLayout>
       </body>
     </html>
   );

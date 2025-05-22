@@ -1,6 +1,6 @@
 "use client";
 
-import { Guid } from "./Guid";
+import { Guid } from "./guid";
 
 export default function GuidPage() {
   return <Guid />;

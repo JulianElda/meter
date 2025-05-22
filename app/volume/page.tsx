@@ -1,6 +1,6 @@
 "use client";
 
-import { Volume } from "./Volume";
+import { Volume } from "./volume";
 
 export default function VolumePage() {
   return <Volume />;
