@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Notification } from "@/src/components/notifications/notifications.type";
+import type { Notification } from "@/src/components/notifications/notifications.type";
 import { RootState } from "@/src/store/store";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface NotificationState {
   items: Notification[];

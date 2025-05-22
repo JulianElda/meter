@@ -1,3 +1,5 @@
+"use client";
+
 import { PageHeader } from "@/src/components/page-header";
 import { useAppDispatch } from "@/src/store/hooks";
 import { addNotification } from "@/src/store/notification/notification.slice";

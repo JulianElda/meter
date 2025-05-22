@@ -1,3 +1,5 @@
+"use client";
+
 import { PageHeader } from "@/src/components/page-header";
 import { SpeedUnits, SpeedUnitsTable } from "@/src/constants/speed";
 import { toFixedRounding } from "@/src/util/common";

@@ -1,3 +1,5 @@
+"use client";
+
 import { PageHeader } from "@/src/components/page-header";
 import { Card, Input } from "@julianelda/scratchpad";
 import { useReducer } from "react";

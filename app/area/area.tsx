@@ -1,3 +1,5 @@
+"use client";
+
 import { PageHeader } from "@/src/components/page-header";
 import { AreaUnits, AreaUnitsTable } from "@/src/constants/area";
 import { Card, InputSelect } from "@julianelda/scratchpad";

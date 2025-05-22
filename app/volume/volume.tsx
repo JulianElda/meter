@@ -1,3 +1,5 @@
+"use client";
+
 import { PageHeader } from "@/src/components/page-header";
 import { VolumeUnits, VolumeUnitsTable } from "@/src/constants/volume";
 import { toFixedRounding } from "@/src/util/common";

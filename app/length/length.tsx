@@ -1,3 +1,5 @@
+"use client";
+
 import { PageHeader } from "@/src/components/page-header";
 import { LengthConversionTable, LengthUnits } from "@/src/constants/length";
 import { toFixedRounding } from "@/src/util/common";

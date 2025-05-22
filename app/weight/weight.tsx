@@ -1,3 +1,5 @@
+"use client";
+
 import { PageHeader } from "@/src/components/page-header";
 import { WeightConversionTable, WeightUnits } from "@/src/constants/weight";
 import { toFixedRounding } from "@/src/util/common";
