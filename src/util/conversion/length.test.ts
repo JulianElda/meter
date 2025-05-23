@@ -9,7 +9,7 @@ describe("Length conversion", () => {
       expect(res).toBe(1000);
     });
 
-    test("1 km: 100000 m", () => {
+    test("1 km: 100000 cm", () => {
       const res = convertLength(1, LengthUnits.km, LengthUnits.cm);
       expect(res).toBe(100000);
     });
@@ -68,7 +68,7 @@ describe("Length conversion", () => {
       expect(res).toBeCloseTo(1.609, 3);
     });
 
-    test("1 mile: 160934.400 m", async () => {
+    test("1 mile: 1609.344 m", async () => {
       const res = convertLength(1, LengthUnits.mile, LengthUnits.m);
       expect(res).toBeCloseTo(1609.344, 3);
     });
