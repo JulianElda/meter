@@ -3,7 +3,7 @@
     "target": "es5",
     "lib": ["es5", "dom"],
     "sourceMap": true,
-    "types": ["cypress", "node", "./suppport/commands.d.ts"]
+    "types": ["cypress", "node"]
   },
   "include": ["**/*.ts"]
 }
