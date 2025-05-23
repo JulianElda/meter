@@ -3,5 +3,5 @@ type PageHeaderProps = {
 };
 
 export function PageHeader(props: PageHeaderProps) {
-  return <h1 className="pb-2 font-heading text-xl">{props.title}</h1>;
+  return <h2 className="pb-2 font-heading text-xl">{props.title}</h2>;
 }

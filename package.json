@@ -10,7 +10,8 @@
     "test": "vitest",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "e2e": "cypress open --e2e --browser chromium"
+    "e2e": "cypress open --e2e --browser chromium",
+    "e2e:ci": "cypress run --e2e --browser chromium"
   },
   "dependencies": {
     "@julianelda/scratchpad": "^1.8.3",
