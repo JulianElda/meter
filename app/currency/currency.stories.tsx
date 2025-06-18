@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 import { Currency } from "./currency";
 
 const meta: Meta<typeof Currency> = {
