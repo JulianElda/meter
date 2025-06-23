@@ -1,6 +1,6 @@
 import { Notifications } from "@/src/components/notifications/notifications";
 import { ReduxProvider } from "@/src/store/provider";
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { Lorem } from "./lorem";
 import { loremText } from "./lorem.data";
 

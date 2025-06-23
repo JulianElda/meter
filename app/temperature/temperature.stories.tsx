@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { Temperature } from "./temperature";
 
 const meta: Meta<typeof Temperature> = {

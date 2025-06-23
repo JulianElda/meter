@@ -1,7 +1,7 @@
-import type { Preview } from "@storybook/nextjs";
+import type { Preview } from "@storybook/nextjs-vite";
 import { withThemeByClassName } from "@storybook/addon-themes";
 
-import "./../app/tailwind.css";
+import "./storybook.css";
 
 const preview: Preview = {
   decorators: [
