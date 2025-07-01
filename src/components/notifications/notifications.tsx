@@ -5,6 +5,7 @@ import {
   notificationsSelector,
   removeNotification,
 } from "@/src/store/notification/notification.slice";
+
 import { Notification } from "./notification";
 
 export function Notifications() {
@@ -20,10 +21,10 @@ export function Notifications() {
       {notifications.map((notification) => {
         return (
           <Notification
-            key={notification.id}
-            id={notification.id}
-            label={notification.label}
             callback={onRemoveNotification}
+            id={notification.id}
+            key={notification.id}
+            label={notification.label}
           />
         );
       })}

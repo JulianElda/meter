@@ -1,4 +1,4 @@
-import { Temperatures, F_C, K_C } from "@/src/constants/temperature";
+import { F_C, K_C, Temperatures } from "@/src/constants/temperature";
 
 export const convertTemperature = function (
   amount: number,

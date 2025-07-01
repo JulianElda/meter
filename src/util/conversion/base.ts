@@ -14,8 +14,8 @@ export function convertBaseNumber(
     return "0";
   }
 
-  const decimalNumber = parseInt(n, sourceBase);
-  if (isNaN(decimalNumber)) {
+  const decimalNumber = Number.parseInt(n, sourceBase);
+  if (Number.isNaN(decimalNumber)) {
     return "0";
   }
 

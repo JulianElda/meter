@@ -1,7 +1,7 @@
 "use client";
 
-import { Navigation } from "@/src/components/navigation";
 import { Footer } from "@/src/components/footer";
+import { Navigation } from "@/src/components/navigation";
 import { Notifications } from "@/src/components/notifications";
 import { ReduxProvider } from "@/src/store/provider";
 

@@ -17,9 +17,9 @@ export function PasswordStrength({ password }: { password: string }) {
   return (
     <div>
       <ProgressBar
+        hideLabel={true}
         id="password-strengthbar"
         label="Password strength"
-        hideLabel={true}
         max={4}
         min={0}
         value={strength.score}

@@ -1,12 +1,14 @@
-import { VolumeUnits } from "@/src/constants/volume";
 import { describe, expect, test } from "vitest";
+
+import { VolumeUnits } from "@/src/constants/volume";
+
 import { convertVolume } from "./volume";
 
 describe("Volume conversion", () => {
   describe("SI => SI", () => {
     test("1 m³: 1000000 dm³", () => {
       const res = convertVolume(1, VolumeUnits.m, VolumeUnits.cm);
-      expect(res).toBeCloseTo(1000000, 3);
+      expect(res).toBeCloseTo(1_000_000, 3);
     });
 
     test("100 cm³: 0.1 dm³", () => {

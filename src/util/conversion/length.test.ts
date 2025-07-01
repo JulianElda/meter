@@ -1,6 +1,8 @@
 import { describe, expect, test } from "vitest";
-import { convertLength } from "./length";
+
 import { LengthUnits } from "@/src/constants/length";
+
+import { convertLength } from "./length";
 
 describe("Length conversion", () => {
   describe("Metric units", () => {
@@ -11,7 +13,7 @@ describe("Length conversion", () => {
 
     test("1 km: 100000 cm", () => {
       const res = convertLength(1, LengthUnits.km, LengthUnits.cm);
-      expect(res).toBe(100000);
+      expect(res).toBe(100_000);
     });
 
     test("1 m: 0.001 km", async () => {
@@ -48,7 +50,7 @@ describe("Length conversion", () => {
 
     test("1 mile: 63360 inch", async () => {
       const res = convertLength(1, LengthUnits.mile, LengthUnits.inch);
-      expect(res).toBe(63360);
+      expect(res).toBe(63_360);
     });
 
     test("1 mile: 5280 ft", async () => {
@@ -112,7 +114,7 @@ describe("Length conversion", () => {
 
     test("1 km: 39370.079 inch", async () => {
       const res = convertLength(1, LengthUnits.km, LengthUnits.inch);
-      expect(res).toBeCloseTo(39370.079, 3);
+      expect(res).toBeCloseTo(39_370.079, 3);
     });
 
     test("1 m: 1.094 yard", async () => {

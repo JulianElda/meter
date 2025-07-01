@@ -1,12 +1,14 @@
-import { AreaUnits } from "@/src/constants/area";
 import { describe, expect, test } from "vitest";
+
+import { AreaUnits } from "@/src/constants/area";
+
 import { convertArea } from "./area";
 
 describe("Area conversion", () => {
   describe("standard => standard", () => {
     test("100 km²: 100000000 m²", () => {
       const res = convertArea(100, AreaUnits.km, AreaUnits.m);
-      expect(res).toBe(100000000);
+      expect(res).toBe(100_000_000);
     });
 
     test("1000 m²: 0.001 km²", () => {
@@ -38,22 +40,22 @@ describe("Area conversion", () => {
   describe("standard => non-standard", () => {
     test("100 km²: 10000 Hectare", () => {
       const res = convertArea(100, AreaUnits.km, AreaUnits.hectare);
-      expect(res).toBe(10000);
+      expect(res).toBe(10_000);
     });
 
     test("100 km²: 24710.538 Acre", () => {
       const res = convertArea(100, AreaUnits.km, AreaUnits.acre);
-      expect(res).toBeCloseTo(24710.5381, 3);
+      expect(res).toBeCloseTo(24_710.5381, 3);
     });
 
     test("100 mi²: 25899.881 Hectare", () => {
       const res = convertArea(100, AreaUnits.mile, AreaUnits.hectare);
-      expect(res).toBeCloseTo(25899.8811, 3);
+      expect(res).toBeCloseTo(25_899.8811, 3);
     });
 
     test("100 mi²: 64000 Acre", () => {
       const res = convertArea(100, AreaUnits.mile, AreaUnits.acre);
-      expect(res).toBe(64000);
+      expect(res).toBe(64_000);
     });
 
     test("4840 yd²: 1 Acre", () => {

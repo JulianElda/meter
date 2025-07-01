@@ -1,5 +1,7 @@
-import { AreaUnits, AreaUnitsTable } from "@/src/constants/area";
-import { LengthUnits } from "@/src/constants/length";
+import type { AreaUnits } from "@/src/constants/area";
+import type { LengthUnits } from "@/src/constants/length";
+
+import { AreaUnitsTable } from "@/src/constants/area";
 import { convertLength } from "@/src/util/conversion";
 /**
  * derivatives of length units are standard units, e.g. m², mile²

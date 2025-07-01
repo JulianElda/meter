@@ -1,30 +1,30 @@
 export enum TimeUnits {
-  // second
-  s = "s",
+  // hour
+  h = "h",
 
   // minute
   m = "m",
 
-  // hour
-  h = "h",
+  // second
+  s = "s",
 }
 
-export type TimeDescription = {
-  unit: TimeUnits;
+export interface TimeDescription {
   base: number;
-};
+  unit: TimeUnits;
+}
 
 export const TimeConversionTable: Record<TimeUnits, TimeDescription> = {
-  [TimeUnits.s]: {
-    unit: TimeUnits.s,
-    base: 1,
+  [TimeUnits.h]: {
+    base: 3600,
+    unit: TimeUnits.h,
   },
   [TimeUnits.m]: {
-    unit: TimeUnits.m,
     base: 60,
+    unit: TimeUnits.m,
   },
-  [TimeUnits.h]: {
-    unit: TimeUnits.h,
-    base: 3600,
+  [TimeUnits.s]: {
+    base: 1,
+    unit: TimeUnits.s,
   },
 };

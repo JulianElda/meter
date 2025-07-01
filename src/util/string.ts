@@ -1,5 +1,5 @@
 export const shuffleCharacters = (characters: string) => {
-  const charactersArray = characters.split("");
+  const charactersArray = [...characters];
   let randomIndex: number;
   let currentIndex = characters.length;
 
@@ -21,18 +21,18 @@ export const getRandomCharacter = (characters: string) => {
 };
 
 export const generateRandomString = function ({
+  chars = "",
   length = 16,
-  uppercase = false,
   numerals = false,
   special = false,
-  chars = "",
+  uppercase = false,
 }): string {
   const LOWERCASE_CHARS = "abcdefghijklmnopqrstuvwxyz";
   const UPPERCASE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const NUMERAL_CHARS = "0123456789";
   const SPECIAL_CHARS = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
 
-  let availableCharacters = chars ? chars : LOWERCASE_CHARS;
+  let availableCharacters = chars ?? LOWERCASE_CHARS;
   let result = "";
 
   if (uppercase) {
@@ -58,8 +58,8 @@ export const generateRandomString = function ({
 };
 
 export function generateGUID(): string {
-  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (char) => {
-    const r = (Math.random() * 16) | 0;
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replaceAll(/[xy]/g, (char) => {
+    const r = Math.trunc(Math.random() * 16);
     const v = char === "x" ? r : (r & 0x3) | 0x8;
     return v.toString(16);
   });

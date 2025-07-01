@@ -1,5 +1,7 @@
-import { LengthUnits } from "@/src/constants/length";
-import { VolumeUnits, VolumeUnitsTable } from "@/src/constants/volume";
+import type { LengthUnits } from "@/src/constants/length";
+import type { VolumeUnits } from "@/src/constants/volume";
+
+import { VolumeUnitsTable } from "@/src/constants/volume";
 import { convertLength } from "@/src/util/conversion";
 
 /**

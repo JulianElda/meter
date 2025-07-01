@@ -1,8 +1,9 @@
+import type { LengthUnits } from "@/src/constants/length";
+
 import {
   INCH_TO_CM,
   LengthConversionTable,
   LengthSystems,
-  LengthUnits,
   LengthUnitsSystemsBase,
 } from "@/src/constants/length";
 
@@ -24,7 +25,7 @@ export const convertLengthToDifferentUnits = function (
   unitsFrom: LengthUnits,
   unitsTo: LengthUnits
 ): number {
-  let result: number = 0;
+  let result = 0;
 
   // convert to base units first
   // e.g. km to cm
@@ -55,19 +56,10 @@ export const convertLength = function (
   unitsFrom: LengthUnits,
   unitsTo: LengthUnits
 ): number {
-  let result: number = 0;
-
-  // convert to same base
-  if (
-    LengthConversionTable[unitsFrom].system ===
+  return LengthConversionTable[unitsFrom].system ===
     LengthConversionTable[unitsTo].system
-  ) {
-    result = convertLengthToSameUnits(amount, unitsFrom, unitsTo);
-  }
-  // convert to different base
-  else {
-    result = convertLengthToDifferentUnits(amount, unitsFrom, unitsTo);
-  }
-
-  return result;
+    ? // convert to same base
+      convertLengthToSameUnits(amount, unitsFrom, unitsTo)
+    : // convert to different base
+      convertLengthToDifferentUnits(amount, unitsFrom, unitsTo);
 };

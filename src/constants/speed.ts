@@ -7,22 +7,22 @@ export enum SpeedUnits {
   mile_h = "mile/h",
 }
 
-type SpeedUnitsDescription = {
-  numeratorUnits: LengthUnits;
+interface SpeedUnitsDescription {
   denumeratorUnits: TimeUnits;
-};
+  numeratorUnits: LengthUnits;
+}
 
 export const SpeedUnitsTable: Record<SpeedUnits, SpeedUnitsDescription> = {
   [SpeedUnits.km_h]: {
-    numeratorUnits: LengthUnits.km,
     denumeratorUnits: TimeUnits.h,
+    numeratorUnits: LengthUnits.km,
   },
   [SpeedUnits.m_s]: {
-    numeratorUnits: LengthUnits.m,
     denumeratorUnits: TimeUnits.s,
+    numeratorUnits: LengthUnits.m,
   },
   [SpeedUnits.mile_h]: {
-    numeratorUnits: LengthUnits.mile,
     denumeratorUnits: TimeUnits.h,
+    numeratorUnits: LengthUnits.mile,
   },
 };

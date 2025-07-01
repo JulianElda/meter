@@ -1,5 +1,7 @@
-import { WeightUnits } from "@/src/constants/weight";
 import { describe, expect, test } from "vitest";
+
+import { WeightUnits } from "@/src/constants/weight";
+
 import { convertWeight } from "./weight";
 
 describe("Weight conversion", () => {

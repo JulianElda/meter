@@ -1,4 +1,5 @@
 import { describe, expect, test } from "vitest";
+
 import {
   generateGUID,
   generateRandomString,
@@ -12,9 +13,7 @@ describe("shuffleCharacters", () => {
     const result = shuffleCharacters(input);
     expect(result).not.toBe(input);
     expect(result.length).toBe(input.length);
-    expect(result.split("").sort().join("")).toBe(
-      input.split("").sort().join("")
-    );
+    expect([...result].sort().join("")).toBe([...input].sort().join(""));
   });
 });
 

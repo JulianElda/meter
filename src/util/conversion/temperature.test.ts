@@ -1,6 +1,8 @@
 import { describe, expect, test } from "vitest";
-import { convertTemperature } from "./temperature";
+
 import { Temperatures } from "@/src/constants/temperature";
+
+import { convertTemperature } from "./temperature";
 
 describe("Temperature conversion", () => {
   test("100 C = 212 F = 373.15 K", () => {

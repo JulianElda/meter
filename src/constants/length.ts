@@ -4,14 +4,14 @@ export enum LengthSystems {
 }
 
 export enum LengthUnits {
-  km = "km",
-  m = "m",
-  dm = "dm",
   cm = "cm",
-  mile = "mile",
-  yard = "yard",
+  dm = "dm",
   ft = "ft",
   inch = "inch",
+  km = "km",
+  m = "m",
+  mile = "mile",
+  yard = "yard",
 }
 
 export const LengthUnitsSystemsBase: Record<LengthSystems, LengthUnits> = {
@@ -19,55 +19,55 @@ export const LengthUnitsSystemsBase: Record<LengthSystems, LengthUnits> = {
   [LengthSystems.METRIC]: LengthUnits.cm,
 };
 
-export type LengthDescription = {
-  // imperial or metric
-  system: LengthSystems;
-
+export interface LengthDescription {
   // conversion to their respective base
   factor: number;
-};
+
+  // imperial or metric
+  system: LengthSystems;
+}
 
 // conversion table
 export const LengthConversionTable: Record<LengthUnits, LengthDescription> = {
-  [LengthUnits.km]: {
-    system: LengthSystems.METRIC,
-    // 1 km - 1000 m === 10000 cm
-    factor: 100000,
-  },
-  [LengthUnits.m]: {
-    system: LengthSystems.METRIC,
-    // 1 m  - 100 cm
-    factor: 100,
-  },
-  [LengthUnits.dm]: {
-    system: LengthSystems.METRIC,
-    // 1 dm  - 10 cm
-    factor: 10,
-  },
   [LengthUnits.cm]: {
-    system: LengthSystems.METRIC,
     // 1 cm - 1 cm
     factor: 1,
+    system: LengthSystems.METRIC,
   },
-  [LengthUnits.mile]: {
-    system: LengthSystems.IMPERIAL,
-    // 1 mile - 63360 inch === 5280 ft === 1760 yard
-    factor: 63360,
-  },
-  [LengthUnits.yard]: {
-    system: LengthSystems.IMPERIAL,
-    // 1 yard - 36 inch === 3 ft
-    factor: 36,
+  [LengthUnits.dm]: {
+    // 1 dm  - 10 cm
+    factor: 10,
+    system: LengthSystems.METRIC,
   },
   [LengthUnits.ft]: {
-    system: LengthSystems.IMPERIAL,
     // 1 ft - 12 inch
     factor: 12,
+    system: LengthSystems.IMPERIAL,
   },
   [LengthUnits.inch]: {
-    system: LengthSystems.IMPERIAL,
     // 1 inch - 1 inch
     factor: 1,
+    system: LengthSystems.IMPERIAL,
+  },
+  [LengthUnits.km]: {
+    // 1 km - 1000 m === 10000 cm
+    factor: 100_000,
+    system: LengthSystems.METRIC,
+  },
+  [LengthUnits.m]: {
+    // 1 m  - 100 cm
+    factor: 100,
+    system: LengthSystems.METRIC,
+  },
+  [LengthUnits.mile]: {
+    // 1 mile - 63360 inch === 5280 ft === 1760 yard
+    factor: 63_360,
+    system: LengthSystems.IMPERIAL,
+  },
+  [LengthUnits.yard]: {
+    // 1 yard - 36 inch === 3 ft
+    factor: 36,
+    system: LengthSystems.IMPERIAL,
   },
 };
 
@@ -77,4 +77,4 @@ export const LengthConversionTable: Record<LengthUnits, LengthDescription> = {
   cm to inch should be calculated (1 / 2.54)
   instead of storing its rounded value
 */
-export const INCH_TO_CM: number = 2.54;
+export const INCH_TO_CM = 2.54;

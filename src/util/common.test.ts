@@ -1,17 +1,19 @@
 import { describe, expect, test } from "vitest";
-import { toFixedRounding } from "./common";
+
 import { ROUNDING } from "@/src/constants/common";
+
+import { toFixedRounding } from "./common";
 
 describe("toFixedRounding", () => {
   test("rounds a positive number correctly", () => {
-    const input = 123.456789;
+    const input = 123.456_789;
     const expected = Number(input.toFixed(ROUNDING));
     const result = toFixedRounding(input);
     expect(result).toBe(expected);
   });
 
   test("rounds a negative number correctly", () => {
-    const input = -123.456789;
+    const input = -123.456_789;
     const expected = Number(input.toFixed(ROUNDING));
     const result = toFixedRounding(input);
     expect(result).toBe(expected);
@@ -25,7 +27,7 @@ describe("toFixedRounding", () => {
   });
 
   test("rounds a number with more decimal places than ROUNDING correctly", () => {
-    const input = 1.23456789;
+    const input = 1.234_567_89;
     const expected = Number(input.toFixed(ROUNDING));
     const result = toFixedRounding(input);
     expect(result).toBe(expected);

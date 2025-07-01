@@ -4,6 +4,6 @@ export enum Temperatures {
   K = "K",
 }
 
-export const K_C: number = 273.15;
+export const K_C = 273.15;
 
-export const F_C: number = 32;
+export const F_C = 32;

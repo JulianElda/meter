@@ -1,14 +1,14 @@
 const decimalToHex = function (fromRgb: string): string {
-  let result = parseInt(fromRgb).toString(16);
+  let result = Number.parseInt(fromRgb).toString(16);
   if (result.length === 1) result = "0" + result;
   return result;
 };
 
-export const hexToRgb = function (hexString: string): string {
-  const toRgb = function (fromHex: string): string {
-    return parseInt(fromHex, 16).toString();
-  };
+const toRgb = function (fromHex: string): string {
+  return Number.parseInt(fromHex, 16).toString();
+};
 
+export const hexToRgb = function (hexString: string): string {
   let str = hexString;
   if (str.length === 7) str = str.slice(1, 7);
 
@@ -34,54 +34,20 @@ export const rgbToHex = function (rgbString: string): string {
   );
 };
 
-export function rgbToHSL(rgbString: string): string {
-  const rgbArray = rgbString.split(",").map((value) => value.trim());
-
-  const r = parseInt(rgbArray[0]) / 255;
-  const g = parseInt(rgbArray[1]) / 255;
-  const b = parseInt(rgbArray[2]) / 255;
-
-  const cmin = Math.min(r, g, b);
-  const cmax = Math.max(r, g, b);
-  const delta = cmax - cmin;
-
-  let h = 0,
-    s = 0,
-    l = 0;
-
-  if (delta == 0) h = 0;
-  else if (cmax == r) h = ((g - b) / delta) % 6;
-  else if (cmax == g) h = (b - r) / delta + 2;
-  else h = (r - g) / delta + 4;
-
-  h = Math.round(h * 60);
-
-  if (h < 0) h += 360;
-
-  l = (cmax + cmin) / 2;
-
-  s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
-
-  s = +(s * 100).toFixed(0);
-  l = +(l * 100).toFixed(0);
-
-  return h + ", " + s + "%, " + l + "%";
-}
-
 export function hslToRgb(hslString: string): string {
   const hslArray = hslString.split(",").map((value) => value.trim());
 
-  const h = parseInt(hslArray[0]);
-  const s = parseInt(hslArray[1]?.replace("%", "")) / 100;
-  const l = parseInt(hslArray[2]?.replace("%", "")) / 100;
+  const h = Number.parseInt(hslArray[0]);
+  const s = Number.parseInt(hslArray[1]?.replace("%", "")) / 100;
+  const l = Number.parseInt(hslArray[2]?.replace("%", "")) / 100;
 
   const c = (1 - Math.abs(2 * l - 1)) * s;
   const x = c * (1 - Math.abs(((h / 60) % 2) - 1));
   const m = l - c / 2;
 
-  let r = 0,
+  let b = 0,
     g = 0,
-    b = 0;
+    r = 0;
 
   if (0 <= h && h < 60) {
     r = c;
@@ -115,6 +81,40 @@ export function hslToRgb(hslString: string): string {
   return [r, g, b].join(", ");
 }
 
+export function rgbToHSL(rgbString: string): string {
+  const rgbArray = rgbString.split(",").map((value) => value.trim());
+
+  const r = Number.parseInt(rgbArray[0]) / 255;
+  const g = Number.parseInt(rgbArray[1]) / 255;
+  const b = Number.parseInt(rgbArray[2]) / 255;
+
+  const cmin = Math.min(r, g, b);
+  const cmax = Math.max(r, g, b);
+  const delta = cmax - cmin;
+
+  let h = 0,
+    l = 0,
+    s = 0;
+
+  if (delta == 0) h = 0;
+  else if (cmax == r) h = ((g - b) / delta) % 6;
+  else if (cmax == g) h = (b - r) / delta + 2;
+  else h = (r - g) / delta + 4;
+
+  h = Math.round(h * 60);
+
+  if (h < 0) h += 360;
+
+  l = (cmax + cmin) / 2;
+
+  s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
+
+  s = +(s * 100).toFixed(0);
+  l = +(l * 100).toFixed(0);
+
+  return h + ", " + s + "%, " + l + "%";
+}
+
 // https://www.w3.org/TR/WCAG21/#dfn-relative-luminance
 export const calculateLuminance = function (
   r: number,
@@ -123,7 +123,7 @@ export const calculateLuminance = function (
 ): number {
   const a = [r, g, b].map(function (v) {
     v /= 255;
-    return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+    return v <= 0.039_28 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
   });
   return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
 };
@@ -134,14 +134,14 @@ export const calculateContrast = function (
   rgb2: string[]
 ): number {
   const lum1 = calculateLuminance(
-    parseInt(rgb1[0]),
-    parseInt(rgb1[1]),
-    parseInt(rgb1[2])
+    Number.parseInt(rgb1[0]),
+    Number.parseInt(rgb1[1]),
+    Number.parseInt(rgb1[2])
   );
   const lum2 = calculateLuminance(
-    parseInt(rgb2[0]),
-    parseInt(rgb2[1]),
-    parseInt(rgb2[2])
+    Number.parseInt(rgb2[0]),
+    Number.parseInt(rgb2[1]),
+    Number.parseInt(rgb2[2])
   );
   const brightest = Math.max(lum1, lum2);
   const darkest = Math.min(lum1, lum2);

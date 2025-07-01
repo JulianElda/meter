@@ -4,11 +4,11 @@ export enum WeightSystems {
 }
 
 export enum WeightUnits {
-  tonne = "t",
-  kg = "kg",
   g = "g",
+  kg = "kg",
   pound = "pound",
   stone = "stone",
+  tonne = "t",
 }
 
 export const WeightUnitsSystemsBase: Record<WeightSystems, WeightUnits> = {
@@ -16,36 +16,36 @@ export const WeightUnitsSystemsBase: Record<WeightSystems, WeightUnits> = {
   [WeightSystems.METRIC]: WeightUnits.kg,
 };
 
-type WeightDescription = {
-  // imperial or metric
-  system: WeightSystems;
-
+interface WeightDescription {
   // conversion to their respective base
   factor: number;
-};
 
-export const POUND_TO_KG = 0.45359237;
+  // imperial or metric
+  system: WeightSystems;
+}
+
+export const POUND_TO_KG = 0.453_592_37;
 
 export const WeightConversionTable: Record<WeightUnits, WeightDescription> = {
-  [WeightUnits.tonne]: {
+  [WeightUnits.g]: {
+    factor: 0.001,
     system: WeightSystems.METRIC,
-    factor: 1000,
   },
   [WeightUnits.kg]: {
-    system: WeightSystems.METRIC,
     factor: 1,
-  },
-  [WeightUnits.g]: {
     system: WeightSystems.METRIC,
-    factor: 0.001,
   },
   [WeightUnits.pound]: {
-    system: WeightSystems.IMPERIAL,
     factor: 1,
+    system: WeightSystems.IMPERIAL,
   },
   [WeightUnits.stone]: {
-    system: WeightSystems.IMPERIAL,
     // 1 stone = 14 pound
     factor: 14,
+    system: WeightSystems.IMPERIAL,
+  },
+  [WeightUnits.tonne]: {
+    factor: 1000,
+    system: WeightSystems.METRIC,
   },
 };

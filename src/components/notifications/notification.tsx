@@ -4,13 +4,13 @@ import { clsx } from "clsx";
 import { CheckCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 
-type NotificationProps = {
+interface NotificationProps {
+  callback: (id: string) => void;
   id: string;
   label: string;
-  callback: (id: string) => void;
-};
+}
 
-export function Notification({ id, label, callback }: NotificationProps) {
+export function Notification({ callback, id, label }: NotificationProps) {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {

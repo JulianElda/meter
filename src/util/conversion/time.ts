@@ -1,4 +1,6 @@
-import { TimeConversionTable, TimeUnits } from "@/src/constants/time";
+import type { TimeUnits } from "@/src/constants/time";
+
+import { TimeConversionTable } from "@/src/constants/time";
 
 export const convertTime = function (
   amount: number,

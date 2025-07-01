@@ -1,7 +1,8 @@
+import type { WeightUnits } from "@/src/constants/weight";
+
 import {
   POUND_TO_KG,
   WeightConversionTable,
-  WeightUnits,
   WeightSystems,
   WeightUnitsSystemsBase,
 } from "@/src/constants/weight";
@@ -24,7 +25,7 @@ export const convertWeightToDifferentUnits = function (
   unitsFrom: WeightUnits,
   unitsTo: WeightUnits
 ): number {
-  let result: number = 0;
+  let result = 0;
 
   // convert to base units first
   const baseFrom: number = convertWeightToSameUnits(

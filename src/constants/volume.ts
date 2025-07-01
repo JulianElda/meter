@@ -1,29 +1,29 @@
 import { LengthUnits } from "./length";
 
 export enum VolumeUnits {
-  m = "m³",
-  dm = "dm³",
   cm = "cm³",
-  inch = "inch³",
+  dm = "dm³",
   ft = "ft³",
-  yard = "yard³",
-  l = "liter",
-  ml = "milliliter",
-  us_gallon = "US gallon",
-  us_quart = "US quart",
-  us_pint = "US pint",
-  us_cup = "US cup",
-  us_oz = "US fluid ounce",
   imperial_gallon = "Imperial gallon",
-  imperial_quart = "Imperial quart",
-  imperial_pint = "Imperial pint",
   imperial_oz = "Imperial fluid ounce",
+  imperial_pint = "Imperial pint",
+  imperial_quart = "Imperial quart",
+  inch = "inch³",
+  l = "liter",
+  m = "m³",
+  ml = "milliliter",
+  us_cup = "US cup",
+  us_gallon = "US gallon",
+  us_oz = "US fluid ounce",
+  us_pint = "US pint",
+  us_quart = "US quart",
+  yard = "yard³",
 }
 
-type VolumeUnitsDescription = {
-  lengthUnits: LengthUnits;
+interface VolumeUnitsDescription {
   factor: number;
-};
+  lengthUnits: LengthUnits;
+}
 
 // US
 // 1 gallon = 4 quart = 8 pint = 16 cup = 128 fluid ounce = 231 inch³
@@ -41,72 +41,72 @@ const IMPERIAL_PINT_ML = IMPERIAL_GAL_ML / 8;
 const IMPERIAL_OZ_ML = IMPERIAL_GAL_ML / 160;
 
 export const VolumeUnitsTable: Record<VolumeUnits, VolumeUnitsDescription> = {
-  [VolumeUnits.m]: {
-    lengthUnits: LengthUnits.m,
+  [VolumeUnits.cm]: {
     factor: 1,
+    lengthUnits: LengthUnits.cm,
   },
   [VolumeUnits.dm]: {
+    factor: 1,
     lengthUnits: LengthUnits.dm,
-    factor: 1,
-  },
-  [VolumeUnits.cm]: {
-    lengthUnits: LengthUnits.cm,
-    factor: 1,
-  },
-  [VolumeUnits.inch]: {
-    lengthUnits: LengthUnits.inch,
-    factor: 1,
   },
   [VolumeUnits.ft]: {
+    factor: 1,
     lengthUnits: LengthUnits.ft,
-    factor: 1,
-  },
-  [VolumeUnits.yard]: {
-    lengthUnits: LengthUnits.yard,
-    factor: 1,
-  },
-  [VolumeUnits.l]: {
-    lengthUnits: LengthUnits.dm,
-    factor: 1,
-  },
-  [VolumeUnits.ml]: {
-    lengthUnits: LengthUnits.cm,
-    factor: 1,
-  },
-  [VolumeUnits.us_gallon]: {
-    lengthUnits: LengthUnits.inch,
-    factor: US_GAL_INCH,
-  },
-  [VolumeUnits.us_quart]: {
-    lengthUnits: LengthUnits.inch,
-    factor: US_QUART_INCH,
-  },
-  [VolumeUnits.us_pint]: {
-    lengthUnits: LengthUnits.inch,
-    factor: US_PINT_INCH,
-  },
-  [VolumeUnits.us_cup]: {
-    lengthUnits: LengthUnits.inch,
-    factor: US_CUP_INCH,
-  },
-  [VolumeUnits.us_oz]: {
-    lengthUnits: LengthUnits.inch,
-    factor: US_OZ_INCH,
   },
   [VolumeUnits.imperial_gallon]: {
-    lengthUnits: LengthUnits.cm,
     factor: IMPERIAL_GAL_ML,
-  },
-  [VolumeUnits.imperial_quart]: {
     lengthUnits: LengthUnits.cm,
-    factor: IMPERIAL_QUART_ML,
-  },
-  [VolumeUnits.imperial_pint]: {
-    lengthUnits: LengthUnits.cm,
-    factor: IMPERIAL_PINT_ML,
   },
   [VolumeUnits.imperial_oz]: {
-    lengthUnits: LengthUnits.cm,
     factor: IMPERIAL_OZ_ML,
+    lengthUnits: LengthUnits.cm,
+  },
+  [VolumeUnits.imperial_pint]: {
+    factor: IMPERIAL_PINT_ML,
+    lengthUnits: LengthUnits.cm,
+  },
+  [VolumeUnits.imperial_quart]: {
+    factor: IMPERIAL_QUART_ML,
+    lengthUnits: LengthUnits.cm,
+  },
+  [VolumeUnits.inch]: {
+    factor: 1,
+    lengthUnits: LengthUnits.inch,
+  },
+  [VolumeUnits.l]: {
+    factor: 1,
+    lengthUnits: LengthUnits.dm,
+  },
+  [VolumeUnits.m]: {
+    factor: 1,
+    lengthUnits: LengthUnits.m,
+  },
+  [VolumeUnits.ml]: {
+    factor: 1,
+    lengthUnits: LengthUnits.cm,
+  },
+  [VolumeUnits.us_cup]: {
+    factor: US_CUP_INCH,
+    lengthUnits: LengthUnits.inch,
+  },
+  [VolumeUnits.us_gallon]: {
+    factor: US_GAL_INCH,
+    lengthUnits: LengthUnits.inch,
+  },
+  [VolumeUnits.us_oz]: {
+    factor: US_OZ_INCH,
+    lengthUnits: LengthUnits.inch,
+  },
+  [VolumeUnits.us_pint]: {
+    factor: US_PINT_INCH,
+    lengthUnits: LengthUnits.inch,
+  },
+  [VolumeUnits.us_quart]: {
+    factor: US_QUART_INCH,
+    lengthUnits: LengthUnits.inch,
+  },
+  [VolumeUnits.yard]: {
+    factor: 1,
+    lengthUnits: LengthUnits.yard,
   },
 };

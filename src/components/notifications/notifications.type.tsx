@@ -1,4 +1,4 @@
-export type Notification = {
+export interface Notification {
   id: string;
   label: string;
-};
+}
