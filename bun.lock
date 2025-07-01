@@ -5,7 +5,7 @@
       "name": "meter",
       "dependencies": {
         "@julianelda/chroma": "^1.0.0",
-        "@julianelda/scratchpad": "^1.10.1",
+        "@julianelda/scratchpad": "^1.12.0",
         "@julianelda/stilo": "^1.0.2",
         "@mdx-js/loader": "^3.1.0",
         "@mdx-js/react": "^3.1.0",
@@ -280,7 +280,7 @@
 
     "@julianelda/lexis": ["@julianelda/lexis@1.0.6", "", { "peerDependencies": { "@eslint/js": "^9.29.0", "eslint": "^9.29.0", "eslint-plugin-jsx-a11y": "^6.10.2", "eslint-plugin-perfectionist": "^4.15.0", "eslint-plugin-react-hooks": "^5.2.0", "eslint-plugin-react-refresh": "^0.4.20", "eslint-plugin-unicorn": "^59.0.1", "globals": "^16.2.0", "typescript-eslint": "^8.35.0" } }, "sha512-q8PmkPoNN6ovq9dz3apxCufgsK9tjcFMBoe05gdbUJQVtjl3j4okktahd/rR/27MEV614siHKp6tfY0fWCVL0Q=="],
 
-    "@julianelda/scratchpad": ["@julianelda/scratchpad@1.10.1", "", { "dependencies": { "@julianelda/chroma": "^1.0.0", "@julianelda/scratchpad": "^1.10.0", "ajv": "^8.17.1", "js-cookie": "^3.0.5" }, "peerDependencies": { "clsx": "^2.1.1", "react": "^19.0.0", "react-dom": "^19.0.0" } }, "sha512-wMKIOPPUp7ZTPngd6YplFojR7fauaunVvHm/3YnBeib5P+FnKbNzrOVFE2uY8YTha2cNG07xAWLOWe/Pk5ASJw=="],
+    "@julianelda/scratchpad": ["@julianelda/scratchpad@1.12.0", "", { "dependencies": { "ajv": "^8.17.1", "js-cookie": "^3.0.5" }, "peerDependencies": { "clsx": "^2.1.1", "react": "^19.0.0", "react-dom": "^19.0.0" } }, "sha512-A4f2bG1CczFDx4VBimg3ev+ptARjlfajadmr8UnfsiMQWsde6anaPT6LnZmtk8fo4zZDzAwDML/CGzeQtwDChA=="],
 
     "@julianelda/stilo": ["@julianelda/stilo@1.0.2", "", {}, "sha512-/FP8ciVnP1FBw5X9nVeng43cbV57AxOFNv1whJAdLlh+9jY9DQL4NxR6chtCuEi3rJFfFUZ7YwaZ4pe2lpwi8w=="],
 

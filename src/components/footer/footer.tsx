@@ -6,7 +6,6 @@ export function Footer() {
   return (
     <FooterLib
       extraClass="max-w-4xl"
-      label="Julius Polar"
       link="https://github.com/JulianElda/meter"
     />
   );
