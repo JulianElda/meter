@@ -1,10 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
+
 import { expect } from "storybook/test";
-import { Area } from "./area";
+
 import { AreaUnits } from "@/src/constants/area";
 
+import { Area } from "./area";
+
 const meta: Meta<typeof Area> = {
-  title: "Tests/Area",
   component: Area,
   decorators: [
     (Story) => (
@@ -13,6 +15,7 @@ const meta: Meta<typeof Area> = {
       </div>
     ),
   ],
+  title: "Tests/Area",
 };
 
 export default meta;

@@ -1,11 +1,12 @@
 "use client";
 
+import { Card, InputSelect } from "@julianelda/scratchpad";
+import { useState } from "react";
+
 import { PageHeader } from "@/src/components/page-header";
 import { LengthConversionTable, LengthUnits } from "@/src/constants/length";
 import { toFixedRounding } from "@/src/util/common";
 import { convertLength } from "@/src/util/conversion";
-import { Card, InputSelect } from "@julianelda/scratchpad";
-import { useState } from "react";
 
 export function Length() {
   const [units1, setUnits1] = useState<LengthUnits>(LengthUnits.km);
@@ -48,34 +49,33 @@ export function Length() {
       <Card>
         <div className="space-y-2">
           <InputSelect
-            type="number"
-            inputId="from-input"
-            selectId="from-select"
             hideLabel={true}
+            inputId="from-input"
             inputLabel="Amount"
-            selectLabel="Length units"
             inputValue={amount1}
-            onInputChange={onChangeAmount1 as (value: string | number) => void}
-            options={options}
-            selectValue={units1}
+            onInputChange={onChangeAmount1 as (value: number | string) => void}
             onSelectChange={(value: string) =>
               onChangeUnits1(value as LengthUnits)
             }
+            options={options}
+            selectId="from-select"
+            selectLabel="Length units"
+            selectValue={units1}
+            type="number"
           />
           <InputSelect
-            type="number"
-            inputId="result-input"
-            selectId="result-select"
             hideLabel={true}
+            inputId="result-input"
             inputLabel="Amount"
-            selectLabel="Length units"
             inputValue={amount2}
-            onInputChange={() => undefined}
-            options={options}
-            selectValue={units2}
             onSelectChange={(value: string) =>
               onChangeUnits2(value as LengthUnits)
             }
+            options={options}
+            selectId="result-select"
+            selectLabel="Length units"
+            selectValue={units2}
+            type="number"
           />
         </div>
       </Card>

@@ -2,18 +2,18 @@ import { AreaUnits } from "@/src/constants/area";
 import { toFixedRounding } from "@/src/util/common";
 import { convertArea } from "@/src/util/conversion";
 
-type AreaState = {
-  units1: AreaUnits;
-  units2: AreaUnits;
+interface AreaState {
   amount1: number;
   amount2: number;
-};
+  units1: AreaUnits;
+  units2: AreaUnits;
+}
 
 export const initialAreaState: AreaState = {
-  units1: AreaUnits.km,
-  units2: AreaUnits.mile,
   amount1: 100,
   amount2: toFixedRounding(convertArea(100, AreaUnits.km, AreaUnits.mile)),
+  units1: AreaUnits.km,
+  units2: AreaUnits.mile,
 };
 
 export enum AreaStoreActions {
@@ -22,10 +22,27 @@ export enum AreaStoreActions {
   amount1,
 }
 
-type AreaStoreActionType = {
-  type: AreaStoreActions;
+interface AreaStoreActionType {
   payload: AreaUnits | number;
-};
+  type: AreaStoreActions;
+}
+
+export function areaReducer(state: AreaState, action: AreaStoreActionType) {
+  switch (action.type) {
+    case AreaStoreActions.amount1: {
+      return setAmount1Handler(state, action.payload as number);
+    }
+    case AreaStoreActions.units1: {
+      return setUnits1Handler(state, action.payload as AreaUnits);
+    }
+    case AreaStoreActions.units2: {
+      return setUnits2Handler(state, action.payload as AreaUnits);
+    }
+    default: {
+      return state;
+    }
+  }
+}
 
 function setAmount1Handler(state: AreaState, payload: number): AreaState {
   return {
@@ -38,28 +55,15 @@ function setAmount1Handler(state: AreaState, payload: number): AreaState {
 function setUnits1Handler(state: AreaState, payload: AreaUnits): AreaState {
   return {
     ...state,
-    units1: payload,
     amount2: toFixedRounding(convertArea(state.amount1, payload, state.units2)),
+    units1: payload,
   };
 }
 
 function setUnits2Handler(state: AreaState, payload: AreaUnits): AreaState {
   return {
     ...state,
-    units2: payload,
     amount2: toFixedRounding(convertArea(state.amount1, state.units1, payload)),
+    units2: payload,
   };
-}
-
-export function areaReducer(state: AreaState, action: AreaStoreActionType) {
-  switch (action.type) {
-    case AreaStoreActions.amount1:
-      return setAmount1Handler(state, action.payload as number);
-    case AreaStoreActions.units1:
-      return setUnits1Handler(state, action.payload as AreaUnits);
-    case AreaStoreActions.units2:
-      return setUnits2Handler(state, action.payload as AreaUnits);
-    default:
-      return state;
-  }
 }

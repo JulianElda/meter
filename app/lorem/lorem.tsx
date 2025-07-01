@@ -1,10 +1,11 @@
 "use client";
 
+import { Button, Card, InputSlider, TextArea } from "@julianelda/scratchpad";
+import { useState } from "react";
+
 import { PageHeader } from "@/src/components/page-header";
 import { useAppDispatch } from "@/src/store/hooks";
 import { addNotification } from "@/src/store/notification/notification.slice";
-import { Button, Card, InputSlider, TextArea } from "@julianelda/scratchpad";
-import { useState } from "react";
 
 export function Lorem({ loremText }: { loremText: string }) {
   const dispatch = useAppDispatch();
@@ -37,30 +38,30 @@ export function Lorem({ loremText }: { loremText: string }) {
       <Card>
         <div className="space-y-2">
           <InputSlider
+            hideLabel={false}
             id="lorem-words"
             label="Words"
-            value={words}
             max={300}
             min={10}
-            hideLabel={false}
-            onChange={onChangeWords as (value: string | number) => void}
+            onChange={onChangeWords as (value: number | string) => void}
+            value={words}
           />
           <div className="font-mono">
             <TextArea
+              hideLabel={true}
               id="lorem-lorem"
               label="Lorem ipsum"
               value={lorem}
-              hideLabel={true}
             />
           </div>
 
           <div className="flex justify-end w-full space-x-4">
             <Button
-              type="button"
-              style="secondary"
               id="lorem-copy"
-              text="Copy"
               onClick={onCopyToClipboard}
+              style="secondary"
+              text="Copy"
+              type="button"
             />
           </div>
         </div>

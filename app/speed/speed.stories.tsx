@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
+
 import { Speed } from "./speed";
 
 const meta: Meta<typeof Speed> = {
-  title: "Converters",
   component: Speed,
   decorators: [
     (Story) => (
@@ -11,6 +11,7 @@ const meta: Meta<typeof Speed> = {
       </div>
     ),
   ],
+  title: "Converters",
 };
 
 export default meta;

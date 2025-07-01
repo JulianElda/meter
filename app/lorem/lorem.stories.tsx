@@ -1,11 +1,12 @@
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
+
 import { Notifications } from "@/src/components/notifications/notifications";
 import { ReduxProvider } from "@/src/store/provider";
-import type { Meta, StoryObj } from "@storybook/nextjs-vite";
+
 import { Lorem } from "./lorem";
 import { loremText } from "./lorem.data";
 
 const meta: Meta<typeof Lorem> = {
-  title: "Utilities",
   component: Lorem,
   decorators: [
     (Story) => (
@@ -17,14 +18,15 @@ const meta: Meta<typeof Lorem> = {
       </ReduxProvider>
     ),
   ],
+  title: "Utilities",
 };
 
 export default meta;
 type Story = StoryObj<typeof Lorem>;
 
 export const LoremPage: Story = {
-  name: "Lorem generator",
   args: {
     loremText,
   },
+  name: "Lorem generator",
 };

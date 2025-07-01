@@ -1,11 +1,12 @@
 "use client";
 
+import { Card, InputSelect } from "@julianelda/scratchpad";
+import { useState } from "react";
+
 import { PageHeader } from "@/src/components/page-header";
 import { WeightConversionTable, WeightUnits } from "@/src/constants/weight";
 import { toFixedRounding } from "@/src/util/common";
 import { convertWeight } from "@/src/util/conversion";
-import { Card, InputSelect } from "@julianelda/scratchpad";
-import { useState } from "react";
 
 export function Weight() {
   const [units1, setUnits1] = useState<WeightUnits>(WeightUnits.kg);
@@ -48,34 +49,33 @@ export function Weight() {
       <Card>
         <div className="space-y-2">
           <InputSelect
-            type="number"
-            inputId="from-input"
-            selectId="from-select"
             hideLabel={true}
+            inputId="from-input"
             inputLabel="Amount"
-            selectLabel="Weight units"
             inputValue={amount1}
-            onInputChange={onChangeAmount1 as (value: string | number) => void}
-            options={options}
-            selectValue={units1}
+            onInputChange={onChangeAmount1 as (value: number | string) => void}
             onSelectChange={(value: string) =>
               onChangeUnits1(value as WeightUnits)
             }
+            options={options}
+            selectId="from-select"
+            selectLabel="Weight units"
+            selectValue={units1}
+            type="number"
           />
           <InputSelect
-            type="number"
-            inputId="result-input"
-            selectId="result-select"
             hideLabel={true}
+            inputId="result-input"
             inputLabel="Amount"
-            selectLabel="Weight units"
             inputValue={amount2}
-            onInputChange={() => undefined}
-            options={options}
-            selectValue={units2}
             onSelectChange={(value: string) =>
               onChangeUnits2(value as WeightUnits)
             }
+            options={options}
+            selectId="result-select"
+            selectLabel="Weight units"
+            selectValue={units2}
+            type="number"
           />
         </div>
       </Card>

@@ -1,12 +1,14 @@
 "use client";
 
-import { PageHeader } from "@/src/components/page-header";
 import { Card, Input } from "@julianelda/scratchpad";
 import { useReducer } from "react";
 import { ChromePicker } from "react-color";
+
+import { PageHeader } from "@/src/components/page-header";
+
 import {
-  ColorStoreActions,
   colorReducer,
+  ColorStoreActions,
   initialColorState,
 } from "./color.store";
 
@@ -15,22 +17,22 @@ export function Color() {
 
   const onChangeHex = (newHex: string) => {
     dispatch({
-      type: ColorStoreActions.HEX,
       payload: newHex.toUpperCase(),
+      type: ColorStoreActions.HEX,
     });
   };
 
   const onChangeRgb = (newRgb: string) => {
     dispatch({
-      type: ColorStoreActions.RGB,
       payload: newRgb,
+      type: ColorStoreActions.RGB,
     });
   };
 
   const onChangeHsl = (newHsl: string) => {
     dispatch({
-      type: ColorStoreActions.HSL,
       payload: newHsl,
+      type: ColorStoreActions.HSL,
     });
   };
 
@@ -48,24 +50,24 @@ export function Color() {
         <div className="mt-2 space-y-2">
           <Input
             id="color-hex"
-            type="text"
             label="Hex"
+            onChange={onChangeHex as (value: number | string) => void}
+            type="text"
             value={state.hex}
-            onChange={onChangeHex as (value: string | number) => void}
           />
           <Input
             id="color-rgb"
-            type="text"
             label="RGB"
+            onChange={onChangeRgb as (value: number | string) => void}
+            type="text"
             value={state.rgb}
-            onChange={onChangeRgb as (value: string | number) => void}
           />
           <Input
             id="color-hsl"
-            type="text"
             label="HSL"
+            onChange={onChangeHsl as (value: number | string) => void}
+            type="text"
             value={state.hsl}
-            onChange={onChangeHsl as (value: string | number) => void}
           />
         </div>
       </Card>

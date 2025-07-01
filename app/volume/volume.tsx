@@ -1,11 +1,12 @@
 "use client";
 
+import { Card, InputSelect } from "@julianelda/scratchpad";
+import { useState } from "react";
+
 import { PageHeader } from "@/src/components/page-header";
 import { VolumeUnits, VolumeUnitsTable } from "@/src/constants/volume";
 import { toFixedRounding } from "@/src/util/common";
 import { convertVolume } from "@/src/util/conversion";
-import { Card, InputSelect } from "@julianelda/scratchpad";
-import { useState } from "react";
 
 export function Volume() {
   const [units1, setUnits1] = useState<VolumeUnits>(VolumeUnits.l);
@@ -25,7 +26,7 @@ export function Volume() {
     return tmp;
   })();
 
-  const onChangeAmount1 = function (value: string | number) {
+  const onChangeAmount1 = function (value: number | string) {
     setAmount1(value as number);
     setAmount2(toFixedRounding(convertVolume(value as number, units1, units2)));
   };
@@ -48,34 +49,33 @@ export function Volume() {
       <Card>
         <div className="space-y-2">
           <InputSelect
-            type="text"
-            inputId="from-input"
-            selectId="from-select"
             hideLabel={true}
+            inputId="from-input"
             inputLabel="Amount"
-            selectLabel="Volume units"
             inputValue={amount1}
             onInputChange={onChangeAmount1}
-            options={options}
-            selectValue={units1}
             onSelectChange={(value: string) =>
               onChangeUnits1(value as VolumeUnits)
             }
+            options={options}
+            selectId="from-select"
+            selectLabel="Volume units"
+            selectValue={units1}
+            type="text"
           />
           <InputSelect
-            type="text"
-            inputId="result-input"
-            selectId="result-select"
             hideLabel={true}
+            inputId="result-input"
             inputLabel="Amount"
-            selectLabel="Volume units"
             inputValue={amount2}
-            onInputChange={() => undefined}
-            options={options}
-            selectValue={units2}
             onSelectChange={(value: string) =>
               onChangeUnits2(value as VolumeUnits)
             }
+            options={options}
+            selectId="result-select"
+            selectLabel="Volume units"
+            selectValue={units2}
+            type="text"
           />
         </div>
       </Card>

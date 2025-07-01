@@ -1,7 +1,9 @@
-import { ReduxProvider } from "@/src/store/provider";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, test } from "vitest";
+
+import { ReduxProvider } from "@/src/store/provider";
+
 import { Password } from "./password";
 
 const PASSWORD_LABEL = "password-password";

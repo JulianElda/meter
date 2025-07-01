@@ -1,63 +1,66 @@
 "use client";
 
-import { PageHeader } from "@/src/components/page-header";
 import { Card, InputSelect } from "@julianelda/scratchpad";
 import { useReducer } from "react";
+
+import { PageHeader } from "@/src/components/page-header";
+
 import type { Currency, Rates } from "./currency.store";
+
 import {
-  CurrencyStoreActions,
   currenciesReducer,
+  CurrencyStoreActions,
   getCurrencyRate,
   initialCurrencyState,
 } from "./currency.store";
 
-type CurrencyProps = {
+interface CurrencyProps {
+  initialAmount2: number;
   initialCurrencies: Currency[];
   initialRates: Rates;
-  initialAmount2: number;
-};
+}
 
 export function Currency(props: CurrencyProps) {
   const currencies = props.initialCurrencies;
 
   const [state, dispatch] = useReducer(currenciesReducer, {
     ...initialCurrencyState,
-    rates: props.initialRates,
     amount2: props.initialAmount2,
+    rates: props.initialRates,
   });
 
   const onChangeCurrency1 = (newCurrency1: string) => {
     dispatch({
-      type: CurrencyStoreActions.CURRENCY_1,
       payload: newCurrency1,
+      type: CurrencyStoreActions.CURRENCY_1,
     });
 
     getCurrencyRate(newCurrency1).then((result: Rates) => {
       dispatch({
-        type: CurrencyStoreActions.RATE,
         payload: result,
+        type: CurrencyStoreActions.RATE,
       });
     });
   };
 
   const onChangeCurrency2 = (newCurrency2: string) => {
     dispatch({
-      type: CurrencyStoreActions.CURRENCY_2,
       payload: newCurrency2,
+      type: CurrencyStoreActions.CURRENCY_2,
     });
   };
 
   const onChangeAmount1 = (newAmount1: number) => {
     dispatch({
-      type: CurrencyStoreActions.AMOUNT_1,
       payload: newAmount1,
+      type: CurrencyStoreActions.AMOUNT_1,
     });
   };
 
   const onChangeAmount2 = (newAmount2: number) => {
     dispatch({
-      type: CurrencyStoreActions.AMOUNT_2,
       payload: newAmount2,
+      type: CurrencyStoreActions.AMOUNT_2,
     });
   };
 
@@ -69,30 +72,30 @@ export function Currency(props: CurrencyProps) {
       <Card>
         <div className="space-y-2">
           <InputSelect
-            type="number"
-            inputId="base-amount"
-            selectId="base-currency"
             hideLabel={true}
+            inputId="base-amount"
             inputLabel="Amount"
-            selectLabel="Base currency"
             inputValue={state.amount1}
-            onInputChange={onChangeAmount1 as (value: string | number) => void}
-            options={currencies}
-            selectValue={state.currency1}
+            onInputChange={onChangeAmount1 as (value: number | string) => void}
             onSelectChange={onChangeCurrency1}
+            options={currencies}
+            selectId="base-currency"
+            selectLabel="Base currency"
+            selectValue={state.currency1}
+            type="number"
           />
           <InputSelect
-            type="number"
-            inputId="target-amount"
-            selectId="target-currency"
             hideLabel={true}
+            inputId="target-amount"
             inputLabel="Amount"
-            selectLabel="Base currency"
             inputValue={state.amount2}
-            onInputChange={onChangeAmount2 as (value: string | number) => void}
-            options={currencies}
-            selectValue={state.currency2}
+            onInputChange={onChangeAmount2 as (value: number | string) => void}
             onSelectChange={onChangeCurrency2}
+            options={currencies}
+            selectId="target-currency"
+            selectLabel="Base currency"
+            selectValue={state.currency2}
+            type="number"
           />
         </div>
       </Card>

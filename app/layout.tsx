@@ -1,15 +1,19 @@
 import type { Metadata } from "next";
 
-import AppLayout from "@/src/components/app/app-layout";
 import localFont from "next/font/local";
+
+import AppLayout from "@/src/components/app/app-layout";
+
 import "./tailwind.css";
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const metadata: Metadata = {
-  title: "meter",
   description: "conversion and utilities online, made by Julius Polar",
+  title: "meter",
 };
 
 const heliotrope3 = localFont({
+  display: "swap",
   src: [
     {
       path: "./../node_modules/@julianelda/stilo/fonts/heliotrope_3_regular.woff2",
@@ -29,11 +33,11 @@ const heliotrope3 = localFont({
       weight: "bold",
     },
   ],
-  display: "swap",
   variable: "--font-heliotrope3",
 });
 
 const heliotrope4 = localFont({
+  display: "swap",
   src: [
     {
       path: "./../node_modules/@julianelda/stilo/fonts/heliotrope_4_regular.woff2",
@@ -53,13 +57,12 @@ const heliotrope4 = localFont({
       weight: "bold",
     },
   ],
-  display: "swap",
   variable: "--font-heliotrope4",
 });
 
 const mPlus = localFont({
-  src: "./../styles/MplusCodeLatin60-Regular.woff2",
   display: "swap",
+  src: "./../styles/MplusCodeLatin60-Regular.woff2",
   variable: "--font-mpluscode",
 });
 
@@ -70,8 +73,8 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
-      className={`${heliotrope3.variable} ${heliotrope4.variable} ${mPlus.variable}`}>
+      className={`${heliotrope3.variable} ${heliotrope4.variable} ${mPlus.variable}`}
+      lang="en">
       <body className="bg-app-background-light text-app-text-light dark:bg-app-background-dark dark:text-app-text-dark size-full font-serif">
         <AppLayout>{children}</AppLayout>
       </body>

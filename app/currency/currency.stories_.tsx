@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
+
 import { Currency } from "./currency";
 
 const meta: Meta<typeof Currency> = {
-  title: "Utilities",
   component: Currency,
   decorators: [
     (Story) => (
@@ -11,6 +11,7 @@ const meta: Meta<typeof Currency> = {
       </div>
     ),
   ],
+  title: "Utilities",
 };
 
 export default meta;

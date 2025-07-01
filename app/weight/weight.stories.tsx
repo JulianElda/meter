@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
+
 import { Weight } from "./weight";
 
 const meta: Meta<typeof Weight> = {
-  title: "Converters",
   component: Weight,
   decorators: [
     (Story) => (
@@ -11,6 +11,7 @@ const meta: Meta<typeof Weight> = {
       </div>
     ),
   ],
+  title: "Converters",
 };
 
 export default meta;

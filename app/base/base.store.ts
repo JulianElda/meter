@@ -1,10 +1,10 @@
 import { convertBaseNumber } from "@/src/util/conversion";
 
-export type BaseState = {
+export interface BaseState {
   binary: string;
   decimal: string;
   hex: string;
-};
+}
 
 export const initialBaseState: BaseState = {
   binary: "1100100",
@@ -18,14 +18,31 @@ export enum BaseStoreActions {
   HEX = "HEX",
 }
 
-type ValueChangePayload = {
-  value: string;
-};
-
-type BaseStoreActionType = {
-  type: BaseStoreActions;
+interface BaseStoreActionType {
   payload: ValueChangePayload;
-};
+  type: BaseStoreActions;
+}
+
+interface ValueChangePayload {
+  value: string;
+}
+
+export function baseReducer(state: BaseState, action: BaseStoreActionType) {
+  switch (action.type) {
+    case BaseStoreActions.BINARY: {
+      return setBinaryHandler(action.payload);
+    }
+    case BaseStoreActions.DECIMAL: {
+      return setDecimalHandler(action.payload);
+    }
+    case BaseStoreActions.HEX: {
+      return setHexHandler(action.payload);
+    }
+    default: {
+      return state;
+    }
+  }
+}
 
 function setBinaryHandler({ value }: ValueChangePayload): BaseState {
   return {
@@ -49,17 +66,4 @@ function setHexHandler({ value }: ValueChangePayload): BaseState {
     decimal: convertBaseNumber(value, 16, 10),
     hex: value,
   };
-}
-
-export function baseReducer(state: BaseState, action: BaseStoreActionType) {
-  switch (action.type) {
-    case BaseStoreActions.BINARY:
-      return setBinaryHandler(action.payload);
-    case BaseStoreActions.DECIMAL:
-      return setDecimalHandler(action.payload);
-    case BaseStoreActions.HEX:
-      return setHexHandler(action.payload);
-    default:
-      return state;
-  }
 }

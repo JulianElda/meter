@@ -1,8 +1,10 @@
 "use client";
 
-import { PageHeader } from "@/src/components/page-header";
 import { Card, Input } from "@julianelda/scratchpad";
 import { useReducer } from "react";
+
+import { PageHeader } from "@/src/components/page-header";
+
 import {
   initialTemperatureState,
   temperatureReducer,
@@ -17,22 +19,22 @@ export function Temperature() {
 
   const onChangeCelcius = function (value: number) {
     dispatch({
-      type: TemperatureStoreActions.celcius,
       payload: value,
+      type: TemperatureStoreActions.celcius,
     });
   };
 
   const onChangeFahrenheit = function (value: number) {
     dispatch({
-      type: TemperatureStoreActions.fahrenheit,
       payload: value,
+      type: TemperatureStoreActions.fahrenheit,
     });
   };
 
   const onChangeKelvin = function (value: number) {
     dispatch({
-      type: TemperatureStoreActions.kelvin,
       payload: value,
+      type: TemperatureStoreActions.kelvin,
     });
   };
 
@@ -44,29 +46,29 @@ export function Temperature() {
       <Card>
         <div className="mb-2 flex">
           <Input
-            type="number"
             id="celcius-input"
             label="Celcius"
+            onChange={onChangeCelcius as (value: number | string) => void}
+            type="number"
             value={state.celcius}
-            onChange={onChangeCelcius as (value: string | number) => void}
           />
         </div>
         <div className="my-2 flex">
           <Input
-            type="number"
             id="fahrenheit-input"
             label="Fahrenheit"
+            onChange={onChangeFahrenheit as (value: number | string) => void}
+            type="number"
             value={state.fahrenheit}
-            onChange={onChangeFahrenheit as (value: string | number) => void}
           />
         </div>
         <div className="my-2 flex">
           <Input
-            type="number"
             id="kelvin-input"
             label="Kelvin"
+            onChange={onChangeKelvin as (value: number | string) => void}
+            type="number"
             value={state.kelvin}
-            onChange={onChangeKelvin as (value: string | number) => void}
           />
         </div>
       </Card>

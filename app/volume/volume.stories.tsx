@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
+
 import { Volume } from "./volume";
 
 const meta: Meta<typeof Volume> = {
-  title: "Converters",
   component: Volume,
   decorators: [
     (Story) => (
@@ -11,6 +11,7 @@ const meta: Meta<typeof Volume> = {
       </div>
     ),
   ],
+  title: "Converters",
 };
 
 export default meta;

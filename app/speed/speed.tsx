@@ -1,11 +1,12 @@
 "use client";
 
+import { Card, InputSelect } from "@julianelda/scratchpad";
+import { useState } from "react";
+
 import { PageHeader } from "@/src/components/page-header";
 import { SpeedUnits, SpeedUnitsTable } from "@/src/constants/speed";
 import { toFixedRounding } from "@/src/util/common";
 import { convertSpeed } from "@/src/util/conversion";
-import { Card, InputSelect } from "@julianelda/scratchpad";
-import { useState } from "react";
 
 const options = (function () {
   const tmp = [];
@@ -25,7 +26,7 @@ export function Speed() {
     toFixedRounding(convertSpeed(amount1, units1, units2))
   );
 
-  const onChangeAmount1 = function (value: string | number) {
+  const onChangeAmount1 = function (value: number | string) {
     setAmount1(value as number);
     setAmount2(toFixedRounding(convertSpeed(value as number, units1, units2)));
   };
@@ -48,34 +49,33 @@ export function Speed() {
       <Card>
         <div className="space-y-2">
           <InputSelect
-            type="text"
-            inputId="from-input"
-            selectId="from-select"
             hideLabel={true}
+            inputId="from-input"
             inputLabel="Amount"
-            selectLabel="Speed units"
             inputValue={amount1}
             onInputChange={onChangeAmount1}
-            options={options}
-            selectValue={units1}
             onSelectChange={(value: string) =>
               onChangeUnits1(value as SpeedUnits)
             }
+            options={options}
+            selectId="from-select"
+            selectLabel="Speed units"
+            selectValue={units1}
+            type="text"
           />
           <InputSelect
-            type="text"
-            inputId="result-input"
-            selectId="result-select"
             hideLabel={true}
+            inputId="result-input"
             inputLabel="Amount"
-            selectLabel="Speed units"
             inputValue={amount2}
-            onInputChange={() => undefined}
-            options={options}
-            selectValue={units2}
             onSelectChange={(value: string) =>
               onChangeUnits2(value as SpeedUnits)
             }
+            options={options}
+            selectId="result-select"
+            selectLabel="Speed units"
+            selectValue={units2}
+            type="text"
           />
         </div>
       </Card>

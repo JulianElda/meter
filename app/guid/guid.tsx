@@ -1,11 +1,12 @@
 "use client";
 
+import { Button, Card, Input } from "@julianelda/scratchpad";
+import { useState } from "react";
+
 import { PageHeader } from "@/src/components/page-header";
 import { useAppDispatch } from "@/src/store/hooks";
 import { addNotification } from "@/src/store/notification/notification.slice";
 import { generateGUID } from "@/src/util/string";
-import { Button, Card, Input } from "@julianelda/scratchpad";
-import { useState } from "react";
 
 export function Guid() {
   const dispatch = useAppDispatch();
@@ -34,28 +35,28 @@ export function Guid() {
         <div className="space-y-2">
           <div className="font-mono">
             <Input
-              type="text"
+              hideLabel={true}
               id="guid-guid"
               label="Guid"
+              type="text"
               value={guid}
-              hideLabel={true}
             />
           </div>
 
           <div className="flex justify-end w-full space-x-4">
             <Button
-              type="button"
-              style="secondary"
               id="guid-copy"
-              text="Copy"
               onClick={onCopyToClipboard}
+              style="secondary"
+              text="Copy"
+              type="button"
             />
             <Button
-              type="button"
-              style="secondary"
               id="guid-refresh"
-              text="Refresh"
               onClick={onRefresh}
+              style="secondary"
+              text="Refresh"
+              type="button"
             />
           </div>
         </div>

@@ -1,6 +1,8 @@
-import { ReduxProvider } from "@/src/store/provider";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, test } from "vitest";
+
+import { ReduxProvider } from "@/src/store/provider";
+
 import { Lorem } from "./lorem";
 
 describe("Lorem component", () => {

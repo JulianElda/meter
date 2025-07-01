@@ -1,3 +1,7 @@
+import { render } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { describe, test } from "vitest";
+
 import { SpeedUnits } from "@/src/constants/speed";
 import {
   clearInput,
@@ -5,9 +9,7 @@ import {
   selectOption,
   typeInput,
 } from "@/src/tests.helper";
-import { render } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
-import { describe, test } from "vitest";
+
 import { Speed } from "./speed";
 
 const UNITS_1 = "from-select";

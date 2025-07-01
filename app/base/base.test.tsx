@@ -1,7 +1,9 @@
-import { clearInput, expectValue, typeInput } from "@/src/tests.helper";
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, test } from "vitest";
+
+import { clearInput, expectValue, typeInput } from "@/src/tests.helper";
+
 import { Base } from "./base";
 
 const BINARY_LABEL = "base-binary";

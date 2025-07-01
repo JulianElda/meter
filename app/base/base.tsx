@@ -1,37 +1,39 @@
 "use client";
 
-import { PageHeader } from "@/src/components/page-header";
 import { Card, Input } from "@julianelda/scratchpad";
 import { useReducer } from "react";
-import { BaseStoreActions, baseReducer, initialBaseState } from "./base.store";
+
+import { PageHeader } from "@/src/components/page-header";
+
+import { baseReducer, BaseStoreActions, initialBaseState } from "./base.store";
 
 export function Base() {
   const [state, dispatch] = useReducer(baseReducer, initialBaseState);
 
   const onChangeBinary = (newBinary: string) => {
     dispatch({
-      type: BaseStoreActions.BINARY,
       payload: {
         value: newBinary,
       },
+      type: BaseStoreActions.BINARY,
     });
   };
 
   const onChangeDecimal = (newDecimal: string) => {
     dispatch({
-      type: BaseStoreActions.DECIMAL,
       payload: {
         value: newDecimal,
       },
+      type: BaseStoreActions.DECIMAL,
     });
   };
 
   const onChangeHex = (newHex: string) => {
     dispatch({
-      type: BaseStoreActions.HEX,
       payload: {
         value: newHex,
       },
+      type: BaseStoreActions.HEX,
     });
   };
 
@@ -44,24 +46,24 @@ export function Base() {
         <div className="space-y-2">
           <Input
             id="base-binary"
-            type="text"
             label="Binary"
+            onChange={onChangeBinary as (value: number | string) => void}
+            type="text"
             value={state.binary}
-            onChange={onChangeBinary as (value: string | number) => void}
           />
           <Input
             id="base-decimal"
-            type="text"
             label="Decimal"
+            onChange={onChangeDecimal as (value: number | string) => void}
+            type="text"
             value={state.decimal}
-            onChange={onChangeDecimal as (value: string | number) => void}
           />
           <Input
             id="base-hex"
-            type="text"
             label="Hex"
+            onChange={onChangeHex as (value: number | string) => void}
+            type="text"
             value={state.hex}
-            onChange={onChangeHex as (value: string | number) => void}
           />
         </div>
       </Card>

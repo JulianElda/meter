@@ -1,7 +1,9 @@
-import { clearInput, expectValue, typeInput } from "@/src/tests.helper";
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, test, vi } from "vitest";
+
+import { clearInput, expectValue, typeInput } from "@/src/tests.helper";
+
 import { Color } from "./color";
 
 vi.mock("react-color", () => {

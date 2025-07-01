@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
+
 import { Length } from "./length";
 
 const meta: Meta<typeof Length> = {
-  title: "Converters",
   component: Length,
   decorators: [
     (Story) => (
@@ -11,6 +11,7 @@ const meta: Meta<typeof Length> = {
       </div>
     ),
   ],
+  title: "Converters",
 };
 
 export default meta;

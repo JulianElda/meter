@@ -1,9 +1,5 @@
 "use client";
 
-import { PageHeader } from "@/src/components/page-header";
-import { useAppDispatch } from "@/src/store/hooks";
-import { addNotification } from "@/src/store/notification/notification.slice";
-import { generateRandomString } from "@/src/util/string";
 import {
   Button,
   Card,
@@ -12,6 +8,11 @@ import {
   TextArea,
 } from "@julianelda/scratchpad";
 import { useEffect, useState } from "react";
+
+import { PageHeader } from "@/src/components/page-header";
+import { useAppDispatch } from "@/src/store/hooks";
+import { addNotification } from "@/src/store/notification/notification.slice";
+import { generateRandomString } from "@/src/util/string";
 
 export function Password() {
   const dispatch = useAppDispatch();
@@ -25,9 +26,9 @@ export function Password() {
     setPassword(
       generateRandomString({
         length,
-        uppercase,
         numerals,
         special,
+        uppercase,
       })
     );
   }, [length, uppercase, numerals, special]);
@@ -40,9 +41,9 @@ export function Password() {
     setPassword(
       generateRandomString({
         length,
-        uppercase,
         numerals,
         special,
+        uppercase,
       })
     );
   };
@@ -71,54 +72,54 @@ export function Password() {
           <Checkbox
             id="password-numbers"
             label="Numbers"
-            value={numerals}
             onChange={(value: boolean) => setNumerals(value)}
+            value={numerals}
           />
           <Checkbox
             id="password-uppercase"
             label="Uppercase"
-            value={uppercase}
             onChange={(value: boolean) => setUppercase(value)}
+            value={uppercase}
           />
           <Checkbox
             id="password-special"
             label="Symbols"
-            value={special}
             onChange={(value: boolean) => setSpecial(value)}
+            value={special}
           />
           <InputSlider
+            hideLabel={false}
             id="password-length"
             label="Length"
-            value={length}
             max={256}
             min={1}
-            hideLabel={false}
-            onChange={onChangeLength as (value: string | number) => void}
+            onChange={onChangeLength as (value: number | string) => void}
+            value={length}
           />
           <div className="font-mono">
             <TextArea
+              hideLabel={true}
               id="password-password"
               label="Password"
+              onChange={onChangePassword as (value: number | string) => void}
               value={password}
-              hideLabel={true}
-              onChange={onChangePassword as (value: string | number) => void}
             />
           </div>
 
           <div className="flex justify-end w-full space-x-4">
             <Button
-              type="button"
-              style="secondary"
               id="password-copy"
-              text="Copy"
               onClick={onCopyToClipboard}
+              style="secondary"
+              text="Copy"
+              type="button"
             />
             <Button
-              type="button"
-              style="secondary"
               id="password-refresh"
-              text="Refresh"
               onClick={onRefresh}
+              style="secondary"
+              text="Refresh"
+              type="button"
             />
           </div>
         </div>

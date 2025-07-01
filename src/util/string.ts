@@ -32,7 +32,7 @@ export const generateRandomString = function ({
   const NUMERAL_CHARS = "0123456789";
   const SPECIAL_CHARS = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
 
-  let availableCharacters = chars ?? LOWERCASE_CHARS;
+  let availableCharacters = chars || LOWERCASE_CHARS;
   let result = "";
 
   if (uppercase) {

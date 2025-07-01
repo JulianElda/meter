@@ -1,9 +1,13 @@
 "use client";
 
-import { PageHeader } from "@/src/components/page-header";
-import { AreaUnits, AreaUnitsTable } from "@/src/constants/area";
 import { Card, InputSelect } from "@julianelda/scratchpad";
 import { useReducer } from "react";
+
+import type { AreaUnits } from "@/src/constants/area";
+
+import { PageHeader } from "@/src/components/page-header";
+import { AreaUnitsTable } from "@/src/constants/area";
+
 import { areaReducer, AreaStoreActions, initialAreaState } from "./area.store";
 
 const options = (function () {
@@ -21,22 +25,22 @@ export function Area() {
 
   const onChangeAmount1 = function (value: number) {
     dispatch({
-      type: AreaStoreActions.amount1,
       payload: value,
+      type: AreaStoreActions.amount1,
     });
   };
 
   const onChangeUnits1 = function (value: AreaUnits) {
     dispatch({
-      type: AreaStoreActions.units1,
       payload: value,
+      type: AreaStoreActions.units1,
     });
   };
 
   const onChangeUnits2 = function (value: AreaUnits) {
     dispatch({
-      type: AreaStoreActions.units2,
       payload: value,
+      type: AreaStoreActions.units2,
     });
   };
 
@@ -48,34 +52,33 @@ export function Area() {
       <Card>
         <div className="space-y-2">
           <InputSelect
-            type="text"
-            inputId="from-input"
-            selectId="from-select"
             hideLabel={true}
+            inputId="from-input"
             inputLabel="Amount"
-            selectLabel="Area units"
             inputValue={state.amount1}
             onInputChange={(value) => onChangeAmount1(value as number)}
-            options={options}
-            selectValue={state.units1}
             onSelectChange={(value: string) =>
               onChangeUnits1(value as AreaUnits)
             }
+            options={options}
+            selectId="from-select"
+            selectLabel="Area units"
+            selectValue={state.units1}
+            type="text"
           />
           <InputSelect
-            type="text"
-            inputId="result-input"
-            selectId="result-select"
             hideLabel={true}
+            inputId="result-input"
             inputLabel="Amount"
-            selectLabel="Area units"
             inputValue={state.amount2}
-            onInputChange={() => undefined}
-            options={options}
-            selectValue={state.units2}
             onSelectChange={(value: string) =>
               onChangeUnits2(value as AreaUnits)
             }
+            options={options}
+            selectId="result-select"
+            selectLabel="Area units"
+            selectValue={state.units2}
+            type="text"
           />
         </div>
       </Card>

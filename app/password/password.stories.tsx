@@ -1,10 +1,11 @@
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
+
 import { Notifications } from "@/src/components/notifications/notifications";
 import { ReduxProvider } from "@/src/store/provider";
-import type { Meta, StoryObj } from "@storybook/nextjs-vite";
+
 import { Password } from "./password";
 
 const meta: Meta<typeof Password> = {
-  title: "Utilities",
   component: Password,
   decorators: [
     (Story) => (
@@ -16,6 +17,7 @@ const meta: Meta<typeof Password> = {
       </ReduxProvider>
     ),
   ],
+  title: "Utilities",
 };
 
 export default meta;
