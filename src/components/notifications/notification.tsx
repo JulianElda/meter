@@ -4,28 +4,31 @@ import { clsx } from "clsx";
 import { CheckCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 
+import { useAppDispatch } from "@/src/store/hooks";
+import { removeNotification } from "@/src/store/notification/notification.slice";
+
 interface NotificationProps {
-  callback: (id: string) => void;
   id: string;
   label: string;
 }
 
-export function Notification({ callback, id, label }: NotificationProps) {
+export function Notification({ id, label }: NotificationProps) {
+  const dispatch = useAppDispatch();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const show = setTimeout(() => setVisible(true), 10);
+    setVisible(true);
 
-    const hide = setTimeout(() => {
+    let timeout: NodeJS.Timeout;
+    timeout = setTimeout(() => {
       setVisible(false);
-      setTimeout(() => callback(id), 200);
+      timeout = setTimeout(() => dispatch(removeNotification(id)), 200);
     }, 2000);
 
     return () => {
-      clearTimeout(show);
-      clearTimeout(hide);
+      clearTimeout(timeout);
     };
-  }, [callback, id]);
+  }, [dispatch, id]);
 
   return (
     <div
