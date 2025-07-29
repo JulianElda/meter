@@ -24,9 +24,10 @@ export function Navigation() {
     {
       links: [
         { href: "/currency", title: "Currency" },
-        { href: "/lorem", title: "Lorem Ipsum" },
         { href: "/guid", title: "GUID" },
+        { href: "/lorem", title: "Lorem Ipsum" },
         { href: "/password", title: "Password" },
+        { href: "/qrcode", title: "URL to QR code" },
       ],
       title: "Utilities",
     },
