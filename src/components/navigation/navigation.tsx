@@ -4,8 +4,12 @@ import { clsx } from "clsx";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import { useAppDispatch } from "@/src/store/hooks";
+import { closeSidebar } from "@/src/store/sidebar/sidebar.slice";
+
 export function Navigation() {
   const pathname = usePathname();
+  const dispatch = useAppDispatch();
 
   const navigation = [
     {
@@ -35,33 +39,32 @@ export function Navigation() {
 
   return (
     <nav
-      className={`
-        hidden min-w-40 text-base
-        sm:block
-      `}
+      className={`min-w-40 text-base`}
       data-testid="sidenav">
       <ul
-        className="space-y-9"
+        className="flex flex-col gap-6"
         data-testid="nav-group">
         {navigation.map((section) => (
-          <li key={section.title}>
+          <li
+            className="flex flex-col gap-2"
+            key={section.title}>
             <div
               className={`
-                font-heading font-medium text-slate-900
-                dark:text-white
+                font-heading text-lg font-medium text-ink-black select-none
+                dark:text-ink-white
               `}
               data-testid="nav-group-title">
               {section.title}
             </div>
             <ul
               className={`
-                mt-2 space-y-2 border-l-2 border-slate-100
-                lg:mt-4 lg:space-y-4 lg:border-slate-200
+                flex flex-col gap-2 border-l-2 border-slate-100
+                lg:gap-4 lg:border-slate-200
                 dark:border-slate-600
               `}>
               {section.links.map((link) => (
                 <li
-                  className="relative"
+                  className="relative select-none"
                   data-testid="nav-item"
                   key={link.href}>
                   <Link
@@ -72,17 +75,20 @@ export function Navigation() {
                           dark:text-slate-200!
                         `,
                       `
-                        block w-full pl-3.5 text-slate-500
+                        block w-full pl-3 text-ink-black
                         before:pointer-events-none before:absolute
                         before:top-1/2 before:-left-1 before:hidden before:h-1.5
                         before:w-1.5 before:-translate-y-1/2 before:rounded-full
-                        before:bg-slate-300
+                        before:bg-slate-500
                         hover:text-slate-600 hover:before:block
-                        dark:text-slate-300 dark:before:bg-slate-700
-                        dark:hover:text-slate-300
+                        dark:text-ink-white dark:before:bg-slate-500
+                        dark:hover:text-ink-white
                       `
                     )}
-                    href={link.href}>
+                    href={link.href}
+                    onClick={() => {
+                      dispatch(closeSidebar());
+                    }}>
                     {link.title}
                   </Link>
                 </li>

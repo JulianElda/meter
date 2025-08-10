@@ -81,7 +81,8 @@ export default function RootLayout({
       lang="en">
       <body
         className={`
-          size-full bg-app-background-light font-serif text-app-text-light
+          relative size-full bg-app-background-light font-serif
+          text-app-text-light
           dark:bg-app-background-dark dark:text-app-text-dark
         `}>
         <AppLayout>{children}</AppLayout>
