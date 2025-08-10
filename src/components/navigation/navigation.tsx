@@ -35,7 +35,7 @@ export function Navigation() {
 
   return (
     <nav
-      className="text-base"
+      className="text-base min-w-40 sm:block hidden"
       data-testid="sidenav">
       <ul
         className="space-y-9"

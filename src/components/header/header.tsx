@@ -1,7 +1,3 @@
 export function Header({ children }: { children: React.ReactNode }) {
-  return (
-    <h2 className="font-heading text-xl">
-      <strong># {children}</strong>
-    </h2>
-  );
+  return <h1 className="font-heading font-bold text-xl">{children}</h1>;
 }

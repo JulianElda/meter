@@ -1,6 +1,7 @@
 "use client";
 
-import { Footer } from "@/src/components/footer";
+import { AppFooter } from "@/src/components/app-footer/app-footer";
+import { AppHeader } from "@/src/components/app-header/app-header";
 import { Navigation } from "@/src/components/navigation";
 import { Notifications } from "@/src/components/notifications";
 import { ReduxProvider } from "@/src/store/provider";
@@ -12,7 +13,8 @@ export function AppClient({
 }>) {
   return (
     <ReduxProvider>
-      <div className="flex">
+      <AppHeader />
+      <div className="flex p-2">
         <Navigation />
         <div className="mx-auto w-full max-w-xl">
           <div className="w-full flex-col">
@@ -21,7 +23,7 @@ export function AppClient({
         </div>
       </div>
 
-      <Footer />
+      <AppFooter />
       <Notifications />
     </ReduxProvider>
   );
