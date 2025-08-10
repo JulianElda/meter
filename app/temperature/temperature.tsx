@@ -3,7 +3,7 @@
 import { Card, Input } from "@julianelda/scratchpad";
 import { useReducer } from "react";
 
-import { PageHeader } from "@/src/components/page-header";
+import { PageHeader } from "@/src/components/page-header/page-header";
 
 import {
   initialTemperatureState,

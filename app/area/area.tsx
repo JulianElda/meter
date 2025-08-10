@@ -5,7 +5,7 @@ import { useReducer } from "react";
 
 import type { AreaUnits } from "@/src/constants/area";
 
-import { PageHeader } from "@/src/components/page-header";
+import { PageHeader } from "@/src/components/page-header/page-header";
 import { AreaUnitsTable } from "@/src/constants/area";
 
 import { areaReducer, AreaStoreActions, initialAreaState } from "./area.store";

@@ -33,10 +33,19 @@ export function Notification({ id, label }: NotificationProps) {
   return (
     <div
       className={clsx(
-        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
-        "transition-all duration-200 max-w-sm rounded-md flex space-x-2 items-center bg-white px-4 py-3 w-max shadow-sm dark:bg-slate-700"
+        visible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0",
+        `
+          flex w-max max-w-sm items-center space-x-2 rounded-md bg-white px-4
+          py-3 shadow-sm transition-all duration-200
+          dark:bg-slate-700
+        `
       )}>
-      <CheckCircle className="size-4 dark:text-sky-300 text-sky-600 " />
+      <CheckCircle
+        className={`
+          size-4 text-sky-600
+          dark:text-sky-300
+        `}
+      />
       <span>{label}</span>
     </div>
   );

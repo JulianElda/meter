@@ -9,7 +9,7 @@ import {
 } from "@julianelda/scratchpad";
 import { useEffect, useState } from "react";
 
-import { PageHeader } from "@/src/components/page-header";
+import { PageHeader } from "@/src/components/page-header/page-header";
 import { useAppDispatch } from "@/src/store/hooks";
 import { addNotification } from "@/src/store/notification/notification.slice";
 import { generateRandomString } from "@/src/util/string";
@@ -106,7 +106,7 @@ export function Password() {
             />
           </div>
 
-          <div className="flex justify-end w-full space-x-4">
+          <div className="flex w-full justify-end space-x-4">
             <Button
               id="password-copy"
               onClick={onCopyToClipboard}

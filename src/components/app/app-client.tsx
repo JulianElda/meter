@@ -2,8 +2,8 @@
 
 import { AppFooter } from "@/src/components/app-footer/app-footer";
 import { AppHeader } from "@/src/components/app-header/app-header";
-import { Navigation } from "@/src/components/navigation";
-import { Notifications } from "@/src/components/notifications";
+import { Navigation } from "@/src/components/navigation/navigation";
+import { Notifications } from "@/src/components/notifications/notifications";
 import { ReduxProvider } from "@/src/store/provider";
 
 export function AppClient({
@@ -18,7 +18,7 @@ export function AppClient({
         <Navigation />
         <div className="mx-auto w-full max-w-xl">
           <div className="w-full flex-col">
-            <main className="text-lg space-y-2">{children}</main>
+            <main className="space-y-2 text-lg">{children}</main>
           </div>
         </div>
       </div>

@@ -4,7 +4,7 @@ import { Card, InputButton } from "@julianelda/scratchpad";
 import { QrCodeIcon } from "lucide-react";
 import { useState } from "react";
 
-import { PageHeader } from "@/src/components/page-header";
+import { PageHeader } from "@/src/components/page-header/page-header";
 import { QrCodeCanvas } from "@/src/components/qrcode-canvas/qrcode-canvas";
 
 export function QrCode() {
@@ -17,7 +17,7 @@ export function QrCode() {
         <PageHeader title="URL to QR Code" />
       </div>
       <Card>
-        <div className="gap-8 flex flex-col">
+        <div className="flex flex-col gap-8">
           <div className="font-mono">
             <InputButton
               buttonAriaLabel="Generate QR code"
@@ -33,7 +33,7 @@ export function QrCode() {
           </div>
 
           {qrcodeUrl && (
-            <div className="size-full flex justify-center">
+            <div className="flex size-full justify-center">
               <QrCodeCanvas url={qrcodeUrl} />
             </div>
           )}

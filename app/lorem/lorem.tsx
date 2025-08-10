@@ -3,7 +3,7 @@
 import { Button, Card, InputSlider, TextArea } from "@julianelda/scratchpad";
 import { useState } from "react";
 
-import { PageHeader } from "@/src/components/page-header";
+import { PageHeader } from "@/src/components/page-header/page-header";
 import { useAppDispatch } from "@/src/store/hooks";
 import { addNotification } from "@/src/store/notification/notification.slice";
 
@@ -55,7 +55,7 @@ export function Lorem({ loremText }: { loremText: string }) {
             />
           </div>
 
-          <div className="flex justify-end w-full space-x-4">
+          <div className="flex w-full justify-end space-x-4">
             <Button
               id="lorem-copy"
               onClick={onCopyToClipboard}

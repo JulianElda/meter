@@ -3,7 +3,7 @@
 import { Card, InputSelect } from "@julianelda/scratchpad";
 import { useReducer } from "react";
 
-import { PageHeader } from "@/src/components/page-header";
+import { PageHeader } from "@/src/components/page-header/page-header";
 
 import type { Currency, Rates } from "./currency.store";
 

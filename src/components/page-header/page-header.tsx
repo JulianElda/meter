@@ -3,5 +3,5 @@ interface PageHeaderProps {
 }
 
 export function PageHeader(props: PageHeaderProps) {
-  return <h1 className="font-heading font-bold text-xl">{props.title}</h1>;
+  return <h1 className="font-heading text-xl font-bold">{props.title}</h1>;
 }

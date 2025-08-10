@@ -3,7 +3,7 @@
 import { Card, InputSelect } from "@julianelda/scratchpad";
 import { useState } from "react";
 
-import { PageHeader } from "@/src/components/page-header";
+import { PageHeader } from "@/src/components/page-header/page-header";
 import { SpeedUnits, SpeedUnitsTable } from "@/src/constants/speed";
 import { toFixedRounding } from "@/src/util/common";
 import { convertSpeed } from "@/src/util/conversion";

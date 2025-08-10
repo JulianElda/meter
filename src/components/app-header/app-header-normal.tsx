@@ -1,6 +1,10 @@
 export function AppHeaderNormal() {
   return (
-    <div className="hidden sm:block">
+    <div
+      className={`
+        hidden
+        sm:block
+      `}>
       <div className="text-center font-heading text-3xl font-semibold">
         meter
       </div>

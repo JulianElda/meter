@@ -73,9 +73,17 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      className={`${heliotrope3.variable} ${heliotrope4.variable} ${mPlus.variable}`}
+      className={`
+        ${heliotrope3.variable}
+        ${heliotrope4.variable}
+        ${mPlus.variable}
+      `}
       lang="en">
-      <body className="bg-app-background-light text-app-text-light dark:bg-app-background-dark dark:text-app-text-dark size-full font-serif">
+      <body
+        className={`
+          size-full bg-app-background-light font-serif text-app-text-light
+          dark:bg-app-background-dark dark:text-app-text-dark
+        `}>
         <AppLayout>{children}</AppLayout>
       </body>
     </html>

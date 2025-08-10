@@ -3,7 +3,7 @@
 import { Card, InputSelect } from "@julianelda/scratchpad";
 import { useState } from "react";
 
-import { PageHeader } from "@/src/components/page-header";
+import { PageHeader } from "@/src/components/page-header/page-header";
 import { WeightConversionTable, WeightUnits } from "@/src/constants/weight";
 import { toFixedRounding } from "@/src/util/common";
 import { convertWeight } from "@/src/util/conversion";
