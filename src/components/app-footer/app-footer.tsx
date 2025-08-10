@@ -6,7 +6,7 @@ export function AppFooter() {
   return (
     <div
       className={`
-        fixed inset-x-0 bottom-0 mx-auto hidden max-w-4xl
+        fixed inset-x-0 bottom-0 z-20 mx-auto hidden max-w-4xl
         sm:block
       `}>
       <Footer link="https://github.com/JulianElda/meter" />

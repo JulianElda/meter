@@ -8,9 +8,7 @@ export default function AppLayout({
   return (
     <div
       className={`
-        mx-auto flex h-full min-h-full w-full max-w-4xl flex-col
-        sm:pt-4
-        md:gap-5 md:pb-16
+        mx-auto flex h-full min-h-full w-full max-w-4xl flex-col gap-5 pb-16
       `}>
       <AppClient>{children}</AppClient>
     </div>

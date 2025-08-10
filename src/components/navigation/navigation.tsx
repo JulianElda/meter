@@ -39,7 +39,7 @@ export function Navigation() {
 
   return (
     <nav
-      className={`min-w-40 text-base`}
+      className={`min-w-40 text-lg`}
       data-testid="sidenav">
       <ul
         className="flex flex-col gap-6"
@@ -50,7 +50,7 @@ export function Navigation() {
             key={section.title}>
             <div
               className={`
-                font-heading text-lg font-medium text-ink-black select-none
+                font-heading font-medium text-ink-black select-none
                 dark:text-ink-white
               `}
               data-testid="nav-group-title">
@@ -58,8 +58,8 @@ export function Navigation() {
             </div>
             <ul
               className={`
-                flex flex-col gap-2 border-l-2 border-slate-100
-                lg:gap-4 lg:border-slate-200
+                flex flex-col gap-4 border-l-2 border-slate-100
+                lg:border-slate-200
                 dark:border-slate-600
               `}>
               {section.links.map((link) => (

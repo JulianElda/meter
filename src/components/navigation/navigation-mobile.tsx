@@ -16,19 +16,27 @@ export function NavigationMobile() {
       <div
         className={clsx(
           `
-            fixed top-16 bottom-0 left-0 z-20 h-full min-w-40 overflow-y-auto
+            fixed top-16 bottom-0 left-0 z-20 block min-w-40 overflow-y-auto
             bg-gray-50 transition-transform duration-300
-            sm:relative sm:inset-auto sm:translate-x-0 sm:bg-transparent
+            sm:top-16 sm:bottom-16 sm:hidden sm:translate-x-0 sm:bg-transparent
             dark:bg-gray-800
             sm:dark:bg-transparent
           `,
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         )}>
         <div
-          className={`z-10 h-full p-2`}
+          className={`z-10 h-full overflow-y-auto p-2`}
           data-testid="navigation-mobile">
           <Navigation />
         </div>
+      </div>
+
+      <div
+        className={`
+          hidden
+          sm:block
+        `}>
+        <Navigation />
       </div>
 
       {isSidebarOpen && (

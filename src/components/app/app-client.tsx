@@ -17,7 +17,7 @@ export function AppClient({
 
       <div className="flex justify-center">
         <NavigationMobile />
-        <div className="z-0 mx-auto w-full max-w-xl p-4">
+        <div className="z-0 mx-auto w-full max-w-xl px-4">
           <div className="w-full flex-col">
             <main className="space-y-2 text-lg">{children}</main>
           </div>
