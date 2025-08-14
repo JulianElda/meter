@@ -4,11 +4,9 @@ import { Button, Card, InputSlider, TextArea } from "@julianelda/scratchpad";
 import { useState } from "react";
 
 import { PageHeader } from "@/src/components/page-header/page-header";
-import { useAppDispatch } from "@/src/store/hooks";
-import { addNotification } from "@/src/store/notification/notification.slice";
+import { notificationActions } from "@/src/store/notification/notification.store";
 
 export function Lorem({ loremText }: { loremText: string }) {
-  const dispatch = useAppDispatch();
   const [words, setWords] = useState<number>(100);
   const trimLorem = (text: string): string => {
     return text.split(" ").slice(0, words).join(" ");
@@ -27,7 +25,7 @@ export function Lorem({ loremText }: { loremText: string }) {
 
     await navigator.clipboard.writeText(lorem);
 
-    dispatch(addNotification("Password copied"));
+    notificationActions.addNotification("Password copied");
   };
 
   return (

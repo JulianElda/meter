@@ -4,8 +4,7 @@ import { clsx } from "clsx";
 import { CheckCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 
-import { useAppDispatch } from "@/src/store/hooks";
-import { removeNotification } from "@/src/store/notification/notification.slice";
+import { notificationActions } from "@/src/store/notification/notification.store";
 
 interface NotificationProps {
   id: string;
@@ -13,7 +12,6 @@ interface NotificationProps {
 }
 
 export function Notification({ id, label }: NotificationProps) {
-  const dispatch = useAppDispatch();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -22,13 +20,16 @@ export function Notification({ id, label }: NotificationProps) {
     let timeout: NodeJS.Timeout;
     timeout = setTimeout(() => {
       setVisible(false);
-      timeout = setTimeout(() => dispatch(removeNotification(id)), 200);
+      timeout = setTimeout(
+        () => notificationActions.removeNotification(id),
+        200
+      );
     }, 2000);
 
     return () => {
       clearTimeout(timeout);
     };
-  }, [dispatch, id]);
+  }, [id]);
 
   return (
     <div

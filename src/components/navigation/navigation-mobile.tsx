@@ -1,15 +1,13 @@
 import { clsx } from "clsx";
 
 import { Navigation } from "@/src/components/navigation/navigation";
-import { useAppDispatch, useAppSelector } from "@/src/store/hooks";
 import {
-  isSidebarOpenSelector,
-  toggleSidebar,
-} from "@/src/store/sidebar/sidebar.slice";
+  sidebarActions,
+  useIsSidebarOpen,
+} from "@/src/store/sidebar/sidebar.store";
 
 export function NavigationMobile() {
-  const dispatch = useAppDispatch();
-  const isSidebarOpen = useAppSelector(isSidebarOpenSelector);
+  const isSidebarOpen = useIsSidebarOpen();
 
   return (
     <>
@@ -46,7 +44,7 @@ export function NavigationMobile() {
             sm:hidden
           `}
           onClick={() => {
-            dispatch(toggleSidebar());
+            sidebarActions.toggleSidebar();
           }}
         />
       )}

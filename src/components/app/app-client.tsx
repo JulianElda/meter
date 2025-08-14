@@ -4,7 +4,6 @@ import { AppFooter } from "@/src/components/app-footer/app-footer";
 import { AppHeader } from "@/src/components/app-header/app-header";
 import { NavigationMobile } from "@/src/components/navigation/navigation-mobile";
 import { Notifications } from "@/src/components/notifications/notifications";
-import { ReduxProvider } from "@/src/store/provider";
 
 export function AppClient({
   children,
@@ -12,7 +11,7 @@ export function AppClient({
   children: React.ReactNode;
 }>) {
   return (
-    <ReduxProvider>
+    <>
       <AppHeader />
 
       <div className="flex justify-center">
@@ -26,6 +25,6 @@ export function AppClient({
 
       <AppFooter />
       <Notifications />
-    </ReduxProvider>
+    </>
   );
 }

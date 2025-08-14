@@ -2,17 +2,11 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, test } from "vitest";
 
-import { ReduxProvider } from "@/src/store/provider";
-
 import { Guid } from "./guid";
 
 describe("GUID component", () => {
   test("generate a GUID", () => {
-    render(
-      <ReduxProvider>
-        <Guid />
-      </ReduxProvider>
-    );
+    render(<Guid />);
 
     expect((screen.getByTestId("guid-guid") as HTMLInputElement).value).toMatch(
       /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89a-f][0-9a-f]{3}-[0-9a-f]{12}$/
@@ -21,11 +15,7 @@ describe("GUID component", () => {
 
   test("generate a different GUID when refresh button is clicked", async () => {
     const user = userEvent.setup();
-    render(
-      <ReduxProvider>
-        <Guid />
-      </ReduxProvider>
-    );
+    render(<Guid />);
 
     const firstValue = (screen.getByTestId("guid-guid") as HTMLInputElement)
       .value;

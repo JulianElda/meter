@@ -1,11 +1,9 @@
 import { GitHubButton, ThemeToggle, useDarkMode } from "@julianelda/scratchpad";
 import { MenuIcon } from "lucide-react";
 
-import { useAppDispatch } from "@/src/store/hooks";
-import { toggleSidebar } from "@/src/store/sidebar/sidebar.slice";
+import { sidebarActions } from "@/src/store/sidebar/sidebar.store";
 
 export function AppHeaderMobile() {
-  const dispatch = useAppDispatch();
   const [isDarkMode, toggleDarkMode] = useDarkMode();
 
   return (
@@ -22,7 +20,7 @@ export function AppHeaderMobile() {
           rounded-lg border border-ink-gray p-2
         `}
         onClick={() => {
-          dispatch(toggleSidebar());
+          sidebarActions.toggleSidebar();
         }}>
         <MenuIcon />
       </button>

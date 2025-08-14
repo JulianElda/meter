@@ -4,12 +4,10 @@ import { clsx } from "clsx";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { useAppDispatch } from "@/src/store/hooks";
-import { closeSidebar } from "@/src/store/sidebar/sidebar.slice";
+import { sidebarActions } from "@/src/store/sidebar/sidebar.store";
 
 export function Navigation() {
   const pathname = usePathname();
-  const dispatch = useAppDispatch();
 
   const navigation = [
     {
@@ -87,7 +85,7 @@ export function Navigation() {
                     )}
                     href={link.href}
                     onClick={() => {
-                      dispatch(closeSidebar());
+                      sidebarActions.closeSidebar();
                     }}>
                     {link.title}
                   </Link>

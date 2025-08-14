@@ -1,17 +1,16 @@
 "use client";
 
-import { useAppSelector } from "@/src/store/hooks";
-import { notificationsSelector } from "@/src/store/notification/notification.slice";
+import { useNotifications } from "@/src/store/notification/notification.store";
 
 import { Notification } from "./notification";
 
 export function Notifications() {
-  const notifications = useAppSelector(notificationsSelector);
+  const notifications = useNotifications();
 
   return (
     <div
       className={`
-        fixed bottom-1 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center
+        fixed bottom-1 left-1/2 z-20 flex -translate-x-1/2 flex-col items-center
         space-y-2
       `}>
       {notifications.map((notification) => {

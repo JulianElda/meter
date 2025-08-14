@@ -2,8 +2,6 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, test } from "vitest";
 
-import { ReduxProvider } from "@/src/store/provider";
-
 import { Password } from "./password";
 
 const PASSWORD_LABEL = "password-password";
@@ -14,11 +12,7 @@ const PASSWORD_SPECIAL = "password-special";
 
 describe("Password component", () => {
   test("generate 16-length password", () => {
-    render(
-      <ReduxProvider>
-        <Password />
-      </ReduxProvider>
-    );
+    render(<Password />);
     expect(
       (screen.getByTestId(PASSWORD_LABEL) as HTMLInputElement).value
     ).toHaveLength(16);
@@ -26,11 +20,7 @@ describe("Password component", () => {
 
   test.skip("generate a new password when length is changed", async () => {
     const user = userEvent.setup();
-    render(
-      <ReduxProvider>
-        <Password />
-      </ReduxProvider>
-    );
+    render(<Password />);
 
     const firstValue = (screen.getByTestId(PASSWORD_LABEL) as HTMLInputElement)
       .value;
@@ -44,11 +34,7 @@ describe("Password component", () => {
 
   test("generate a new password when numerals is changed", async () => {
     const user = userEvent.setup();
-    render(
-      <ReduxProvider>
-        <Password />
-      </ReduxProvider>
-    );
+    render(<Password />);
 
     const firstValue = (screen.getByTestId(PASSWORD_LABEL) as HTMLInputElement)
       .value;
@@ -62,11 +48,7 @@ describe("Password component", () => {
 
   test("generate a new password when uppercase is changed", async () => {
     const user = userEvent.setup();
-    render(
-      <ReduxProvider>
-        <Password />
-      </ReduxProvider>
-    );
+    render(<Password />);
 
     const firstValue = (screen.getByTestId(PASSWORD_LABEL) as HTMLInputElement)
       .value;
@@ -80,11 +62,7 @@ describe("Password component", () => {
 
   test("generate a new password when special character is changed", async () => {
     const user = userEvent.setup();
-    render(
-      <ReduxProvider>
-        <Password />
-      </ReduxProvider>
-    );
+    render(<Password />);
 
     const firstValue = (screen.getByTestId(PASSWORD_LABEL) as HTMLInputElement)
       .value;

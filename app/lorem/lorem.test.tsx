@@ -1,16 +1,12 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, test } from "vitest";
 
-import { ReduxProvider } from "@/src/store/provider";
-
 import { Lorem } from "./lorem";
 
 describe("Lorem component", () => {
   test("generate lorem ipsum text", () => {
     render(
-      <ReduxProvider>
-        <Lorem loremText="Lorem ipsum dolor sit amet, consectetur adipiscing elit." />
-      </ReduxProvider>
+      <Lorem loremText="Lorem ipsum dolor sit amet, consectetur adipiscing elit." />
     );
     expect(screen.getByTestId("lorem-lorem")).toBeInTheDocument();
   });

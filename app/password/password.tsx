@@ -10,12 +10,10 @@ import {
 import { useEffect, useState } from "react";
 
 import { PageHeader } from "@/src/components/page-header/page-header";
-import { useAppDispatch } from "@/src/store/hooks";
-import { addNotification } from "@/src/store/notification/notification.slice";
+import { notificationActions } from "@/src/store/notification/notification.store";
 import { generateRandomString } from "@/src/util/string";
 
 export function Password() {
-  const dispatch = useAppDispatch();
   const [length, setLength] = useState<number>(16);
   const [numerals, setNumerals] = useState<boolean>(true);
   const [uppercase, setUppercase] = useState<boolean>(true);
@@ -59,7 +57,7 @@ export function Password() {
 
     await navigator.clipboard.writeText(password);
 
-    dispatch(addNotification("Password copied"));
+    notificationActions.addNotification("Password copied");
   };
 
   return (
