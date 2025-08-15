@@ -61,7 +61,7 @@ export function Speed() {
             selectId="from-select"
             selectLabel="Speed units"
             selectValue={units1}
-            type="text"
+            type="number"
           />
           <InputSelect
             hideLabel={true}
@@ -75,7 +75,7 @@ export function Speed() {
             selectId="result-select"
             selectLabel="Speed units"
             selectValue={units2}
-            type="text"
+            type="number"
           />
         </div>
       </Card>

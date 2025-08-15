@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
-import { Guid } from "./guid";
+import { QrCode } from "./qrcode";
 
-const meta: Meta<typeof Guid> = {
-  component: Guid,
+const meta: Meta<typeof QrCode> = {
+  component: QrCode,
   decorators: [
     (Story) => (
       <div className="max-w-md text-lg">
@@ -15,8 +15,8 @@ const meta: Meta<typeof Guid> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Guid>;
+type Story = StoryObj<typeof QrCode>;
 
-export const GuidPage: Story = {
-  name: "Guid generator",
+export const QrcodePage: Story = {
+  name: "QR Code generator",
 };

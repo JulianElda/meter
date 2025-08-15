@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
-import Area from "./page";
+import { Area } from "./area";
 
 const meta: Meta<typeof Area> = {
   component: Area,

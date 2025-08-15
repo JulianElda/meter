@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { expect } from "storybook/test";
 
-import Base from "./page";
+import { Base } from "./base";
 
 const meta: Meta<typeof Base> = {
   component: Base,

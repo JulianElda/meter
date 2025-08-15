@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
-import Length from "./page";
+import { Length } from "./length";
 
 const meta: Meta<typeof Length> = {
   component: Length,

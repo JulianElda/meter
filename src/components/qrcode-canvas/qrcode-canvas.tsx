@@ -22,6 +22,7 @@ export function QrCodeCanvas(props: QrCodeCanvasProps) {
   return (
     <canvas
       className="size-full"
+      data-testid="qrcode-canvas"
       ref={canvasRef}
     />
   );

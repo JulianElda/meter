@@ -2,12 +2,12 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { expect } from "storybook/test";
 
-import { LengthUnits } from "@/src/constants/length";
+import { WeightUnits } from "@/src/constants/weight";
 
-import { Length } from "./length";
+import { Weight } from "./weight";
 
-const meta: Meta<typeof Length> = {
-  component: Length,
+const meta: Meta<typeof Weight> = {
+  component: Weight,
   decorators: [
     (Story) => (
       <div className="max-w-md text-lg">
@@ -15,11 +15,11 @@ const meta: Meta<typeof Length> = {
       </div>
     ),
   ],
-  title: "Tests/Length",
+  title: "Tests/Weight",
 };
 
 export default meta;
-type Story = StoryObj<typeof Length>;
+type Story = StoryObj<typeof Weight>;
 
 export const TestElements: Story = {
   name: "render elements",
@@ -38,7 +38,7 @@ export const ChangeInputAmount: Story = {
     await userEvent.type(canvas.getByTestId("from-input"), "200");
 
     await expect(canvas.getByTestId("from-input")).toHaveValue(200);
-    await expect(canvas.getByTestId("result-input")).toHaveValue(124.274);
+    await expect(canvas.getByTestId("result-input")).toHaveValue(440.925);
   },
 };
 
@@ -47,13 +47,13 @@ export const ChangeInputUnits: Story = {
   play: async ({ canvas, userEvent }) => {
     await userEvent.selectOptions(
       canvas.getByTestId("from-select"),
-      LengthUnits.yard
+      WeightUnits.stone
     );
 
     await expect(canvas.getByTestId("from-select")).toHaveValue(
-      LengthUnits.yard
+      WeightUnits.stone
     );
-    await expect(canvas.getByTestId("result-input")).toHaveValue(0.057);
+    await expect(canvas.getByTestId("result-input")).toHaveValue(1400);
   },
 };
 
@@ -62,12 +62,12 @@ export const ChangeResultUnits: Story = {
   play: async ({ canvas, userEvent }) => {
     await userEvent.selectOptions(
       canvas.getByTestId("result-select"),
-      LengthUnits.ft
+      WeightUnits.stone
     );
 
     await expect(canvas.getByTestId("result-select")).toHaveValue(
-      LengthUnits.ft
+      WeightUnits.stone
     );
-    await expect(canvas.getByTestId("result-input")).toHaveValue(328_083.99);
+    await expect(canvas.getByTestId("result-input")).toHaveValue(15.747);
   },
 };

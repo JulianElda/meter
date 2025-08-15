@@ -4,7 +4,7 @@ import { expect } from "storybook/test";
 
 import { Notifications } from "@/src/components/notifications/notifications";
 
-import Guid from "./page";
+import { Guid } from "./guid";
 
 const meta: Meta<typeof Guid> = {
   component: Guid,

@@ -23,6 +23,7 @@ export const getRandomCharacter = (characters: string) => {
 export const generateRandomString = function ({
   chars = "",
   length = 16,
+  lowercase = true,
   numerals = false,
   special = false,
   uppercase = false,
@@ -32,9 +33,13 @@ export const generateRandomString = function ({
   const NUMERAL_CHARS = "0123456789";
   const SPECIAL_CHARS = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
 
-  let availableCharacters = chars || LOWERCASE_CHARS;
+  let availableCharacters = chars;
   let result = "";
 
+  if (lowercase) {
+    availableCharacters += LOWERCASE_CHARS;
+    result += getRandomCharacter(LOWERCASE_CHARS);
+  }
   if (uppercase) {
     availableCharacters += UPPERCASE_CHARS;
     result += getRandomCharacter(UPPERCASE_CHARS);

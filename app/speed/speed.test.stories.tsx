@@ -2,12 +2,12 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { expect } from "storybook/test";
 
-import { LengthUnits } from "@/src/constants/length";
+import { SpeedUnits } from "@/src/constants/speed";
 
-import { Length } from "./length";
+import { Speed } from "./speed";
 
-const meta: Meta<typeof Length> = {
-  component: Length,
+const meta: Meta<typeof Speed> = {
+  component: Speed,
   decorators: [
     (Story) => (
       <div className="max-w-md text-lg">
@@ -15,11 +15,11 @@ const meta: Meta<typeof Length> = {
       </div>
     ),
   ],
-  title: "Tests/Length",
+  title: "Tests/Speed",
 };
 
 export default meta;
-type Story = StoryObj<typeof Length>;
+type Story = StoryObj<typeof Speed>;
 
 export const TestElements: Story = {
   name: "render elements",
@@ -38,7 +38,7 @@ export const ChangeInputAmount: Story = {
     await userEvent.type(canvas.getByTestId("from-input"), "200");
 
     await expect(canvas.getByTestId("from-input")).toHaveValue(200);
-    await expect(canvas.getByTestId("result-input")).toHaveValue(124.274);
+    await expect(canvas.getByTestId("result-input")).toHaveValue(321.869);
   },
 };
 
@@ -47,13 +47,11 @@ export const ChangeInputUnits: Story = {
   play: async ({ canvas, userEvent }) => {
     await userEvent.selectOptions(
       canvas.getByTestId("from-select"),
-      LengthUnits.yard
+      SpeedUnits.m_s
     );
 
-    await expect(canvas.getByTestId("from-select")).toHaveValue(
-      LengthUnits.yard
-    );
-    await expect(canvas.getByTestId("result-input")).toHaveValue(0.057);
+    await expect(canvas.getByTestId("from-select")).toHaveValue(SpeedUnits.m_s);
+    await expect(canvas.getByTestId("result-input")).toHaveValue(360);
   },
 };
 
@@ -62,12 +60,12 @@ export const ChangeResultUnits: Story = {
   play: async ({ canvas, userEvent }) => {
     await userEvent.selectOptions(
       canvas.getByTestId("result-select"),
-      LengthUnits.ft
+      SpeedUnits.m_s
     );
 
     await expect(canvas.getByTestId("result-select")).toHaveValue(
-      LengthUnits.ft
+      SpeedUnits.m_s
     );
-    await expect(canvas.getByTestId("result-input")).toHaveValue(328_083.99);
+    await expect(canvas.getByTestId("result-input")).toHaveValue(44.704);
   },
 };

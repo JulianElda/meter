@@ -11,7 +11,7 @@ import { convertVolume } from "@/src/util/conversion";
 export function Volume() {
   const [units1, setUnits1] = useState<VolumeUnits>(VolumeUnits.l);
   const [units2, setUnits2] = useState<VolumeUnits>(VolumeUnits.us_oz);
-  const [amount1, setAmount1] = useState<number>(1);
+  const [amount1, setAmount1] = useState<number>(100);
   const [amount2, setAmount2] = useState<number>(
     toFixedRounding(convertVolume(amount1, units1, units2))
   );
@@ -61,7 +61,7 @@ export function Volume() {
             selectId="from-select"
             selectLabel="Volume units"
             selectValue={units1}
-            type="text"
+            type="number"
           />
           <InputSelect
             hideLabel={true}
@@ -75,7 +75,7 @@ export function Volume() {
             selectId="result-select"
             selectLabel="Volume units"
             selectValue={units2}
-            type="text"
+            type="number"
           />
         </div>
       </Card>

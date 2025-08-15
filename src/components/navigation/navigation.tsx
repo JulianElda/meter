@@ -26,12 +26,18 @@ export function Navigation() {
     {
       links: [
         { href: "/currency", title: "Currency" },
-        { href: "/guid", title: "GUID" },
-        { href: "/lorem", title: "Lorem Ipsum" },
-        { href: "/password", title: "Password" },
         { href: "/qrcode", title: "URL to QR code" },
       ],
       title: "Utilities",
+    },
+    {
+      links: [
+        { href: "/guid", title: "GUID" },
+        { href: "/lorem", title: "Lorem Ipsum" },
+        { href: "/password", title: "Password" },
+        { href: "/pin", title: "Pin" },
+      ],
+      title: "Random generators",
     },
   ];
 
