@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
-import { Color } from "./color";
+import Color from "./page";
 
 const meta: Meta<typeof Color> = {
   component: Color,

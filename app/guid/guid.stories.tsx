@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
-import Length from "./page";
+import Guid from "./page";
 
-const meta: Meta<typeof Length> = {
-  component: Length,
+const meta: Meta<typeof Guid> = {
+  component: Guid,
   decorators: [
     (Story) => (
       <div className="max-w-md text-lg">
@@ -11,12 +11,12 @@ const meta: Meta<typeof Length> = {
       </div>
     ),
   ],
-  title: "Converters",
+  title: "Utilities",
 };
 
 export default meta;
-type Story = StoryObj<typeof Length>;
+type Story = StoryObj<typeof Guid>;
 
-export const LengthPage: Story = {
-  name: "Length converter",
+export const GuidPage: Story = {
+  name: "Guid generator",
 };

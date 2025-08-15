@@ -21,7 +21,7 @@ export function Guid() {
 
     await navigator.clipboard.writeText(guid);
 
-    notificationActions.addNotification("Password copied");
+    notificationActions.addNotification("Guid copied");
   };
 
   return (

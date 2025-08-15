@@ -10,7 +10,7 @@ context("currency conversion", () => {
     });
 
     cy.intercept("https://api.frankfurter.app/latest?from=EUR", {
-      amount: 1.0,
+      amount: 1,
       base: "EUR",
       date: "2025-05-22",
       rates: {
@@ -21,7 +21,7 @@ context("currency conversion", () => {
     });
 
     cy.intercept("https://api.frankfurter.app/latest?from=GBP", {
-      amount: 1.0,
+      amount: 1,
       base: "GBP",
       date: "2025-05-22",
       rates: {
@@ -32,23 +32,23 @@ context("currency conversion", () => {
     });
 
     cy.intercept("https://api.frankfurter.app/latest?from=JPY", {
-      amount: 1.0,
+      amount: 1,
       base: "JPY",
       date: "2025-05-22",
       rates: {
-        EUR: 0.00629,
-        GBP: 0.00541,
-        USD: 0.00688,
+        EUR: 0.006_29,
+        GBP: 0.005_41,
+        USD: 0.006_88,
       },
     });
 
     cy.intercept("https://api.frankfurter.app/latest?from=USD", {
-      amount: 1.0,
+      amount: 1,
       base: "USD",
       date: "2025-05-22",
       rates: {
-        EUR: 0.88425,
-        GBP: 0.74516,
+        EUR: 0.884_25,
+        GBP: 0.745_16,
         JPY: 143.42,
       },
     });

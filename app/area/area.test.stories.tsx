@@ -4,7 +4,7 @@ import { expect } from "storybook/test";
 
 import { AreaUnits } from "@/src/constants/area";
 
-import { Area } from "./area";
+import Area from "./page";
 
 const meta: Meta<typeof Area> = {
   component: Area,
