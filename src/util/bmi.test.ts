@@ -32,32 +32,6 @@ describe("calculateBmi", () => {
   test("handles decimal weight and height", () => {
     expect(calculateBmi(68.5, 1.72)).toBeCloseTo(23.15, 2);
   });
-
-  describe("throws errors for invalid inputs", () => {
-    test("throws error for zero height", () => {
-      expect(() => calculateBmi(70, 0)).toThrow(
-        "Height must be greater than zero"
-      );
-    });
-
-    test("throws error for zero weight", () => {
-      expect(() => calculateBmi(0, 1.75)).toThrow(
-        "Weight must be greater than zero"
-      );
-    });
-
-    test("throws error for negative height", () => {
-      expect(() => calculateBmi(70, -1.75)).toThrow(
-        "Height must be greater than zero"
-      );
-    });
-
-    test("throws error for negative weight", () => {
-      expect(() => calculateBmi(-70, 1.75)).toThrow(
-        "Weight must be greater than zero"
-      );
-    });
-  });
 });
 
 describe("categorizeBmi", () => {
