@@ -53,6 +53,8 @@ export function Bmi() {
           <InputSelect
             inputId="height-input"
             inputLabel="Height"
+            inputMax={250}
+            inputMin={50}
             inputValue={height}
             onInputChange={setHeight as (value: number | string) => void}
             onSelectChange={(value: string) =>
@@ -67,6 +69,8 @@ export function Bmi() {
           <InputSelect
             inputId="weight-input"
             inputLabel="Weight"
+            inputMax={500}
+            inputMin={10}
             inputValue={weight}
             onInputChange={setWeight as (value: number | string) => void}
             onSelectChange={(value: string) =>
