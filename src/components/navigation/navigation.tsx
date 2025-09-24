@@ -27,6 +27,7 @@ export function Navigation() {
       links: [
         { href: "/bmi", title: "BMI" },
         { href: "/currency", title: "Currency" },
+        { href: "/whatsapp-link", title: "WhatsApp link" },
         { href: "/qrcode", title: "URL to QR code" },
       ],
       title: "Utilities",
