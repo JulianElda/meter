@@ -6,7 +6,6 @@ import AppLayout from "@/src/components/app/app-layout";
 
 import "./tailwind.css";
 
-// eslint-disable-next-line react-refresh/only-export-components
 export const metadata: Metadata = {
   description: "conversion and utilities online, made by Julius Polar",
   title: "meter",

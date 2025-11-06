@@ -11,7 +11,6 @@ import {
   initialCurrency2,
 } from "./currency.store";
 
-// eslint-disable-next-line react-refresh/only-export-components
 export const metadata: Metadata = {
   description: "Convert currencies online",
   title: "Currency conversion - meter",
