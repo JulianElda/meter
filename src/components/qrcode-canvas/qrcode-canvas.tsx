@@ -11,9 +11,11 @@ export function QrCodeCanvas(props: QrCodeCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    if (!canvasRef.current || !props.url) return;
+    if (!canvasRef.current || !props.url) {
+      return;
+    }
 
-    QRCode.toCanvas(canvasRef.current, props.url.trim(), {
+    void QRCode.toCanvas(canvasRef.current, props.url.trim(), {
       margin: 2,
       width: 256,
     });

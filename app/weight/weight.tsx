@@ -18,11 +18,12 @@ export function Weight() {
 
   const options = (function () {
     const tmp = [];
-    for (const key in WeightConversionTable)
+    for (const key in WeightConversionTable) {
       tmp.push({
         label: key,
         value: key,
       });
+    }
     return tmp;
   })();
 

@@ -1,20 +1,11 @@
-import lexis from "@julianelda/lexis/react";
+import lexis from "@julianelda/lexis";
 import tailwind from "@julianelda/lexis/tsx-tailwind";
-import next from "@next/eslint-plugin-next";
 import tsParser from "@typescript-eslint/parser";
+import storybook from "eslint-plugin-storybook";
 
-const eslintConfig = [
-  {
-    plugins: {
-      "@next/next": next,
-    },
-    rules: {
-      ...next.configs.recommended.rules,
-      ...next.configs["core-web-vitals"].rules,
-    },
-  },
-  ...lexis,
+export default [
   ...tailwind,
+  ...storybook.configs["flat/recommended"],
   {
     files: ["**/*.{ts,tsx,cts,mts}"],
     languageOptions: {
@@ -29,11 +20,5 @@ const eslintConfig = [
       },
     },
   },
-  {
-    rules: {
-      "unicorn/prevent-abbreviations": "off",
-    },
-  },
+  ...lexis,
 ];
-
-export default eslintConfig;

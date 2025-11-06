@@ -12,11 +12,12 @@ import { areaReducer, AreaStoreActions, initialAreaState } from "./area.store";
 
 const options = (function () {
   const tmp = [];
-  for (const key in AreaUnitsTable)
+  for (const key in AreaUnitsTable) {
     tmp.push({
       label: key,
       value: key,
     });
+  }
   return tmp;
 })();
 

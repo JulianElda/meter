@@ -75,5 +75,7 @@ export const convertArea = function (
   }
 
   // fallback
-  else return amount;
+  else {
+    return amount;
+  }
 };

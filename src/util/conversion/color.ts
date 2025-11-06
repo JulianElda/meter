@@ -1,6 +1,8 @@
 const decimalToHex = function (fromRgb: string): string {
   let result = Number.parseInt(fromRgb).toString(16);
-  if (result.length === 1) result = "0" + result;
+  if (result.length === 1) {
+    result = "0" + result;
+  }
   return result;
 };
 
@@ -10,7 +12,9 @@ const toRgb = function (fromHex: string): string {
 
 export const hexToRgb = function (hexString: string): string {
   let str = hexString;
-  if (str.length === 7) str = str.slice(1, 7);
+  if (str.length === 7) {
+    str = str.slice(1, 7);
+  }
 
   return [
     toRgb(str.slice(0, 2)),
@@ -96,14 +100,21 @@ export function rgbToHSL(rgbString: string): string {
     l = 0,
     s = 0;
 
-  if (delta == 0) h = 0;
-  else if (cmax == r) h = ((g - b) / delta) % 6;
-  else if (cmax == g) h = (b - r) / delta + 2;
-  else h = (r - g) / delta + 4;
+  if (delta == 0) {
+    h = 0;
+  } else if (cmax == r) {
+    h = ((g - b) / delta) % 6;
+  } else if (cmax == g) {
+    h = (b - r) / delta + 2;
+  } else {
+    h = (r - g) / delta + 4;
+  }
 
   h = Math.round(h * 60);
 
-  if (h < 0) h += 360;
+  if (h < 0) {
+    h += 360;
+  }
 
   l = (cmax + cmin) / 2;
 

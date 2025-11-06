@@ -10,11 +10,12 @@ import { convertSpeed } from "@/src/util/conversion";
 
 const options = (function () {
   const tmp = [];
-  for (const key in SpeedUnitsTable)
+  for (const key in SpeedUnitsTable) {
     tmp.push({
       label: key,
       value: key,
     });
+  }
   return tmp;
 })();
 

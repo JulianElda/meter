@@ -85,5 +85,7 @@ export const convertVolume = function (
   }
 
   // fallback
-  else return amount;
+  else {
+    return amount;
+  }
 };

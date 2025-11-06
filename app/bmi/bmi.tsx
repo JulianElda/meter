@@ -12,21 +12,23 @@ import { convertLength, convertWeight } from "@/src/util/conversion";
 
 const weightOptions = (function () {
   const tmp = [];
-  for (const key in WeightConversionTable)
+  for (const key in WeightConversionTable) {
     tmp.push({
       label: key,
       value: key,
     });
+  }
   return tmp;
 })();
 
 const lengthOptions = (function () {
   const tmp = [];
-  for (const key in LengthConversionTable)
+  for (const key in LengthConversionTable) {
     tmp.push({
       label: key,
       value: key,
     });
+  }
   return tmp;
 })();
 

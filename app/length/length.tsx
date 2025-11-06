@@ -18,11 +18,12 @@ export function Length() {
 
   const options = (function () {
     const tmp = [];
-    for (const key in LengthConversionTable)
+    for (const key in LengthConversionTable) {
       tmp.push({
         label: key,
         value: key,
       });
+    }
     return tmp;
   })();
 

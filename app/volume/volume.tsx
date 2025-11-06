@@ -18,11 +18,12 @@ export function Volume() {
 
   const options = (function () {
     const tmp = [];
-    for (const key in VolumeUnitsTable)
+    for (const key in VolumeUnitsTable) {
       tmp.push({
         label: key,
         value: key,
       });
+    }
     return tmp;
   })();
 

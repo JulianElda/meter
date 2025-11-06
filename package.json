@@ -32,7 +32,7 @@
     "zustand": "^5.0.7"
   },
   "devDependencies": {
-    "@julianelda/lexis": "^1.3.3",
+    "@julianelda/lexis": "^2.0.0",
     "@next/eslint-plugin-next": "^15.4.6",
     "@storybook/addon-a11y": "^9.1.2",
     "@storybook/addon-links": "^9.1.2",

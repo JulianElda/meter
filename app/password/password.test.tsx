@@ -18,7 +18,7 @@ describe("Password component", () => {
     ).toHaveLength(16);
   });
 
-  test.skip("generate a new password when length is changed", async () => {
+  test("generate a new password when length is changed", async () => {
     const user = userEvent.setup();
     render(<Password />);
 
