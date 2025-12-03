@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
-import { fireEvent } from "@testing-library/react";
-import { expect } from "storybook/test";
+import { expect, fireEvent } from "storybook/test";
 
 import { Notifications } from "@/src/components/notifications/notifications";
 
@@ -44,7 +43,7 @@ export const ChangePasswordLength: Story = {
       canvas.getByTestId("password-password") as HTMLInputElement
     ).value;
 
-    fireEvent.input(canvas.getByTestId("password-length"), {
+    await fireEvent.input(canvas.getByTestId("password-length"), {
       target: { value: "32" },
     });
 

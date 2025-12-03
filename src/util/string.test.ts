@@ -13,7 +13,9 @@ describe("shuffleCharacters", () => {
     const result = shuffleCharacters(input);
     expect(result).not.toBe(input);
     expect(result.length).toBe(input.length);
-    expect([...result].sort().join("")).toBe([...input].sort().join(""));
+    expect(Array.from(result).sort().join("")).toBe(
+      Array.from(input).sort().join("")
+    );
   });
 });
 

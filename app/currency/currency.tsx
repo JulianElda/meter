@@ -35,7 +35,7 @@ export function Currency(props: CurrencyProps) {
       type: CurrencyStoreActions.CURRENCY_1,
     });
 
-    getCurrencyRate(newCurrency1).then((result: Rates) => {
+    void getCurrencyRate(newCurrency1).then((result: Rates) => {
       dispatch({
         payload: result,
         type: CurrencyStoreActions.RATE,

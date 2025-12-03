@@ -1,5 +1,5 @@
 export const shuffleCharacters = (characters: string) => {
-  const charactersArray = [...characters];
+  const charactersArray = Array.from(characters);
   let randomIndex: number;
   let currentIndex = characters.length;
 
