@@ -14,7 +14,7 @@ import {
 export function Temperature() {
   const [state, dispatch] = useReducer(
     temperatureReducer,
-    initialTemperatureState
+    initialTemperatureState,
   );
 
   const onChangeCelcius = function (value: number) {
@@ -44,29 +44,29 @@ export function Temperature() {
         <PageHeader title="Temperature converter" />
       </div>
       <Card>
-        <div className="mb-2 flex">
+        <div className="flex flex-col gap-2">
           <Input
             id="celcius-input"
             label="Celcius"
-            onChange={onChangeCelcius as (value: number | string) => void}
+            onChange={(value: number | string) =>
+              onChangeCelcius(Number(value))
+            }
             type="number"
             value={state.celcius}
           />
-        </div>
-        <div className="my-2 flex">
           <Input
             id="fahrenheit-input"
             label="Fahrenheit"
-            onChange={onChangeFahrenheit as (value: number | string) => void}
+            onChange={(value: number | string) =>
+              onChangeFahrenheit(Number(value))
+            }
             type="number"
             value={state.fahrenheit}
           />
-        </div>
-        <div className="my-2 flex">
           <Input
             id="kelvin-input"
             label="Kelvin"
-            onChange={onChangeKelvin as (value: number | string) => void}
+            onChange={(value: number | string) => onChangeKelvin(Number(value))}
             type="number"
             value={state.kelvin}
           />

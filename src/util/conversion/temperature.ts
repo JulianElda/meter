@@ -3,7 +3,7 @@ import { F_C, K_C, Temperatures } from "@/src/constants/temperature";
 export const convertTemperature = function (
   amount: number,
   unitsFrom: Temperatures,
-  unitsTo: Temperatures
+  unitsTo: Temperatures,
 ): number {
   // Celcius is baseline
   let celciusAmount: number;

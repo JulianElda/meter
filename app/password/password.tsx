@@ -27,7 +27,7 @@ export function Password() {
         numerals,
         special,
         uppercase,
-      })
+      }),
     );
   }, [length, uppercase, numerals, special]);
 
@@ -42,7 +42,7 @@ export function Password() {
         numerals,
         special,
         uppercase,
-      })
+      }),
     );
   };
 
