@@ -19,6 +19,11 @@ export default defineConfig({
         },
       }),
     },
+    coverage: {
+      enabled: true,
+      provider: "v8",
+    },
+    reporters: ["html"],
     setupFiles: "./src/test-setup.ts",
   },
 });
